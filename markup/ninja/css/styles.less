@@ -1,0 +1,483 @@
+/*
+	----------------------------------------------
+
+	LESS for ninja-IDE website.
+
+	@author: pedromagnus (pedro@ninja-ide.org)
+	@website: www.ninja-ide.org
+
+	----------------------------------------------
+*/
+
+@import "preface.css";
+
+@import "elements.less";
+
+
+@page-width: 1000px;
+@page-side-padding: 20px;
+@font-family1: "Nova Square", arial, sans-serif;
+@font-family2: "Ubuntu", sans-serif;
+@color-marked: orange;
+@color-marked2: lightblue;
+
+
+body{
+	background: #333;
+	font-size: 14px;
+	font-size: 100%;
+    line-height: 1.125em;
+}
+.content () {
+	background-color: #333;
+	color: #ccc;
+	width: @page-width - (2 * @page-side-padding);
+	padding: @page-side-padding;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+*, p, h1, h2, h3 {
+	font-family: @font-family1;
+	font-weight: normal;
+}
+h2{
+	font-size: 1.3em;
+	margin: 20px 0 10px;
+	line-height: 32px;
+}
+h3{
+	color: @color-marked;
+	font-size: 1.2em;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+h4{
+	color: #aaa;
+	font-size: .9em;
+	font-weight: normal;
+}
+a{
+	color: @color-marked;
+	text-decoration: none;
+}
+p{
+	line-height: 1.4em;
+	a{
+		border-bottom: 1px dotted;
+
+		&:hover{
+			border-bottom: 1px solid;
+		}
+	}
+}
+table{
+	border: 1px solid;
+	.drop-shadow(0, 5px, 20px, .4);
+
+	tr{
+		border: 1px solid;
+
+		th, td{
+			padding: 6px 20px;
+		}
+	}
+}
+
+header{
+	background: #333;
+	border-bottom: 1px solid #222;
+	font-size: .9em;
+	height: 65px;
+	line-height: .9em;
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	.drop-shadow(0px, 5px, 15px, 0.8);
+	z-index: 50;
+}
+
+nav{
+	height: 100%;
+
+	ul{
+		list-style: none;
+		margin: 0 auto;
+		width: @page-width;
+
+		li{
+			display: block;
+			float: left;
+			border-left: 1px solid #555;
+			border-right: 1px solid #222;
+			overflow: hidden;
+
+			&:hover a{
+				background-color: #555;
+				text-shadow: #111 0px 1px 2px;
+			}
+			a{
+				color: inherit;
+				display: block;
+				float: left;
+				font-size: inherit;
+				padding: 12px 18px;
+				text-decoration: none;
+				width: 135px;
+				height: 45px;
+			}
+
+			&#nav-home a{
+				background-color: #eee;
+				width: 93px;
+			}
+		}
+	}
+}
+
+#main{
+	padding-top: 65px;
+	width: 100%;
+}
+#splash{
+	background: #eee;
+	height: 400px;
+	width: 100%;
+
+	#splash-wrap{
+		margin: 0 auto;
+		padding: 0 20px;
+		position: relative;
+		height: 100%;
+		width: @page-width;
+
+		h1{
+			color: #222;
+			display: block;
+			font-family: Yukarimobile;
+			font-size: 200px;
+			line-height: 200px;
+			text-align: center;
+			position: relative;
+			top: 70px;
+			text-shadow: 0px 9px 20px #aaa;
+
+			span{
+				font-family: "arial black";
+				font-size: 50px;
+				font-weight: bold;
+				letter-spacing: -0.1em;
+				color: #888;
+			}
+		}
+
+		#download-latest-box{
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+			margin-right: 20px;
+			width: 220px;
+			//height: 40px;
+			z-index: 10;
+			.drop-shadow(0, 1px, 4px, 0.4);
+
+			img{
+				display: block;
+				float: left;
+				padding: 3px 10px 3px 5px;
+				border-right: 1px solid #555;
+				margin-right: 10px;
+				height: 32px;
+				width: 32px;
+				position: absolute;
+			}
+
+			h2, a{
+				padding-left: 60px;
+			}
+			h2{
+				font-size: 1.1em;
+				line-height: 20px;
+				margin: 0 0 3px;
+				text-shadow: 0px 1px 0px #fff;
+			}
+			a{
+				color: inherit;
+				font-size: .9em;
+				text-decoration: none;
+				
+				&.so-version{
+					color: @color-marked;
+					float: right;
+					position: absolute;
+					right: 5px;
+					top: -20px;
+				}
+			}
+		}
+	}
+}
+
+.small{
+	font-size: 80%;
+}
+
+div.content{
+	.content;
+
+	.section{
+		clear: both;
+		padding-bottom: 20px;
+
+		h1{
+			color: #999;
+			margin: 20px 0px;
+			font-family: @font-family1;
+			font-size: 1.8em;
+			font-weight: normal;
+			line-height: 1.8em;
+			border-bottom: 1px dotted #555;
+			padding-bottom: 8px;
+			text-shadow: 0 2px 5px #111;
+		}
+
+		p{
+			margin: 10px 0;
+			font-size: 14px;
+			font-weight: normal;
+			line-height: 1.7em;
+		}
+		
+		&#intro{
+			h1 .small{
+				font-size: .7em;
+				color: #fff;
+			}
+		}
+
+		&#features{
+			ul{
+				list-style: none;
+				margin: 0 0 30px;
+				
+				li{
+					float: left;
+					height: 260px;
+					width: 290px;
+					margin: 0 20px 30px 0;
+					padding: 20px 20px 0 0;
+
+					img{
+						display: block;
+						min-height: 93px;
+						width: 100%;
+						border: 1px solid #fff;
+						margin: 10px 0;
+						.drop-shadow(0px, 0px, 15px, 0.5);
+					}
+
+					a{
+						clear: both;
+						float: right;
+						top: -10px;
+					}
+				}
+			}
+		}
+
+		&#downloads{
+			h2{
+				padding-left: 42px;
+				margin-top: 40px;
+
+				&.win_downloads{
+					background: url("../img/download_for_windows.png") 0 0 no-repeat transparent;
+				}
+				&.linux_downloads{
+					background: url("../img/download_for_linux.png") 0 0 no-repeat transparent;
+				}
+				&.mac_downloads{
+					background: url("../img/download_for_mac.png") 0 0 no-repeat transparent;
+				}
+			}
+			table{
+				margin-left: 42px;
+				tr{
+					th, td{
+						min-width: 150px;
+						vertical-align: middle;
+					}
+
+					&:hover{
+						.box-shadow(0px 0px 5px 3px @color-marked2);
+					}
+				}
+			}
+		}/* /downloads */
+
+		&#aboutus{
+			#ninja_members{
+				list-style: none;
+				
+				li{
+					float: left;
+					padding: 20px 0;
+					border-bottom: 1px solid #222;
+					border-top: 1px solid #555;
+					width: 100%;
+					
+					img{
+						margin-right: 40px;
+						float: left;
+						display: block;
+						height: 130px;
+						width: 130px;
+						border: 3px solid @color-marked;
+						.drop-shadow(0, 0, 15px, .4);
+					}
+
+					h2, p{
+					}
+					h2{
+						margin-top: 0;
+					}
+					a.mail{
+						float: right;
+					}
+
+					&:first-child{
+						border-top: none;
+					}
+					&:last-child{
+						border-bottom: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+footer{
+	color: #fff;
+	height: 300px;
+	width: 100%;
+	background-color: #222;
+	position: relative;
+	padding: 30px 0 70px;
+	border-top: 1px #666 solid;
+
+	.footer-wrap{
+		.content;
+		.rounded(8px);
+		.box-shadow(0 0 10px 5px #333);
+
+		.disclaimer{
+			bottom: 1px;
+			color: @color-marked2;
+			font-size: 13px;
+			line-height: 20px;
+			margin: 0;
+			padding: 10px;
+			position: absolute;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 1px 2px #000;
+		}
+
+		.section{
+			margin: 0px;
+			width: 290px;
+			float: left;
+
+			h2{
+				margin-bottom: 10px;
+			}
+
+			p{
+				clear: both;
+				font-size: 1em;
+				font-style: italic;
+				margin-bottom: 10px;
+			}
+
+			&#twits, &#last-submissions{
+				margin-right: 40px;
+			}
+
+			&.twits{
+				h2{
+					background: url(../img/twitter_32.png) 0 0 no-repeat transparent;
+				}
+			}
+
+			&#twits{
+				h2, p{
+					padding-left: 40px;
+				}
+				p{
+					color: @color-marked2;
+
+					&.since{
+						color: #777;
+						font-size: 0.9em;
+						float: right;
+					}
+				}
+			}
+
+			&#last-submissions{
+				h2{
+					padding-left: 40px;
+					background: url("../img/brick_add.png") 0 0 no-repeat transparent;
+				}
+
+				.submission-log{
+					border-bottom: 1px solid #222;
+					border-top: 1px solid #555;
+					padding: 10px 0;
+
+					h3{
+						a{
+							&:hover{
+								border-bottom: 1px dotted;
+							}
+						}
+					}
+
+					&:first-child{
+						border-top: none;
+					}
+					&:last-child{
+						border-bottom: 0;
+					}
+				}
+			}
+			&#donate{
+				h2{
+					padding-left: 40px;
+					background: url("../img/coins_add.png") 0 0 no-repeat transparent;
+				}
+				p{
+					font-size: 14px;
+					font-style: normal;
+				}
+			}
+		}
+	}
+}
+
+.metal-box{
+	color: #000;
+	.color-gradient(#ccc);
+	padding: 10px;
+	.rounded(8px);
+	border: 1px solid #777;
+}
+
+.last-of-row{
+	margin-right: 0 !important;
+	padding-right: 0 !important;
+}
+
+
+@import "sufix.css";

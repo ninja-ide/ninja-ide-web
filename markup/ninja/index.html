@@ -1,0 +1,330 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="Pedro Mourelle. pedro at pmdesign.com.ar">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Fonts from google -->
+  <!--link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'-->
+  <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
+
+  <!-- CSS: implied media="all" -->
+  <!--link rel="stylesheet" href="css/style.css?v=2"-->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="js/libs/modernizr-1.7.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <header>
+      <nav>
+        <ul>
+          <li id="nav-home">
+            <a href="/">
+              <img src="img/nav-logo.png" alt="Ninja-IDE" />
+            </a>
+          </li>
+
+          <li id="nav-features">
+            <a href="/features">
+              <h3>Features</h3>
+              <h4>Our ninja weapons</h4>
+            </a>
+          </li>
+
+          <li id="nav-downloads">
+            <a href="/downloads">
+              <h3>Downloads</h3>
+              <h4>Get your own ninja suit now!</h4>
+            </a>
+          </li>
+
+          <li id="nav-plugins">
+            <a href="/plugins">
+              <h3>Plugins</h3>
+              <h4>Our Senseis' new stuff</h4>
+            </a>
+          </li>
+
+          <li id="nav-about">
+            <a href="/about">
+              <h3>About</h3>
+              <h4>Meet our dojo</h4>
+            </a>
+          </li>
+
+          <li id="nav-contrib">
+            <a href="/contrib">
+              <h3>Contrib</h3>
+              <h4>Became a sensei</h4>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main" role="main">
+      <div id="splash">
+        <div id="splash-wrap">
+
+          <h1>Ninja<span>IDE</span></h1>
+
+          <div id="download-latest-box" class="metal-box">
+            <!--img src="img/download_for_windows.png" alt="download" /-->
+            <img src="/media/img/download_for_mac.png" alt="download" />
+            <!--img src="img/download_for_linux.png" alt="download" /-->
+            <h2>Latest Version</h2>
+            <!--a class="so-version" href="/downloads/windows/win7">Windows 7</a-->
+            <a class="so-version" href="/downloads/mac/106">Mac OS X 10.6+</a>
+            <!--a class="so-version" href="/downloads/linux/1104">Ubuntu 11.04</a-->
+            <a href="/download/latest" title="Download the last version">
+              Ninja IDE v2.0 (Shuriken)</a>
+          </div><!-- /.metal-box -->
+
+        </div><!-- /#splash-wrap -->
+      </div><!-- /#splash -->
+
+
+      <div class="content">
+
+        <!-- INTRO -->
+        <div class="section" id="intro">
+          <h1>NINJA-IDE Is Not Just Another IDE<span class="small"></small></h1>
+          <p>NINJA-IDE is a cross-platform integrated development environment (IDE). NINJA-IDE runs on Linux/X11, Mac OS X and Windows desktop operating systems, and allows developers to create applications for several purposes using all the tools and utilities of NINJA-IDE, making the task of writing software easier and more enjoyable.</p>
+        </div>
+
+
+        <!-- FEATURES -->
+        <div class="section" id="features">
+          <h1>Features</h1>
+          <ul>
+            <li id="code_editor">
+                <h3>Powerfull Code Editor</h3>
+                <img src="img/feature-code_editor.png" alt="Code Editor" />
+                <p>NINJA-IDE provides a complete code editor with highlighting for several languages, code completion, code assistant for: imports, navigation, etc. Also it is possible to extend the editor functionality using plugins.</p>
+                <a href="/features#code_editor">Learn More</a>
+            </li>
+            <li id="display_manager">
+                <h3>Display Manager</h3>
+                <img src="img/feature-plugins.png" alt="Display Manager" />
+                <p>Provides support to use an embedded Python Console into the IDE, and load several plugin's widgets for multi-purposes.
+                </p>
+                <a href="/features#code_editor">Learn More</a>
+            </li>
+
+            <li id="projects" class="last-of-row">
+                <h3>Project Managment</h3>
+                <img src="img/feature-projects.png" alt="Feature Projects" />
+                <p>NINJA-IDE allows to manage Python Project automatically, saving descriptive information about them and letting the user to perform file managment related task in the IDE itself.</p>
+                <a href="/features#code_editor">Learn More</a>
+            </li>
+            <li id="run">
+                <h3>Run Project and Files</h3>
+                <img src="img/feature-run.png" alt="Run" />
+                <p>With NINJA-IDE it is possible to run Python Project or any file opened in the Editor with just one click. It is also possible to render an HTML file loaded in the Editor in the IDE to see how the changes would look like in a browser.</p>
+                <a href="/features#code_editor">Learn More</a>
+            </li>
+            <li id="integrate">
+                <h3>Highly extensible</h3>
+                <img src="img/feature-integrate.png" alt="Integrate" />
+                <p>You can create a Plugin for several purposes and it can be integrated completely with the IDE, increasing the functionality available to improve assistance for projects development.</p>
+                <a href="/features#code_editor">Learn More</a>
+            </li>
+          </ul>
+        </div><!-- /#features -->
+
+
+        <!-- DOWNLOADS -->
+        <div class="section" id="downloads">
+          <h1>Downloads</h1>
+          <p>Here, litle dan, you will find any version you need to be able to punch and kick like a real ninja programmer. We won't be guilty if you hurt yourself doing some ninja stuff.</p>
+
+          <p>Below each SO, the list is formatted as:</p>
+          <table>
+            <tr>
+              <td>SO Version</td>
+              <td>Last Ninja Version for it</td>
+              <td>Download Link</td>
+            </tr>
+          </table>
+
+          <h2 class="win_downloads">Windows</h2>
+          <table>
+            <tr>
+              <td>Windows 98, XP</td>
+              <td><a href="/versions/10/">Ninja IDE v1.0</a></td>
+              <td><a href="/downloads/windows/winxp/10">Download</a></td>
+            </tr>
+            <tr>
+              <td>Windows 7</td>
+              <td><a href="/versions/20/">Ninja IDE v2.0</a></td>
+              <td><a href="/downloads/windows/seven/20">Download</a></td>
+            </tr>
+          </table>
+
+          <h2 class="linux_downloads">Linux</h2>
+          <table>
+            <tr>
+              <td>Debian 11.01</td>
+              <td><a href="/versions/18/">Ninja IDE v1.8</a></td>
+              <td><a href="/downloads/linux/debian/1101/18">Download</a></td>
+            </tr>
+            <tr>
+              <td>Ubuntu 11.04</td>
+              <td><a href="/versions/20/">Ninja IDE v2.0</a></td>
+              <td><a href="/downloads/linux/ubuntu/1104/20">Download</a></td>
+            </tr>
+          </table>
+
+          <h2 class="mac_downloads">Mac OsX</h2>
+          <table>
+            <tr>
+              <td>Leopard 10.5</td>
+              <td><a href="/versions/18/">Ninja IDE v1.8</a></td>
+              <td><a href="/downloads/mac/leopard/105/18">Download</a></td>
+            </tr>
+            <tr>
+              <td>Leoopard 10.6</td>
+              <td><a href="/versions/20/">Ninja IDE v2.0</a></td>
+              <td><a href="/downloads/mac/leopard/106/20">Download</a></td>
+            </tr>
+          </table>
+        </div><!-- /#downloads -->
+
+        <!-- ABOUT US -->
+        <div class="section" id="aboutus">
+          <h1>About us</h1>
+          <p>This is the ninja team that worked in Ninja IDE. Don't judge their faces, they can beat you up with a pendrive if they want to.</p>
+          <ul id="ninja_members">
+            <li>
+              <img src="img/ninja_members/1.png" alt="Diego Sarmentero" />
+              <h2>Diego Sarmentero</h2>
+              <p>Software Freedom Lover, enjoy programming in several languages, and share all the things I've learn with the community. Computer Geek by nature.</p>
+              <a class="mail" href="mailto:diego.sarmentero@ninja-ide.org">diego.sarmentero@ninja-ide.org</a>
+            </li>
+            <li>
+              <img src="img/ninja_members/2.png" alt="Matías Herranz" />
+              <h2>Matías Herranz</h2>
+              <p>Django/Python, web and mobile(iPhone) apps programmer. I like guitar playing, bonsais, hang around with friends and cherry flavored jelly.</p>
+              <a class="mail" href="mailto:matias@ninja-ide.org">matias@ninja-ide.org</a>
+            </li>
+            <li>
+              <img src="img/ninja_members/3.png" alt="Martín Alderete" />
+              <h2>Martín Alderete</h2>
+              <p>Software developer, open source software fan. I really like to programming in different languages. I met Python in 2005 and I felt in love, since then it is my main language. I also like practicing martial arts and sports.</p>
+              <a class="mail" href="mailto:malderete@ninja-ide.org">malderete@ninja-ide.org</a>
+            </li>
+            <li>
+              <img src="img/ninja_members/1.png" alt="Santiago Moreno" />
+              <h2>Santiago Moreno</h2>
+              <p>Perfectionist person and programmer, not always a good combination. I am not satisfied just to make things work well, also have to look pretty.</p>
+              <a class="mail" href="mailto:cs.moreno@ninja-ide.org">cs.moreno@ninja-ide.org</a>
+            </li>
+            <li>
+              <img src="img/ninja_members/2.png" alt="Pedro Mourelle" />
+              <h2>Pedro Mourelle</h2>
+              <p>Something similar.</p>
+              <a class="mail" href="pedro@ninja-ide.org">pedro@ninja-ide.org</a>
+            </li>
+          </ul>
+        </div><!-- /#aboutus -->
+
+        <!-- PLUGINS -->
+        <div class="section" id="plugins">
+          <h1>Plugins</h1>
+          <p>Navigate through the titles and grub the sweetest plugins you can find. Don't forget to qualify the plugin after you test it, remember we are ninja and know how to find you.</p>
+        </div><!-- /#plugins -->
+    </div>
+
+    <footer>
+      <div class="footer-wrap">
+        
+        <div class="section twits" id="twits">
+          <h2>Ninja Twits</h2>
+          <p>Working on something called twitter. It would be great!!</p>
+          <p class="since">10 years ago</p>
+          <p>Suckers buying Apple. It sure will be out of business in 2 months!</p>
+          <p class="since">7 years ago</p>
+        </div><!-- /.twits -->
+
+        <div class="section" id="last-submissions">
+          <h2>Last Submissions</h2>
+          <div class="submission-log">
+            <h3><a href="/plugins/41213/">Some other cool plugin <span class="small">(2 hours ago)</small></a></h3>
+            <p>This plugin is event better that previous because ...</p>
+          </div>
+          <div class="submission-log">
+            <h3><a href="/plugins/41212/">Some cool plugin <span class="small">(4 hours ago)</small></a></h3>
+            <p>This plugin is pure magic. It just ...</p>
+          </div>
+        </div>
+
+        <div class="section" id="donate">
+          <h2>We are not rich ninjas</h2>
+          <p>You are enjoying Ninja-IDE because we trained a lot with wooden dummies, and then we CODE IT !!<br /> So, if you consider yourself an honoured warrior <a href="/donate">considere to make a donation to us</a> so we can buy new weapons. Yes, you're right, our weapons are keybords and monitors, and we hit hard with them.</p>
+        </div>
+
+        <div class="disclaimer">
+          Ninja-IDE is a GNU Project. 2009-2011. All rights are protected by ninjas, so watch out, punk! Just kidding. But we totally see you.
+        </div>
+
+      </div>
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+  <!-- end scripts-->
+
+
+  <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends "registration/registration_base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+	$('#id_username').focus();
+});
+</script>
+{% endblock %}
+
+{% block bodyclass %}login{% endblock %}
+
+{% block body %}
+<div class="section">
+	<h1>Login for yourself, ninja!</h1>
+
+	{% if form.errors %}
+	<div class="form-error">
+		<p>Correct errors below before continue</p>
+
+		{% if form.non_field_errors %}
+			<p>{{ form.non_field_errors }}</p>
+		{% endif %}
+	</div>
+	{% endif %}
+	
+	<form method="post" action="{% url django.contrib.auth.views.login %}">
+	{% csrf_token %}
+	<table class="styled-table">
+	<tr>
+	    <th>{{ form.username.label_tag }}</th>
+	    <td>{{ form.username }}</td>
+	</tr>
+	<tr>
+	    <th>{{ form.password.label_tag }}</th>
+	    <td>{{ form.password }}</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="submit" value="login" />
+		</td>
+	</tr>
+	</table>
+	
+	<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+
+	<ul class="options">
+		<li><a href="{% url auth_password_reset %}">Forgot</a> your password?</li>
+		<li>Need a <a href="{% url registration_register %}">brand new account</a>?</li>
+	</ul>
+</div>
+{% endblock %}

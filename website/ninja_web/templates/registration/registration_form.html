@@ -1,0 +1,23 @@
+{% extends "registration/registration_base.html" %}
+
+{% block title %}Register for an account{% endblock %}
+
+{% block bodyclass %}user-register{% endblock %}
+
+{% block body %}
+	<h1>Fill the fields below if you dare</h1>
+	<h2>You are becoming a ninja by submitting this form.</h2>
+	<p>You will be able to have access to all ninja stuff, like plugins, freebies, and some nunjitsu lessons.</p>
+
+	<table class="styled-table">
+	    <form method='post' action=''>
+	    	{% csrf_token %}
+	    	{{ form }}
+	        <tr>
+	        	<td colspan="2">
+	        		<input type="submit" value="You bet I'm sure!!" title="Submit"/>
+	        	</td>
+	        </tr>
+	    </form>
+	</table>
+{% endblock %}

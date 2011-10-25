@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% load i18n show_stars %}
+
+{% block scripts %}
+{{ block.super }}
+
+<script src="/media/js/prototype.js"></script>
+{% show_stars_script %}
+
+<script type="text/javascript">
+  function rate_plugin(id, pos) {
+    //ajax goes here, update item id with stars == pos.
+    var post_url = "{$% url rate-plugin id, pos %$}";
+
+    $.ajax(post_url,
+      success: function(){
+        /* update the rate of this plugin */
+      });
+  }
+</script>
+{% endblock %}
+
+{% block bodyclass %}plugin-detail{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <!-- PLUGINS -->
+    <div class="section left big-width" id="plugins">
+      <h1>Ninja Plugins</h1>
+      <h2>Showing <span class="color_marked">{{ plugins_category.name|default:"All" }}</span> plugins</h2>
+
+      <ul id="plugins-list" class="item-list">
+
+        {% for p in plugins %}
+        <li>
+          <h3><a href="{{ p.absolute_url }}">{{ p.title|default:"Plugin Title" }}</a></h3>
+          <h4>{{ p.user.username|default:"Montoto san" }}</h4>
+          <p>{{ p.detail|truncatewords_html:20 }}</p>
+
+          <div class="right options">
+
+          {% if user.is_authenticated %}
+            {% show_stars 3.5 of 5 round to half on change call rate_plugin with 1 %}
+            <!-- this A may be obsolete -->
+            <a href="#" class="button">Rate it!</a>
+
+          {% else %}
+            <a href="{% url auth_login %}" class="button forbidden" title="You have to be registered to vote">Login to vote!</a>
+          {% endif %}
+          </div>
+
+          <div class="item-tags">
+          {% for tag in plugin.get_tags %}
+            <a href="{% url tags tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+          {% endfor %}
+          </div>
+        </li>
+        {% endfor %}
+
+        <!-- testing -->
+        <li class="item">
+          <div class="item-header">
+            <h3><a href="{{ p.absolute_url }}">{{ p.title|default:"Plugin Title" }}</a></h3>
+            <h4>{{ p.user.username|default:"Montoto san" }}</h4>
+          </div>
+
+          <div class="right options">
+          {% if user.is_authenticated %}
+          {% show_stars 3.5 of 5 round to half on change call rate_plugin with 1 %}
+            <a href="#" class="button">Rate it!</a>
+
+          {% else %}
+            <a href="{% url auth_login %}" class="button forbidden" title="You have to be registered to vote">Login to vote!</a>
+          {% endif %}
+          </div>
+
+          <div class="left extract">
+            <p>{{ p.detail|default:"This service allows to interact with the miscelaneos container (misc) of NINJA-IDE. This container is at the bottom of the user interface. The container has a collection of widgets and shows an icon for each one them. Only one widget is visible at a time. We can add widgets (QWidget or subclass) to the misc container."|truncatewords_html:20 }}</p>
+          </div>
+
+          <div class="item-tags">
+            <a href="" alt="" title="">python</a>
+            <a href="" alt="" title="">ninja</a>
+            <a href="" alt="" title="">freaking awesome</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section right small-width" id="submit-banner">
+      <h1>Plugins contest</h1>
+      <p>Submit your plugin or vote for existing ones. You can do it until december 22nd.</p>
+      <a class="button" href="{% url plugin-submit %}">Submit your plugin!</a>
+      <a class="button" href="{% url plugins %}">Vote/Rate plugins!</a>
+    </div>
+
+
+    <div class="section right small-width" id="plugins-sidebar">
+      <h1>Rules</h1>
+      <h3>As any clean contest, cheaters will be attacked by criminal ninjas working for us, so show respect:</h3>
+
+      <ol id="rules-list">
+        <li>You have to be registered to be able to vote.</li>
+        <li>What you are <b>able</b> to do:
+        <li>You can <b>Vote/Rate</b> all the plugins you want.</li>
+        <li>You can't Vote/Rate the same plugin twice.</li>
+        <li>Ninja IDE has the power to audit suspected votes/rates, being able to dismiss any proven cheat.</li>
+      </ol>
+    </div>
+
+  </div><!-- /content -->
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block bodyclass %}features{% endblock %}
+
+{% block content %}
+<div class="content">
+         <!-- FEATURES -->
+        <div class="section" id="features">
+          <h1>Features</h1>
+          <ul>
+            <li id="code_editor">
+                <h3>Powerfull Code Editor</h3>
+                <img src="../media/img/feature-code_editor.png" alt="Code Editor" />
+                <p>NINJA-IDE provides a complete code editor with highlighting for several languages, code completion, code assistant for: imports, navigation, etc. Also it is possible to extend the editor functionality using plugins.</p>
+            </li>
+            <li id="code_locator">
+                <h3>Amazing Code Locator</h3>
+                <img src="../media/img/feature-code_locator.png" alt="Code Locator" />
+                <p>This Feature allows quick and direct access to any file, function or class inside one of our projects by simply pressing a few keys. Pressing "Ctrl + K" we will see a popup over a text field, where you can type the name of what you want and done!</p>
+            </li>
+            <li id="display_manager" class="last-of-row">
+                <h3>Display Manager</h3>
+                <img src="../media/img/feature-console.png" alt="Display Manager" />
+                <p>Provides support to use an embedded Python Console into the IDE, and load several plugin's widgets for multi-purposes.
+                </p>
+            </li>
+            <li id="projects">
+                <h3>Project Managment</h3>
+                <img src="../media/img/feature-projects.png" alt="Feature Projects" />
+                <p>NINJA-IDE allows to manage Python Project automatically, saving descriptive information about them and letting the user to perform file managment related task in the IDE itself.</p>
+            </li>
+            <li id="run">
+                <h3>Run Project and Files</h3>
+                <img src="../media/img/feature-run.png" alt="Run" />
+                <p>With NINJA-IDE it is possible to run Python Project or any file opened in the Editor with just one click. It is also possible to render an HTML file loaded in the Editor in the IDE to see how the changes would look like in a browser.</p>
+            </li>
+            <li id="integrate" class="last-of-row">
+                <h3>Highly extensible</h3>
+                <img src="../media/img/feature-integrate.png" alt="Integrate" />
+                <p>You can create a Plugin for several purposes and it can be integrated completely with the IDE, increasing the functionality available to improve assistance for projects development.</p>
+            </li>
+            <li id="errors">
+                <h3>Errors and PEP8 Finder</h3>
+                <img src="../media/img/feature-errors.png" alt="errors" />
+                <p>Highlight Static and PEP8 errors in the document, you can also see that the files containing PEP8 errors are shown with an icon in the tab where the file is opened, and files containing code static errors are shown with a bug icon in that tab.</p>
+            </li>
+            <li id="import">
+                <h3>Import From Everywhere</h3>
+                <img src="../media/img/feature-import.png" alt="import" />
+                <p>When we are editing large files, what we would probably do to include modules is to scroll to the top of file, add our Imports and return again to where we were. NINJA-IDE allows us to avoid this situation with: "Imports from Everywhere".</p>
+            </li>
+            <li id="symbols" class="last-of-row">
+                <h3>Symbols Explorer</h3>
+                <img src="../media/img/feature-symbols.png" alt="symbols" />
+                <p>You can see all the functions, classes and attributes in the current file, grouped together under the structure that contains them, and go to the definition of each one with just one click.</p>
+            </li>
+            <li id="virtualenv">
+                <h3>Virtualenv Support</h3>
+                <img src="../media/img/feature-virtualenv.png" alt="virtualenv" />
+                <p>Support for virtualenv has been added, which can be specified in the project creation from NINJA-IDE or for an existing project in Project Properties.</p>
+            </li>
+            <li id="findinfiles">
+                <h3>Find In Files / Find Usages</h3>
+                <img src="../media/img/feature-findinfiles.png" alt="find" />
+                <p>Allows you to search one or more words, a regular expression, etc. recursively, also you have an option in the editor's contextual menu that allows you to find all the occurrences of a particular word from where the cursor is positioned.</p>
+            </li>
+            <li id="more" class="last-of-row">
+                <h3>And many more!!</h3>
+                <img src="../media/img/feature-more.png" alt="Run" />
+                <p>Web Inspector, Code Navigation, Contextual Menu in Tabs to perform quick actions, Code Jumps, Breakpoints and Bookmarks Navigation implemented, Profile manager, and a lot more!.</p>
+            </li>
+          </ul>
+        </div><!-- /#features -->
+    </div><!-- /content -->
+{% endblock%}

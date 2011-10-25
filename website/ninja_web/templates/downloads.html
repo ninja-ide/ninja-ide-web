@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block bodyclass %}downloads{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <!-- DOWNLOADS -->
+        <div class="section" id="downloads">
+          <h1>Downloads</h1>
+          <p>Here, litle dan, you will find the last stable and beta versions available for GNU/Linux, Windows and Mac. We won't be guilty if you hurt yourself doing some ninja stuff with any of these lethal programming weapons.</p>
+
+          <!-- Doh..!! Really??? check and delete this, like a ninja.
+          <p>Below each OS, the list is formatted as:</p>
+          <table>
+            <tr>
+              <td>OS Version</td>
+              <td>Last Ninja Version for it</td>
+              <td>Download Link</td>
+            </tr>
+          </table>
+          -->
+
+          <h2 class="linux_downloads" id="linux_downloads">Linux</h2>
+          <table>
+            <tr>
+              <td>Ubuntu / Debian</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_2.0-beta_all.deb">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_2.0-beta_all.deb">Download</a>
+                  / <a href="http://ubuntuone.com/0sqywkLAxhPh6caUj9LFXi">Mirror</a></td>
+            </tr>
+            <tr>
+              <td>Fedora</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0_beta-1.noarch.rpm">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0_beta-1.noarch.rpm">Download</a>
+                  / <a href="http://ubuntuone.com/2gLJKKWfr8BhW5hsgH8JpK">Mirror</a></td>
+            </tr>
+            <tr>
+              <td>Arch</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-beta-2.0-1-any.pkg.tar.xz">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-beta-2.0-1-any.pkg.tar.xz">Download</a>
+                  / <a href="http://ubuntuone.com/1hg9ngubLfOaSU1Xb1aj51">Mirror</a></td>
+            </tr>
+            <tr>
+              <td>Ubuntu / Debian</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_1.1_all.deb">Ninja IDE v1.1</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_1.1_all.deb">Download</a></td>
+            </tr>
+            <tr>
+              <td>Arch</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-1.1-1-any.pkg.tar.xz">Ninja IDE v1.1</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-1.1-1-any.pkg.tar.xz">Download</a></td>
+            </tr>
+            <tr>
+              <td>Mandriva</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-1.1-3.noarch.rpm">Ninja IDE v1.1</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-1.1-3.noarch.rpm">Download</a></td>
+            </tr>
+          </table>
+
+          <h2 class="win_downloads" id="win_downloads">Windows</h2>
+          <table>
+            <tr>
+              <td>Windows XP, Vista, 7</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-beta-winInstaller.zip">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-beta-winInstaller.zip">Download Installer</a>
+                  / <a href="http://ubuntuone.com/5SLubQislCpQwFJ2H93L9B">Mirror</a></td>
+            </tr>
+            <tr>
+              <td>Windows XP, Vista, 7</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-beta-exe.zip">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-beta-exe.zip">Download Executable</a>
+                  / <a href="http://ubuntuone.com/5YiZGJdKL2bbVrofM7wbJE">Mirror</a></td>
+            </tr>
+            <tr>
+              <td>Windows XP, Vista, 7</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja_installer.rar">Ninja IDE v1.1</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja_installer.rar">Download Installer</a></td>
+            </tr>
+            <tr>
+              <td>Windows XP, Vista, 7</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/Ninja_exe.rar">Ninja IDE v1.1</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/Ninja_exe.rar">Download Executable</a></td>
+            </tr>
+          </table>
+          <p class="tabbed">(Made with: <a href="https://code.google.com/p/py2nsis/">Py2nsis</a>)</p>
+
+          <h2 class="mac_downloads" id="mac_downloads">Mac OsX</h2>
+          <p class="tabbed">The Mac version is finishing its training. Soon available to kick some asses!!</p>
+          <!--table>
+            <tr>
+              <td>MAC OS X</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-Beta.zip">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-Beta.zip">Download Sources</a>
+                  / <a href="http://ubuntuone.com/2KGpbo9xbaYrkxtbxk0Gsv">Mirror</a></td>
+            </tr>
+          </table-->
+
+          <h2 class="source_downloads" id="source_downloads">SOURCE CODE</h2>
+          <table>
+            <tr>
+              <td>Any OS</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-Beta.zip">Ninja IDE v2.0-Beta</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide-2.0-Beta.zip">Download Sources</a>
+                  / <a href="http://ubuntuone.com/2KGpbo9xbaYrkxtbxk0Gsv">Mirror</a></td>
+            </tr>
+            <tr>
+              <td>Any OS</td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_sources-1.1.zip">Ninja IDE v1.1</a></td>
+              <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_sources-1.1.zip">Download Sources</a></td>
+            </tr>
+          </table>
+          <p class="tabbed">Source Code hosted at: <a href="http://ninja-ide.googlecode.com">http://ninja-ide.googlecode.com</a></p>
+
+          <h2 class="warning">Hey! Watch out little dan!</h2>
+          <p class="tabbed">Version 2.0 requires PyQt >= 4.7</p>
+          <p class="tabbed">Version 1.1 requires PyQt >= 4.6</p>
+        </div><!-- /#downloads -->
+</div><!-- /content -->
+{% endblock%}

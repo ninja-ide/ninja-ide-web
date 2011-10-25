@@ -1,0 +1,236 @@
+{% load i18n %}
+
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block title %}NINJA IDE | Ninja-ide Is Not Just Another IDE {% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="author" content="You tell me, if you call yourself a ninja.">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="icon" href="/media/img/favicon.ico">
+  <link rel="shortcut icon" href="/media/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/media/img/apple-touch-icon.png">
+
+  <!-- Fonts from google -->
+  <!--link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'-->
+
+  <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
+
+  <!-- CSS: implied media="all" -->
+  <link rel="stylesheet" href="/media/css/styles.css">
+
+  {% block styles %}
+  {% endblock %}
+
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="/media/js/libs/modernizr-1.7.min.js"></script>
+
+</head>
+
+<body class="{% block bodyclass %}{% endblock %}">
+  <div id="container">
+    <header>
+      <nav>
+        <ul>
+          <li id="nav-home">
+            <a href="/">
+              <img src="/media/img/nav-logo.png" alt="Ninja-IDE" />
+            </a>
+          </li>
+
+          <li id="nav-features">
+            <a href="/features">
+              <h3>Features</h3>
+              <h4>Our ninja weapons</h4>
+            </a>
+          </li>
+
+          <li id="nav-downloads">
+            <a href="/downloads">
+              <h3>Downloads</h3>
+              <h4>Get your own ninja suit now!</h4>
+            </a>
+          </li>
+
+          <li id="nav-plugins">
+            <a href="/plugins">
+              <h3>Plugins</h3>
+              <h4>Our Senseis' new stuff</h4>
+            </a>
+          </li>
+
+          <li id="nav-about">
+            <a href="/about">
+              <h3>About</h3>
+              <h4>Meet our dojo</h4>
+            </a>
+          </li>
+
+          <li id="nav-contrib">
+            <a href="/contrib">
+              <h3>Contrib</h3>
+              <h4>Become a sensei</h4>
+            </a>
+          </li>
+
+          <li id="nav-using">
+            <a href="/using">
+              <h3>Who is using?</h3>
+              <h4>Certified Ninjas using Ninja-IDE</h4>
+            </a>
+          </li>
+
+          <li id="nav-login">
+            {% if user.is_authenticated %}
+              <h3>My dojo</h3>
+              <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %} san
+              <br />
+              <a href="{% url auth_logout %}">Logout</a>
+              </h4>
+            {% else %}
+              <h3>Ninja Login</h3>
+              <h4><a href="{% url auth_login %}">Login or Sign up</a></h4>
+            {% endif %}
+          </li>
+          <!--
+          -->
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main" role="main">
+      {% if messages %}
+      <div class="modal" id="modal-layer">
+        {% for m in messages %}
+        <div class="message {{ m.tags }}">
+          <p>{{ m|safe }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- CONTENT TO FILL -->
+      {% block content %}
+      {% endblock %}
+    </div><!-- #main -->
+
+    <footer>
+      <div class="footer-wrap">
+
+          <div class="section twits" id="twits">
+          <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+          <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'profile',
+            rpp: 3,
+            interval: 30000,
+            width: 'auto',
+            height: 'auto',
+            theme: {
+              shell: {
+                background: 'transparent',
+                color: '#ffffff'
+              },
+              tweets: {
+                background: 'transparent',
+                color: '#add8e6',
+                links: '#'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: false,
+              live: true,
+              hashtags: false,
+              timestamp: false,
+              avatars: false,
+              behavior: 'all'
+            }
+          }).render().setUser('ninja_ide').start();
+          </script>
+        </div><!-- /.twits -->
+
+        <div class="section" id="last-submissions">
+          <h2>Last Submissions</h2>
+          <div class="submission-log">
+            <h3><a href="#">Plugin Project<span class="small"> (by Martin Alderete)</small></a></h3>
+            <p>This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!</p>
+          </div>
+          <div class="submission-log">
+            <h3><a href="#">Task<span class="small"> (by Martin Alderete)</small></a></h3>
+            <p>Organize your task(s)</p>
+          </div>
+        </div>
+
+        <div class="section" id="donate">
+          <h2>We aren't rich ninjas</h2>
+          <p>You are enjoying <a href="/">Ninja-IDE</a> because we trained a lot, punching & kicking wooden dummies, and then we CODE THE THING !!!</p>
+          <p>That said, if you considere yourself an honoured warrior <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">considere to make a donation</a> so we can buy new weapons.</p>
+          <p>Yes, you're right: our weapons are keybords and monitors, but we beat really hard with them.</p>
+        </div>
+
+        <div class="disclaimer">
+          NINJA-IDE is a GPL Project. 2010-2011. All rights are protected by ninjas, so watch out, punk! Just kidding. But we totally see you.
+        </div>
+
+      </div>
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="/media/js/plugins.js"></script>
+  <script src="/media/js/script.js"></script>
+  <!-- end scripts-->
+
+
+  <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4650617-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  {% block scripts %}
+  {% endblock %}
+
+</body>
+</html>

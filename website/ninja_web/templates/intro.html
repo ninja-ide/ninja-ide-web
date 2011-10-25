@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block bodyclass %}home{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+    <!--
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var so = retornarSO().toLowerCase();
+        var text = 'Download for ' + so;
+    
+        img_link = $(document.createElement('img'))
+                   .attr('src', '/media/img/download_for_'+so+'.png')
+                   .attr('alt', text);
+
+        $('.so-version').after(img_link);
+    });
+    </script>
+    -->
+{% endblock %}
+
+{% block content %}
+    <div class="modal" id="modal-layer">
+        <div class="message">
+          <p>
+          <b class="big">PLUGIN CONTEST!</b><br />
+          Submit your plugin until Dic. 22nd and win some sweet cash!<br />
+          <a href="{% url plugins-contest %}">Check it out HERE!!</a>
+          </p>
+        </div>
+    </div>
+
+    <div id="splash">
+    <div id="splash-wrap">
+
+      <h1>Ninja<span>IDE</span></h1>
+
+      <div id="download-latest-box" class="redninja-box">
+        <img src="/media/img/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
+        <span class="small">Latest Version</span>
+        <a class="main-link" href="/downloads/">Ninja IDE v2.0-Beta for {{ user_os|title }}.</a>
+        <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">More {{ user_os }} downloads</a>
+      </div><!-- /#download-latest-box -->
+
+    </div><!-- /#splash-wrap -->
+    </div><!-- /#splash -->
+
+
+    <div class="content">
+        <!-- INTRO -->
+        <div class="section" id="intro">
+          <h1><span class="color-marked">N</span>inja-<span style="font-variant: small-caps;">ide</span> <span class="color-marked">I</span>s <span class="color-marked">N</span>ot <span class="color-marked">J</span>ust <span class="color-marked">A</span>nother IDE<span class="small"></small></h1>
+          <p>NINJA-IDE (from the recursive acronym: "Ninja-IDE Is Not Just Another IDE"), is a cross-platform integrated development environment (IDE). NINJA-IDE runs on Linux/X11, Mac OS X and Windows desktop operating systems, and allows developers to create applications for several purposes using all the tools and utilities of NINJA-IDE, making the task of writing software easier and more enjoyable.</p>
+        </div>
+
+        <!-- FEATURES -->
+        <div class="section" id="features">
+          <h1>Some Features</h1>
+          <ul>
+            <li id="code_editor">
+                <h3>Powerfull Code Editor</h3>
+                <img src="../media/img/feature-code_editor.png" alt="Code Editor" />
+                <p>NINJA-IDE provides a complete code editor with highlighting for several languages, code completion, code assistant for: imports, navigation, etc. Also it is possible to extend the editor functionality using plugins.</p>
+            </li>
+            <li id="code_locator">
+                <h3>Amazing Code Locator</h3>
+                <img src="../media/img/feature-code_locator.png" alt="Code Locator" />
+                <p>This Feature allows quick and direct access to any file, function or class inside one of our projects by simply pressing a few keys. Pressing "Ctrl + K" we will see a popup over a text field, where you can type the name of what you want and done!</p>
+            </li>
+            <li id="errors"  class="last-of-row">
+                <h3>Errors and PEP8 Finder</h3>
+                <img src="../media/img/feature-errors.png" alt="errors" />
+                <p>Highlight Static and PEP8 errors in the document, you can also see that the files containing PEP8 errors are shown with an icon in the tab where the file is opened, and files containing code static errors are shown with a bug icon in that tab.</p>
+            </li>
+            <li id="projects">
+                <h3>Project Managment</h3>
+                <img src="../media/img/feature-projects.png" alt="Feature Projects" />
+                <p>NINJA-IDE allows to manage Python Project automatically, saving descriptive information about them and letting the user to perform file managment related task in the IDE itself.</p>
+            </li>
+            <li id="run">
+                <h3>Run Project and Files</h3>
+                <img src="../media/img/feature-run.png" alt="Run" />
+                <p>With NINJA-IDE it is possible to run Python Project or any file opened in the Editor with just one click. It is also possible to render an HTML file loaded in the Editor in the IDE to see how the changes would look like in a browser.</p>
+            </li>
+            <li id="integrate" class="last-of-row">
+                <h3>Highly extensible</h3>
+                <img src="../media/img/feature-integrate.png" alt="Integrate" />
+                <p>You can create a Plugin for several purposes and it can be integrated completely with the IDE, increasing the functionality available to improve assistance for projects development.</p>
+            </li>
+          </ul>
+        </div><!-- /#features -->
+        <div class="section" id="intro">
+            <h1>Learn more</h1>
+            <a href="/features">Check out the Features section.</a>
+        </div>
+    </div>
+{% endblock%}

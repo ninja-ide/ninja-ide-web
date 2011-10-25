@@ -1,0 +1,1 @@
+Account ninja registration for {{ site.name }}

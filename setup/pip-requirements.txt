@@ -1,0 +1,15 @@
+# Python version required and assumed: 2.5
+# You can create the virtualenv this way:
+#    $ virtualenv -p python2.5  ~/Dev/NinjaIDE/WebNinja/EnvWeb
+
+django==1.2
+
+PIL  # http://hg.effbot.org/pil-2009-raclette/changeset/fb7ce579f5f9
+https://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
+
+# Dev stuff:
+django-extensions
+ipython==0.11
+ipdb
+readline==6.2.1
+django-debug-toolbar

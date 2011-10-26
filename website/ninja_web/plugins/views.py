@@ -57,7 +57,6 @@ def plugin_submit(request):
 def rate_plugin(request):
 
     data = {}
-    print 'Carnevali'
     if request.method == 'GET':
         plugin_id = request.GET.get('plugin_id', False)
         rate = request.GET.get('rate', 0)

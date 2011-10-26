@@ -68,3 +68,7 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('plugin', 'user',)
+
+    def __unicode__(self):
+        return u'Vote for plugin: %s | Voter: %s | Rate: %d.' % \
+                                (self.plugin, self.user.username, self.rate)

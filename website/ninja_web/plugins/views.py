@@ -69,6 +69,8 @@ def rate_plugin(request):
                         rate=rate,
                         )
         try:
+            # este save tira un error por el unique together. Hay que cargar un
+            # mensajito de error (el de ya votaste este plugin).
             new_vote.save()
         except Exception, e:
             data['ok'] = False

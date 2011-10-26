@@ -13,37 +13,40 @@
   function rate_plugin(id, pos) {
     //ajax goes here, update item id with stars == pos.
     var post_url = "{% url rate-plugin %}?plugin_id=" + id + "&rate=" + pos;
+    elem = jQuery("#plugin_"+id);
 
-    var container = $("#plugin-" + id + '').parents('.rate-container');
+    if (elem) {
+      var container = elem.find(".rate-container");
 
-    {% if not user.is_authenticated %}
-    alert("You have to be registered to vote!");
+      {% if not user.is_authenticated %}
+      alert("You have to be registered to vote!");
 
-    {% else %}
+      {% else %}
 
-    $.ajax({
-      url: post_url,
-      success: function(data) {
-        /* send the rate & update the rate of this plugin */
-        if (data.ok) {
-          alert("Thanks for your vote!");
-          container.find('.plugin-rate')
-          .fadeOut()
-          .html(data.plugin_rate)
-          .fadeIn();
+      jQuery.ajax({
+        url: post_url,
+        success: function(data) {
+          /* send the rate & update the rate of this plugin */
+          if (data.ok) {
+            alert("Thanks for your vote!");
+            container.find('.plugin-rate')
+            .fadeOut()
+            .html(data.plugin_rate)
+            .fadeIn();
 
-          container
-          .find('.plugin-rate-times')
-          .fadeOut()
-          .html(data.plugin_rate_times)
-          .fadeIn();
+            container
+            .find('.plugin-rate-times')
+            .fadeOut()
+            .html(data.plugin_rate_times)
+            .fadeIn();
 
-        } else {
-          alert("Error rating the plugin: "+data.error);
+          } else {
+            alert("Error rating the plugin: "+data.error);
+          }
         }
-      }
-    });
-    {% endif %}
+      });
+      {% endif %}
+    }
   }
 
 </script>
@@ -64,67 +67,50 @@
       <ul id="plugins-list" class="item-list">
 
         {% for p in plugins %}
-        <li>
-          <h3><a href="{{ p.absolute_url }}">{{ p.title|default:"Plugin Title" }}</a></h3>
-          <h4>{{ p.user.username|default:"Montoto san" }}</h4>
-          <p>{{ p.detail|truncatewords_html:20 }}</p>
-
-          <div class="right options">
-
-          {% show_stars 2 of 5 round to half on change call rate_plugin with 1 %}
-
-          </div>
-
-          <div class="item-tags">
-          {% for tag in plugin.get_tags %}
-            <a href="{% url tags tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-          {% endfor %}
-          </div>
-        </li>
-        {% endfor %}
-
-        <!-- testing -->
-        <li class="item" id="plugin-{{ plugin.id|default:'1'}}">
-
+        <li class="item" id="plugin_{{ p.id }}">
+          
           <div class="item-header">
-            <div class="options">
 
-              <!-- borrar el default para id en produccion -->
+            <div class="options">
               <div class="rate-container">
 
                 <div class="rate-wrapper">
-                  <span class="plugin-rate">{{ plugin.rate|default:"3.76" }}</span>
+                  <span class="plugin-rate">{{ p.rate }}</span>
 
-                  {% if not plugin.rate %}
-                    / <span class="plugin-rate-times">{{ plugin.rate_times|default:16 }}</span>
-                    <!-- change '3.76' by plugin.rate and the last '1' with plugin.id -->
-                    </div><!-- /rate-wrapper -->
-                    {% show_stars 3.76 of 5 round to half on change call rate_plugin with 1 %}
+              {% if p.rate %}
+                    <span class="plugin-rate-times">/ {{ p.rate_times }}</span>
+                </div><!-- /rate-wrapper -->
+                {% show_stars 2.74 of 5 round to quarter on change call rate_plugin with p.id %}
 
-                  {% else %}
+              {% else %}
                     <span class="plugin-rate-times">[ Not rated yet ]</span>
-                    </div><!-- /rate-wrapper -->
-                    {% show_stars 3.76 of 5 round to quarter on change call rate_plugin with 1 %}
-                  {% endif %}
+                </div><!-- /rate-wrapper -->
+                <!-- Not rated yet => its rate defaults to the middle punctuation -->
+                {% show_stars 2.5 of 5 round to quarter on change call rate_plugin with p.id %}
+              {% endif %}
 
               </div><!-- /rate-container -->
+            </div><!-- /options -->
 
-            </div>
-
-            <h3><a href="{{ p.absolute_url }}">{{ p.name|default:"Plugin Name" }}</a></h3>
-            <h4>{{ p.user.username|default:"Montoto san" }}</h4>
-          </div>
+            <h3><a href="{{ p.absolute_url }}">{{ p.name }}</a></h3>
+            <h4>{{ p.user.username }} 'san'</h4>
+          </div><!-- /item-header -->
 
           <div class="extract">
-            <p>{{ p.short_description|default:"This service allows to interact with the miscelaneos container (misc) of NINJA-IDE. This container is at the bottom of the user interface. The container has a collection of widgets and shows an icon for each one them. Only one widget is visible at a time. We can add widgets (QWidget or subclass) to the misc container."|truncatewords_html:20 }}</p>
+            <p>{{ p.short_description }}</p>
           </div>
 
           <div class="item-tags">
-            <a href="" alt="" title="">python</a>
-            <a href="" alt="" title="">ninja</a>
-            <a href="" alt="" title="">freaking awesome</a>
+          {% for tag in p.get_tags %}
+            <a href="{% url tags tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+          {% empty %}
+            <a href="#">It has no tags, can believe it?</a>
+          {% endfor %}
           </div>
+
         </li>
+        {% endfor %}
+
       </ul>
     </div>
 

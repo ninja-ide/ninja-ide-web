@@ -37,7 +37,7 @@ def plugin_submit(request):
             lala = form.save()
             lala.user = request.user
             lala.save()
-            import pdb; pdb.set_trace()
+#            import pdb; pdb.set_trace()
             messages.info(request, u'Plugin submitted correctly little dragon.')
 
             return redirect('plugins')
@@ -57,27 +57,31 @@ def plugin_submit(request):
 def rate_plugin(request):
 
     data = {}
-
+    print 'Carnevali'
     if request.method == 'GET':
         plugin_id = request.GET.get('plugin_id', False)
         rate = request.GET.get('rate', 0)
-        print u'metodo es get, plugin_id = %s, y rate = %s' % (plugin_id, rate)
 
     if plugin_id and rate > 0:
-        new_vote = Vote(plugin=plugin_id,
+        new_vote = Vote(plugin_id=int(plugin_id),
                         user=request.user,
-                        rate=rate,
+                        rate=int(rate),
+                        voter_ip=request.META['REMOTE_ADDR'],
                         )
+
         try:
             # este save tira un error por el unique together. Hay que cargar un
             # mensajito de error (el de ya votaste este plugin).
             new_vote.save()
         except Exception, e:
+#            import pdb; pdb.set_trace()
             data['ok'] = False
             data['error'] = u'%s' % e
-        else:
-            data['plugin_rate'] = new_vote.rate
-            data['plugin_rate_times'] = new_vote.rate_times
+
+    else:
+
+        data['plugin_rate'] = new_vote.rate
+        data['plugin_rate_times'] = new_vote.rate_times
 
         data = simplejson.dumps(data, cls=DecimalEncoder)
         response = HttpResponse(data, mimetype='application/json')
@@ -99,3 +103,14 @@ def plugin(request, plugin_id=None):
     # ...
 
     return render_response(request, 'plugin-detail.html', dict)
+
+
+def plugins(request):
+    dict = {}
+
+    """
+    if some-category-selected:
+        dict['plugin-category'] = the-category
+    """
+    dict['plugins'] = Plugin.objects.all()
+    return render_response(request, 'plugins.html', dict)

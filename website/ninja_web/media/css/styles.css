@@ -15,7 +15,7 @@ a.button{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;bord
 a.forbidden{color:#333 !important;background-color:#888 !important;}
 p{line-height:1.4em;}p a:hover{border-bottom:1px solid;}
 p a,li a{border-bottom:1px dotted;}
-p b,li b{color:#ffffff;-webkit-text-shadow:0 0 5px rgba(255, 255, 255, 0.9);-o-text-shadow:0 0 5px rgba(255, 255, 255, 0.9);-moz-text-shadow:0 0 5px rgba(255, 255, 255, 0.9);text-shadow:0 0 5px rgba(255, 255, 255, 0.9);}
+p b,li b,h1 b{color:#ffffff;-webkit-text-shadow:0 0 5px rgba(255, 255, 255, 0.9);-o-text-shadow:0 0 5px rgba(255, 255, 255, 0.9);-moz-text-shadow:0 0 5px rgba(255, 255, 255, 0.9);text-shadow:0 0 5px rgba(255, 255, 255, 0.9);}
 ul li,ol li{line-height:1.4em;margin-bottom:5px;}
 ul{list-style:none;}ul.options{margin-left:0px;}ul.options li{background:url("../img/arrow-right.png") no-repeat 0 center transparent;padding-left:40px;}
 input.long-input{width:400px;min-width:300px;}
@@ -81,7 +81,9 @@ div.content .section#downloads table tr th:last-child,div.content .section#downl
 div.content .section#aboutus ul#ninja_members{list-style:none;margin:0px;}div.content .section#aboutus ul#ninja_members li{border-bottom:1px solid #000;border-top:1px solid #2a2a2a;float:left;margin:0;padding:30px 0;width:100%;}div.content .section#aboutus ul#ninja_members li img{margin-right:30px;float:left;display:block;height:130px;width:130px;border:3px solid #ffa500;-webkit-box-shadow:0 0 15px rgba(0, 0, 0, 0.4);-o-box-shadow:0 0 15px rgba(0, 0, 0, 0.4);-moz-box-shadow:0 0 15px rgba(0, 0, 0, 0.4);box-shadow:0 0 15px rgba(0, 0, 0, 0.4);}
 div.content .section#aboutus ul#ninja_members li:hover img{-webkit-box-shadow:0 0 20px #ffa500;-o-box-shadow:0 0 20px #ffa500;-moz-box-shadow:0 0 20px #ffa500;box-shadow:0 0 20px #ffa500;}
 div.content .section#aboutus ul#ninja_members li h2{margin-top:0;}
-div.content .section#aboutus ul#ninja_members li a.mail{float:right;}
+div.content .section#aboutus ul#ninja_members li p{font-size:13px;}
+div.content .section#aboutus ul#ninja_members li .contact-info{float:right;font-size:12px;}
+div.content .section#aboutus ul#ninja_members li a{float:right;}
 div.content .section#aboutus ul#ninja_members li:first-child{border-top:none;}
 div.content .section#aboutus ul#ninja_members li:last-child{border-bottom:none;}
 div.content .section#contrib h2{margin:20px 0;color:#ffa500;}
@@ -101,9 +103,9 @@ div.content .section#plugin-form table{background:rgba(222, 222, 222, 0.03);marg
 .item-list .item .item-header{clear:both;margin:0 0 10px;}.item-list .item .item-header h4{color:#add8e6;}
 .item-list .item .extract{width:100%;}
 .item-list .item .options{float:right;}
-.item-list .item .item-tags{background:url('../img/tag_green.png') no-repeat 0 center transparent;color:#ffa500;margin:5px 0;overflow:hidden;padding-left:30px;}.item-list .item .item-tags a{float:left;margin-right:10px;}
+.item-list .item .item-tags{background:url('../img/tag_green.png') no-repeat 0 center transparent;color:#ffa500;font-size:12px;margin:5px 0;overflow:hidden;padding-left:30px;}.item-list .item .item-tags a{float:left;margin-right:10px;}
 #didyouknow ul{font-size:.85em;margin-left:10px;}#didyouknow ul li{margin-bottom:10px;}
-footer{color:#fff;width:100%;position:relative;padding:30px 0 70px;border-top:1px #000 dotted;}footer p{font-size:14px;font-style:normal;}
+footer{color:#fff;min-height:370px;width:100%;position:relative;padding:30px 0 70px;border-top:1px #000 dotted;}footer p{font-size:14px;font-style:normal;}
 footer .footer-wrap{background:rgba(255, 255, 255, 0.05);color:#cccccc;width:960px;padding:20px;margin:0 auto;overflow:hidden;padding-top:30px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;-webkit-box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);-moz-box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);-o-box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);}footer .footer-wrap .disclaimer{bottom:1px;color:#add8e6;font-size:13px;line-height:20px;margin:0;padding:10px;position:absolute;right:10px;text-align:right;text-shadow:0 1px 2px #000;}
 footer .footer-wrap .section{float:left;margin:0px;margin-right:30px;width:300px;}footer .footer-wrap .section h2{margin-bottom:10px;margin-top:0;}
 footer .footer-wrap .section p{clear:both;margin-bottom:10px;}

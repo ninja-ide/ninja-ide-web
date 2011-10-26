@@ -61,21 +61,24 @@ def rate_plugin(request):
     if request.method == 'GET':
         plugin_id = request.GET.get('plugin_id', False)
         rate = request.GET.get('rate', 0)
-        print u'metodo es get, plugin_id = %s, y rate = %s' % (plugin_id, rate)
 
     if plugin_id and rate > 0:
-        new_vote = Vote(plugin=plugin_id,
+        new_vote = Vote(plugin_id=int(plugin_id),
                         user=request.user,
-                        rate=rate,
+                        rate=int(rate),
+                        voter_ip=request.META['REMOTE_ADDR'],
                         )
+        new_vote.save()
+        """
         try:
-            new_vote.save()
         except Exception, e:
             data['ok'] = False
             data['error'] = u'%s' % e
+
         else:
-            data['plugin_rate'] = new_vote.rate
-            data['plugin_rate_times'] = new_vote.rate_times
+        """
+        data['plugin_rate'] = new_vote.rate
+        data['plugin_rate_times'] = new_vote.rate_times
 
         data = simplejson.dumps(data, cls=DecimalEncoder)
         response = HttpResponse(data, mimetype='application/json')
@@ -97,3 +100,15 @@ def plugin(request, plugin_id=None):
     # ...
 
     return render_response(request, 'plugin-detail.html', dict)
+
+
+def plugins(request):
+    dict = {}
+
+    """
+    if some-category-selected:
+        dict['plugin-category'] = the-category
+    """
+    dict['plugins'] = Plugin.objects.all()
+    return render_response(request, 'plugins.html', dict)
+

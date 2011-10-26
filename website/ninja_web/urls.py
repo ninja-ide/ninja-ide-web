@@ -40,7 +40,7 @@ urlpatterns = patterns('',
     url(r'^plugins/submit/$', plugin_views.plugin_submit, name="plugin-submit"),
     url(r'^plugins/contest/$', views.plugins_contest, name="plugins-contest"),
     url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin"),
-    url(r'^plugins/$', views.plugins, name="plugins"),
+    url(r'^plugins/$', plugin_views.plugins, name="plugins"),
 
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate-plugin"),

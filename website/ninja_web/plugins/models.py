@@ -41,7 +41,11 @@ class Plugin(models.Model):
     def rate(self):
         """ return the actual average rate
         """
-        return self.vote_set.aggregate(Avg('rate'))
+        try:
+            avg = self.vote_set.all().aggregate(Avg('rate'))['rate__avg']
+        except:
+            avg = u'N/A'
+        return avg
 
     @property
     def rate_times(self):
@@ -58,7 +62,7 @@ class Vote(models.Model):
     """
     user = models.ForeignKey(User)
     plugin = models.ForeignKey(Plugin)
-    rate = models.DecimalField(decimal_places=2, max_digits="3", default=2.50)
+    rate = models.DecimalField(decimal_places=2, max_digits=3, default=2.50)
     date = models.DateField(default=date.today)
     voter_ip = models.IPAddressField()
 

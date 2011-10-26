@@ -144,6 +144,8 @@ p, li {
         border-bottom: 1px dotted;
     }
 
+}
+p, li, h1 {
     b {
         color: @color_b;
         .coloured-shadow(0, 0, 5px, rgba(255, 255, 255, .9));
@@ -770,12 +772,19 @@ div.content {
                         }
                     }
 
-                    h2, p{
+                    h2, p {
                     }
-                    h2{
+                    h2 {
                         margin-top: 0;
                     }
-                    a.mail{
+                    p {
+                        font-size: 13px;
+                    }
+                    .contact-info {
+                        float: right;
+                        font-size: 12px;
+                    }
+                    a{
                         float: right;
                     }
 
@@ -927,6 +936,7 @@ div.content {
         .item-tags {
             background: url('../img/tag_green.png') no-repeat 0 center transparent;
             color: @color_marked;
+            font-size: 12px;
             margin: 5px 0;
             overflow: hidden;
             padding-left: 30px;
@@ -952,9 +962,7 @@ div.content {
 
 footer{
     color: #fff;
-    /*height: 300px; 
-    background-color: #222;
-    */
+    min-height: 370px;
     width: 100%;
     position: relative;
     padding: 30px 0 70px;

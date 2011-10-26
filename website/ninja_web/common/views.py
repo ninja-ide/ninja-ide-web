@@ -42,10 +42,6 @@ def contrib(request):
 
 # plugins
 
-def plugins(request):
-    return render_response(request, 'plugins.html')
-
-
 def plugins_contest(request):
     return render_response(request, 'plugins-contest.html')
 

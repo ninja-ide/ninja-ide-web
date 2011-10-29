@@ -63,7 +63,10 @@ def rate_plugin(request):
         rate = request.GET.get('rate', 0)
 
     if plugin_id and rate > 0:
-        new_vote = Vote(plugin_id=int(plugin_id),
+        # plugin voted
+        plugin = Plugin.objects.get(id=plugin_id)
+        # the actual vote
+        new_vote = Vote(plugin=plugin,
                         user=request.user,
                         rate=int(rate),
                         voter_ip=request.META['REMOTE_ADDR'],
@@ -73,22 +76,22 @@ def rate_plugin(request):
             # este save tira un error por el unique together. Hay que cargar un
             # mensajito de error (el de ya votaste este plugin).
             new_vote.save()
+            data['ok'] = True
+            data['msg'] = u"Thanks for your vote!"
 
         except IntegrityError:
             #IntegrityError raises when tried to save violating
             # the unique_together Plugin meta. 
             data['ok'] = False
-            data['error'] = u"You can't vote twice the same plugin!"
+            data['msg'] = u"You can't vote the same plugin twice!"
 
         except Exception, e:
-            #import pdb; pdb.set_trace()
             data['ok'] = False
-            data['error'] = u"%s" % e
+            data['msg'] = u"%s" % e
 
-    else:
-
-        data['plugin_rate'] = new_vote.rate
-        data['plugin_rate_times'] = new_vote.rate_times
+        else:
+            data['plugin_rate'] = plugin.rate
+            data['plugin_rate_times'] = plugin.rate_times
 
     data = simplejson.dumps(data, cls=DecimalEncoder)
     response = HttpResponse(data, mimetype='application/json')

@@ -24,8 +24,7 @@ table.styled-table{border:0px;margin:0;-webkit-box-shadow:0 0 0 rgba(0, 0, 0, 0)
 table.styled-table tr th{color:#ffa500;font-weight:normal;text-align:right;}
 table.styled-table input[type="text"],table.styled-table input[type="password"],table.styled-table input[type="submit"],table.styled-table input[type="file"],table.styled-table textarea{padding:8px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.3);-o-box-shadow:0 1px 2px rgba(0, 0, 0, 0.3);-moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.3);box-shadow:0 1px 2px rgba(0, 0, 0, 0.3);border:none;}table.styled-table input[type="text"]:focus,table.styled-table input[type="password"]:focus,table.styled-table input[type="submit"]:focus,table.styled-table input[type="file"]:focus,table.styled-table textarea:focus{-webkit-box-shadow:0px 0px 8px #ffa500;-o-box-shadow:0px 0px 8px #ffa500;-moz-box-shadow:0px 0px 8px #ffa500;box-shadow:0px 0px 8px #ffa500;}
 table.styled-table input[type="submit"]{background-color:#add8e6;cursor:pointer;float:right;padding:5px 10px;}table.styled-table input[type="submit"]:hover{background-color:#add8e6;-webkit-box-shadow:0px 0px 4px #add8e6;-o-box-shadow:0px 0px 4px #add8e6;-moz-box-shadow:0px 0px 4px #add8e6;box-shadow:0px 0px 4px #add8e6;}
-.modal{display:block;margin:0 auto;max-width:90%;position:relative;top:20px;width:860px;z-index:2;}.modal#modal-layer{text-align:center;}
-.modal .message{margin:0 auto;width:90%;}
+.modal{display:block;margin:0 auto;max-width:90%;position:relative;text-align:center;top:20px;width:860px;z-index:2;}.modal .message{margin:0 auto;width:90%;}
 .modal p{-webkit-box-shadow:0 0 20px rgba(0, 0, 0, 0.7);-o-box-shadow:0 0 20px rgba(0, 0, 0, 0.7);-moz-box-shadow:0 0 20px rgba(0, 0, 0, 0.7);box-shadow:0 0 20px rgba(0, 0, 0, 0.7);-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;background:#add8e6;color:#000;display:block;padding:10px;top:-10px;}.modal p b{-webkit-box-shadow:0 0 0 rgba(0, 0, 0, 0);-o-box-shadow:0 0 0 rgba(0, 0, 0, 0);-moz-box-shadow:0 0 0 rgba(0, 0, 0, 0);box-shadow:0 0 0 rgba(0, 0, 0, 0);}
 .modal a{color:red;}
 .home .modal{margin:0 auto -90px;}.home .modal p b{-webkit-text-shadow:0 0 1px red;-o-text-shadow:0 0 1px red;-moz-text-shadow:0 0 1px red;text-shadow:0 0 1px red;color:red;font-size:26px;}
@@ -100,6 +99,7 @@ div.content .section#plugin-form table{background:rgba(222, 222, 222, 0.03);marg
 .right{clear:right !important;float:right;}
 .left{clear:left !important;float:left;}
 .item-list{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;-webkit-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);-o-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);-moz-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);background:rgba(255, 255, 255, 0.04);border:1px solid #333;font-size:.85em;margin:10px 0;}.item-list .item{overflow:hidden;padding:20px;}.item-list .item h3{margin:0 0 4px;}
+.item-list .item .msg{background:#add8e6;color:#000;padding:5px 10px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;margin-bottom:5px;}.item-list .item .msg p{line-height:inherit;margin:0;}
 .item-list .item .item-header{clear:both;margin:0 0 10px;}.item-list .item .item-header h4{color:#add8e6;}
 .item-list .item .extract{width:100%;}
 .item-list .item .options{float:right;}

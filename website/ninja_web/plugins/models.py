@@ -42,8 +42,8 @@ class Plugin(models.Model):
         """ return the actual average rate
         """
         if self.vote_set.all().count() == 0:
-            print "no tiene votos"
             avg = 2.5
+
         else:
             try:
                 avg = self.vote_set.all().aggregate(Avg('rate'))['rate__avg']

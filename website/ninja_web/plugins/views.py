@@ -3,6 +3,7 @@ from decimal import Decimal
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.utils import simplejson
@@ -34,9 +35,9 @@ def plugin_submit(request):
 
         if form.is_valid():
 
-            lala = form.save()
-            lala.user = request.user
-            lala.save()
+            new_plugin = form.save(commit=False)
+            new_plugin.user = request.user
+            new_plugin.save()
 #            import pdb; pdb.set_trace()
             messages.info(request, u'Plugin submitted correctly little dragon.')
 
@@ -72,18 +73,25 @@ def rate_plugin(request):
             # este save tira un error por el unique together. Hay que cargar un
             # mensajito de error (el de ya votaste este plugin).
             new_vote.save()
-        except Exception, e:
-#            import pdb; pdb.set_trace()
+
+        except IntegrityError:
+            #IntegrityError raises when tried to save violating
+            # the unique_together Plugin meta. 
             data['ok'] = False
-            data['error'] = u'%s' % e
+            data['error'] = u"You can't vote twice the same plugin!"
+
+        except Exception, e:
+            #import pdb; pdb.set_trace()
+            data['ok'] = False
+            data['error'] = u"%s" % e
 
     else:
 
         data['plugin_rate'] = new_vote.rate
         data['plugin_rate_times'] = new_vote.rate_times
 
-        data = simplejson.dumps(data, cls=DecimalEncoder)
-        response = HttpResponse(data, mimetype='application/json')
+    data = simplejson.dumps(data, cls=DecimalEncoder)
+    response = HttpResponse(data, mimetype='application/json')
 
     return response
 

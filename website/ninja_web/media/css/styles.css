@@ -97,8 +97,8 @@ div.content .section#plugins .options .star-rate{-webkit-border-radius:6px;-moz-
 div.content .section#plugins .extract p{font-size:13px;margin:2px 0;}
 div.content .section#plugins ol#rules-list,div.content .section#plugins-sidebar ol#rules-list{font-size:.85em;}
 div.content .section#plugin-form table{background:rgba(222, 222, 222, 0.03);margin:10px 0;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
-.right{clear:none !important;float:right;}
-.left{clear:none !important;float:left;}
+.right{clear:right !important;float:right;}
+.left{clear:left !important;float:left;}
 .item-list{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;-webkit-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);-o-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);-moz-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);background:rgba(255, 255, 255, 0.04);border:1px solid #333;font-size:.85em;margin:10px 0;}.item-list .item{overflow:hidden;padding:20px;}.item-list .item h3{margin:0 0 4px;}
 .item-list .item .item-header{clear:both;margin:0 0 10px;}.item-list .item .item-header h4{color:#add8e6;}
 .item-list .item .extract{width:100%;}

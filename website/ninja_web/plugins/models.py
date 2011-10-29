@@ -21,7 +21,7 @@ class Plugin(models.Model):
                             max_length=100, verbose_name=u'Short Description')
     description = models.TextField(verbose_name=u'Description')
     upload_date = models.DateField(default=date.today)
-    url = models.URLField(verify_exists=True, max_length=200)
+    url = models.URLField(verify_exists=True, max_length=200, blank=True)
 
     zip_file = models.FileField(upload_to='plugin_files/')
 
@@ -41,10 +41,14 @@ class Plugin(models.Model):
     def rate(self):
         """ return the actual average rate
         """
-        try:
-            avg = self.vote_set.all().aggregate(Avg('rate'))['rate__avg']
-        except:
-            avg = u'N/A'
+        if self.vote_set.all().count() == 0:
+            print "no tiene votos"
+            avg = 2.5
+        else:
+            try:
+                avg = self.vote_set.all().aggregate(Avg('rate'))['rate__avg']
+            except:
+                avg = u'N/A'
         return avg
 
     @property

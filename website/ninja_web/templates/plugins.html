@@ -25,23 +25,25 @@
 
       jQuery.ajax({
         url: post_url,
+        dataType: 'json',
         success: function(data) {
           /* send the rate & update the rate of this plugin */
-          if (data.ok) {
+          var json = eval('('+data+')');
+          if (json.ok) {
             alert("Thanks for your vote!");
             container.find('.plugin-rate')
             .fadeOut()
-            .html(data.plugin_rate)
+            .html(json.plugin_rate)
             .fadeIn();
 
             container
             .find('.plugin-rate-times')
             .fadeOut()
-            .html(data.plugin_rate_times)
+            .html(json.plugin_rate_times)
             .fadeIn();
 
           } else {
-            alert("Error rating the plugin: "+data.error);
+            alert("Error rating the plugin: " + json.error);
           }
         }
       });
@@ -63,6 +65,7 @@
     <div class="section left big-width" id="plugins">
       <h1>Ninja Plugins</h1>
       <h2>Showing <span class="color_marked">{{ plugins_category.name|default:"All" }}</span> plugins</h2>
+      <p>Click on the ninja stars to give the plugins the appretiation you think they diserve.</p>
 
       <ul id="plugins-list" class="item-list">
 
@@ -76,18 +79,10 @@
 
                 <div class="rate-wrapper">
                   <span class="plugin-rate">{{ p.rate }}</span>
-
-              {% if p.rate %}
-                    <span class="plugin-rate-times">/ {{ p.rate_times }}</span>
+                  <span class="plugin-rate-times"> ({{ p.rate_times }})</span>
                 </div><!-- /rate-wrapper -->
-                {% show_stars 2.74 of 5 round to quarter on change call rate_plugin with p.id %}
 
-              {% else %}
-                    <span class="plugin-rate-times">[ Not rated yet ]</span>
-                </div><!-- /rate-wrapper -->
-                <!-- Not rated yet => its rate defaults to the middle punctuation -->
-                {% show_stars 2.5 of 5 round to quarter on change call rate_plugin with p.id %}
-              {% endif %}
+                {% show_stars p.rate of 5 round to quarter on change call rate_plugin with p.id %}
 
               </div><!-- /rate-container -->
             </div><!-- /options -->
@@ -108,6 +103,11 @@
           {% endfor %}
           </div>
 
+        </li>
+
+        {% empty %}
+        <li class="item">
+          <p>There're no plugins submitted yet. <a href="{% url plugin-submit %}">Be the first one!!</a></p>
         </li>
         {% endfor %}
 

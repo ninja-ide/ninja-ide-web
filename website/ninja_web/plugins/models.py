@@ -53,7 +53,7 @@ class Plugin(models.Model):
 
     @property
     def rate_times(self):
-        return self.vote_set.count()
+        return self.vote_set.all().count()
 
     @models.permalink
     def get_absolute_url(self):

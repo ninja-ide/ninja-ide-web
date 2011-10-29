@@ -28,22 +28,22 @@
         dataType: 'json',
         success: function(data) {
           /* send the rate & update the rate of this plugin */
-          var json = eval('('+data+')');
-          if (json.ok) {
+
+          if (data.ok) {
             alert("Thanks for your vote!");
             container.find('.plugin-rate')
             .fadeOut()
-            .html(json.plugin_rate)
+            .html(data.plugin_rate)
             .fadeIn();
 
             container
             .find('.plugin-rate-times')
             .fadeOut()
-            .html(json.plugin_rate_times)
+            .html(data.plugin_rate_times)
             .fadeIn();
 
           } else {
-            alert("Error rating the plugin: " + json.error);
+            alert("Error rating the plugin: " + data.error);
           }
         }
       });

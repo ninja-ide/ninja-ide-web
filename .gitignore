@@ -3,3 +3,4 @@
 .DS_Store
 website/ninja_web/ninja_ide.db
 *.db
+local_settings.py

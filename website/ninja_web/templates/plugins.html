@@ -11,38 +11,63 @@
 <script>
 
   function rate_plugin(id, pos) {
-    //ajax goes here, update item id with stars == pos.
+
+    {% if not user.is_authenticated %}
+    alert("You have to be registered to vote!");
+    return;
+
+    {% else %}
+
     var post_url = "{% url rate-plugin %}?plugin_id=" + id + "&rate=" + pos;
     elem = jQuery("#plugin_"+id);
 
     if (elem) {
-      var container = elem.find(".rate-container");
-
-      {% if not user.is_authenticated %}
-      alert("You have to be registered to vote!");
-
-      {% else %}
+      // the rate container
+      var rate_container = elem.find(".rate-container");
 
       jQuery.ajax({
         url: post_url,
+        dataType: 'json',
         success: function(data) {
-          /* send the rate & update the rate of this plugin */
-          if (data.ok) {
-            alert("Thanks for your vote!");
-            container.find('.plugin-rate')
-            .fadeOut()
-            .html(data.plugin_rate)
-            .fadeIn();
+          // send the rate & update the rate of this plugin 
 
-            container
+          //console.debug("data = " + data.ok.toString());
+          var modal = jQuery("<div class='msg'>");
+          modal.css('display', 'block');
+          elem.prepend(modal);
+
+          var new_div = jQuery('<div>');
+          new_div.addClass('message');
+
+          if (data.ok) {
+            // hiding rate container
+            rate_container
+            .fadeOut();
+
+            // update plugin avg. rate
+            rate_container
+            .find('.plugin-rate')
+            .html(data.plugin_rate.toString());
+
+            // update plugin rates count
+            rate_container
             .find('.plugin-rate-times')
-            .fadeOut()
-            .html(data.plugin_rate_times)
+            .html("( "+data.plugin_rate_times+" )");
+
+            // showing rate container
+            rate_container
             .fadeIn();
 
           } else {
-            alert("Error rating the plugin: "+data.error);
+            new_div.addClass('error');
           }
+
+          var p = "<p>" + data.msg + "</p>";
+          new_div.append(p);
+          
+          modal.append(new_div)
+          .delay(4000)
+          .slideUp(1000);
         }
       });
       {% endif %}
@@ -63,6 +88,7 @@
     <div class="section left big-width" id="plugins">
       <h1>Ninja Plugins</h1>
       <h2>Showing <span class="color_marked">{{ plugins_category.name|default:"All" }}</span> plugins</h2>
+      <p>Click on the ninja stars to give the plugins the appretiation you think they diserve.</p>
 
       <ul id="plugins-list" class="item-list">
 
@@ -76,18 +102,10 @@
 
                 <div class="rate-wrapper">
                   <span class="plugin-rate">{{ p.rate }}</span>
-
-              {% if p.rate %}
-                    <span class="plugin-rate-times">/ {{ p.rate_times }}</span>
+                  <span class="plugin-rate-times">( {{ p.rate_times }} )</span>
                 </div><!-- /rate-wrapper -->
-                {% show_stars 2.74 of 5 round to quarter on change call rate_plugin with p.id %}
 
-              {% else %}
-                    <span class="plugin-rate-times">[ Not rated yet ]</span>
-                </div><!-- /rate-wrapper -->
-                <!-- Not rated yet => its rate defaults to the middle punctuation -->
-                {% show_stars 2.5 of 5 round to quarter on change call rate_plugin with p.id %}
-              {% endif %}
+                {% show_stars p.rate of 5 round to quarter on change call rate_plugin with p.id %}
 
               </div><!-- /rate-container -->
             </div><!-- /options -->
@@ -108,6 +126,11 @@
           {% endfor %}
           </div>
 
+        </li>
+
+        {% empty %}
+        <li class="item">
+          <p>There're no plugins submitted yet. <a href="{% url plugin-submit %}">Be the first one!!</a></p>
         </li>
         {% endfor %}
 

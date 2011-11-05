@@ -54,5 +54,9 @@ def oficial(request):
     return render_response(request, 'oficial.html')
 
 
+def official(request):
+    return render_response(request, 'oficial.html')
+
+
 def community(request):
     return render_response(request, 'community.html')

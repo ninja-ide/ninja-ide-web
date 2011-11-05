@@ -43,6 +43,8 @@ urlpatterns = patterns('',
     url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin"),
     url(r'^plugins/$', plugin_views.plugins, name="plugins"),
 
+#    url(r'^tags/(?P<tag_id>)/$', plugin_views.filter_by_tag, name="tags"),
+
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate-plugin"),
 

@@ -54,7 +54,7 @@
               </div><!-- /rate-container -->
             </div><!-- /options -->
 
-            <h3><a href="{{ p.absolute_url }}">{{ p.name }}</a></h3>
+            <h3><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></h3>
             <h4>{{ p.user.username }} 'san'</h4>
           </div><!-- /item-header -->
 
@@ -64,7 +64,7 @@
 
           <div class="item-tags">
           {% for tag in p.get_tags %}
-            <a href="{% url tags tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+            <a href="{$% url tags tag.id %$}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
           {% empty %}
             <a href="#">It has no tags, can believe it?</a>
           {% endfor %}

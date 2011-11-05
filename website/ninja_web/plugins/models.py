@@ -2,6 +2,7 @@
 from datetime import date
 from decimal import Decimal
 
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Avg
@@ -35,8 +36,7 @@ class Plugin(models.Model):
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
 
-    @property
-    def get_tags(self, tags):
+    def get_tags(self):
         return Tag.objects.get_for_object(self)
 
     @property
@@ -57,7 +57,7 @@ class Plugin(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('plugins.views.plugin', None, {'plugin_id': self.id})
+        return reverse('plugins.views.plugin', None, {'plugin_id': self.id})
 
 
 class Vote(models.Model):

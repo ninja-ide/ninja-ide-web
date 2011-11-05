@@ -1,5 +1,6 @@
 # encoding: utf-8
 from datetime import date
+from decimal import Decimal
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -34,21 +35,20 @@ class Plugin(models.Model):
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
 
+    @property
     def get_tags(self, tags):
         return Tag.objects.get_for_object(self)
 
     @property
     def rate(self):
-        """ return the actual average rate
+        """ return the actual average rate rounded 
         """
         if self.vote_set.all().count() == 0:
+            # default value for non rated plugins
             avg = 2.5
-
         else:
-            try:
-                avg = self.vote_set.all().aggregate(Avg('rate'))['rate__avg']
-            except:
-                avg = u'N/A'
+            dummy = self.vote_set.aggregate(Avg('rate'))
+            avg = Decimal(str(dummy['rate__avg'])).quantize(Decimal("0.01"))
         return avg
 
     @property

@@ -6,74 +6,18 @@
 {{ block.super }}
 
 <script src="/media/js/prototype.js"></script>
+<script src="/media/js/plugins-scripts.js"></script>
+
 {% show_stars_script %}
 
 <script>
-
-  function rate_plugin(id, pos) {
-
+  function rating_plugin(id, pos) {
     {% if not user.is_authenticated %}
     alert("You have to be registered to vote!");
-    return;
-
     {% else %}
-
-    var post_url = "{% url rate-plugin %}?plugin_id=" + id + "&rate=" + pos;
-    elem = jQuery("#plugin_"+id);
-
-    if (elem) {
-      // the rate container
-      var rate_container = elem.find(".rate-container");
-
-      jQuery.ajax({
-        url: post_url,
-        dataType: 'json',
-        success: function(data) {
-          // send the rate & update the rate of this plugin 
-
-          //console.debug("data = " + data.ok.toString());
-          var modal = jQuery("<div class='msg'>");
-          modal.css('display', 'block');
-          elem.prepend(modal);
-
-          var new_div = jQuery('<div>');
-          new_div.addClass('message');
-
-          if (data.ok) {
-            // hiding rate container
-            rate_container
-            .fadeOut();
-
-            // update plugin avg. rate
-            rate_container
-            .find('.plugin-rate')
-            .html(data.plugin_rate.toString());
-
-            // update plugin rates count
-            rate_container
-            .find('.plugin-rate-times')
-            .html("( "+data.plugin_rate_times+" )");
-
-            // showing rate container
-            rate_container
-            .fadeIn();
-
-          } else {
-            new_div.addClass('error');
-          }
-
-          var p = "<p>" + data.msg + "</p>";
-          new_div.append(p);
-          
-          modal.append(new_div)
-          .delay(4000)
-          .slideUp(1000);
-        }
-      });
-      {% endif %}
-    }
+    rate_plugin(id, pos, {% url rate-plugin %});
+    {% endif %}
   }
-
 </script>
 
 {% endblock %}
@@ -105,7 +49,7 @@
                   <span class="plugin-rate-times">( {{ p.rate_times }} )</span>
                 </div><!-- /rate-wrapper -->
 
-                {% show_stars p.rate of 5 round to quarter on change call rate_plugin with p.id %}
+                {% show_stars p.rate of 5 round to quarter on change call rating_plugin with p.id %}
 
               </div><!-- /rate-container -->
             </div><!-- /options -->

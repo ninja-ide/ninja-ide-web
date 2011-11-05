@@ -8,10 +8,10 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
          # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3'.
-        'ENGINE': '',
+        'ENGINE': 'django.db.backends.sqlite3',
 
         # Or path to database file if using sqlite3.
-        'NAME': '',
+        'NAME': 'ninjaweb',
 
         # Not used with sqlite3.
         'USER': '',

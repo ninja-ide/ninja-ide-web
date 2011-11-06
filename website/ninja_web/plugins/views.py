@@ -1,6 +1,8 @@
 # encoding: utf-8
 from decimal import Decimal
 
+from tagging.models import Tag
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
@@ -24,6 +26,23 @@ class DecimalEncoder(simplejson.JSONEncoder):
         if isinstance(o, Decimal):
             return (str(o) for o in [o])
         return super(DecimalEncoder, self)._iterencode(o, markers)
+
+
+def filter_by_tag(request, tag_id):
+    """
+    Given a tag id, return all plugins with this tag.
+    """
+    tag = None
+    try:
+        tag = Tag.objects.get(id=tag_id)
+    except:
+        pass
+
+    plugins = []
+    if tag:
+        plugins = Plugin.objects.filter(tags__in=[tag])
+
+    return render_response(request, 'plugin-detail.html', {'plugins': plugins})
 
 
 @login_required
@@ -76,7 +95,7 @@ def rate_plugin(request):
 
         except IntegrityError:
             #IntegrityError raises when tried to save violating
-            # the unique_together Plugin meta. 
+            # the unique_together Plugin meta.
             data['ok'] = False
             data['msg'] = u"You can't vote the same plugin twice!"
 

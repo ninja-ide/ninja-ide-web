@@ -6,71 +6,66 @@
 {{ block.super }}
 
 <script src="/media/js/prototype.js"></script>
+<script src="/media/js/plugins-scripts.js"></script>
+
 {% show_stars_script %}
 
-<script type="text/javascript">
-  function rate_plugin(id, pos) {
-    //ajax goes here, update item id with stars == pos.
-    var post_url = "{$% url rate-plugin id, pos %$}";
-
-    $.ajax(post_url,
-      success: function(){
-        /* update the rate of this plugin */
-      });
+<script>
+  function rating_plugin(id, pos) {
+    {% if not user.is_authenticated %}
+    alert("You have to be registered to vote!");
+    {% else %}
+    rate_plugin(id, pos, {% url rate_plugin %});
+    {% endif %}
   }
 </script>
+
 {% endblock %}
 
+
 {% block bodyclass %}plugin-detail{% endblock %}
+
 
 {% block content %}
   <div class="content">
     <!-- PLUGINS -->
     <div class="section left big-width" id="plugins">
 
-      <h1>{{ plugin.title }}</h1>
+      <h1>{{ plugin.name }} <span class="small color_marked">by {{ plugin.user }}</span></h1>
       <h2>{{ plugin.short_description }}</h2>
 
       <div class="item-tags">
       {% for tag in plugin.get_tags %}
-        <a href="{% url tags tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+        <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
       {% endfor %}
       </div>
 
-      <div class="right options">
-      {% if user.is_authenticated %}
-        {% show_stars 3.5 of 5 round to half on change call rate_plugin with 1 %}
-        <!-- this A may be obsolete -->
-        <a href="#" class="button">Rate it!</a>
+      <p>{{ plugin.description }}</p>
 
-      {% else %}
-        <a href="{% url auth_login %}" class="button forbidden" title="You have to be registered to vote">Login to vote!</a>
-      {% endif %}
-      </div>
+    </div>
 
-      <p>{{ p.detail }}</p>
+    <div class="section right small-width" id="rating">
+      <h1>Rating</h1>
 
+      <div class="options">
+        <div class="rate-container">
+
+          <div class="rate-wrapper">
+            <span class="plugin-rate">{{ plugin.rate }}</span>
+            <span class="plugin-rate-times">( {{ plugin.rate_times }} )</span>
+          </div><!-- /rate-wrapper -->
+
+          {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
+
+        </div><!-- /rate-container -->
+      </div><!-- /options -->
     </div>
 
     <div class="section right small-width" id="about-plugin-author">
-      <h1>Plugin by {{ plugin.author }}</h1>
-      <p>{{ plugin.author.brief }}</p>
-      <a class="link-web" href="{% url plugin.url %}">More info about the plugin.</a>
-      <a class="link-web" href="{% url plugin.author.email %}">Email this ninja.</a>
-    </div>
-
-
-    <div class="section right small-width" id="plugins-sidebar">
-      <h1>Rules</h1>
-      <h3>As any clean contest, cheaters will be attacked by criminal ninjas working for us, so show respect:</h3>
-
-      <ol id="rules-list">
-        <li>You have to be registered to be able to vote.</li>
-        <li>What you are <b>able</b> to do:
-        <li>You can <b>Vote/Rate</b> all the plugins you want.</li>
-        <li>You can't Vote/Rate the same plugin twice.</li>
-        <li>Ninja IDE has the power to audit suspected votes/rates, being able to dismiss any proven cheat.</li>
-      </ol>
+      <h1>More info</h1>
+      <p>{{ plugin.user|title }} has added this info.</p>
+      <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>
+      <a class="link-web" href="mailto:{{ plugin.author.email }}">Email this ninja.</a>
     </div>
 
   </div><!-- /content -->

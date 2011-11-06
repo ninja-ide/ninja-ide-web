@@ -57,7 +57,8 @@ class Plugin(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return reverse('plugins.views.plugin', None, {'plugin_id': self.id})
+        return ('plugin_detail', [str(self.id)])
+
 
 
 class Vote(models.Model):

@@ -33,16 +33,19 @@ def filter_by_tag(request, tag_id):
     Given a tag id, return all plugins with this tag.
     """
     tag = None
+    dicc = {}
+
     try:
         tag = Tag.objects.get(id=tag_id)
+        dicc['plugins_tag'] = tag.name
     except:
         pass
 
-    plugins = []
+    dicc['plugins'] = []
     if tag:
-        plugins = Plugin.objects.filter(tags__in=[tag])
+        dicc['plugins'] = Plugin.objects.filter(tags__contains=tag.name)
 
-    return render_response(request, 'plugin-detail.html', {'plugins': plugins})
+    return render_response(request, 'plugins.html', dicc)
 
 
 @login_required

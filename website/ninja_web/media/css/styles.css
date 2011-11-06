@@ -88,14 +88,14 @@ div.content .section#aboutus ul#ninja_members li:last-child{border-bottom:none;}
 div.content .section#contrib h2{margin:20px 0;color:#ffa500;}
 div.content .section#contrib a:hover{border-bottom:1px dotted;}
 div.content .section#contrib ul{list-style:disc;}
-div.content .section#plugins .options{clear:none;margin:0;max-height:60px;}div.content .section#plugins .options .rate-container{display:block;float:left;line-height:36px;margin-left:10px;}div.content .section#plugins .options .rate-container:hover{cursor:pointer;}
-div.content .section#plugins .options .rate-container .rate-wrapper{clear:none;display:block;float:left;}
-div.content .section#plugins .options .rate-container .plugin-rate,div.content .section#plugins .options .rate-container .plugin-rate-times{}
-div.content .section#plugins .options .rate-container .plugin-rate{color:red;-webkit-text-shadow:0 0 3px red;-o-text-shadow:0 0 3px red;-moz-text-shadow:0 0 3px red;text-shadow:0 0 3px red;font-size:26px;}
-div.content .section#plugins .options .star-rate{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);-o-box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);background:rgba(255, 255, 255, 0.05);border-top:1px solid #333;display:block;float:right;height:20px;margin-left:10px;margin-top:2px;padding:1px 10px 12px;}div.content .section#plugins .options .star-rate img{margin-left:1px;margin-top:-7px;}
-div.content .section#plugins .extract p{font-size:13px;margin:2px 0;}
 div.content .section#plugins ol#rules-list,div.content .section#plugins-sidebar ol#rules-list{font-size:.85em;}
 div.content .section#plugin-form table{background:rgba(222, 222, 222, 0.03);margin:10px 0;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
+.options{clear:none;margin:0;max-height:60px;}.options .rate-container{display:block;float:left;line-height:36px;margin-left:10px;}.options .rate-container:hover{cursor:pointer;}
+.options .rate-container .rate-wrapper{clear:none;display:block;float:left;}
+.options .rate-container .plugin-rate,.options .rate-container .plugin-rate-times{}
+.options .rate-container .plugin-rate{color:red;-webkit-text-shadow:0 0 3px red;-o-text-shadow:0 0 3px red;-moz-text-shadow:0 0 3px red;text-shadow:0 0 3px red;font-size:26px;}
+.options .star-rate{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);-o-box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);box-shadow:0 4px 2px rgba(0, 0, 0, 0.5);background:rgba(255, 255, 255, 0.05);border-top:1px solid #333;display:block;float:right;height:20px;margin-left:10px;margin-top:2px;padding:1px 10px 12px;}.options .star-rate img{margin-left:1px;margin-top:-7px;}
+.extract p{font-size:13px;margin:2px 0;}
 .right{clear:right !important;float:right;}
 .left{clear:left !important;float:left;}
 .item-list{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;-webkit-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);-o-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);-moz-box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);box-shadow:0 4px 4px rgba(0, 0, 0, 0.6);background:rgba(255, 255, 255, 0.04);border:1px solid #333;font-size:.85em;margin:10px 0;}.item-list .item{overflow:hidden;padding:20px;}.item-list .item h3{margin:0 0 4px;}
@@ -103,8 +103,10 @@ div.content .section#plugin-form table{background:rgba(222, 222, 222, 0.03);marg
 .item-list .item .item-header{clear:both;margin:0 0 10px;}.item-list .item .item-header h4{color:#add8e6;}
 .item-list .item .extract{width:100%;}
 .item-list .item .options{float:right;}
-.item-list .item .item-tags{background:url('../img/tag_green.png') no-repeat 0 center transparent;color:#ffa500;font-size:12px;margin:5px 0;overflow:hidden;padding-left:30px;}.item-list .item .item-tags a{float:left;margin-right:10px;}
+.item-tags{background:url('../img/tag_green.png') no-repeat 0 center transparent;color:#ffa500;font-size:12px;margin:5px 0;overflow:hidden;padding-left:30px;}.item-tags a{float:left;margin-right:10px;}
 #didyouknow ul{font-size:.85em;margin-left:10px;}#didyouknow ul li{margin-bottom:10px;}
+.ninja-people{margin-left:0px;}.ninja-people li{border-bottom:1px solid #333;padding-bottom:10px;margin:0 0 10px;}.ninja-people li h3{padding-left:40px;background:url('../img/user-ninja.png') 0 0 no-repeat transparent;margin:10px 0;}
+.ninja-people li p{margin:5px 0 0;padding-left:40px;}
 footer{color:#fff;min-height:370px;width:100%;position:relative;padding:30px 0 70px;border-top:1px #000 dotted;}footer p{font-size:14px;font-style:normal;}
 footer .footer-wrap{background:rgba(255, 255, 255, 0.05);color:#cccccc;width:960px;padding:20px;margin:0 auto;overflow:hidden;padding-top:30px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;-webkit-box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);-moz-box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);-o-box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);box-shadow:0 0 40px 10px rgba(225, 225, 225, 0.07);}footer .footer-wrap .disclaimer{bottom:1px;color:#add8e6;font-size:13px;line-height:20px;margin:0;padding:10px;position:absolute;right:10px;text-align:right;text-shadow:0 1px 2px #000;}
 footer .footer-wrap .section{float:left;margin:0px;margin-right:30px;width:300px;}footer .footer-wrap .section h2{margin-bottom:10px;margin-top:0;}

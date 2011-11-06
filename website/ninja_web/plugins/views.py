@@ -49,11 +49,10 @@ def filter_by_tag(request, tag_id):
 def plugin_submit(request):
     dict = {}
 
+    form = PluginForm(request.POST or None, request.FILES or None)
+
     if request.method == 'POST':
-        form = PluginForm(request.POST, request.FILES)
-
         if form.is_valid():
-
             new_plugin = form.save(commit=False)
             new_plugin.user = request.user
             new_plugin.save()
@@ -64,11 +63,8 @@ def plugin_submit(request):
             messages.error(
                     request,
                     u'Something went wrong in your submit. Please, check it.')
-    else:
-        form = PluginForm()
 
     dict['form'] = form
-
     return render_response(request, 'plugin-submit.html', dict)
 
 
@@ -108,6 +104,7 @@ def rate_plugin(request):
             data['msg'] = u"%s" % e
 
         else:
+            # updated values for the voted plugin
             data['plugin_rate'] = plugin.rate
             data['plugin_rate_times'] = plugin.rate_times
 
@@ -120,15 +117,13 @@ def rate_plugin(request):
 def plugin(request, plugin_id=None):
     dict = {}
 
-    if plugin_id:
-        try:
-            dict['plugin'] = Plugin.objects.get(pk=plugin_id)
-        except:
-            pass
+    try:
+        dict['plugin'] = Plugin.objects.get(pk=plugin_id)
+    except:
+        pass
 
     # some another extra info for this plugin:
-    # dict['extra'] = blabla
-    # ...
+    # dict['extra'] = blabla...
 
     return render_response(request, 'plugin-detail.html', dict)
 

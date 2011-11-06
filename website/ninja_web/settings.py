@@ -121,7 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     # Third party apps:
-#    'django_extensions',
+    'django_extensions',
     'registration',
 #    'south',
     'tagging',

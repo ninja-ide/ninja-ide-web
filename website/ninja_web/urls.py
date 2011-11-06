@@ -35,12 +35,15 @@ urlpatterns = patterns('',
     url(r'^about/', views.about),
 
     url(r'^plugins/schemes', views.schemes),
-    url(r'^plugins/oficial', views.oficial),
+    url(r'^plugins/oficial', views.oficial),    # to be deprecated
+    url(r'^plugins/official', views.official),
     url(r'^plugins/community', views.community),
     url(r'^plugins/submit/$', plugin_views.plugin_submit, name="plugin-submit"),
     url(r'^plugins/contest/$', views.plugins_contest, name="plugins-contest"),
     url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin"),
     url(r'^plugins/$', plugin_views.plugins, name="plugins"),
+
+#    url(r'^tags/(?P<tag_id>)/$', plugin_views.filter_by_tag, name="tags"),
 
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate-plugin"),

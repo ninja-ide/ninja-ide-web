@@ -1,6 +1,8 @@
 # encoding: utf-8
 from datetime import date
+from decimal import Decimal
 
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Avg
@@ -21,7 +23,7 @@ class Plugin(models.Model):
                             max_length=100, verbose_name=u'Short Description')
     description = models.TextField(verbose_name=u'Description')
     upload_date = models.DateField(default=date.today)
-    url = models.URLField(verify_exists=True, max_length=200)
+    url = models.URLField(verify_exists=True, max_length=200, blank=True)
 
     zip_file = models.FileField(upload_to='plugin_files/')
 
@@ -34,26 +36,29 @@ class Plugin(models.Model):
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
 
-    def get_tags(self, tags):
+    def get_tags(self):
         return Tag.objects.get_for_object(self)
 
     @property
     def rate(self):
-        """ return the actual average rate
+        """ return the actual average rate rounded 
         """
-        try:
-            avg = self.vote_set.all().aggregate(Avg('rate'))['rate__avg']
-        except:
-            avg = u'N/A'
+        if self.vote_set.all().count() == 0:
+            # default value for non rated plugins
+            avg = 2.5
+        else:
+            dummy = self.vote_set.aggregate(Avg('rate'))
+            avg = Decimal(str(dummy['rate__avg'])).quantize(Decimal("0.01"))
         return avg
 
     @property
     def rate_times(self):
-        return self.vote_set.count()
+        return self.vote_set.all().count()
 
     @models.permalink
     def get_absolute_url(self):
-        return ('plugins.views.plugin', None, {'plugin_id': self.id})
+        return ('plugin_detail', [str(self.id)])
+
 
 
 class Vote(models.Model):

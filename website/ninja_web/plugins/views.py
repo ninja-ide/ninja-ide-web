@@ -1,8 +1,11 @@
 # encoding: utf-8
 from decimal import Decimal
 
+from tagging.models import Tag
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.utils import simplejson
@@ -25,19 +28,37 @@ class DecimalEncoder(simplejson.JSONEncoder):
         return super(DecimalEncoder, self)._iterencode(o, markers)
 
 
+def filter_by_tag(request, tag_id):
+    """
+    Given a tag id, return all plugins with this tag.
+    """
+    tag = None
+    dicc = {}
+
+    try:
+        tag = Tag.objects.get(id=tag_id)
+        dicc['plugins_tag'] = tag.name
+    except:
+        pass
+
+    dicc['plugins'] = []
+    if tag:
+        dicc['plugins'] = Plugin.objects.filter(tags__contains=tag.name)
+
+    return render_response(request, 'plugins.html', dicc)
+
+
 @login_required
 def plugin_submit(request):
     dict = {}
 
+    form = PluginForm(request.POST or None, request.FILES or None)
+
     if request.method == 'POST':
-        form = PluginForm(request.POST, request.FILES)
-
         if form.is_valid():
-
-            lala = form.save()
-            lala.user = request.user
-            lala.save()
-#            import pdb; pdb.set_trace()
+            new_plugin = form.save(commit=False)
+            new_plugin.user = request.user
+            new_plugin.save()
             messages.info(request, u'Plugin submitted correctly little dragon.')
 
             return redirect('plugins')
@@ -45,11 +66,8 @@ def plugin_submit(request):
             messages.error(
                     request,
                     u'Something went wrong in your submit. Please, check it.')
-    else:
-        form = PluginForm()
 
     dict['form'] = form
-
     return render_response(request, 'plugin-submit.html', dict)
 
 
@@ -62,7 +80,10 @@ def rate_plugin(request):
         rate = request.GET.get('rate', 0)
 
     if plugin_id and rate > 0:
-        new_vote = Vote(plugin_id=int(plugin_id),
+        # plugin voted
+        plugin = Plugin.objects.get(id=plugin_id)
+        # the actual vote
+        new_vote = Vote(plugin=plugin,
                         user=request.user,
                         rate=int(rate),
                         voter_ip=request.META['REMOTE_ADDR'],
@@ -72,18 +93,26 @@ def rate_plugin(request):
             # este save tira un error por el unique together. Hay que cargar un
             # mensajito de error (el de ya votaste este plugin).
             new_vote.save()
-        except Exception, e:
-#            import pdb; pdb.set_trace()
+            data['ok'] = True
+            data['msg'] = u"Thanks for your vote!"
+
+        except IntegrityError:
+            #IntegrityError raises when tried to save violating
+            # the unique_together Plugin meta.
             data['ok'] = False
-            data['error'] = u'%s' % e
+            data['msg'] = u"You can't vote the same plugin twice!"
 
-    else:
+        except Exception, e:
+            data['ok'] = False
+            data['msg'] = u"%s" % e
 
-        data['plugin_rate'] = new_vote.rate
-        data['plugin_rate_times'] = new_vote.rate_times
+        else:
+            # updated values for the voted plugin
+            data['plugin_rate'] = plugin.rate
+            data['plugin_rate_times'] = plugin.rate_times
 
-        data = simplejson.dumps(data, cls=DecimalEncoder)
-        response = HttpResponse(data, mimetype='application/json')
+    data = simplejson.dumps(data, cls=DecimalEncoder)
+    response = HttpResponse(data, mimetype='application/json')
 
     return response
 
@@ -91,15 +120,13 @@ def rate_plugin(request):
 def plugin(request, plugin_id=None):
     dict = {}
 
-    if plugin_id:
-        try:
-            dict['plugin'] = Plugin.objects.get(pk=plugin_id)
-        except:
-            pass
+    try:
+        dict['plugin'] = Plugin.objects.get(pk=plugin_id)
+    except:
+        pass
 
     # some another extra info for this plugin:
-    # dict['extra'] = blabla
-    # ...
+    # dict['extra'] = blabla...
 
     return render_response(request, 'plugin-detail.html', dict)
 

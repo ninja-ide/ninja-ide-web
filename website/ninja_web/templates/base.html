@@ -117,15 +117,13 @@
     </header>
 
     <div id="main" role="main">
-      {% if messages %}
-      <div class="modal" id="modal-layer">
+      <div class="modal" id="modal-layer" {% if not messages %}style="display:none;"{% endif %}>
         {% for m in messages %}
         <div class="message {{ m.tags }}">
           <p>{{ m|safe }}</p>
         </div>
         {% endfor %}
       </div>
-      {% endif %}
 
       <!-- CONTENT TO FILL -->
       {% block content %}
@@ -206,7 +204,7 @@
 
   <!-- scripts concatenated and minified via ant build script-->
   <script src="/media/js/plugins.js"></script>
-  <script src="/media/js/script.js"></script>
+  <script src="/media/js/scripts.js"></script>
   <!-- end scripts-->
 
 

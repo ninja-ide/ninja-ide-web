@@ -45,7 +45,7 @@
     </div>
 
     <div class="section right small-width" id="rating">
-      <h1>Rating</h1>
+      <h1>Download it / Rate it</h1>
 
       <div class="options">
         <div class="rate-container">
@@ -58,6 +58,11 @@
           {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
 
         </div><!-- /rate-container -->
+
+        <div class="download-container">
+          <a class="button" href="{{ plugin.zip_file.url }}">Download</a>
+        </div><!-- /rate-container -->
+
       </div><!-- /options -->
     </div>
 
@@ -65,7 +70,7 @@
       <h1>More info</h1>
       <p>{{ plugin.user|title }} has added this info.</p>
       <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>
-      <a class="link-web" href="mailto:{{ plugin.author.email }}">Email this ninja.</a>
+      <a class="link-web" href="mailto:{{ plugin.user.email }}">Email this ninja.</a>
     </div>
 
   </div><!-- /content -->

@@ -60,3 +60,6 @@ def official(request):
 
 def community(request):
     return render_response(request, 'community.html')
+
+def updates(request):
+    return render_response(request, '404.html')

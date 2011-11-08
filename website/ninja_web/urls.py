@@ -34,6 +34,8 @@ urlpatterns = patterns('',
     url(r'^contrib/', views.contrib),
     url(r'^about/', views.about),
 
+    url(r'^updates/', views.updates),
+
     url(r'^plugins/schemes', views.schemes),
     url(r'^plugins/oficial', views.oficial),    # to be deprecated
     url(r'^plugins/official', views.official),

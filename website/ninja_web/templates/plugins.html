@@ -15,7 +15,7 @@
     {% if not user.is_authenticated %}
     alert("You have to be registered to vote!");
     {% else %}
-    rate_plugin(id, pos, {% url rate-plugin %});
+    rate_plugin(id, pos, {% url rate_plugin %});
     {% endif %}
   }
 </script>
@@ -31,7 +31,11 @@
     <!-- PLUGINS -->
     <div class="section left big-width" id="plugins">
       <h1>Ninja Plugins</h1>
-      <h2>Showing <span class="color_marked">{{ plugins_category.name|default:"All" }}</span> plugins</h2>
+      {% if plugins_tag %}
+      <h2>Showing plugins tagged with <span class="color_marked">{{ plugins_tag|default:"All" }}</span></h2>
+      {% else %}
+      <h2>Showing <span class="color_marked">All</span> plugins</h2>
+      {% endif %}
       <p>Click on the ninja stars to give the plugins the appretiation you think they diserve.</p>
 
       <ul id="plugins-list" class="item-list">
@@ -55,7 +59,7 @@
             </div><!-- /options -->
 
             <h3><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></h3>
-            <h4>{{ p.user.username }} 'san'</h4>
+            <h4>by {{ p.user.username }}</h4>
           </div><!-- /item-header -->
 
           <div class="extract">
@@ -64,7 +68,7 @@
 
           <div class="item-tags">
           {% for tag in p.get_tags %}
-            <a href="{$% url tags tag.id %$}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+            <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
           {% empty %}
             <a href="#">It has no tags, can believe it?</a>
           {% endfor %}
@@ -74,7 +78,7 @@
 
         {% empty %}
         <li class="item">
-          <p>There're no plugins submitted yet. <a href="{% url plugin-submit %}">Be the first one!!</a></p>
+          <p>There're no plugins submitted yet. <a href="{% url plugin_submit %}">Be the first one!!</a></p>
         </li>
         {% endfor %}
 
@@ -84,8 +88,9 @@
     <div class="section right small-width" id="submit-banner">
       <h1>Plugins contest</h1>
       <p>Submit your plugin or vote for existing ones. You can do it until december 22nd.</p>
-      <a class="link-web" href="{% url plugins-contest %}">All the info</a>
-      <a class="link-web" href="{% url plugin-submit %}">Submit your plugin!</a>
+      <a class="link-web" href="{% url plugins_contest %}">All the info</a>
+      <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Plugins_Tutorial">Learn how to write a plugin</a>
+      <a class="link-web" href="{% url plugin_submit %}">Submit your plugin!</a>
     </div>
 
 

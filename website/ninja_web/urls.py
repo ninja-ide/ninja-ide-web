@@ -38,15 +38,15 @@ urlpatterns = patterns('',
     url(r'^plugins/oficial', views.oficial),    # to be deprecated
     url(r'^plugins/official', views.official),
     url(r'^plugins/community', views.community),
-    url(r'^plugins/submit/$', plugin_views.plugin_submit, name="plugin-submit"),
-    url(r'^plugins/contest/$', views.plugins_contest, name="plugins-contest"),
-    url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin"),
+    url(r'^plugins/submit/$', plugin_views.plugin_submit, name="plugin_submit"),
+    url(r'^plugins/contest/$', views.plugins_contest, name="plugins_contest"),
+    url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin_detail"),
     url(r'^plugins/$', plugin_views.plugins, name="plugins"),
 
-#    url(r'^tags/(?P<tag_id>)/$', plugin_views.filter_by_tag, name="tags"),
+    url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag, name="filter_by_tag"),
 
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
-    url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate-plugin"),
+    url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate_plugin"),
 
     url(r'^$', views.intro),
 

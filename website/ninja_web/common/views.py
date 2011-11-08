@@ -2,7 +2,13 @@
 import datetime
 
 from common.utils import render_response
+from django.http import HttpResponse
+from plugins.models import Plugin
 
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
 def countdown(request):
     diff = datetime.datetime(2011, 9, 23) - datetime.datetime.today()
@@ -59,7 +65,25 @@ def official(request):
 
 
 def community(request):
-    return render_response(request, 'community.html')
+    """ Returns the list of plugins with metadata
+    """
+    plugins_list = Plugin.objects.all()
+    plugins = []
+
+    for plugin in plugins_list:
+        plugin_data = {}
+        plugin_data['name'] = plugin.name
+        plugin_data['description'] = plugin.description
+        plugin_data['version'] = "0.1"
+
+        plugin_data['download'] = plugin.zip_file.url
+        plugin_data['home'] = plugin.get_absolute_url()
+        plugin_data['authors'] = plugin.user.username
+
+        plugins.append(plugin_data)
+
+    return HttpResponse(json.dumps(plugins), mimetype="application/json")
+
 
 def updates(request):
-    return render_response(request, '404.html')
+    return render_response(request, 'updates_simple.html')

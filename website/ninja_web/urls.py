@@ -14,12 +14,12 @@ from registration.forms import RegistrationFormUniqueEmail
 from common import views
 from plugins import views as plugin_views
 
-#admin_regex = r'^admin/'
-#try:
-#    from local_urls import admin_url
-#    admin_regex = r'^' + admin_url
-#except:
-#    pass
+admin_regex = r'^admin/'
+try:
+    from local_urls import admin_url
+    admin_regex = r'^' + admin_url
+except:
+    pass
 
 
 urlpatterns = patterns('',
@@ -57,8 +57,8 @@ urlpatterns = patterns('',
 #    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    #url(admin_regex, include(admin.site.urls)),
-    (r'^admin/', include(admin.site.urls)),
+    url(admin_regex, include(admin.site.urls)),
+    #(r'^admin/', include(admin.site.urls)),
 
     # User registration:
     (r'^accounts/register/', 'registration.views.register',

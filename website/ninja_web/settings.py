@@ -15,6 +15,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     (u'Matías Herranz', 'matias@ninja-ide.org'),
     (u'Diego Sarmentero', 'dojo@ninja-ide.org'),
+    (u'Pedro Mourelle', 'pedro@ninja-ide.org'),
 )
 
 MANAGERS = ADMINS

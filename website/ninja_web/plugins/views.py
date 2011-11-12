@@ -33,16 +33,18 @@ def filter_by_tag(request, tag_id):
     Given a tag id, return all plugins with this tag.
     """
     tag = None
+    dicc = {}
+
     try:
         tag = Tag.objects.get(id=tag_id)
+        dicc['plugins_tag'] = tag.name
     except:
         pass
 
-    plugins = []
     if tag:
-        plugins = Plugin.objects.filter(tags__in=[tag])
+        dicc['plugins'] = Plugin.objects.filter(tags__icontains=[tag])
 
-    return render_response(request, 'plugin-detail.html', {'plugins': plugins})
+    return render_response(request, 'plugins.html', {'plugins': plugins})
 
 
 @login_required
@@ -80,10 +82,18 @@ def rate_plugin(request):
         # plugin voted
         plugin = Plugin.objects.get(id=plugin_id)
         # the actual vote
+        
+        try:
+            # if remote client is behind a proxy
+            voter_ip = request.META['HTTP_X_FORWARDED_FOR'][0]
+        except:
+            # fallback for non 'proxies' clients
+            voter_ip = request.META['REMOTE_ADDR']
+
         new_vote = Vote(plugin=plugin,
                         user=request.user,
                         rate=int(rate),
-                        voter_ip=request.META['REMOTE_ADDR'],
+                        voter_ip=voter_ip,
                         )
 
         try:

@@ -57,7 +57,7 @@ class Plugin(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('plugin_detail', [str(self.id)])
+        return ('plugin_detail', (), {'plugin_id': self.id})
 
 
 

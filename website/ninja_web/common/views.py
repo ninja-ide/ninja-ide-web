@@ -1,9 +1,12 @@
 # -*- coding: utf-8 *-*
 import datetime
 
-from common.utils import render_response
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+
+from common.utils import render_response
 from plugins.models import Plugin
+
 
 try:
     import json
@@ -23,26 +26,38 @@ def countdown(request):
 
 
 def intro(request):
+    """ Intro/Splash screen.
+    """
     return render_response(request, 'intro.html')
 
 
 def features(request):
+    """ Features section.
+    """
     return render_response(request, 'features.html')
 
 
 def downloads(request):
+    """ Downloads section.
+    """
     return render_response(request, 'downloads.html')
 
 
 def about(request):
+    """ About section. All ninja people: devs and packagers
+    """
     return render_response(request, 'about.html')
 
 
 def using(request):
+    """ People using Ninja-ide.
+    """
     return render_response(request, 'using.html')
 
 
 def contrib(request):
+    """ Contribution section. All info to do so.
+    """
     return render_response(request, 'contrib.html')
 
 
@@ -86,4 +101,25 @@ def community(request):
 
 
 def updates(request):
+    """ Just returns a simple json formatted file telling the 
+        actual and stable ninja-ide version. 
+    """
     return render_response(request, 'updates_simple.html')
+
+
+def user_detail(request, user_name=None):
+    """ Returns the user (as 'page_user') info and his/her plugins
+        Nothing in case error or no existing user
+    """
+    dicc = {}
+
+    try:
+        user = User.objects.get(username=user_name)
+        dicc['user_page'] = user
+    except Exception, e:
+        print e
+    else:
+        dicc['plugins'] = user.plugin_set.all()
+
+    return render_response(request, 'user_detail.html', dicc)
+

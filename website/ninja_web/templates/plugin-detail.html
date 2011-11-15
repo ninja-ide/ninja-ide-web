@@ -31,7 +31,8 @@
     <!-- PLUGINS -->
     <div class="section left big-width" id="plugins">
 
-      <h1>{{ plugin.name }} <span class="small color_marked">by {{ plugin.user }}</span></h1>
+      <h1>{{ plugin.name }}</h1>
+      <h3><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></h3>
       <h2>{{ plugin.short_description }}</h2>
 
       <div class="item-tags">
@@ -67,7 +68,7 @@
       </div><!-- /options -->
     </div>
 
-    <div class="section right small-width" id="about-plugin-author">
+    <div class="section right small-width" id="about-author">
       <h1>More info</h1>
       <p>{{ plugin.user|title }} has added this info.</p>
       <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>

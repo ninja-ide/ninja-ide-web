@@ -6,7 +6,7 @@
 .nope{text-decoration:line-through;}
 .home .color_marked{color:#fff;}
 body{background:url("../img/bg-dark_grain.png") #333333;font-size:14px;font-size:100%;line-height:1.125em;}
-*,h1,h2,h3,p,span,ul,ol,table{font-family:"Nova Square",arial,sans-serif;font-weight:normal;}
+*,h1,h2,h3,h4,p,span,ul,ol,table{font-family:"Nova Square",arial,sans-serif;font-weight:normal;}
 h2{font-size:1.3em;margin:20px 0 10px;line-height:32px;}
 h3{color:#ffa500;font-size:1.08em;font-weight:normal;margin:20px 0;}
 h4{color:#aaa;font-size:.84em;font-weight:normal;}
@@ -43,7 +43,7 @@ nav ul li#nav-login h4{color:#fff;-webkit-box-shadow:0 0 0 rgba(0, 0, 0, 0);-o-b
 body.features nav #nav-features a,body.downloads nav #nav-downloads a,body.plugins nav #nav-plugins a,body.about nav #nav-about a,body.using nav #nav-using a,body.contrib nav #nav-contrib a{background:#111111;text-shadow:rgba(0, 0, 0, 0.9) 0px 1px 2px;}body.features nav #nav-features a h4,body.downloads nav #nav-downloads a h4,body.plugins nav #nav-plugins a h4,body.about nav #nav-about a h4,body.using nav #nav-using a h4,body.contrib nav #nav-contrib a h4{color:#fff;}
 #main{padding-top:65px;width:100%;-webkit-box-shadow:0 20px 40px rgba(0, 0, 0, 0.7);-o-box-shadow:0 20px 40px rgba(0, 0, 0, 0.7);-moz-box-shadow:0 20px 40px rgba(0, 0, 0, 0.7);box-shadow:0 20px 40px rgba(0, 0, 0, 0.7);}
 #splash{background:#fff;height:350px;width:100%;}#splash #splash-wrap{margin:0 auto;padding:78px 20px 0;position:relative;height:100%;width:1000px;}#splash #splash-wrap h1{background:url("../img/ninja-big.png") no-repeat center center transparent;color:#222;display:block;font-family:Yukarimobile;font-size:200px;line-height:200px;text-align:center;text-indent:10000px;overflow:hidden;position:relative;text-shadow:0px 9px 20px #aaa;}#splash #splash-wrap h1 span{font-family:"arial black";font-size:50px;font-weight:bold;letter-spacing:-0.1em;color:#888;}
-#splash #splash-wrap #download-latest-box{bottom:-40px;margin-right:0px;position:absolute;right:0px;width:220px;z-index:10;-webkit-box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);-o-box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);-moz-box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);}#splash #splash-wrap #download-latest-box img{display:block;float:left;padding:3px 10px 3px 5px;height:32px;width:32px;position:absolute;top:5px;-webkit-transition:all 1s ease-out;-moz-transition:all 1s ease-out;-o-transition:all 1s ease-out;transition:all 1s ease-out;}
+#splash #splash-wrap #download-latest-box{bottom:-40px;margin-right:0px;position:absolute;right:28px;width:220px;z-index:10;-webkit-box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);-o-box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);-moz-box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);box-shadow:0 1px 8px rgba(0, 0, 0, 0.9);}#splash #splash-wrap #download-latest-box img{display:block;float:left;padding:3px 10px 3px 5px;height:32px;width:32px;position:absolute;top:5px;-webkit-transition:all 1s ease-out;-moz-transition:all 1s ease-out;-o-transition:all 1s ease-out;transition:all 1s ease-out;}
 #splash #splash-wrap #download-latest-box h2{font-size:1.1em;line-height:38px;margin:0 0 3px;text-shadow:0px 1px 0px #fff;}
 #splash #splash-wrap #download-latest-box a{border-left:1px solid #fff;color:inherit;float:right;font-size:1em;line-height:1.2em;padding-left:10px;text-decoration:none;width:160px;}#splash #splash-wrap #download-latest-box a.main-link{color:#fff;padding-bottom:10px;}
 #splash #splash-wrap #download-latest-box a.sec-link{font-size:80%;}

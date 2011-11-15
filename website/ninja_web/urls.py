@@ -51,6 +51,8 @@ urlpatterns = patterns('',
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate_plugin"),
 
+    url(r'^people/(?P<user_name>\w+)/', views.user_detail, name="user_detail"),
+
     url(r'^$', views.intro),
 
     # Uncomment the admin/doc line below to enable admin documentation:

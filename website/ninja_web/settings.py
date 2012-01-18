@@ -94,6 +94,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    # django-pagination
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'ninja_web.urls'
@@ -107,7 +110,8 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
-    "ninja_web.context_processors.user_info",
+    'django.core.context_processors.request',
+    'ninja_web.context_processors.user_info',
 )
 
 INSTALLED_APPS = (
@@ -124,12 +128,14 @@ INSTALLED_APPS = (
     # Third party apps:
     'django_extensions',
     'registration',
+    'pagination',
 #    'south',
     'tagging',
 
     # Our apps:
     'common',
     'plugins',
+    'tips',
 )
 
 ## django-registration

@@ -117,15 +117,13 @@
     </header>
 
     <div id="main" role="main">
-      {% if messages %}
-      <div class="modal" id="modal-layer">
+      <div class="modal" id="modal-layer" {% if not messages %}style="display:none;"{% endif %}>
         {% for m in messages %}
         <div class="message {{ m.tags }}">
           <p>{{ m|safe }}</p>
         </div>
         {% endfor %}
       </div>
-      {% endif %}
 
       <!-- CONTENT TO FILL -->
       {% block content %}
@@ -185,7 +183,7 @@
           <h2>We aren't rich ninjas</h2>
           <p>You are enjoying <a href="/">Ninja-IDE</a> because we trained a lot, punching & kicking wooden dummies, and then we CODE THE THING !!!</p>
           <p>That said, if you considere yourself an honoured warrior <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">considere to make a donation</a> so we can buy new weapons.</p>
-          <p>Yes, you're right: our weapons are keybords and monitors, but we beat really hard with them.</p>
+          <p>Yes, you're right: our weapons are keyboards and monitors, but we beat really hard with them.</p>
         </div>
 
         <div class="disclaimer">
@@ -206,7 +204,7 @@
 
   <!-- scripts concatenated and minified via ant build script-->
   <script src="/media/js/plugins.js"></script>
-  <script src="/media/js/script.js"></script>
+  <script src="/media/js/scripts.js"></script>
   <!-- end scripts-->
 
 

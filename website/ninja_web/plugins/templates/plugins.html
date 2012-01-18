@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load i18n show_stars %}
+{% load pagination_tags %}
+
+{% block scripts %}
+{{ block.super }}
+
+<script src="/media/js/prototype.js"></script>
+<script src="/media/js/plugins-scripts.js"></script>
+
+{% show_stars_script %}
+
+<script>
+  function rating_plugin(id, pos) {
+    {% if not user.is_authenticated %}
+    alert("You have to be registered to vote!");
+    {% else %}
+    rate_plugin(id, pos, {% url rate_plugin %});
+    {% endif %}
+  }
+</script>
+
+{% endblock %}
+
+
+{% block bodyclass %}plugins{% endblock %}
+
+
+{% block content %}
+  <div class="content">
+    <!-- PLUGINS -->
+    <div class="section left big-width" id="plugins">
+      <h1>Ninja Plugins</h1>
+      {% if plugins_tag %}
+      <h2>Showing plugins tagged with <span class="color_marked">{{ plugins_tag|default:"All" }}</span></h2>
+      {% else %}
+      <h2>Showing <span class="color_marked">All</span> plugins</h2>
+      {% endif %}
+      <p>Click on the ninja stars to give the plugins the appretiation you think they diserve.</p>
+
+      <ul id="plugins-list" class="item-list">
+
+        {% autopaginate plugins 10 %}
+
+        {% for p in plugins %}
+        <li class="item" id="plugin_{{ p.id }}">
+          
+          <div class="item-header">
+
+            <div class="options">
+              <div class="rate-container">
+
+                {% comment %}
+                <!-- During contest this is hidden -->
+                <div class="rate-wrapper">
+                  <span class="plugin-rate">{{ p.rate }}</span>
+                  <span class="plugin-rate-times">( {{ p.rate_times }} )</span>
+                </div><!-- /rate-wrapper -->
+                {% show_stars p.rate of 5 round to quarter on change call rating_plugin with p.id %}
+                {% endcomment %}
+
+                <img src="/media/img/arrow-right.png" title="Vote!" />
+                <!-- Average ranking shown until user votes -->
+                {% show_stars 2.5 of 5 round to quarter on change call rating_plugin with p.id %}
+
+              </div><!-- /rate-container -->
+            </div><!-- /options -->
+
+            <h3><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></h3>
+            <h4>by <a href="{% url user_detail p.user.username %}">{{ p.user.username }}</a></h4>
+          </div><!-- /item-header -->
+
+          <div class="extract">
+            <p>{{ p.short_description }}</p>
+          </div>
+
+          <div class="item-tags">
+          {% for tag in p.get_tags %}
+            <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+          {% empty %}
+            <a href="#">It has no tags, can believe it?</a>
+          {% endfor %}
+          </div>
+
+        </li>
+
+        {% empty %}
+        <li class="item">
+          <p>There're no plugins submitted yet. <a href="{% url plugin_submit %}">Be the first one!!</a></p>
+        </li>
+        {% endfor %}
+
+        {% paginate %}
+
+      </ul>
+    </div>
+
+    <div class="section right small-width" id="submit-banner">
+      <h1>Plugins contest</h1>
+      <p>Submit your plugin or vote for existing ones. You can do it until January 30th.</p>
+      <a class="link-web" href="{% url plugins_contest %}">All the info</a>
+      <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Plugins_Tutorial">Learn how to write a plugin</a>
+      <a class="link-web" href="{% url plugin_submit %}">Submit your plugin!</a>
+    </div>
+
+    <div class="section right small-width" id="plugins-sidebar">
+      {% include "contest-rules.html" %}
+    </div>
+
+  </div><!-- /content -->
+{% endblock %}

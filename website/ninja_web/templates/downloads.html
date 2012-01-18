@@ -26,19 +26,19 @@
           <table>
             <tr>
               <td>Ubuntu / Debian</td>
-              <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide_2.0-beta3_all.deb">Ninja IDE v2.0-Beta3</a></td>
+              <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide_2.0-beta3_all.deb">Ninja IDE v2.0-Beta3</a>
               <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide_2.0-beta3_all.deb">Download</a>
                   / <a href="http://ubuntuone.com/5HB9maQzy038JCznJqq6MI">Mirror</a></td>
             </tr>
             <tr>
               <td>Fedora</td>
-
+              <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide-2.0_beta3-2.noarch.rpm">Ninja IDE v2.0-Beta3</a>
               <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide-2.0_beta3-2.noarch.rpm">Download</a>
-                  / <a href="http://ubuntuone.com/3sZtWFNPUban4AMqev8BVm">Mirror</a></td>
+                  / <a href="http://ubuntuone.com/27ymBLRJfmITxfvB4HXqF3">Mirror</a></td>
             </tr>
             <tr>
               <td>Arch</td>
-
+              <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide-beta-2.0-3-any.pkg.tar.xz">Ninja IDE v2.0-Beta3</a></td>
               <td><a href="https://github.com/downloads/ninja-ide/ninja-ide/ninja-ide-beta-2.0-3-any.pkg.tar.xz">Download</a>
                   / <a href="http://ubuntuone.com/0nzyalhZkB41BPEDIwu7zF">Mirror</a></td>
             </tr>
@@ -59,17 +59,17 @@
             </tr>
           </table>
 
-          <p>
-              For Ubuntu Users: <br>
-              You can add the NINJA-IDE PPA and install it from there (you will get automatic updates!)<br><br>
-              <code>
-                  sudo apt-add-repository ppa:ninja-ide-developers/daily  (Daily updates)<br>
-                  <b>or</b><br>
-                  sudo apt-add-repository ppa:ninja-ide-developers/ninja-ide  (Stable Releases)<br><br>
-                  sudo apt-get update<br>
-                  sudo apt-get install ninja-ide<br>
-              </code>
-          </p>
+          <h2>For Ubuntu Users:</h2>
+          <div class="framed">
+            <h3>You can add the <b>NINJA-IDE PPA</b> and install it from there (you will get automatic updates!)</h3>
+            <code>
+                sudo apt-add-repository ppa:ninja-ide-developers/daily  (Daily updates)<br>
+                <b class="color_marked">or</b><br>
+                sudo apt-add-repository ppa:ninja-ide-developers/ninja-ide  (Stable Releases)<br><br>
+                sudo apt-get update<br>
+                sudo apt-get install ninja-ide<br>
+            </code>
+          </div>
 
           <h2 class="win_downloads" id="win_downloads">Windows</h2>
           <table>
@@ -121,11 +121,12 @@
               <td><a href="http://ninja-ide.googlecode.com/files/ninja-ide_sources-1.1.zip">Download Sources</a></td>
             </tr>
           </table>
-          <p class="tabbed">Source Code hosted at: <a href="http://ninja-ide.googlecode.com">http://ninja-ide.googlecode.com</a></p>
+          <p class="tabbed">Source Code hosted at: <a href="https://github.com/ninja-ide/ninja-ide">https://github.com/ninja-ide/ninja-ide</a></p>
 
-          <h2 class="warning">Hey! Watch out little dan!</h2>
-          <p class="tabbed">Version 2.0 requires PyQt >= 4.7</p>
-          <p class="tabbed">Version 1.1 requires PyQt >= 4.6</p>
+          <div class="framed">
+            <h2 class="warning">Hey! Watch out little dan!</h2>
+            <p class="tabbed">NINJA-IDE requires PyQt >= 4.6 (4.8 recommended). <a href="http://www.riverbankcomputing.co.uk/software/pyqt/download">Get it here.</a></p>
+          </div>
         </div><!-- /#downloads -->
 </div><!-- /content -->
 {% endblock%}

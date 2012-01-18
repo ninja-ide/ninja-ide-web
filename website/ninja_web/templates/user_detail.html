@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load i18n show_stars %}
+
+{% block scripts %}
+{{ block.super }}
+{% endblock %}
+
+
+{% block bodyclass %}user-detail{% endblock %}
+
+
+{% block content %}
+  <div class="content">
+    <!-- USER -->
+    <div class="section left big-width" id="user-info">
+
+      <h1><span class="color_marked">{{ user_page.username }}</span><span class="small">'s Dojo</span></h1>
+      {% if user_page == request.user %}
+      <h4>Welcome {{ user.name }} to your dojo. Put your shoes at the door and come in.</h4>
+      {% else %}
+      <h4>Qualified ninja since {{ user_page.date_joined|date:"F Y" }}.</h4>
+      {% endif %}
+
+      <h2>Submitted {{ plugins.count }} plugin{{ plugins.count|pluralize }} until now.</h2>
+
+      <ul class="item-list">
+      {% for p in plugins %}
+        <li class="item">
+          <h4><a href="{{ p.get_absolute_url }}" title="{{ p.name }}">{{ p.name }}</a> ({{ p.upload_date }})</h4>
+          <p>{{ p.short_description }}</p>
+        </li>
+      {% empty %}
+        <li>Maybe later. This ninja is taking a nap now.</li>
+      {% endfor %}
+      </ul>
+
+    </div>
+
+    <div class="section right small-width" id="about-author">
+      <h1>More info</h1>
+      <a class="link-web" href="mailto:{{ user_page.email }}">Email this ninja.</a>
+    </div>
+
+  </div><!-- /content -->
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load i18n show_stars %}
+
+{% block scripts %}
+{{ block.super }}
+
+<script src="/media/js/prototype.js"></script>
+<script src="/media/js/plugins-scripts.js"></script>
+
+{% show_stars_script %}
+
+<script>
+  function rating_plugin(id, pos) {
+    {% if not user.is_authenticated %}
+    alert("You have to be registered to vote!");
+    {% else %}
+    rate_plugin(id, pos, {% url rate_plugin %});
+    {% endif %}
+  }
+</script>
+
+{% endblock %}
+
+
+{% block bodyclass %}plugin-detail{% endblock %}
+
+
+{% block content %}
+  <div class="content">
+    <!-- PLUGINS -->
+    <div class="section left big-width" id="plugins">
+
+      <h1>{{ plugin.name }}</h1>
+
+      <div class="framed">
+        <h3 class="author">by <u><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></u></h3>
+
+        <div class="item-tags">
+        {% for tag in plugin.get_tags %}
+          <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+        </div>
+
+        <h2>{{ plugin.short_description }}</h2>
+      </div>
+
+      <p>{{ plugin.description }}</p>
+
+    </div>
+
+    <div class="section right small-width" id="rating">
+
+      <h1>Download it &amp; Rate it</h1>
+
+      <div class="options">
+        <div class="rate-container">
+
+          {% comment %}
+          <div class="rate-wrapper">
+            <span class="plugin-rate">{{ plugin.rate }}</span>
+            <span class="plugin-rate-times">( {{ plugin.rate_times }} )</span>
+          </div><!-- /rate-wrapper -->
+
+          {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
+          {% endcomment %}
+
+          <span class="vote color_marked">Vote Now!</span>
+          {% show_stars 2.5 of 5 round to quarter on change call rating_plugin with p.id %}
+
+
+        </div><!-- /rate-container -->
+        <p><span class="color_marked">IMPORTANT: </span> All the ranks remain <u>HIDDEN during the plugin contest</u>. <b>You know why</b> so don't put that Pussy-in-boots and start acting like a ninja!!</p>
+
+        <div class="download-container">
+          <a class="button" href="{{ plugin.zip_file.url }}">Download it!</a>
+        </div><!-- /rate-container -->
+
+      </div><!-- /options -->
+    </div>
+
+    <div class="section right small-width" id="about-author">
+      <h1>More info</h1>
+      <p>{{ plugin.user|title }} has added this info.</p>
+      <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>
+      <a class="link-web" href="mailto:{{ plugin.user.email }}">Email this ninja.</a>
+    </div>
+
+  </div><!-- /content -->
+{% endblock %}

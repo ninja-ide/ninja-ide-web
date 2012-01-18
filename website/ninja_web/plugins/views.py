@@ -144,5 +144,10 @@ def plugins(request):
     if some-category-selected:
         dict['plugin-category'] = the-category
     """
-    dict['plugins'] = Plugin.objects.all()
+    plugins = Plugin.objects.all()
+
+    # random order for plugins (specially during contest)
+    plugins = plugins.order_by('?')
+
+    dict['plugins'] = plugins
     return render_response(request, 'plugins.html', dict)

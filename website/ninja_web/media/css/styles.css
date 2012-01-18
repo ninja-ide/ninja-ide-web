@@ -86,6 +86,12 @@ h4 {
   font-size: .84em;
   font-weight: normal;
 }
+pre,
+code,
+kbd,
+samp {
+  font-size: 12px !important;
+}
 a {
   color: #ffa500;
   cursor: pointer;
@@ -1183,9 +1189,16 @@ footer .footer-wrap .section#donate h2 {
   border-radius: 20px;
   background: rgba(50, 50, 50, 0.4);
   border: 1px solid #ffa500;
-  margin: 20px 50px;
+  margin: 20px 42px;
   padding: 20px 30px;
+}
+.framed h2, .framed p {
+  margin-left: 0px !important;
+  padding-left: 60px !important;
 }
 .framed h2 {
   margin: 10px 0px !important;
+}
+.framed h3 {
+  margin-top: 0px !important;
 }

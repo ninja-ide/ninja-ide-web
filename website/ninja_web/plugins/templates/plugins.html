@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n show_stars %}
+{% load pagination_tags %}
 
 {% block scripts %}
 {{ block.super }}
@@ -40,6 +41,8 @@
 
       <ul id="plugins-list" class="item-list">
 
+        {% autopaginate plugins 10 %}
+
         {% for p in plugins %}
         <li class="item" id="plugin_{{ p.id }}">
           
@@ -48,12 +51,18 @@
             <div class="options">
               <div class="rate-container">
 
+                {% comment %}
+                <!-- During contest this is hidden -->
                 <div class="rate-wrapper">
                   <span class="plugin-rate">{{ p.rate }}</span>
                   <span class="plugin-rate-times">( {{ p.rate_times }} )</span>
                 </div><!-- /rate-wrapper -->
-
                 {% show_stars p.rate of 5 round to quarter on change call rating_plugin with p.id %}
+                {% endcomment %}
+
+                <img src="/media/img/arrow-right.png" title="Vote!" />
+                <!-- Average ranking shown until user votes -->
+                {% show_stars 2.5 of 5 round to quarter on change call rating_plugin with p.id %}
 
               </div><!-- /rate-container -->
             </div><!-- /options -->
@@ -81,6 +90,8 @@
           <p>There're no plugins submitted yet. <a href="{% url plugin_submit %}">Be the first one!!</a></p>
         </li>
         {% endfor %}
+
+        {% paginate %}
 
       </ul>
     </div>

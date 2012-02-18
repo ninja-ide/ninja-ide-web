@@ -100,7 +100,7 @@
 
           <li id="nav-login">
             {% if user.is_authenticated %}
-              <h3>My dojo</h3>
+              <h3><a href="{% url user_detail request.user.username %}">My dojo</a></h3>
               <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %} san
               <br />
               <a href="{% url auth_logout %}">Logout</a>

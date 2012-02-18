@@ -29,7 +29,7 @@
   {% endfor %}
 
   {% if page_obj.has_next %}
-    <a class="button" href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">
+    <a class="button right" href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">
       {% trans "Next" %} &rsaquo;&rsaquo;</a>
   {% else %}
       <!-- disabled 

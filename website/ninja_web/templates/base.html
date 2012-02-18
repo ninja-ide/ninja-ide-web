@@ -32,7 +32,13 @@
   <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
 
   <!-- CSS: implied media="all" -->
+
+  {% if use_lessjs %}
+  <link rel="stylesheet/less" href="/media/css/styles.less" type="text/css">
+  <script src="/media/js/less-1.2.1.min.js"></script>
+  {% else %}
   <link rel="stylesheet" href="/media/css/styles.css">
+  {% endif %}
 
   {% block styles %}
   {% endblock %}
@@ -169,6 +175,7 @@
 
         <div class="section" id="last-submissions">
           <h2>Last Submissions</h2>
+          {#% last_plugins %#}
           <div class="submission-log">
             <h3><a href="#">Plugin Project<span class="small"> (by Martin Alderete)</small></a></h3>
             <p>This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!</p>

@@ -1,7 +1,8 @@
 *.pyc
 *.nja
-.DS_Store
-website/ninja_web/ninja_ide.db
 *.db
+.DS_Store
 local_settings.py
 local_urls.py
+media/plugin_files/
+website/ninja_web/ninja_ide.db

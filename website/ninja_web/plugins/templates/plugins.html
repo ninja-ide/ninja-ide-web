@@ -41,7 +41,7 @@
 
       <ul id="plugins-list" class="item-list">
 
-        {% autopaginate plugins 10 %}
+        {% autopaginate plugins 5 %}
 
         {% for p in plugins %}
         <li class="item" id="plugin_{{ p.id }}">
@@ -50,19 +50,11 @@
 
             <div class="options">
               <div class="rate-container">
-
-                {% comment %}
-                <!-- During contest this is hidden -->
                 <div class="rate-wrapper">
                   <span class="plugin-rate">{{ p.rate }}</span>
                   <span class="plugin-rate-times">( {{ p.rate_times }} )</span>
                 </div><!-- /rate-wrapper -->
                 {% show_stars p.rate of 5 round to quarter on change call rating_plugin with p.id %}
-                {% endcomment %}
-
-                <img src="/media/img/arrow-right.png" title="Vote!" />
-                <!-- Average ranking shown until user votes -->
-                {% show_stars 2.5 of 5 round to quarter on change call rating_plugin with p.id %}
 
               </div><!-- /rate-container -->
             </div><!-- /options -->
@@ -97,15 +89,9 @@
     </div>
 
     <div class="section right small-width" id="submit-banner">
-      <h1>Plugins contest</h1>
-      <p>Submit your plugin or vote for existing ones. You can do it until January 30th.</p>
-      <a class="link-web" href="{% url plugins_contest %}">All the info</a>
+      <h1>Plugins submitions</h1>
       <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Plugins_Tutorial">Learn how to write a plugin</a>
       <a class="link-web" href="{% url plugin_submit %}">Submit your plugin!</a>
-    </div>
-
-    <div class="section right small-width" id="plugins-sidebar">
-      {% include "contest-rules.html" %}
     </div>
 
   </div><!-- /content -->

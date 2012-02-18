@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'pagination',
 #    'south',
     'tagging',
+#    'compressor',
 
     # Our apps:
     'common',

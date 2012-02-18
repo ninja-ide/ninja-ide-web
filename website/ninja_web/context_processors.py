@@ -44,4 +44,4 @@ def user_info(request):
     except Exception, e:
         print u"Exception in context_processors.user_info: %s" % e 
 
-    return {'user_info': user_info}
+    return user_info

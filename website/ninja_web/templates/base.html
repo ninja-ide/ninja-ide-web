@@ -33,15 +33,16 @@
 
   <!-- CSS: implied media="all" -->
 
-  {% if use_lessjs %}
-  <link rel="stylesheet/less" href="/media/css/styles.less" type="text/css">
-  <script src="/media/js/less-1.2.1.min.js"></script>
+  {% if use_lessjs %}  
+  <link type="text/less" rel="stylesheet" href="/media/css/styles.less" charset="utf-8">
+  
   {% else %}
   <link rel="stylesheet" href="/media/css/styles.css">
   {% endif %}
 
   {% block styles %}
   {% endblock %}
+
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->

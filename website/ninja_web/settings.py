@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'registration',
     'pagination',
-#    'south',
+    'south',
     'tagging',
 
     # Our apps:

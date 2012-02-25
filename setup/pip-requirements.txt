@@ -16,3 +16,4 @@ ipython==0.11
 ipdb
 readline==6.2.1
 django-debug-toolbar
+south

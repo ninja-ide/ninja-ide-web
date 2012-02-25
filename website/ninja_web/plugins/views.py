@@ -146,8 +146,5 @@ def plugins(request):
     """
     plugins = Plugin.objects.all()
 
-    # random order for plugins (specially during contest)
-    plugins = plugins.order_by('?')
-
     dict['plugins'] = plugins
     return render_response(request, 'plugins.html', dict)

@@ -8,46 +8,56 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Plugin'
-        db.create_table('plugins_plugin', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length='100')),
-            ('short_description', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('version', self.gf('django.db.models.fields.CharField')(max_length='32')),
-            ('upload_date', self.gf('django.db.models.fields.DateField')(default=datetime.date.today)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('zip_file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('tags', self.gf('tagging.fields.TagField')()),
-        ))
-        db.send_create_signal('plugins', ['Plugin'])
+        # Deleting field 'Plugin.plugin_name'
+        db.delete_column('plugins_plugin', 'plugin_name')
 
-        # Adding model 'Vote'
-        db.create_table('plugins_vote', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('plugin', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['plugins.Plugin'])),
-            ('rate', self.gf('django.db.models.fields.DecimalField')(default=2.5, max_digits=3, decimal_places=2)),
-            ('date', self.gf('django.db.models.fields.DateField')(default=datetime.date.today)),
-            ('voter_ip', self.gf('django.db.models.fields.IPAddressField')(max_length=15)),
-        ))
-        db.send_create_signal('plugins', ['Vote'])
+        # Adding field 'Plugin.name'
+        db.add_column('plugins_plugin', 'name', self.gf('django.db.models.fields.CharField')(default='name', max_length='100'), keep_default=False)
 
-        # Adding unique constraint on 'Vote', fields ['plugin', 'user']
-        db.create_unique('plugins_vote', ['plugin_id', 'user_id'])
+        # Adding field 'Plugin.short_description'
+        db.add_column('plugins_plugin', 'short_description', self.gf('django.db.models.fields.CharField')(default='short description', max_length=100), keep_default=False)
+
+        # Adding field 'Plugin.description'
+        db.add_column('plugins_plugin', 'description', self.gf('django.db.models.fields.TextField')(default=' asdf '), keep_default=False)
+
+        # Adding field 'Plugin.version'
+        db.add_column('plugins_plugin', 'version', self.gf('django.db.models.fields.CharField')(default='0.1', max_length='32'), keep_default=False)
+
+        # Changing field 'Plugin.user'
+        db.alter_column('plugins_plugin', 'user_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True))
+
+        # Changing field 'Vote.rate'
+        db.alter_column('plugins_vote', 'rate', self.gf('django.db.models.fields.DecimalField')(max_digits=3, decimal_places=2))
+
+        # Adding unique constraint on 'Vote', fields ['user', 'plugin']
+        db.create_unique('plugins_vote', ['user_id', 'plugin_id'])
 
 
     def backwards(self, orm):
         
-        # Removing unique constraint on 'Vote', fields ['plugin', 'user']
-        db.delete_unique('plugins_vote', ['plugin_id', 'user_id'])
+        # Removing unique constraint on 'Vote', fields ['user', 'plugin']
+        db.delete_unique('plugins_vote', ['user_id', 'plugin_id'])
 
-        # Deleting model 'Plugin'
-        db.delete_table('plugins_plugin')
+        # Adding field 'Plugin.plugin_name'
+        db.add_column('plugins_plugin', 'plugin_name', self.gf('django.db.models.fields.TextField')(default=0.10000000000000001), keep_default=False)
 
-        # Deleting model 'Vote'
-        db.delete_table('plugins_vote')
+        # Deleting field 'Plugin.name'
+        db.delete_column('plugins_plugin', 'name')
+
+        # Deleting field 'Plugin.short_description'
+        db.delete_column('plugins_plugin', 'short_description')
+
+        # Deleting field 'Plugin.description'
+        db.delete_column('plugins_plugin', 'description')
+
+        # Deleting field 'Plugin.version'
+        db.delete_column('plugins_plugin', 'version')
+
+        # Changing field 'Plugin.user'
+        db.alter_column('plugins_plugin', 'user_id', self.gf('django.db.models.fields.related.ForeignKey')(default=3, to=orm['auth.User']))
+
+        # Changing field 'Vote.rate'
+        db.alter_column('plugins_vote', 'rate', self.gf('django.db.models.fields.PositiveIntegerField')())
 
 
     models = {

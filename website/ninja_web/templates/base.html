@@ -32,10 +32,17 @@
   <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
 
   <!-- CSS: implied media="all" -->
+
+  {% if use_lessjs %}  
+  <link type="text/less" rel="stylesheet" href="/media/css/styles.less" charset="utf-8">
+  
+  {% else %}
   <link rel="stylesheet" href="/media/css/styles.css">
+  {% endif %}
 
   {% block styles %}
   {% endblock %}
+
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
@@ -100,7 +107,7 @@
 
           <li id="nav-login">
             {% if user.is_authenticated %}
-              <h3>My dojo</h3>
+              <h3><a href="{% url user_detail request.user.username %}">My dojo</a></h3>
               <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %} san
               <br />
               <a href="{% url auth_logout %}">Logout</a>
@@ -169,6 +176,7 @@
 
         <div class="section" id="last-submissions">
           <h2>Last Submissions</h2>
+          {#% last_plugins %#}
           <div class="submission-log">
             <h3><a href="#">Plugin Project<span class="small"> (by Martin Alderete)</small></a></h3>
             <p>This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!</p>

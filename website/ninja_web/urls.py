@@ -42,7 +42,6 @@ urlpatterns = patterns('',
     url(r'^plugins/official', views.official),
     url(r'^plugins/community', views.community),
     url(r'^plugins/submit/$', plugin_views.plugin_submit, name="plugin_submit"),
-    url(r'^plugins/contest/$', views.plugins_contest, name="plugins_contest"),
     url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin_detail"),
     url(r'^plugins/$', plugin_views.plugins, name="plugins"),
 

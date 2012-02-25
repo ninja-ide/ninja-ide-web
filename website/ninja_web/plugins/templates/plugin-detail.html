@@ -56,21 +56,13 @@
       <div class="options">
         <div class="rate-container">
 
-          {% comment %}
           <div class="rate-wrapper">
             <span class="plugin-rate">{{ plugin.rate }}</span>
             <span class="plugin-rate-times">( {{ plugin.rate_times }} )</span>
           </div><!-- /rate-wrapper -->
 
           {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
-          {% endcomment %}
-
-          <span class="vote color_marked">Vote Now!</span>
-          {% show_stars 2.5 of 5 round to quarter on change call rating_plugin with p.id %}
-
-
         </div><!-- /rate-container -->
-        <p><span class="color_marked">IMPORTANT: </span> All the ranks remain <u>HIDDEN during the plugin contest</u>. <b>You know why</b> so don't put that Pussy-in-boots and start acting like a ninja!!</p>
 
         <div class="download-container">
           <a class="button" href="{{ plugin.zip_file.url }}">Download it!</a>

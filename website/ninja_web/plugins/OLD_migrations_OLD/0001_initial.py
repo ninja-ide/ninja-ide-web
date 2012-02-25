@@ -11,43 +11,19 @@ class Migration(SchemaMigration):
         # Adding model 'Plugin'
         db.create_table('plugins_plugin', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length='100')),
-            ('short_description', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('version', self.gf('django.db.models.fields.CharField')(max_length='32')),
-            ('upload_date', self.gf('django.db.models.fields.DateField')(default=datetime.date.today)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('plugin_name', self.gf('django.db.models.fields.TextField')()),
             ('zip_file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('tags', self.gf('tagging.fields.TagField')()),
+            ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
+            ('upload_date', self.gf('django.db.models.fields.DateField')(default=datetime.datetime.now)),
         ))
         db.send_create_signal('plugins', ['Plugin'])
-
-        # Adding model 'Vote'
-        db.create_table('plugins_vote', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('plugin', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['plugins.Plugin'])),
-            ('rate', self.gf('django.db.models.fields.DecimalField')(default=2.5, max_digits=3, decimal_places=2)),
-            ('date', self.gf('django.db.models.fields.DateField')(default=datetime.date.today)),
-            ('voter_ip', self.gf('django.db.models.fields.IPAddressField')(max_length=15)),
-        ))
-        db.send_create_signal('plugins', ['Vote'])
-
-        # Adding unique constraint on 'Vote', fields ['plugin', 'user']
-        db.create_unique('plugins_vote', ['plugin_id', 'user_id'])
 
 
     def backwards(self, orm):
         
-        # Removing unique constraint on 'Vote', fields ['plugin', 'user']
-        db.delete_unique('plugins_vote', ['plugin_id', 'user_id'])
-
         # Deleting model 'Plugin'
         db.delete_table('plugins_plugin')
-
-        # Deleting model 'Vote'
-        db.delete_table('plugins_vote')
 
 
     models = {
@@ -89,25 +65,12 @@ class Migration(SchemaMigration):
         },
         'plugins.plugin': {
             'Meta': {'object_name': 'Plugin'},
-            'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
-            'short_description': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'tags': ('tagging.fields.TagField', [], {}),
-            'upload_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.date.today'}),
-            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'version': ('django.db.models.fields.CharField', [], {'max_length': "'32'"}),
-            'zip_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
-        },
-        'plugins.vote': {
-            'Meta': {'unique_together': "(('plugin', 'user'),)", 'object_name': 'Vote'},
-            'date': ('django.db.models.fields.DateField', [], {'default': 'datetime.date.today'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'plugin': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['plugins.Plugin']"}),
-            'rate': ('django.db.models.fields.DecimalField', [], {'default': '2.5', 'max_digits': '3', 'decimal_places': '2'}),
+            'plugin_name': ('django.db.models.fields.TextField', [], {}),
+            'upload_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.datetime.now'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
-            'voter_ip': ('django.db.models.fields.IPAddressField', [], {'max_length': '15'})
+            'zip_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
         }
     }
 

@@ -11,6 +11,7 @@ SETTINGS_PATH = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+USE_LESSJS = False
 
 ADMINS = (
     (u'Matías Herranz', 'matias@ninja-ide.org'),
@@ -111,6 +112,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
+    'ninja_web.context_processors.use_lessjs',
     'ninja_web.context_processors.user_info',
 )
 
@@ -131,6 +133,7 @@ INSTALLED_APPS = (
     'pagination',
     'south',
     'tagging',
+#    'compressor',
 
     # Our apps:
     'common',

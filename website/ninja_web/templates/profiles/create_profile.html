@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}{% trans "Account setup" %}{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#create_profile_form').submit(function(event) {
+      event.preventDefault();
+      if ($('#id_cc').val().trim() != "") {
+        alert("Are you sure you aren't a robot?");
+        return false;
+      }
+      return true;
+    });
+  });
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div class="content">
+
+<div class="section left big-width">
+  <h1>Edit Your Profile</h1>
+  <p>Complete all the fields, we hate seeing empty fields.</p>
+
+  <form action="" id="create_profile_form" enctype="multipart/form-data" method="post" class="wide left">
+    {{ form.non_field_errors }}
+    {% csrf_token %}
+    {{ form.not_visible_fields }}
+    <table class="styled-table">
+    <fieldset>
+
+    {% for field in form.visible_fields %}
+      {% if field.errors %}
+      <tr class="error">
+        <td colspan="2">{{ field.errors }}</td>
+      </tr>
+      {% endif %}
+
+      <tr>
+        <th>{{ field.label }}</th>
+        <td>{{ field }}</td>
+      </tr>
+    {% endfor %}
+
+    <tr>
+      <!-- if user fills this field or is a dumbass or is a robot -->
+      <th><label for="id_cc">Credit Card number</label></th>
+      <td><input id="id_cc" type="text" /></td>
+    </tr>
+
+    <!--tr>
+      <th><label for="id_receive_newsletters">Receive Newsletters:</label></th>
+      <td>{{ form.receive_newsletters }}</td>
+    </tr-->
+
+    <tr>
+      <td colspan="2"><input type="submit" value="{% trans "Submit" %}" /></td>
+    </tr>
+    </fieldset>
+  </table>
+  </form>
+</div>
+
+<div class="section right small-width">
+  <h1>Why all of this?</h1>
+  <h3>Some brief</h3>
+  <p>We need all this info just in case we have to reach and terminate you. If you are a honored ninja then it's all OK.</p>
+  <p>If you enter a <b>bio</b> longer than 400 characters, then congratullations! You probably have the most boring bio in all the site</p>
+</div>
+
+</div>
+{% endblock %}

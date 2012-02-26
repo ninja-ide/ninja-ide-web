@@ -144,5 +144,7 @@ def plugins(request):
     if some-category-selected:
         dict['plugin-category'] = the-category
     """
-    dict['plugins'] = Plugin.objects.all()
+    plugins = Plugin.objects.all()
+
+    dict['plugins'] = plugins
     return render_response(request, 'plugins.html', dict)

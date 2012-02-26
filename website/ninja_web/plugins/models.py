@@ -22,6 +22,7 @@ class Plugin(models.Model):
     short_description = models.CharField(
                             max_length=100, verbose_name=u'Short Description')
     description = models.TextField(verbose_name=u'Description')
+    version = models.CharField(max_length="32", verbose_name=(u'Plugin version'))
     upload_date = models.DateField(default=date.today)
     url = models.URLField(verify_exists=True, max_length=200, blank=True)
 
@@ -41,7 +42,7 @@ class Plugin(models.Model):
 
     @property
     def rate(self):
-        """ return the actual average rate rounded 
+        """ return the actual average rate rounded
         """
         if self.vote_set.all().count() == 0:
             # default value for non rated plugins

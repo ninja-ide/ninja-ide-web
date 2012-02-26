@@ -11,6 +11,7 @@ SETTINGS_PATH = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+USE_LESSJS = False
 
 ADMINS = (
     (u'Matías Herranz', 'matias@ninja-ide.org'),
@@ -94,6 +95,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    # django-pagination
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'ninja_web.urls'
@@ -107,7 +111,9 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
-    "ninja_web.context_processors.user_info",
+    'django.core.context_processors.request',
+    'ninja_web.context_processors.use_lessjs',
+    'ninja_web.context_processors.user_info',
 )
 
 INSTALLED_APPS = (
@@ -124,12 +130,17 @@ INSTALLED_APPS = (
     # Third party apps:
     'django_extensions',
     'registration',
-#    'south',
+    'pagination',
+    'south',
+    'profiles',
+    'ninja_profiles',
     'tagging',
+#    'compressor',
 
     # Our apps:
     'common',
     'plugins',
+    'tips',
 )
 
 ## django-registration
@@ -139,6 +150,8 @@ INSTALLED_APPS = (
 # be deleted by maintenance scripts provided in django-registration.
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE = 'ninja_profiles.NinjaProfile'
 
 # Email settings:
 USER = 'username@gmail.com'

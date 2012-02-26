@@ -2,6 +2,12 @@
 
 #TODO: funtion to return (name, url) of last version
 #from somewhere import latest_version
+import settings
+
+
+def use_lessjs(request):
+    return {'use_lessjs': settings.USE_LESSJS}
+
 
 def user_info(request):
     """ User machine (mac|pc|linux)

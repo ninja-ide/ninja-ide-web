@@ -32,16 +32,20 @@
     <div class="section left big-width" id="plugins">
 
       <h1>{{ plugin.name }}</h1>
-      <h3><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></h3>
-      <h2>{{ plugin.short_description }}</h2>
 
-      <div class="item-tags">
-      {% for tag in plugin.get_tags %}
-        <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-      {% endfor %}
+      <div class="framed">
+        <h3 class="author">by <u><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></u></h3>
+
+        <div class="item-tags">
+        {% for tag in plugin.get_tags %}
+          <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+        </div>
+
+        <h2>{{ plugin.short_description }}</h2>
       </div>
 
-      <p>{{ plugin.description }}</p>
+      <div class="item-detail">{{ plugin.description|linebreaks}}</div>
 
     </div>
 
@@ -58,7 +62,6 @@
           </div><!-- /rate-wrapper -->
 
           {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
-
         </div><!-- /rate-container -->
 
         <div class="download-container">

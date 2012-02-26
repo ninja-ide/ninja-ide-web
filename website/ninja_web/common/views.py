@@ -63,10 +63,6 @@ def contrib(request):
 
 # plugins
 
-def plugins_contest(request):
-    return render_response(request, 'plugins-contest.html')
-
-
 def schemes(request):
     return render_response(request, 'schemes.html')
 

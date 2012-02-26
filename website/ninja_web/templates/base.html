@@ -32,10 +32,17 @@
   <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
 
   <!-- CSS: implied media="all" -->
+
+  {% if use_lessjs %}  
+  <link type="text/less" rel="stylesheet" href="/media/css/styles.less" charset="utf-8">
+  
+  {% else %}
   <link rel="stylesheet" href="/media/css/styles.css">
+  {% endif %}
 
   {% block styles %}
   {% endblock %}
+
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
@@ -56,12 +63,12 @@
             </a>
           </li>
 
-          <li id="nav-features">
+          <!--li id="nav-features">
             <a href="/features">
               <h3>Features</h3>
               <h4>Our ninja weapons</h4>
             </a>
-          </li>
+          </li-->
 
           <li id="nav-downloads">
             <a href="/downloads">
@@ -100,10 +107,10 @@
 
           <li id="nav-login">
             {% if user.is_authenticated %}
-              <h3>My dojo</h3>
-              <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %} san
+              <h3><a href="{% url user_detail request.user.username %}">My dojo</a></h3>
+              <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %}
               <br />
-              <a href="{% url auth_logout %}">Logout</a>
+              <a id="logout" href="{% url auth_logout %}">Logout</a>
               </h4>
             {% else %}
               <h3>Ninja Login</h3>
@@ -169,6 +176,7 @@
 
         <div class="section" id="last-submissions">
           <h2>Last Submissions</h2>
+          {#% last_plugins %#}
           <div class="submission-log">
             <h3><a href="#">Plugin Project<span class="small"> (by Martin Alderete)</small></a></h3>
             <p>This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!</p>
@@ -183,7 +191,8 @@
           <h2>We aren't rich ninjas</h2>
           <p>You are enjoying <a href="/">Ninja-IDE</a> because we trained a lot, punching & kicking wooden dummies, and then we CODE THE THING !!!</p>
           <p>That said, if you considere yourself an honoured warrior <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">considere to make a donation</a> so we can buy new weapons.</p>
-          <p>Yes, you're right: our weapons are keyboards and monitors, but we beat really hard with them.</p>
+          <p>This button below will be reduced on each donation received. So when donations are sufficient it will be no longer visible.</p>
+          <p><a class="big-red-button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">DONATE</a></p>
         </div>
 
         <div class="disclaimer">

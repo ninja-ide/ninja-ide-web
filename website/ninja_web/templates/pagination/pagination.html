@@ -1,0 +1,41 @@
+{% if is_paginated %}
+
+{% load i18n %}
+
+<div class="pagination">
+    
+  <div class="pages">
+  
+  {% if page_obj.has_previous %}
+    <a class="button" href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">
+        &lsaquo;&lsaquo; {% trans "Previous" %}
+    </a>
+  {% else %}
+      <!-- disabled 
+      <span class="button gray prev">&lsaquo;&lsaquo; {% trans "Anterior" %}</span>
+      -->
+  {% endif %}
+
+  {% for page in pages %}
+  {% if page %}
+    {% if page == page_obj.number %}
+      <span class="button current page">{{ page }}</span>
+    {% else %}
+      <a class="button" href="?page={{ page }}{{ getvars }}" class="page">{{ page }}</a>
+    {% endif %}
+  {% else %}
+      ...
+  {% endif %}
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+    <a class="button right" href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">
+      {% trans "Next" %} &rsaquo;&rsaquo;</a>
+  {% else %}
+      <!-- disabled 
+      <span class="button gray next">{% trans "Próximo" %} &rsaquo;&rsaquo;</span>
+      -->
+  {% endif %}
+  </div>
+</div>
+{% endif %}

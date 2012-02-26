@@ -15,7 +15,14 @@
     <!-- USER -->
     <div class="section left big-width" id="user-info">
 
-      <h1><span class="color_marked">{{ user_page.username }}</span><span class="small">'s Dojo</span></h1>
+      <h1>
+        <span class="color_marked">{{ user_page.username }}</span><span class="small">'s Dojo</span>
+        {% if request.user == user_page %}
+        <a class="right" href="{% url profiles_edit_profile %}">Edit profile</a>
+        {% endif %}
+      </h1>
+      {{user_page}}
+      {{request.user}}
       {% if user_page == request.user %}
       <h4>Welcome {{ user.name }} to your dojo. Put your shoes at the door and come in.</h4>
       {% else %}

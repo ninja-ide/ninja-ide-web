@@ -5,16 +5,16 @@ from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 #from django.views.generic.base import TemplateView
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
+from common import views
+from ninja_profiles.forms import NinjaProfileForm
+from plugins import views as plugin_views
 from registration.forms import RegistrationFormUniqueEmail
 
-from common import views
-from plugins import views as plugin_views
-
 admin_regex = r'^admin/'
+
 try:
     from local_urls import admin_url
     admin_regex = r'^' + admin_url
@@ -23,9 +23,6 @@ except:
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'ninja_web.views.home', name='home'),
-    # url(r'^ninja_web/', include('ninja_web.foo.urls')),
 
     url(r'^intro/', views.intro),
     url(r'^features/', views.features),
@@ -51,6 +48,10 @@ urlpatterns = patterns('',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate_plugin"),
 
     url(r'^people/(?P<user_name>\w+)/', views.user_detail, name="user_detail"),
+
+    ('^profiles/create', 'profiles.views.create_profile', {'form_class': NinjaProfileForm,}),
+    ('^profiles/edit', 'profiles.views.edit_profile', {'form_class': NinjaProfileForm,}),
+    (r'^profiles/', include('profiles.urls')),
 
     url(r'^$', views.intro),
 

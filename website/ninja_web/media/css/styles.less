@@ -137,6 +137,19 @@ a {
     color: #333 !important;
     background-color: #888 !important;
   }
+
+  &.big-red-button {
+    border-bottom: none;
+    color: #FFF;
+    display: block;
+    font-size: 24px;
+    margin: 5px auto;
+    padding: 20px 20px;
+    text-align: center;
+    .color-gradient(#FF0000);
+    .box-shadow(0px 4px 5px rgba(0, 0, 0, .7));
+    .rounded(10px);
+  }
 }
 
 
@@ -194,11 +207,10 @@ input {
 }
 
 table {
-  border: 1px solid;
-  .drop-shadow(0, 5px, 15px, .5);
+  border: 1px solid transparent;
 
   tr {
-    border: 1px solid;
+    border: 1px solid transparent;
 
     th, td {
       padding: 6px 20px;
@@ -206,6 +218,12 @@ table {
     }
 
     th {
+    }
+  }
+
+  a {
+    &:hover {
+      border-bottom: 1px dotted;
     }
   }
 
@@ -371,6 +389,7 @@ nav{
       }
       a {
         .coloured-shadow(0px, 1px, 2px, rgba(0, 0, 0, .5));
+        border-bottom: none;
         color: inherit;
         display: block;
         float: left;
@@ -403,6 +422,16 @@ nav{
 
         h3{
           color: #000;
+          margin: none;
+
+          a {
+            height: auto;
+            padding: 0px 0px 5px;
+          }
+
+          #logout {
+            float: right;
+          }
         }
 
         h4 {
@@ -444,28 +473,26 @@ nav{
 }
 #splash{
   background: #fff;
-  height: 500px;
+  height: 200px;
+  position: relative;
   width: 100%;
 
   #splash-wrap{
-    height: 523px;
+    height: 100%;
     margin: 0 auto;
-    padding: 78px 20px 0;
+    padding: 0px 20px;
     position: relative;
     width: @page-width;
 
     h1 {
-      background: url("../img/ninja-big.png") no-repeat center center transparent;
+      background: url("../img/ninja-big.png") no-repeat center -30px transparent;
       color: #222;
       display: block;
-      font-family: Yukarimobile;
-      font-size: 200px;
-      line-height: 280px;
+      height: 100%;
       text-align: center;
       text-indent: 10000px;
       overflow: hidden;
       position: relative;
-      text-shadow: 0px 9px 20px #aaa;
 
       span {
         font-family: "arial black";
@@ -475,89 +502,90 @@ nav{
         color: #888;
       }
     }
+  }
 
-    #download-latest-box {
-      bottom: 131px;
-      margin-right: 0px;
+  #download-latest-box {
+    bottom: -35px;
+    left: 50%;
+    margin-left: 130px;
+    position: absolute;
+    width: 330px;
+    z-index: 10;
+    .drop-shadow(0, 1px, 8px, 0.9);
+
+    img {
+      display: block;
+      float: left;
+      padding: 3px 10px 3px 5px;
+      height: 32px;
+      width: 32px;
       position: absolute;
-      right: 28px;
-      width: 220px;
-      z-index: 10;
-      .drop-shadow(0, 1px, 8px, 0.9);
+      top: 5px;
+      .transition(1s);
+    }
 
-      img {
-        display: block;
-        float: left;
-        padding: 3px 10px 3px 5px;
-        height: 32px;
-        width: 32px;
-        position: absolute;
-        top: 5px;
-        .transition(1s);
-      }
+    h2 {
+      font-size: 1.1em;
+      line-height: 38px;
+      margin: 0 0 3px;
+      text-shadow: 0px 1px 0px #fff;
+    }
 
-      h2 {
-        font-size: 1.1em;
-        line-height: 38px;
-        margin: 0 0 3px;
-        text-shadow: 0px 1px 0px #fff;
-      }
+    a {
+      border-left: 1px solid #fff;
+      color: inherit;
+      float: right;
+      font-size: 14px;
+      line-height: 18px;
+      padding-left: 10px;
+      text-decoration: none;
+      width: 270px;
 
-      a {
-        border-left: 1px solid #fff;
-        color: inherit;
-        float: right;
-        font-size: 1em;
-        line-height: 1.2em;
-        padding-left: 10px;
-        text-decoration: none;
-        width: 160px;
-
-        &.main-link {
-          color: #fff;
-          padding-bottom: 10px;
-        }
-        &.sec-link {
-          font-size: 80%;
-        }
-      }
-
-      span.small {
-        color: #000;
-        display: block;
-        float: right;
-        position: absolute;
-        right: 10px;
-        top: -21px;
-      }
-
-      &:hover{
-        img {
-          top: 30px;
-        }
-      }
-
-      /* general config for download button */
-      .box-download(){
-        padding: 10px;
-        .rounded(8px);
-      }
-      
-      &.metal-box{
-        .box-download;
-        color: #000;
-        .color-gradient(#ccc);
-        border: 1px solid #777;
-      }
-
-      &.redninja-box{
-        .box-download;
+      &.main-link {
         color: #fff;
-        .color-gradient(#d00);
+        padding-bottom: 10px;
+      }
+      &.sec-link {
+        font-size: 80%;
+        text-align: right;
+      }
+    }
 
-        a{
-          .coloured-shadow(0px, 0px, 2px, rgba(0, 0, 0, .9);
-        }
+    span.small {
+      color: #000;
+      display: block;
+      float: right;
+      position: absolute;
+      right: 10px;
+      top: -21px;
+    }
+
+    &:hover{
+      img {
+        top: 25px;
+      }
+    }
+
+    /* general config for download button */
+    .box-download(){
+      padding: 10px;
+      .rounded(8px);
+    }
+    
+    &.metal-box{
+      .box-download;
+      color: #000;
+      .color-gradient(#ccc);
+      border: 1px solid #777;
+    }
+
+    &.redninja-box{
+      .box-download;
+      color: #fff;
+      .color-gradient(#d00);
+
+      a{
+        .coloured-shadow(0px, 0px, 2px, rgba(0, 0, 0, .9);
       }
     }
   }
@@ -593,13 +621,13 @@ div.content {
   .content;
 
   h1{
-    color: #CCC;
-    margin: 20px 0px;
+    border-bottom: 1px dotted #555;
+    color: #FFF;
     font-family: @font-family1;
     font-size: 1.8em;
     font-weight: normal;
     line-height: 1.8em;
-    border-bottom: 1px dotted #555;
+    margin: 20px 0px;
     padding-bottom: 8px;
     text-shadow: 0 2px 5px #111;
   }
@@ -610,10 +638,10 @@ div.content {
   }
 
   p{
-    margin: 10px 0;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.7em;
+    margin: 10px 0;
   }
 
   .section{
@@ -634,9 +662,17 @@ div.content {
     &#intro{
       h1 {
         .small{
-          font-size: .7em;
           color: #fff;
+          font-size: .7em;
         }   
+      }
+    }
+
+    &#license_section {
+      p {
+        img {
+
+        }
       }
     }
 
@@ -704,43 +740,52 @@ div.content {
       }
     }
 
+    &#ninja_requirements {
+      table {
+        font-size: 14px;
+        tr {
+          border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+        td:first-child {
+          max-width: 190px;
+        }
+      }
+    }
+
     &#downloads {
       h2 {
         padding-left: 42px;
         margin-top: 40px;
       }
 
-      #ninja_requirements {
-        ul {
-          font-size: 14px;
-          margin-left: 62px;
-        }
-      }
-
       table {
         .rounded(8px);
-        background: rgba(255, 255, 255, .03);
+        .drop-shadow(0, 5px, 15px, .5);
+        background: rgba(255, 255, 255, .08);
+        border-collapse: separate;
         border-color: #555 #333 #202020;
         display: block;
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 10px;
         margin-left: 42px;
-        overflow: hidden;
         table-layout: auto;
 
         tr{
           border: 0;
 
           &:first-child {
-            border-top: 0;
+            th, td {
+              border-top: 0;
+            }
           }
 
           &:last-child {
-            border-bottom: 0;
+            th, td {
+              border-bottom: 0;
+            }
           }
 
           &:hover{
-            //.box-shadow(0px 0px 5px 3px @color_marked2);
             background: rgba(255, 255, 255, .06);
           }
 
@@ -749,9 +794,10 @@ div.content {
             border-top: 1px solid #444;
             padding: 10px 20px;
             vertical-align: middle;
+            width: 36%;
 
             &:first-child {
-              min-width: 140px;
+              //min-width: 140px;
             }
             &:last-child {
             }
@@ -1032,6 +1078,14 @@ div.content {
   }
 }
 
+.item-detail {
+  padding: 10px 20px;
+
+  p {
+    margin: 5px 0px;
+  }
+}
+
 #didyouknow {
   ul {
     font-size: .85em;
@@ -1149,6 +1203,16 @@ footer{
           padding-left: 40px;
           background: url("../img/coins_add.png") 0 0 no-repeat transparent;
         }
+
+        p {
+          text-align: justify;
+        }
+
+        a {
+          &.big-red-button {
+            width: 200px;
+          }
+        }
       }
     }
   }
@@ -1252,7 +1316,7 @@ footer{
   .box-shadow(2px 2px 5px rgba(0,0,0,.4) inset);
   background: rgba(50, 50, 50, .4);
   border: 1px solid @color_marked;
-  margin: 20px 42px;
+  margin: 20px 0px 20px 42px;
   padding: 20px 30px;
 
   h2, p {

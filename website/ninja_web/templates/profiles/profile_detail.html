@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ profile.user.username }}'s profile{% endblock %}
+
+{% block content %}
+
+{% if profile %}
+<div class="content">
+  <h1>Some cool data</h1>
+  <p>Yeah, this is REALLY cool, <b>{{profile.name}}</b>.</p>
+</div><!-- /.content -->
+
+{% else %}
+<div class="warning">
+<p>Sorry. Without a profile -and a soul- you can't see this page. Try in your next reencarnation, or within the next minutes.</p>
+</div>
+{% endif %}
+
+{% endblock %}

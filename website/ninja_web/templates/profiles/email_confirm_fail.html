@@ -1,0 +1,15 @@
+{% extends 'userena/base_userena.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Email verification failed." %}{% endblock %}
+
+{% block maintab %}{% endblock %}
+
+{% block content %}
+<div id="alertmessage">
+  <h2>{% trans "Your email could not be verified..." %}</h2>
+  <p>{% trans "You could try changing it again in your account settings." %}</p>
+</div>
+
+{% endblock %}

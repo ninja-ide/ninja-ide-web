@@ -1,0 +1,21 @@
+{% extends 'userena/base_userena.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Email verification" %}{% endblock %}
+
+{% block maintab %}{% endblock %}
+
+{% block content %}
+<p>
+  {% blocktrans with email=account.email_unconfirmed %}
+  You have received an email at {{ email }}.
+  {% endblocktrans %}
+</p>
+
+<p>
+  {% blocktrans with username=account.username %}
+  To associate this email address with your account ({{ username }}) click on the link provided in this email.
+  {% endblocktrans %}
+</p>
+{% endblock %}

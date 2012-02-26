@@ -28,15 +28,15 @@
   <div id="splash-wrap">
 
     <h1>Ninja<span>IDE</span></h1>
+  </div><!-- /#splash-wrap -->
 
-    <div id="download-latest-box" class="redninja-box">
+  <div id="download-latest-box" class="redninja-box">
     <img src="/media/img/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
     <span class="small">Latest Version</span>
     <a class="main-link" href="/downloads/">Ninja IDE v2.0-Beta for {{ user_os|title }}.</a>
     <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">More {{ user_os }} downloads</a>
-    </div><!-- /#download-latest-box -->
+  </div><!-- /#download-latest-box -->
 
-  </div><!-- /#splash-wrap -->
   </div><!-- /#splash -->
 
 
@@ -50,7 +50,7 @@
     <!-- FEATURES -->
     <div class="section" id="features">
       <h1>Some Features
-      <div class="right">
+      <div class="right small">
         <a href="/features">All features</a>
       </div>
       </h1>
@@ -166,7 +166,7 @@
     <div class="section" id="license_section">
     <h1 class="license">License</h1>
     <h2>Let's get serious for 10 seconds.</h2>
-    <table>
+    <table class>
       <tr>
         <td><img src="{{ MEDIA_URL }}/img/gplv3-logo.png" alt="GPLv3 logo" /></td>
         <td>Ninja IDE is GPLv3. Yeap, that's right: Ninja IDE is free software.</td>

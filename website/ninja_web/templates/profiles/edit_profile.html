@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript">
+  $(document).ready(function() {
+    var attempts = 0; // submit attempts
+    $('#create_profile_form').submit(function() {
+      if ($('#id_cc').val().trim() != "") {
+        var err = $("<ul class='errorlist'><li>Are you sure you aren't a robot?</li></ul>");
+        $('#id_cc').parents("td").prepend(err);
+        return false;
+      }
+      return true;
+    });
+  });
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div class="content">
+
+<div class="section left big-width">
+  <h1>Edit Your Profile</h1>
+  <p>Complete all the fields, we hate seeing empty fields.</p>
+
+  <form action="" id="create_profile_form" enctype="multipart/form-data" method="post" class="wide left">
+    {{ form.non_field_errors }}
+    {% csrf_token %}
+    
+    <table class="styled-table">
+    {% if form.errors %}
+      <div class="form-error">
+        <p>Correct errors below before continue</p>
+
+        {% if form.non_field_errors %}
+          <p>{{ form.non_field_errors }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {{ form }}
+
+    <tr>
+      <!-- if user fills this field or is a dumbass or is a robot -->
+      <th><label for="id_cc">Credit Card number</label></th>
+      <td><input id="id_cc" type="text" /></td>
+    </tr>
+
+    <!--tr>
+      <th><label for="id_receive_newsletters">Receive Newsletters:</label></th>
+      <td>{{ form.receive_newsletters }}</td>
+    </tr-->
+
+    <tr>
+      <td colspan="2"><input type="submit" value="Submit" /></td>
+    </tr>
+    </fieldset>
+  </table>
+  </form>
+</div>
+
+<div class="section right small-width">
+  <h1>Why all of this?</h1>
+  <h3>Some brief</h3>
+  <p>We need all this info just in case we have to reach and terminate you. If you are a honored ninja then it's all OK.</p>
+  <p>If you enter a <b>bio</b> longer than 400 characters, then congratullations! You probably have the most boring bio in all the site</p>
+</div>
+
+</div>
+{% endblock %}

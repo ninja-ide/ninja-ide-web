@@ -9,7 +9,7 @@ PIL  # http://hg.effbot.org/pil-2009-raclette/changeset/fb7ce579f5f9
 
 #3rd party
 django-pagination==1.0.7
-django-profiles
+#django-profiles
 
 # Dev stuff:
 django-extensions

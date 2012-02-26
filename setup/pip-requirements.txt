@@ -8,13 +8,13 @@ PIL  # http://hg.effbot.org/pil-2009-raclette/changeset/fb7ce579f5f9
 #https://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
 
 #3rd party
+django-profiles==0.2
 django-pagination==1.0.7
-#django-profiles
 
 # Dev stuff:
-django-extensions
+django-extensions==0.8-pre
 ipython==0.11
-ipdb
+ipdb==0.6.1
 readline==6.2.1
-django-debug-toolbar
-south
+django-debug-toolbar==0.8.5
+South==0.7.3

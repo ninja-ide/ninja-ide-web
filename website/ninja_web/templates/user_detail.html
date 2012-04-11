@@ -18,7 +18,7 @@
       <h1>
         <span class="color_marked">{{ user_page.username }}</span><span class="small">'s Dojo</span>
         {% if request.user == user_page %}
-        <a class="right" href="{% url profiles_edit_profile %}">Edit profile</a>
+        <a class="right small" href="{% url profiles_edit_profile %}">Edit profile</a>
         {% endif %}
       </h1>
       {{user_page}}

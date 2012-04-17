@@ -35,6 +35,9 @@
       {% for p in plugins %}
         <li class="item">
           <h4><a href="{{ p.get_absolute_url }}" title="{{ p.name }}">{{ p.name }}</a> ({{ p.upload_date }})</h4>
+          {% if user_page == request.user %}
+            <a href="{{ p.get_absolute_url }}" title="Edit/update plugin">Edit plugin {{ p.name }}</a>
+          {% endif %}
           <p>{{ p.short_description }}</p>
         </li>
       {% empty %}

@@ -14,7 +14,6 @@ from plugins import views as plugin_views
 from registration.forms import RegistrationFormUniqueEmail
 
 admin_regex = r'^admin/'
-
 try:
     from local_urls import admin_url
     admin_regex = r'^' + admin_url
@@ -24,43 +23,33 @@ except:
 
 urlpatterns = patterns('',
 
+    # Sections:
     url(r'^intro/', views.intro),
     url(r'^features/', views.features),
     url(r'^using/', views.using),
     url(r'^downloads/', views.downloads),
     url(r'^contrib/', views.contrib),
     url(r'^about/', views.about),
-
     url(r'^updates/', views.updates),
     url(r'^community/', views.community),
 
-    url(r'^plugins/schemes', views.schemes),
-    url(r'^plugins/oficial', views.oficial),    # to be deprecated
-    url(r'^plugins/official', views.official),
-    url(r'^plugins/community', views.community),
-    url(r'^plugins/submit/$', plugin_views.plugin_submit, name="plugin_submit"),
-    url(r'^plugins/(?P<plugin_id>\d+)/$', plugin_views.plugin, name="plugin_detail"),
-    url(r'^plugins/$', plugin_views.plugins, name="plugins"),
-
+    # Plugins:
+    url(r'^plugins', include('plugins.urls')),
     url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag, name="filter_by_tag"),
-
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate_plugin"),
-
     url(r'^people/(?P<user_name>\w+)/', views.user_detail, name="user_detail"),
 
+    # Profiles:
     ('^profiles/create', 'profiles.views.create_profile', {'form_class': NinjaProfileForm,}),
     ('^profiles/edit', 'profiles.views.edit_profile', {'form_class': NinjaProfileForm,}),
     (r'^profiles/', include('profiles.urls')),
 
+    # Homepage:
     url(r'^$', views.intro),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-#    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+    # Django admin:
     url(admin_regex, include(admin.site.urls)),
-    #(r'^admin/', include(admin.site.urls)),
 
     # User registration:
     (r'^accounts/register/', 'registration.views.register',

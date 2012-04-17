@@ -62,17 +62,12 @@ def contrib(request):
 
 
 # plugins
-
 def schemes(request):
     return render_response(request, 'schemes.html')
 
 
-def oficial(request):
-    return render_response(request, 'oficial.html')
-
-
 def official(request):
-    return render_response(request, 'oficial.html')
+    return render_response(request, 'official.html')
 
 
 def community(request):

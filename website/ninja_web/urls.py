@@ -34,7 +34,7 @@ urlpatterns = patterns('',
     url(r'^community/', views.community),
 
     # Plugins:
-    url(r'^plugins', include('plugins.urls')),
+    url(r'^plugins/', include('plugins.urls')),
     url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag, name="filter_by_tag"),
     #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
     url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate_plugin"),

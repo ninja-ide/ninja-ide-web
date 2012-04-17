@@ -5,6 +5,7 @@ from tagging.models import Tag
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -123,7 +124,7 @@ def rate_plugin(request):
     return response
 
 
-def plugin(request, plugin_id=None):
+def get_plugin(request, plugin_id=None):
     context = {}
 
     try:
@@ -148,3 +149,28 @@ def plugins(request):
 
     context['plugins'] = plugins
     return render_response(request, 'plugins.html', context)
+
+
+@login_required
+def plugin_edit(request, plugin_id):
+    """ Plugin edition/update view."""
+    context = {}
+
+    plugin = Plugin.objects.get(id=plugin_id)
+    form = PluginForm(request.POST or None,
+                      request.FILES or None,
+                      instance=plugin)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            messages.info(request, u'Plugin updated correctly little dragon!')
+
+            redirect_url = reverse('user_detail', args=(request.user.username,))
+            return redirect(redirect_url)
+        else:
+            messages.error(
+                    request,
+                    u'Something went wrong in your submit. Please, check it.')
+
+    context['form'] = form
+    return render_response(request, 'plugin-submit.html', context)

@@ -7,11 +7,11 @@ from django.contrib.auth.models import User
 from common.utils import render_response
 from plugins.models import Plugin
 
-
 try:
     import json
 except ImportError:
     import simplejson as json
+
 
 def countdown(request):
     diff = datetime.datetime(2011, 9, 23) - datetime.datetime.today()
@@ -97,8 +97,8 @@ def community(request):
 
 
 def updates(request):
-    """ Just returns a simple json formatted file telling the 
-        actual and stable ninja-ide version. 
+    """ Just returns a simple json formatted file telling the
+        actual and stable ninja-ide version.
     """
     return render_response(request, 'updates_simple.html')
 
@@ -107,15 +107,16 @@ def user_detail(request, user_name=None):
     """ Returns the user (as 'page_user') info and his/her plugins
         Nothing in case error or no existing user
     """
-    dicc = {}
+    context = {}
 
     try:
         user = User.objects.get(username=user_name)
-        dicc['user_page'] = user
+        context['user_page'] = user
     except Exception, e:
         print e
     else:
-        dicc['plugins'] = user.plugin_set.all()
+        user_plugins = user.plugin_set.all()
+        context['plugins'] = user_plugins
+        context['user_submitted_plugins'] = user_plugins.exists()
 
-    return render_response(request, 'user_detail.html', dicc)
-
+    return render_response(request, 'user_detail.html', context)

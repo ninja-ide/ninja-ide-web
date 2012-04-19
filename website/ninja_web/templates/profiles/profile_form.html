@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Account setup" %}{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function() {
+    $("#id_birth_date")
+      .datepicker({
+        changeMonth: true,
+        changeYear: true,
+        minDate: "-80y",
+        yearRange: "1932:2012"
+    });
+  });
+</script>
+{% endblock %}
+
+{% block maintab %}{% endblock %}
+
+{% block content %}
+
+<form action="" enctype="multipart/form-data" method="post" class="wide left">
+  {{ form.non_field_errors }}
+  {% csrf_token %}
+  <fieldset>
+  <legend>Edit Your Profile</legend>
+
+  {{ form.as_p }}
+
+  <p>
+    <label for="id_first_name">First name:</label>
+  {{ form.first_name }}
+  </p>
+
+  <p>
+    <label for="id_last_name">Last name:</label>
+  {{ form.last_name }}
+  </p>
+
+  <p>
+    <label for="id_mugshot">Your picture:<br /></label>
+    <span>
+      {% if not profile.get_mugshot_url %}
+      {% trans "No photo loaded" %}
+      {% else %}
+      <a href="{{ profile.get_mugshot_url }}">
+        <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your profile pic" %}" width="60" />
+      </a>
+      {% endif %}
+      {{ form.mugshot }}
+      <br style="clear:both;"/>
+    </span>
+  </p>
+
+  <p>
+    <label for="id_privacy">Privacy:</label>
+    {{ form.privacy }}
+  </p>
+  <p>
+    <label for="id_language">Language:</label>
+    {{ form.language }}
+  </p>
+  <p>
+    <label for="id_gender">Gender:</label>
+    {{ form.gender }}
+  </p>
+  <p>
+    <label for="id_website">Website:</label>
+    {{ form.website }}
+  </p>
+  <p>
+    <label for="id_location">Location:</label>
+    {{ form.location }}
+  </p>
+  <p>
+    <label for="id_birth_date">Birth date:</label>
+    {{ form.birth_date}}
+  </p>
+  <p>
+    <label for="id_about_me">About me:</label>
+    {{ form.about_me}}
+  </p>
+  <p>
+    <label for="id_receive_newsletters">Receive Newsletters:</label>{{ form.receive_newsletters }}
+  </p>
+
+  <input type="submit" value="{% trans "Submit" %}" />
+  </fieldset>
+</form>
+{% endblock %}

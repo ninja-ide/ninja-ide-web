@@ -9,6 +9,16 @@
 			
 		More info at: http://lesselements.com
 -----------------------------------------------------*/
+.box-sizing(@arg: border-box) {
+	/* Makes the width of a box independent of
+	   its padding. Awesome.
+	*/
+	-moz-box-sizing: @arg;
+	-webkit-box-sizing: @arg;
+	-o-box-sizing: @arg;
+	box-sizing: @arg;
+}
+
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
 	-webkit-border-top-right-radius: @topright;
 	-webkit-border-bottom-right-radius: @bottomright;

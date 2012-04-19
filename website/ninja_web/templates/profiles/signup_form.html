@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Signin" %}{% endblock %}
+
+{% block maintab %}{% endblock %}
+
+{% block content %}
+<div id="content">
+  <div class="narrow left">
+    <h2>{% trans "Register in Lookremix" %}</h2>
+    <form class="sign" action="" method="post" class="wide left">
+      <fieldset>
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="fieldWrapper">
+          <label>{{ field.label }}:</label>
+          {{ field.errors }}
+          {{ field }}
+        </div>
+        {% endfor %}
+
+        <p class="forgot-password">
+          <a href="{% url userena_password_reset %}" title="{% trans "Forgot your password?" %}">{% trans "Forgot your password?" %}</a>
+        </p>
+        <br />
+        <input type="submit" />
+      </fieldset>
+    </form>
+  </div>
+  
+  <div class="sidebar right social_login">
+    <h2>{% trans "Or Login using..." %}</h2>
+
+    <a href="{% url socialauth_begin "facebook" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+      <img src="{{ STATIC_URL }}img/facebook_icon.png" />
+    </a>
+    <a href="{% url socialauth_begin "twitter" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+        <img src="{{ STATIC_URL }}img/twitter_icon.png" />
+    </a>
+    <a href="{% url socialauth_begin "tumblr" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+        <img src="{{ STATIC_URL }}img/tumblr_icon.png" />
+    </a>
+  </div>
+</div>
+{% endblock %}

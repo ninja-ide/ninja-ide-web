@@ -2,7 +2,7 @@
 from datetime import date
 from decimal import Decimal
 
-from django.core.urlresolvers import reverse
+#from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Avg
@@ -22,7 +22,8 @@ class Plugin(models.Model):
     short_description = models.CharField(
                             max_length=100, verbose_name=u'Short Description')
     description = models.TextField(verbose_name=u'Description')
-    version = models.CharField(max_length="32", verbose_name=(u'Plugin version'))
+    version = models.CharField(max_length="32",
+                               verbose_name=(u'Plugin version'))
     upload_date = models.DateField(default=date.today)
     url = models.URLField(verify_exists=True, max_length=200, blank=True)
 
@@ -59,7 +60,6 @@ class Plugin(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('plugin_detail', (), {'plugin_id': self.id})
-
 
 
 class Vote(models.Model):

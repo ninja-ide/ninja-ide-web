@@ -132,6 +132,8 @@ INSTALLED_APPS = (
     'registration',
     'pagination',
     'south',
+    'profiles',
+    'ninja_profiles',
     'tagging',
 #    'compressor',
 
@@ -148,6 +150,8 @@ INSTALLED_APPS = (
 # be deleted by maintenance scripts provided in django-registration.
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE = 'ninja_profiles.NinjaProfile'
 
 # Email settings:
 USER = 'username@gmail.com'

@@ -15,7 +15,14 @@
     <!-- USER -->
     <div class="section left big-width" id="user-info">
 
-      <h1><span class="color_marked">{{ user_page.username }}</span><span class="small">'s Dojo</span></h1>
+      <h1>
+        <span class="color_marked">{{ user_page.username }}</span><span class="small">'s Dojo</span>
+        {% if request.user == user_page %}
+        <a class="right small" href="{% url profiles_edit_profile %}">Edit profile</a>
+        {% endif %}
+      </h1>
+      {{user_page}}
+      {{request.user}}
       {% if user_page == request.user %}
       <h4>Welcome {{ user.name }} to your dojo. Put your shoes at the door and come in.</h4>
       {% else %}
@@ -28,6 +35,9 @@
       {% for p in plugins %}
         <li class="item">
           <h4><a href="{{ p.get_absolute_url }}" title="{{ p.name }}">{{ p.name }}</a> ({{ p.upload_date }})</h4>
+          {% if user_page == request.user %}
+            <a href="{% url plugin_edit p.id %}" title="Edit/update plugin">Edit plugin {{ p.name }}</a>
+          {% endif %}
           <p>{{ p.short_description }}</p>
         </li>
       {% empty %}

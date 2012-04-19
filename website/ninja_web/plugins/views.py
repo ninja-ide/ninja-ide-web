@@ -5,6 +5,7 @@ from tagging.models import Tag
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -33,22 +34,22 @@ def filter_by_tag(request, tag_id):
     Given a tag id, return all plugins with this tag.
     """
     tag = None
-    dicc = {}
+    context = {}
 
     try:
         tag = Tag.objects.get(id=tag_id)
-        dicc['plugins_tag'] = tag.name
+        context['plugins_tag'] = tag.name
     except:
         pass
     else:
-        dicc['plugins'] = Plugin.objects.filter(tags__icontains=tag.name)
+        context['plugins'] = Plugin.objects.filter(tags__icontains=tag.name)
 
-    return render_response(request, 'plugins.html', dicc)
+    return render_response(request, 'plugins.html', context)
 
 
 @login_required
 def plugin_submit(request):
-    dict = {}
+    context = {}
 
     form = PluginForm(request.POST or None, request.FILES or None)
 
@@ -65,14 +66,14 @@ def plugin_submit(request):
                     request,
                     u'Something went wrong in your submit. Please, check it.')
 
-    dict['form'] = form
-    return render_response(request, 'plugin-submit.html', dict)
+    context['form'] = form
+    return render_response(request, 'plugin-submit.html', context)
 
 
 @login_required
 def rate_plugin(request):
 
-    data = {}
+    context = {}
     if request.method == 'GET':
         plugin_id = request.GET.get('plugin_id', False)
         rate = request.GET.get('rate', 0)
@@ -81,7 +82,7 @@ def rate_plugin(request):
         # plugin voted
         plugin = Plugin.objects.get(id=plugin_id)
         # the actual vote
-        
+
         try:
             # if remote client is behind a proxy
             voter_ip = request.META['HTTP_X_FORWARDED_FOR'][0]
@@ -99,52 +100,77 @@ def rate_plugin(request):
             # este save tira un error por el unique together. Hay que cargar un
             # mensajito de error (el de ya votaste este plugin).
             new_vote.save()
-            data['ok'] = True
-            data['msg'] = u"Thanks for your vote!"
+            context['ok'] = True
+            context['msg'] = u"Thanks for your vote!"
 
         except IntegrityError:
             #IntegrityError raises when tried to save violating
             # the unique_together Plugin meta.
-            data['ok'] = False
-            data['msg'] = u"You can't vote the same plugin twice!"
+            context['ok'] = False
+            context['msg'] = u"You can't vote the same plugin twice!"
 
         except Exception, e:
-            data['ok'] = False
-            data['msg'] = u"%s" % e
+            context['ok'] = False
+            context['msg'] = u"%s" % e
 
         else:
             # updated values for the voted plugin
-            data['plugin_rate'] = plugin.rate
-            data['plugin_rate_times'] = plugin.rate_times
+            context['plugin_rate'] = plugin.rate
+            context['plugin_rate_times'] = plugin.rate_times
 
-    data = simplejson.dumps(data, cls=DecimalEncoder)
-    response = HttpResponse(data, mimetype='application/json')
+    context_json = simplejson.dumps(context, cls=DecimalEncoder)
+    response = HttpResponse(context_json, mimetype='application/json')
 
     return response
 
 
-def plugin(request, plugin_id=None):
-    dict = {}
+def get_plugin(request, plugin_id=None):
+    context = {}
 
     try:
-        dict['plugin'] = Plugin.objects.get(pk=plugin_id)
+        context['plugin'] = Plugin.objects.get(pk=plugin_id)
     except:
         pass
 
     # some another extra info for this plugin:
-    # dict['extra'] = blabla...
+    # context['extra'] = blabla
 
-    return render_response(request, 'plugin-detail.html', dict)
+    return render_response(request, 'plugin-detail.html', context)
 
 
 def plugins(request):
-    dict = {}
+    context = {}
 
     """
     if some-category-selected:
-        dict['plugin-category'] = the-category
+        context['plugin-category'] = the-category
     """
     plugins = Plugin.objects.all()
 
-    dict['plugins'] = plugins
-    return render_response(request, 'plugins.html', dict)
+    context['plugins'] = plugins
+    return render_response(request, 'plugins.html', context)
+
+
+@login_required
+def plugin_edit(request, plugin_id):
+    """ Plugin edition/update view."""
+    context = {}
+
+    plugin = Plugin.objects.get(id=plugin_id)
+    form = PluginForm(request.POST or None,
+                      request.FILES or None,
+                      instance=plugin)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            messages.info(request, u'Plugin updated correctly little dragon!')
+
+            redirect_url = reverse('user_detail', args=(request.user.username,))
+            return redirect(redirect_url)
+        else:
+            messages.error(
+                    request,
+                    u'Something went wrong in your submit. Please, check it.')
+
+    context['form'] = form
+    return render_response(request, 'plugin-submit.html', context)

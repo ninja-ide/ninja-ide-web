@@ -6,86 +6,176 @@
 
 {% block scripts %}
 {{ block.super }}
-    <!--
-    <script type="text/javascript">
-    $(document).ready(function() {
-        var so = retornarSO().toLowerCase();
-        var text = 'Download for ' + so;
-    
-        img_link = $(document.createElement('img'))
-                   .attr('src', '/media/img/download_for_'+so+'.png')
-                   .attr('alt', text);
+  <!--
+  <script type="text/javascript">
+  $(document).ready(function() {
+    var so = retornarSO().toLowerCase();
+    var text = 'Download for ' + so;
 
-        $('.so-version').after(img_link);
-    });
-    </script>
-    -->
+    img_link = $(document.createElement('img'))
+           .attr('src', '/media/img/download_for_'+so+'.png')
+           .attr('alt', text);
+
+    $('.so-version').after(img_link);
+  });
+  </script>
+  -->
 {% endblock %}
 
 {% block content %}
 
-    <div id="splash">
-    <div id="splash-wrap">
+  <div id="splash">
+  <div id="splash-wrap">
 
-      <h1>Ninja<span>IDE</span></h1>
+    <h1>Ninja<span>IDE</span></h1>
+  </div><!-- /#splash-wrap -->
 
-      <div id="download-latest-box" class="redninja-box">
-        <img src="/media/img/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
-        <span class="small">Latest Version</span>
-        <a class="main-link" href="/downloads/">Ninja IDE v2.0-Beta for {{ user_os|title }}.</a>
-        <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">More {{ user_os }} downloads</a>
-      </div><!-- /#download-latest-box -->
+  <div id="download-latest-box" class="redninja-box">
+    <img src="/media/img/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
+    <span class="small">Latest Version</span>
+    <a class="main-link" href="/downloads/">Ninja IDE v2.0-Beta for {{ user_os|title }}.</a>
+    <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">More {{ user_os }} downloads</a>
+  </div><!-- /#download-latest-box -->
 
-    </div><!-- /#splash-wrap -->
-    </div><!-- /#splash -->
+  </div><!-- /#splash -->
 
 
-    <div class="content">
-        <!-- INTRO -->
-        <div class="section" id="intro">
-          <h1><b>N</b>inja-<span style="font-variant: small-caps;">ide</span> <b>I</b>s <b>N</b>ot <b>J</b>ust <b>A</b>nother IDE</h1>
-          <p><b>NINJA-IDE</b> (from the recursive acronym: "Ninja-IDE Is Not Just Another IDE"), is a cross-platform integrated development environment (IDE). NINJA-IDE runs on Linux/X11, Mac OS X and Windows desktop operating systems, and allows developers to create applications for several purposes using all the tools and utilities of NINJA-IDE, making the task of writing software easier and more enjoyable.</p>
-        </div>
-
-        <!-- FEATURES -->
-        <div class="section" id="features">
-          <h1>Some Features</h1>
-          <ul>
-            <li id="code_editor">
-                <h3>Powerfull Code Editor</h3>
-                <img src="../media/img/feature-code_editor.png" alt="Code Editor" />
-                <p>NINJA-IDE provides a complete code editor with highlighting for several languages, code completion, code assistant for: imports, navigation, etc. Also it is possible to extend the editor functionality using plugins.</p>
-            </li>
-            <li id="code_locator">
-                <h3>Amazing Code Locator</h3>
-                <img src="../media/img/feature-code_locator.png" alt="Code Locator" />
-                <p>This Feature allows quick and direct access to any file, function or class inside one of our projects by simply pressing a few keys. Pressing "Ctrl + K" we will see a popup over a text field, where you can type the name of what you want and done!</p>
-            </li>
-            <li id="errors"  class="last-of-row">
-                <h3>Errors and PEP8 Finder</h3>
-                <img src="../media/img/feature-errors.png" alt="errors" />
-                <p>Highlight Static and PEP8 errors in the document, you can also see that the files containing PEP8 errors are shown with an icon in the tab where the file is opened, and files containing code static errors are shown with a bug icon in that tab.</p>
-            </li>
-            <li id="projects">
-                <h3>Project Managment</h3>
-                <img src="../media/img/feature-projects.png" alt="Feature Projects" />
-                <p>NINJA-IDE allows to manage Python Project automatically, saving descriptive information about them and letting the user to perform file managment related task in the IDE itself.</p>
-            </li>
-            <li id="run">
-                <h3>Run Project and Files</h3>
-                <img src="../media/img/feature-run.png" alt="Run" />
-                <p>With NINJA-IDE it is possible to run Python Project or any file opened in the Editor with just one click. It is also possible to render an HTML file loaded in the Editor in the IDE to see how the changes would look like in a browser.</p>
-            </li>
-            <li id="integrate" class="last-of-row">
-                <h3>Highly extensible</h3>
-                <img src="../media/img/feature-integrate.png" alt="Integrate" />
-                <p>You can create a Plugin for several purposes and it can be integrated completely with the IDE, increasing the functionality available to improve assistance for projects development.</p>
-            </li>
-          </ul>
-        </div><!-- /#features -->
-        <div class="section" id="intro">
-            <h1>Learn more</h1>
-            <a href="/features">Check out the Features section.</a>
-        </div>
+  <div class="content">
+    <!-- INTRO -->
+    <div class="section" id="intro">
+      <h1><b>N</b>inja-<span style="font-variant: small-caps;">ide</span> <b>I</b>s <b>N</b>ot <b>J</b>ust <b>A</b>nother IDE</h1>
+      <p><b>NINJA-IDE</b> (from the recursive acronym: "Ninja-IDE Is Not Just Another IDE"), is a cross-platform integrated development environment (IDE). NINJA-IDE runs on Linux/X11, Mac OS X and Windows desktop operating systems, and allows developers to create applications for several purposes using all the tools and utilities of NINJA-IDE, making the task of writing software easier and more enjoyable.</p>
     </div>
+
+    <!-- FEATURES -->
+    <div class="section" id="features">
+      <h1>Some Features
+      <div class="right small">
+        <a href="/features">All features</a>
+      </div>
+      </h1>
+      <ul>
+      <li id="code_editor">
+        <h3>Powerfull Code Editor</h3>
+        <img src="../media/img/feature-code_editor.png" alt="Code Editor" />
+        <p>NINJA-IDE provides a complete code editor with highlighting for several languages, code completion, code assistant for: imports, navigation, etc. Also it is possible to extend the editor functionality using plugins.</p>
+      </li>
+      <li id="code_locator">
+        <h3>Amazing Code Locator</h3>
+        <img src="../media/img/feature-code_locator.png" alt="Code Locator" />
+        <p>This Feature allows quick and direct access to any file, function or class inside one of our projects by simply pressing a few keys. Pressing "Ctrl + K" we will see a popup over a text field, where you can type the name of what you want and done!</p>
+      </li>
+      <li id="errors"  class="last-of-row">
+        <h3>Errors and PEP8 Finder</h3>
+        <img src="../media/img/feature-errors.png" alt="errors" />
+        <p>Highlight Static and PEP8 errors in the document, you can also see that the files containing PEP8 errors are shown with an icon in the tab where the file is opened, and files containing code static errors are shown with a bug icon in that tab.</p>
+      </li>
+      <!--li id="projects">
+        <h3>Project Managment</h3>
+        <img src="../media/img/feature-projects.png" alt="Feature Projects" />
+        <p>NINJA-IDE allows to manage Python Project automatically, saving descriptive information about them and letting the user to perform file managment related task in the IDE itself.</p>
+      </li>
+      <li id="run">
+        <h3>Run Project and Files</h3>
+        <img src="../media/img/feature-run.png" alt="Run" />
+        <p>With NINJA-IDE it is possible to run Python Project or any file opened in the Editor with just one click. It is also possible to render an HTML file loaded in the Editor in the IDE to see how the changes would look like in a browser.</p>
+      </li>
+      <li id="integrate" class="last-of-row">
+        <h3>Highly extensible</h3>
+        <img src="../media/img/feature-integrate.png" alt="Integrate" />
+        <p>You can create a Plugin for several purposes and it can be integrated completely with the IDE, increasing the functionality available to improve assistance for projects development.</p>
+      </li-->
+      </ul>
+    </div><!-- /#features -->
+
+  <!-- ABOUT NINJA -->
+    <div class="section" id="about-ninja">
+    <h1 class="ninja">About Ninja-IDE</h1>
+    <h2>How it was born</h2>
+    <p>Buy a beer/coffee to any (or the whole bunch of!) us and we'll be glad to tell the story :)</p>
+    <p>And if you don't wanna hear it, assure yourself of we keeping the secret by donating 10 million dollars.</p>
+    </div>
+
+    <!-- ABOUT US -->
+    <div class="section" id="aboutus">
+    <h1>About us</h1>
+    <h2>This is the ninja team that worked in Ninja IDE.</h2>
+    <p class="framed">Don't judge them by their faces, always remember they can beat you up with a 256mb pendrive if they want to.</p>
+
+    <ul id="ninja_members">
+      <li>
+      <img src="../media/img/ninja_members/dl.sarmentero.png" alt="Diego Sarmentero" />
+      <h2>Diego Sarmentero</h2>
+      <p>Software Freedom Lover, enjoy programming in several languages, and share all the things I've learn with the community. Qt Ambassador since 2011, Computer Geek by nature... Human Being??.</p>
+      <div class="contact-info">
+        <a class="mail" href="mailto:diego.sarmentero@ninja-ide.org">diego.sarmentero@ninja-ide.org</a>
+      </div>
+      </li>
+      <li>
+      <img src="../media/img/ninja_members/malderete.png" alt="Martín Alderete" />
+      <h2>Martín Alderete</h2>
+      <p>Software developer, open source software fan. I really like to programming in different languages. I met Python in 2005 and I felt in love, since then it is my main language. I also like practicing martial arts and sports.</p>
+      <div class="contact-info">
+        <a class="mail" href="mailto:malderete@ninja-ide.org">malderete@ninja-ide.org</a>
+      </div>
+      </li>
+      <li>
+      <img src="../media/img/ninja_members/m.herranz.png" alt="Matías Herranz" />
+      <h2>Matías Herranz</h2>
+      <p>Computer Science student, Django/Python, Python and mobile apps(iPhone, Android) Software developer. I like guitar playing, bonsais, hanging around with friends and travelling.</p>
+      <div class="contact-info">
+        <a class="mail" href="mailto:matias@ninja-ide.org">matias@ninja-ide.org</a>
+      </div>
+      </li>
+      <li>
+      <img src="../media/img/ninja_members/emi-ninja.png" alt="Emilio Ramirez" />
+      <h2>Emilio Ramirez</h2>
+      <p>Systems Engineering student, activist and free software user, software developer and fan of Python. Personally, I like going to movies, hang out to drink wine and everything else ... 42.</p>
+      <div class="contact-info">
+        <a class="mail" href="mailto:emilioramirez@ninja-ide.org">emilioramirez@ninja-ide.org</a>
+      </div>
+      </li>
+      <li>
+      <img src="../media/img/ninja_members/2.png" alt="Jose Cortes" />
+      <h2>Jose Cortes</h2>
+      <p>Segmentation Fault.</p>
+      <div class="contact-info">
+        <a class="mail" href="mailto:josecortes@ninja-ide.org">josecortes@ninja-ide.org</a>
+      </div>
+      </li>
+      <li>
+      <img src="../media/img/ninja_members/perrito.png" alt="Jose Cortes" />
+      <h2>Horacio Durán</h2>
+      <p>I use ninja even for the grocery list, python fanboy by nature, floss supporter for life and machinalico until death.</p>
+      <div class="contact-info">
+        <a class="mail" href="mailto:josecortes@ninja-ide.org">perrito@ninja-ide.org</a>
+      </div>
+      </li>
+      <li>
+      <img src="../media/img/ninja_members/pmourelle.png" alt="Pedro Mourelle" />
+      <h2>Pedro Mourelle (Designer)</h2>
+      <p>Running his own empire at <a href="http://pmdesign.com.ar" target="_blank">PmDesign</a>. A tough Computer Analist that discovered the dark arts of design weapons. His alchemy assembles design and django in ways you could not even imagine. You better watch out.</p>
+      <div class="contact-info">
+        <a class="mail" href="pedro@ninja-ide.org">pedro@ninja-ide.org</a>
+      </div>
+      </li>
+    </ul>
+    </div><!-- /#aboutus -->
+
+    <!-- LICENSE -->
+    <div class="section" id="license_section">
+    <h1 class="license">License</h1>
+    <h2>Let's get serious for 10 seconds.</h2>
+    <table class>
+      <tr>
+        <td><img src="{{ MEDIA_URL }}/img/gplv3-logo.png" alt="GPLv3 logo" /></td>
+        <td>Ninja IDE is GPLv3. Yeap, that's right: Ninja IDE is free software.</td>
+      </tr>
+      <tr>
+        <td><img src="{{ MEDIA_URL }}/img/fatcow-logo.png" alt="FatCow logo" />
+        <td>All the icons used in the site are from the excellent <a href="http://www.fatcow.com/free-icons">FatCow Web Hosting free icons library</a>.</td>
+      <tr>
+    </table>
+    </div><!-- /license -->
+  </div>
 {% endblock%}

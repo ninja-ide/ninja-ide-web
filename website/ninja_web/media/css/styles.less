@@ -133,6 +133,7 @@ a {
       color: @color_button_fg;
     }
   }
+
   &.forbidden {
     color: #333 !important;
     background-color: #888 !important;
@@ -152,6 +153,9 @@ a {
 
     &:hover {
       border-bottom: none;
+      .box-shadow(0px 0px 15px 1px rgba(254, 0, 0, .7));
+      .coloured-shadow(0, 0, 5px, white);
+
     }
   }
 }

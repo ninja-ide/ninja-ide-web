@@ -1,5 +1,10 @@
-
-from django.contrib.auth.models import User
+# -*- coding: utf-8 *-*
 from django.db import models
 
-# nothing so far
+
+class DownloadUrls(models.Model):
+    """
+    Little model to keep the information about NINJA-IDE download URLs.
+    """
+    os = models.CharField(max_length="100", verbose_name=(u'Operative System'))
+    url = models.URLField(verbose_name=(u'Download URL'))

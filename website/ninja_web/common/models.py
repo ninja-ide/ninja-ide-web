@@ -8,3 +8,6 @@ class DownloadUrl(models.Model):
     """
     os = models.CharField(max_length="100", verbose_name=(u'Operative System'))
     url = models.URLField(verbose_name=(u'Download URL'))
+
+    def __unicode__(self):
+        return u'Download URL for %s' % (self.os, )

@@ -2,7 +2,7 @@
 from django.db import models
 
 
-class DownloadUrls(models.Model):
+class DownloadUrl(models.Model):
     """
     Little model to keep the information about NINJA-IDE download URLs.
     """

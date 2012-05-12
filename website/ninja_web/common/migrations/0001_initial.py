@@ -8,24 +8,24 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'DownloadUrls'
-        db.create_table('common_downloadurls', (
+        # Adding model 'DownloadUrl'
+        db.create_table('common_downloadurl', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('os', self.gf('django.db.models.fields.CharField')(max_length='100')),
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
         ))
-        db.send_create_signal('common', ['DownloadUrls'])
+        db.send_create_signal('common', ['DownloadUrl'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'DownloadUrls'
-        db.delete_table('common_downloadurls')
+        # Deleting model 'DownloadUrl'
+        db.delete_table('common_downloadurl')
 
 
     models = {
-        'common.downloadurls': {
-            'Meta': {'object_name': 'DownloadUrls'},
+        'common.downloadurl': {
+            'Meta': {'object_name': 'DownloadUrl'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'os': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})

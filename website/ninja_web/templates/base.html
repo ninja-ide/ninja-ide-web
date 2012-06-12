@@ -124,7 +124,10 @@
     </header>
 
     <div id="main" role="main">
-      <div class="modal" id="modal-layer" {% if not messages %}style="display:none;"{% endif %}>
+      <div class="modal" id="modal-layer">
+        <div class="message {{ m.tags }}">
+          <p><b>Ninja-IDE 2</b> starts kicking asses on <b>July 2nd</b></p>
+        </div>
         {% for m in messages %}
         <div class="message {{ m.tags }}">
           <p>{{ m|safe }}</p>

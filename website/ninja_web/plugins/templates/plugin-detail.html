@@ -22,15 +22,14 @@
 
 {% endblock %}
 
-
 {% block bodyclass %}plugin-detail{% endblock %}
-
 
 {% block content %}
   <div class="content">
     <!-- PLUGINS -->
     <div class="section left big-width" id="plugins">
 
+      {% if plugin %}
       <h1>{{ plugin.name }}</h1>
 
       <div class="framed">
@@ -47,8 +46,15 @@
 
       <div class="item-detail">{{ plugin.description|linebreaks}}</div>
 
+      {% else %}
+      <h1>This plugin was either removed or ...</h1>
+      <h2>... you are a bot.</h2>
+      <p>Maybe donating to Ninja-IDE gives you the peace you need right now. See our footer.</p>
+      {% endif %}
+
     </div>
 
+    {% if plugin %}
     <div class="section right small-width" id="rating">
 
       <h1>Download it &amp; Rate it</h1>
@@ -77,6 +83,13 @@
       <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>
       <a class="link-web" href="mailto:{{ plugin.user.email }}">Email this ninja.</a>
     </div>
+
+    {% else %}
+    <div class="section right small-width">
+      <h1>Hey you!</h1>
+      <h2>Checkout <a class="buttons" href="{% url plugins %}">Here</a> for plugins.</h2>
+    </div>
+    {% endif %}
 
   </div><!-- /content -->
 {% endblock %}

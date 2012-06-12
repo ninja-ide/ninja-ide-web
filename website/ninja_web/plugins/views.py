@@ -141,10 +141,9 @@ def get_plugin(request, plugin_id=None):
 def plugins(request):
     context = {}
 
-    """
-    if some-category-selected:
-        context['plugin-category'] = the-category
-    """
+    #if some-category-selected:
+    #    context['plugin-category'] = the-category
+
     plugins = Plugin.objects.all()
 
     context['plugins'] = plugins

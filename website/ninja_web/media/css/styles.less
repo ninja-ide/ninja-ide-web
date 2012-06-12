@@ -57,7 +57,7 @@ body{
   font-size: 100%;
   line-height: 1.125em;
 }
-.content () {
+.content() {
   /*background-color: #333;*/
   color: @color_base;
   width: @page-width - (2 * @page-side-padding);
@@ -288,25 +288,44 @@ table {
   max-width: 90%;
   position: relative;
   text-align: center;
-  top: 20px;
+  top: -5px;
   width: 860px;
   z-index: 2;
+
+  .modal-closer {
+    color: red;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    right: 50px;
+    top: 12px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   .message {
     margin: 0 auto;
     width: 90%;
   }
+
   p {
     .drop-shadow(0, 0, 20px, .7);
     .rounded(10px);
     background: @color_marked2;
+    border-top: 1px solid rgba(255,255,255,.7);
+    border-bottom: 1px solid rgba(26,26,26,.7);
     color: #000;
     display: block;
     padding: 10px;
     top: -10px;
 
     b {
-      .no-shadow();
+      color: red;
+      font-size: 130%;
+      .coloured-shadow(0, 0, 2px, rgba(255,0,0,.5));
     }
   }
   a {
@@ -315,6 +334,16 @@ table {
   &.info { p{}}
   &.warning { p{}}
   &.error { p{}}
+}
+.modal {
+  .message:first-child {
+    margin-bottom: 5px;
+    z-index: 10;
+
+    p {
+      padding: 25px 10px 15px;
+    }
+  }
 }
 
 /* contest board adjustments 
@@ -353,7 +382,7 @@ table {
   padding-left: 30px;
 }
 
-header{
+header {
   background: #333;
   border-bottom: 1px solid #111;
   font-size: .9em;
@@ -366,13 +395,15 @@ header{
   z-index: 50;
 }
 
-nav{
+nav {
   .bw-gradient(#333, 30, 70);
   height: 100%;
 
   h3 {
+    clear: both;
     font-size: 16px;
     margin: 0 0 5px;
+    width: 100%;
   }
 
   h4 {
@@ -380,17 +411,18 @@ nav{
     line-height: 1.1em;
   }
 
-  ul{
+  ul {
     list-style: none;
     margin: 0 auto;
     width: @page-width;
 
-    li{
+    li {
       border-left: 1px solid #444;
       border-right: 1px solid #222;
       display: block;
       float: left;
       overflow: hidden;
+      min-width: 80px;
 
       &:hover > a {
         background-color: @color_nav-hover;
@@ -402,13 +434,21 @@ nav{
         display: block;
         float: left;
         font-size: inherit;
+        height: 52px;
         padding: 7px 3px 7px 7px;
         text-decoration: none;
-        width: 120px;
-        height: 52px;
+        width: 100%;
         .transition(0.8s);
       }
 
+      &#nav-downloads,
+      &#nav-plugins,
+      &#nav-about,
+      &#nav-contrib,
+      &#nav-using,
+      &#nav-login {
+        width: 145px;
+      }
       &#nav-home a {
         background-color: #000;
         padding: 0;
@@ -422,13 +462,12 @@ nav{
         height: 51px;
         max-height: 51px;
         padding: 7px 3px 7px 7px;
-        width: 95px;
 
         &:hover {
           text-shadow: rgba(255, 255, 255, .9) 1px 1px 1px;
         }
 
-        h3{
+        h3 {
           color: #000;
           margin: none;
 
@@ -626,7 +665,8 @@ nav{
 }
 
 div.content {
-  .content;
+  .content();
+  padding-top: 0;
 
   h1{
     border-bottom: 1px dotted #555;
@@ -645,7 +685,7 @@ div.content {
     margin: 15px 0 10px;
   }
 
-  p{
+  p {
     font-size: 14px;
     font-weight: normal;
     line-height: 1.7em;
@@ -679,7 +719,6 @@ div.content {
     &#license_section {
       p {
         img {
-
         }
       }
     }
@@ -1143,7 +1182,7 @@ footer{
 
   .footer-wrap{
     background: rgba(255, 255, 255, .04);
-    .content;
+    .content();
     padding-top: 30px;
     .rounded(8px);
     .box-shadow(0 0 40px 10px rgba(225, 225, 225, .07));
@@ -1328,8 +1367,15 @@ footer{
   padding: 20px 30px;
 
   h2, p {
-    margin-left: 0px !important;
-    padding-left: 60px !important;
+    margin-left: 0px;
+    padding-left: 60px;
+  }
+
+  .plugin-detail & {
+    h2, p {
+      margin-left: 0px;
+      padding-left: 0px;
+    }
   }
 
   h2 {
@@ -1352,16 +1398,37 @@ footer{
     width: 100%;
 
     .button {
+      background: @color_marked2;
+      color: #000;
       float: left;
+      margin-bottom: 2px;
       margin-right: 10px;
       padding: 5px 8px;
+      .coloured-shadow(0px, 0px, 3px, rgba(0,0,0,.3));
 
-    }
-    a {
-      .box-shadow(0px 2px 4px rgba(0,0,0,.4);
+
+      &.current {
+        background: none;
+        color: inherit;
+        margin-bottom: inherit;
+        margin-top: inherit;
+
+        &:hover {
+          background: none;
+          margin-bottom: inherit;
+          margin-top: inherit;
+        }
+      }
 
       &:hover {
+        margin-bottom: 0px;
+        margin-top: 2px;
+        .box-shadow(none);
       }
+    }
+    a.button {
+      border-top: 1px solid #fff;
+      .box-shadow(0px 2px 0px rgba(0,0,0,.8);
     }
   }
 }

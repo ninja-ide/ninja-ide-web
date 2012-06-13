@@ -54,9 +54,6 @@ def contrib(request):
     return render_response(request, 'contrib.html')
 
 
-# plugins
-
-
 def updates(request):
     """ Just returns a simple json formatted file telling the
         actual and stable ninja-ide version.

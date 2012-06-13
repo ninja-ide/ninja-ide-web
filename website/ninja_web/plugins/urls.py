@@ -1,14 +1,14 @@
 # -*- coding: utf-8 *-*
 from django.conf.urls.defaults import patterns, url
-from plugins.views import (plugin_submit, get_plugin, plugins, plugin_edit)
-from common.views import (schemes, official, community)
+from plugins.views import (plugin_submit, get_plugin, plugins, plugin_edit,
+                           get_plugins_dict, get_schemes_dict)
 
 
 urlpatterns = patterns('plugins.views',
     # from common.views
-    url(r'^schemes', schemes),
-    url(r'^official', official),
-    url(r'^community', community),
+    url(r'^official/$', get_plugins_dict, {'query': 'official'}),
+    url(r'^community/$', get_plugins_dict, {'query': 'community'}),
+    url(r'^schemes/$', get_schemes_dict),
 
     # from plugins.views
     url(r'^edit/(?P<plugin_id>\d+)/$', plugin_edit, name="plugin_edit"),

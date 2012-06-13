@@ -15,6 +15,11 @@ from common.utils import render_response
 from plugins.forms import PluginForm
 from plugins.models import Vote, Plugin
 
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 
 class DecimalEncoder(simplejson.JSONEncoder):
     """JSON encoder which understands decimals."""
@@ -173,3 +178,36 @@ def plugin_edit(request, plugin_id):
 
     context['form'] = form
     return render_response(request, 'plugin-submit.html', context)
+
+
+def get_schemes_dict(request):
+    return render_response(request, 'schemes.html')
+
+
+def get_plugins_dict(request, query=None):
+    """ Returns the list of plugins with metadata.
+        Depending on 'query' the returned json will contain matching plugins
+        @query: 'official'|'community'|None
+    """
+
+    plugins = []  # dict to return
+    plugins_list = Plugin.objects.all()  # initial query
+
+    if query is not None:
+        if query == 'community':
+            plugins_list = plugins_list.filter(user__is_staff=False)
+        elif query == 'official':
+            plugins_list = plugins_list.filter(user__is_staff=True)
+
+    for plugin in plugins_list:
+        plugin_data = {}
+        plugin_data['name'] = plugin.name
+        plugin_data['description'] = plugin.description
+        plugin_data['version'] = plugin.version or u'N/A'
+        plugin_data['download'] = plugin.zip_file.url
+        plugin_data['home'] = plugin.get_absolute_url()
+        plugin_data['authors'] = plugin.user.username
+
+        plugins.append(plugin_data)
+
+    return HttpResponse(json.dumps(plugins), mimetype="application/json")

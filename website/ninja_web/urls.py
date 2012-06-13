@@ -31,7 +31,6 @@ urlpatterns = patterns('',
     url(r'^contrib/', views.contrib),
     url(r'^about/', views.about),
     url(r'^updates/', views.updates),
-    url(r'^community/', views.community),
 
     # Plugins:
     url(r'^plugins/', include('plugins.urls')),

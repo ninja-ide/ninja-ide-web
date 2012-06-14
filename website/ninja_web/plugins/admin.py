@@ -1,7 +1,7 @@
 # -*- coding: utf-8 *-*
 from django.contrib import admin
 
-from plugins.models import (Plugin, Vote)
+from plugins.models import Plugin, Vote
 
 
 class PluginAdmin(admin.ModelAdmin):

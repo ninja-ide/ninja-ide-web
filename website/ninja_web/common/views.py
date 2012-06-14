@@ -1,16 +1,9 @@
 # -*- coding: utf-8 *-*
 import datetime
 
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 
 from common.utils import render_response
-from plugins.models import Plugin
-
-try:
-    import json
-except ImportError:
-    import simplejson as json
 
 
 def countdown(request):
@@ -59,36 +52,6 @@ def contrib(request):
     """ Contribution section. All info to do so.
     """
     return render_response(request, 'contrib.html')
-
-
-# plugins
-def schemes(request):
-    return render_response(request, 'schemes.html')
-
-
-def official(request):
-    return render_response(request, 'official.html')
-
-
-def community(request):
-    """ Returns the list of plugins with metadata
-    """
-    plugins_list = Plugin.objects.all()
-    plugins = []
-
-    for plugin in plugins_list:
-        plugin_data = {}
-        plugin_data['name'] = plugin.name
-        plugin_data['description'] = plugin.description
-        plugin_data['version'] = "0.1"
-
-        plugin_data['download'] = plugin.zip_file.url
-        plugin_data['home'] = plugin.get_absolute_url()
-        plugin_data['authors'] = plugin.user.username
-
-        plugins.append(plugin_data)
-
-    return HttpResponse(json.dumps(plugins), mimetype="application/json")
 
 
 def updates(request):

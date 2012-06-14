@@ -8,7 +8,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from common import views
+from common import views as common_views
 from ninja_profiles.forms import NinjaProfileForm
 from plugins import views as plugin_views
 from registration.forms import RegistrationFormUniqueEmail
@@ -24,29 +24,36 @@ except:
 urlpatterns = patterns('',
 
     # Sections:
-    url(r'^intro/', views.intro),
-    url(r'^features/', views.features),
-    url(r'^using/', views.using),
-    url(r'^downloads/', views.downloads),
-    url(r'^contrib/', views.contrib),
-    url(r'^about/', views.about),
-    url(r'^updates/', views.updates),
-    url(r'^community/', views.community),
+    url(r'^intro/', common_views.intro),
+    url(r'^features/', common_views.features),
+    url(r'^using/', common_views.using),
+    url(r'^downloads/', common_views.downloads),
+    url(r'^contrib/', common_views.contrib),
+    url(r'^about/', common_views.about),
+    url(r'^updates/', common_views.updates),
 
     # Plugins:
     url(r'^plugins/', include('plugins.urls')),
-    url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag, name="filter_by_tag"),
-    #url(r'^vote-plugin/(?P<plugin_id>\d+)/(?P<rate>\d+{1-5})',
-    url(r'^rate-plugin/', plugin_views.rate_plugin, name="rate_plugin"),
-    url(r'^people/(?P<user_name>\w+)/', views.user_detail, name="user_detail"),
+
+    # Schemes:
+    url(r'^schemes/', include('schemes.urls')),
+
+    url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag,
+                                  name="filter_by_tag"),
+    url(r'^rate-plugin/', plugin_views.rate_plugin,
+                          name="rate_plugin"),
+    url(r'^people/(?P<user_name>\w+)/', common_views.user_detail,
+                                        name="user_detail"),
 
     # Profiles:
-    ('^profiles/create', 'profiles.views.create_profile', {'form_class': NinjaProfileForm,}),
-    ('^profiles/edit', 'profiles.views.edit_profile', {'form_class': NinjaProfileForm,}),
+    ('^profiles/create', 'profiles.views.create_profile',
+                         {'form_class': NinjaProfileForm}),
+    ('^profiles/edit', 'profiles.views.edit_profile',
+                       {'form_class': NinjaProfileForm}),
     (r'^profiles/', include('profiles.urls')),
 
     # Homepage:
-    url(r'^$', views.intro),
+    url(r'^$', common_views.intro),
 
     # Django admin:
     url(admin_regex, include(admin.site.urls)),

@@ -69,6 +69,9 @@
 
           <div class="item-tags">
           {% for tag in p.get_tags %}
+            {% if not forloop.first %}
+            , 
+            {% endif %}
             <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
           {% empty %}
             <a href="#">It has no tags, can believe it?</a>
@@ -92,6 +95,7 @@
       <h1>Plugins submitions</h1>
       <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Plugins_Tutorial">Learn how to write a plugin</a>
       <a class="link-web" href="{% url plugin_submit %}">Submit your plugin!</a>
+      <a class="link-web" href="{% url schemes %}">Check out the schemes!</a>
     </div>
 
   </div><!-- /content -->

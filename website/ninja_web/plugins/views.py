@@ -15,6 +15,11 @@ from common.utils import render_response
 from plugins.forms import PluginForm
 from plugins.models import Vote, Plugin
 
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 
 class DecimalEncoder(simplejson.JSONEncoder):
     """JSON encoder which understands decimals."""

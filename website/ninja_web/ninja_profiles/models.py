@@ -8,8 +8,6 @@ class NinjaProfile(models.Model):
     # will let him do something in the future (not implemented yet)
 
     user = models.ForeignKey(User, unique=True)
-    name = models.CharField(max_length=50, blank=True)
-    lastname = models.CharField(max_length=100, blank=True)
     bio = models.TextField(max_length=400, blank=True)
     url = models.URLField("Website", blank=True)
     company = models.CharField(max_length=50, blank=True)

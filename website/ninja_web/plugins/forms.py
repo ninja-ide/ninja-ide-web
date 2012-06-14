@@ -9,7 +9,5 @@ class PluginForm(forms.ModelForm):
     class Meta:
         model = Plugin
         exclude = ['user', 'upload_date']
-
-#    def __init__(self, *args, **kwargs):
-#        self.fields['user'] = kwargs.pop('user', None)
-#        super(PluginForm, self).__init__(*args, **kwargs)
+        required_css_class = 'required'
+        error_css_class = 'error'

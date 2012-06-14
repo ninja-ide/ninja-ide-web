@@ -4,21 +4,27 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
-
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting field 'Scheme.zip_file'
-        db.delete_column('schemes_scheme', 'zip_file')
+        
+        # Adding model 'NinjaProfile'
+        db.create_table('ninja_profiles_ninjaprofile', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], unique=True)),
+            ('bio', self.gf('django.db.models.fields.TextField')(max_length=400, blank=True)),
+            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
+            ('company', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('score', self.gf('django.db.models.fields.IntegerField')(default=0)),
+        ))
+        db.send_create_signal('ninja_profiles', ['NinjaProfile'])
 
-        # Adding field 'Scheme.scheme_file'
-        db.add_column('schemes_scheme', 'scheme_file', self.gf('django.db.models.fields.files.FileField')(default=0, max_length=100), keep_default=False)
 
     def backwards(self, orm):
-        db.add_column('schemes_scheme', 'zip_file', self.gf('django.db.models.fields.files.FileField')(default=0, max_length=100), keep_default=False)
+        
+        # Deleting model 'NinjaProfile'
+        db.delete_table('ninja_profiles_ninjaprofile')
 
-        # Deleting field 'Scheme.scheme_file'
-        db.delete_column('schemes_scheme', 'scheme_file')
 
     models = {
         'auth.group': {
@@ -57,15 +63,15 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'schemes.scheme': {
-            'Meta': {'object_name': 'Scheme'},
+        'ninja_profiles.ninjaprofile': {
+            'Meta': {'object_name': 'NinjaProfile'},
+            'bio': ('django.db.models.fields.TextField', [], {'max_length': '400', 'blank': 'True'}),
+            'company': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
-            'scheme_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'tags': ('tagging.fields.TagField', [], {}),
-            'upload_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.date.today'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'})
+            'score': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'unique': 'True'})
         }
     }
 
-    complete_apps = ['schemes']
+    complete_apps = ['ninja_profiles']

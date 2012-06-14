@@ -4,27 +4,26 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'Scheme'
         db.create_table('schemes_scheme', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length='100')),
             ('upload_date', self.gf('django.db.models.fields.DateField')(default=datetime.date.today)),
-            ('zip_file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
+            ('scheme_file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
             ('tags', self.gf('tagging.fields.TagField')()),
         ))
         db.send_create_signal('schemes', ['Scheme'])
 
-
     def backwards(self, orm):
-        
+
         # Deleting model 'Scheme'
         db.delete_table('schemes_scheme')
-
 
     models = {
         'auth.group': {
@@ -67,10 +66,10 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Scheme'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
+            'scheme_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'tags': ('tagging.fields.TagField', [], {}),
             'upload_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.date.today'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'zip_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'})
         }
     }
 

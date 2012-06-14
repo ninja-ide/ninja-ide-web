@@ -1,0 +1,4 @@
+*.pyc
+thumbs.db
+media/schemes
+media/plugin_files

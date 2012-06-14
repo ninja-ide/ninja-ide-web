@@ -34,7 +34,3 @@ class Scheme(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('scheme_detail', (), {'scheme_id': self.id})
-
-    @models.permalink
-    def get_download_url(self):
-        return self.scheme_file.url or None

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% load i18n show_stars %}
+{% load pagination_tags %}
+
+{% block bodyclass %}schemes{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <!-- PLUGINS -->
+    <div class="section left big-width" id="schemes">
+      <h1>Ninja Schemes</h1>
+      {% if schemes_tag %}
+      <h2>Showing schemes tagged with <span class="color_marked">{{ schemes_tag|default:"All" }}</span></h2>
+      {% else %}
+      <h2>Showing <span class="color_marked">All</span> schemes</h2>
+      {% endif %}
+
+      <ul id="schemes-list" class="item-list">
+
+        {% autopaginate schemes 10 %}
+
+        {% for scheme in schemes %}
+        <li class="item" id="scheme_{{ scheme.id }}">
+          
+          <div class="item-header">
+
+            <h3><a href="{{ scheme.get_absolute_url }}">{{ scheme.name }}</a></h3>
+            <h4>by <a href="{% url user_detail scheme.user.username %}">{{ scheme.user.username }}</a></h4>
+          </div><!-- /item-header -->
+
+          <div class="extract">
+            <p>{{ scheme.short_description }}</p>
+          </div>
+
+          <div class="item-tags">
+          {% for tag in scheme.get_tags %}
+            <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+          {% empty %}
+            <a href="#">It has no tags, can believe it?</a>
+          {% endfor %}
+          </div>
+
+        </li>
+
+        {% empty %}
+        <li class="item">
+          <p>There're no schemes submitted yet. <a href="{% url scheme_submit %}">Be the first one!!</a></p>
+        </li>
+        {% endfor %}
+
+        {% paginate %}
+
+      </ul>
+    </div>
+
+    <div class="section right small-width" id="submit-banner">
+      <h1>Schemes submitions</h1>
+      <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Schemes_Tutorial">Learn how to write a scheme</a>
+      <a class="link-web" href="{% url scheme_submit %}">Submit your scheme!</a>
+    </div>
+
+  </div><!-- /content -->
+  <!-- 
+  {
+    "scoobygalletas1": "http://schemes.ninja-ide.googlecode.com/hg/schemes/scoobygalletas1.color",
+    "darker_scheme": "http://schemes.ninja-ide.googlecode.com/hg/schemes/darker_scheme.color",
+    "darker_relax_scheme": "http://schemes.ninja-ide.googlecode.com/hg/schemes/darker_relax_scheme.color",
+    "coder": "http://schemes.ninja-ide.googlecode.com/hg/schemes/coder.color",
+    "gedit_like": "http://schemes.ninja-ide.googlecode.com/hg/schemes/gedit_like.color",
+    "buntu_new": "http://schemes.ninja-ide.googlecode.com/hg/schemes/buntu_new.color",
+    "green_pace": "http://schemes.ninja-ide.googlecode.com/hg/schemes/green_pace.color",
+    "gugle": "http://schemes.ninja-ide.googlecode.com/hg/schemes/gugle.color",
+    "mac_aco": "http://schemes.ninja-ide.googlecode.com/hg/schemes/mac_aco.color",
+    "matrix": "http://schemes.ninja-ide.googlecode.com/hg/schemes/matrix.color",
+    "mono_cromatico": "http://schemes.ninja-ide.googlecode.com/hg/schemes/mono_cromatico.color",
+    "ninja-hide-style": "http://schemes.ninja-ide.googlecode.com/hg/schemes/ninja-hide-style.color"
+ }
+  -->
+{% endblock %}

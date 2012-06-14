@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load i18n show_stars %}
+
+{% block bodyclass %}scheme-detail{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <!-- PLUGINS -->
+    <div class="section left big-width" id="schemes">
+
+      {% if scheme %}
+      <h1>{{ scheme.name }}</h1>
+
+      <div class="framed">
+        <h3 class="author">by <u><a href="{% url user_detail scheme.user.username %}">{{ scheme.user }}</a></u></h3>
+
+        <div class="item-tags">
+        {% for tag in scheme.get_tags %}
+          <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+        </div>
+      </div>
+
+      {% else %}
+      <h1>This scheme was either removed or ...</h1>
+      <h2>... you are a bot.</h2>
+      <p>Maybe donating to Ninja-IDE gives you the peace you need right now. See our footer.</p>
+      {% endif %}
+
+    </div>
+
+    {% if scheme %}
+    <div class="section right small-width" id="rating">
+
+      <h1>Download it &amp; Rate it</h1>
+
+      <div class="options">
+        <div class="download-container">
+          <a class="button" href="{{ scheme.get_download_url }}">Download it!</a>
+        </div><!-- /rate-container -->
+
+      </div><!-- /options -->
+    </div>
+
+    <div class="section right small-width" id="about-author">
+      <h1>More info</h1>
+      <p>{{ scheme.user|title }} has added this info.</p>
+      <a class="link-web" href="mailto:{{ scheme.user.email }}">Email this ninja.</a>
+    </div>
+
+    {% else %}
+    <div class="section right small-width">
+      <h1>Hey you!</h1>
+      <h2>Checkout <a class="buttons" href="{% url schemes %}">Here</a> for schemes.</h2>
+    </div>
+    {% endif %}
+
+  </div><!-- /content -->
+{% endblock %}

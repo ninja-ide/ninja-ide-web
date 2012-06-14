@@ -135,12 +135,13 @@ INSTALLED_APPS = (
     'profiles',
     'ninja_profiles',
     'tagging',
-#    'compressor',
+    # 'compressor',
 
     # Our apps:
     'common',
     'plugins',
-    'tips',
+    'schemes',
+    # 'tips',
 )
 
 ## django-registration

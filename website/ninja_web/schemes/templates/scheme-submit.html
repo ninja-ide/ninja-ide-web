@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block bodyclass %}scheme-form{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <!-- PLUGIN-FORM -->
+    <div class="section left big-width" id="scheme-form">
+      <h1>Scheme Submit</h1>
+      <h2>Submit your ninja scheme. Share your stuff!</h2>
+
+      <p>There's no need to say you have to complete all the required fields.</p>
+
+      {% if form.errors %}
+      <div class="form-error">
+        <p>Correct errors below before continue</p>
+
+        {% if form.non_field_errors %}
+          <p>{{ form.non_field_errors }}</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="styled-table">
+          {{ form.as_table }}
+          <tr>
+          <td colspan="2">
+            <input type="submit" value="Submit!" />
+          </td>
+          </tr>
+        </table>
+      </form>
+
+    </div><!-- /#scheme-form -->
+
+    <div class="section right small-width">
+        <h1>Really Important (TOS)</h1>
+        <p>All the content available in our website <b>IS TOTALLY FREE AND OPEN SOURCED</b> under the <a href="http://gplv3.fsf.org">GPL v3</a> license. All schemes submitted with this form will be treated as free software under GPL v3.</p>
+        <a class="link-web" href="http://gplv3.fsf.org">More about GPL v3</a>
+        <a class="link-web" href="{% url schemes %}">Get back to Schemes</a>
+    </div>
+
+  </div><!-- /content -->
+{% endblock %}

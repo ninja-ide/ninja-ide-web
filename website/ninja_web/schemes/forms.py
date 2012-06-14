@@ -1,11 +1,11 @@
 # encoding: utf-8
 from django import forms
 
-from plugins.models import Plugin
+from schemes.models import Scheme
 
 
-class PluginForm(forms.ModelForm):
+class SchemeForm(forms.ModelForm):
 
     class Meta:
-        model = Plugin
+        model = Scheme
         exclude = ['user', 'upload_date']

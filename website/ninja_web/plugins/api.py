@@ -1,5 +1,7 @@
 # -*- coding: utf-8 *-*
+from django.db.models import Q
 from django.http import HttpResponse
+from django.utils.safestring import SafeString
 
 from plugins.models import Plugin
 
@@ -9,42 +11,42 @@ except ImportError:
     import simplejson as json
 
 
-def community_plugins(request):
-    """ Returns the list of plugins uploaded by the community with metadata
+def get_plugins_dict(request, query=None):
+    """ Returns the list of plugins with metadata.
+        Depending on 'query' the returned json will contain matching plugins
+
+        @query: 'official'|'community'|<query_string>|None
+
+        In case some query_string is provided it will use it as query and will
+        lookup plugins with that string in name, decription and authors.
     """
-    plugins_list = Plugin.objects.all()
-    return _gather_plugings_json(plugins_list)
 
+    plugins = []  # dict to return
+    plugins_list = Plugin.objects.all()  # initial query
 
-def official_plugins(request):
-    """ Returns the list of plugins uploaded by the community with metadata
-    """
-    plugins_list = Plugin.objects.filter(user__is_superuser=True,
-                                         user__is_staff=True)
-    return _gather_plugings_json(plugins_list)
-
-
-def _gather_plugings_json(plugins_list):
-    """ Given a QuerySet of plugins, returns them in a json with metadata
-    """
-    plugins = []
+    if query is not None:
+        if query == 'community':
+            plugins_list = plugins_list.filter(user__is_staff=False)
+        elif query == 'official':
+            plugins_list = plugins_list.filter(user__is_staff=True)
+        else:
+            if len(query) > 2:
+                # if string should be used as lookup string we look for query
+                plugins_list = plugins_list.filter(Q(name__icontains=query)\
+                                                 | Q(description__icontains=query)\
+                                                 | Q(user__username__icontains=query))
 
     for plugin in plugins_list:
         plugin_data = {}
         plugin_data['name'] = plugin.name
-        plugin_data['description'] = plugin.description
-        plugin_data['version'] = "0.1"
-
+        plugin_data['description'] = SafeString(u'%s') % plugin.description
+        plugin_data['version'] = plugin.version or u'N/A'
         plugin_data['download'] = plugin.zip_file.url
         plugin_data['home'] = plugin.get_absolute_url()
         plugin_data['authors'] = plugin.user.username
 
         plugins.append(plugin_data)
 
-    return HttpResponse(json.dumps(plugins), mimetype="application/json")
-
-
-# For now, I decided to consider color schemes as plugins. We should discuss
-# this.
-def schemes(request):
-    return render_response(request, 'schemes.html')
+    # this kind of return enables to print non ascii characters
+    return HttpResponse(json.dumps(plugins, ensure_ascii=False),
+                        mimetype="application/json;charset=UTF-8")

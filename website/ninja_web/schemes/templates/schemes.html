@@ -35,6 +35,9 @@
 
           <div class="item-tags">
           {% for tag in scheme.get_tags %}
+            {% if not forloop.first %}
+            , 
+            {% endif %}
             <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
           {% empty %}
             <a href="#">It has no tags, can believe it?</a>
@@ -56,7 +59,6 @@
 
     <div class="section right small-width" id="submit-banner">
       <h1>Schemes submitions</h1>
-      <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Schemes_Tutorial">Learn how to write a scheme</a>
       <a class="link-web" href="{% url scheme_submit %}">Submit your scheme!</a>
     </div>
 

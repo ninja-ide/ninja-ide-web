@@ -20,12 +20,9 @@
     {% endif %}
   }
 </script>
-
 {% endblock %}
 
-
 {% block bodyclass %}plugins{% endblock %}
-
 
 {% block content %}
   <div class="content">
@@ -95,7 +92,12 @@
       <h1>Plugins submitions</h1>
       <a class="link-web" href="http://code.google.com/p/ninja-ide/wiki/Plugins_Tutorial">Learn how to write a plugin</a>
       <a class="link-web" href="{% url plugin_submit %}">Submit your plugin!</a>
+    </div>
+
+    <div class="section right small-width">
+      <h1>Schemes submitions</h1>
       <a class="link-web" href="{% url schemes %}">Check out the schemes!</a>
+      <a class="link-web" href="{% url scheme_submit %}">Submit your own scheme!</a>
     </div>
 
   </div><!-- /content -->

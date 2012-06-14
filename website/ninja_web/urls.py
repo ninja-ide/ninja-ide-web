@@ -35,6 +35,9 @@ urlpatterns = patterns('',
     # Plugins:
     url(r'^plugins/', include('plugins.urls')),
 
+    # Schemes:
+    url(r'^schemes/', include('schemes.urls')),
+
     url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag,
                                   name="filter_by_tag"),
     url(r'^rate-plugin/', plugin_views.rate_plugin,

@@ -15,6 +15,10 @@ urlpatterns = patterns('plugins.views',
 
 # API
 urlpatterns += patterns('plugins.api',
+    # URLs for existing/old versions
+    url(r'^official/$', get_plugins_dict, {'query': 'official'}),
+    url(r'^community/$', get_plugins_dict, {'query': 'community'}),
+
     url(r'^api/official/$', get_plugins_dict, {'query': 'official'}),
     url(r'^api/community/$', get_plugins_dict, {'query': 'community'}),
     url(r'^api/(?P<query>\w+)/$', get_plugins_dict),

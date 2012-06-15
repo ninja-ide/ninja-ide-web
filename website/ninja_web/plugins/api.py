@@ -47,7 +47,6 @@ def get_plugins_dict(request, query=None):
         plugin_data['rate'] = plugin.rate
         plugin_data['home'] = plugin.get_absolute_url()
         plugin_data['authors'] = plugin.user.get_full_name() or plugin.user.username
-        plugin_data['tags'] = plugin.tags
 
         plugins.append(plugin_data)
 

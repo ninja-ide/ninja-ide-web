@@ -44,7 +44,7 @@ def get_plugins_dict(request, query=None):
         plugin_data['version'] = plugin.version or u'N/A'
         plugin_data['download'] = plugin.zip_file.url
         plugin_data['tags'] = plugin.tags.split() or []
-        plugin_data['rate'] = plugin.rate
+        plugin_data['rate'] = '%.2f' % plugin.rate
         plugin_data['home'] = plugin.get_absolute_url()
         plugin_data['authors'] = plugin.user.get_full_name() or plugin.user.username
 

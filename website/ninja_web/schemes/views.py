@@ -79,7 +79,9 @@ def get_scheme(request, scheme_id=None):
     try:
         context['scheme'] = Scheme.objects.get(pk=scheme_id)
     except Scheme.DoesNotExist:
-        pass
+        messages.error(request, u"That scheme doesn't exist!")
+        redirect_url = reverse('schemes')
+        return redirect(redirect_url)
 
     return render_response(request, 'scheme-detail.html', context)
 
@@ -104,12 +106,13 @@ def scheme_edit(request, scheme_id):
         if form.is_valid():
             messages.info(request, u'scheme updated correctly little dragon!')
 
-            redirect_url = reverse('user_detail', args=(request.user.username,))
+            redirect_url = reverse('scheme_detail', args=(scheme.id,))
             return redirect(redirect_url)
         else:
             messages.error(
                     request,
-                    u'Something went wrong in your submit. Please, check it.')
+                    u'Something went wrong editing your Scheme.'\
+                    u' Please, check it.')
 
     context['form'] = form
     return render_response(request, 'scheme-submit.html', context)

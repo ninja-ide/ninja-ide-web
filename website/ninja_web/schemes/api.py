@@ -12,6 +12,7 @@ except ImportError:
 def get_schemes_dict(request):
     """ Returns the list of all schemes with metadata.
     """
+
     schemes = []  # dict to return
     schemes_list = Scheme.objects.all()  # initial query
 

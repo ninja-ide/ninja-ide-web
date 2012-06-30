@@ -35,11 +35,7 @@
       <div class="framed">
         <h3 class="author">by <u><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></u></h3>
 
-        <div class="item-tags">
-        {% for tag in plugin.get_tags %}
-          <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-        {% endfor %}
-        </div>
+        {% include "global/tags.html" with object=plugin %}
 
         <h2>{{ plugin.short_description }}</h2>
       </div>

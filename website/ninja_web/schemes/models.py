@@ -2,6 +2,7 @@
 from datetime import date
 
 #from django.core.urlresolvers import reverse
+import json
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -21,6 +22,20 @@ class Scheme(models.Model):
     scheme_file = models.FileField(upload_to='schemes/')
 
     tags = TagField()
+
+    @property
+    def colors(self):
+        colors = []
+        try:
+            scheme_data = json.load(self.scheme_file)
+            for key in scheme_data:
+                color = {}
+                color['color'] = scheme_data.get(key)
+                color['key'] = key
+                colors.append(color)
+        except:
+            pass
+        return colors
 
     def __unicode__(self):
         return u'%s' % self.name

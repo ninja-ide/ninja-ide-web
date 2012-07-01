@@ -64,16 +64,7 @@
             <p>{{ p.short_description }}</p>
           </div>
 
-          <div class="item-tags">
-          {% for tag in p.get_tags %}
-            {% if not forloop.first %}
-            , 
-            {% endif %}
-            <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-          {% empty %}
-            <a href="#">It has no tags, can believe it?</a>
-          {% endfor %}
-          </div>
+          {% include "global/tags.html" with object=p %}
 
         </li>
 

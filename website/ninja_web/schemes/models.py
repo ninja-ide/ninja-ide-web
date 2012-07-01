@@ -25,14 +25,11 @@ class Scheme(models.Model):
 
     @property
     def colors(self):
-        colors = []
+        colors = {}
         try:
             scheme_data = json.load(self.scheme_file)
             for key in scheme_data:
-                color = {}
-                color['color'] = scheme_data.get(key)
-                color['key'] = key
-                colors.append(color)
+                colors[key] = scheme_data.get(key)
         except:
             pass
         return colors

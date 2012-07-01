@@ -23,6 +23,7 @@
 {% endblock %}
 
 {% block bodyclass %}plugin-detail{% endblock %}
+{% block bodyid %}plugin_{{plugin.id}}{% endblock %}
 
 {% block content %}
   <div class="content">
@@ -30,17 +31,20 @@
     <div class="section left big-width" id="plugins">
 
       {% if plugin %}
-      <h1>{{ plugin.name }}</h1>
+      <h1>{{ plugin.name }}
+        <a class="right small" href="{% url plugins %}">Back to Plugins</a>
+      </h1>
 
       <div class="framed">
+        <h2>{{ plugin.name }} <span class="small">- version {{ plugin.version }}</span></h2>
         <h3 class="author">by <u><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></u></h3>
 
         {% include "global/tags.html" with object=plugin %}
-
-        <h2>{{ plugin.short_description }}</h2>
       </div>
 
-      <div class="item-detail">{{ plugin.description|linebreaks}}</div>
+      <div class="item-detail">
+        {{ plugin.description|linebreaks}}
+      </div>
 
       {% else %}
       <h1>This plugin was either removed or ...</h1>
@@ -63,7 +67,7 @@
             <span class="plugin-rate-times">( {{ plugin.rate_times }} )</span>
           </div><!-- /rate-wrapper -->
 
-          {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
+          {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with plugin.id %}
         </div><!-- /rate-container -->
 
         <div class="download-container">

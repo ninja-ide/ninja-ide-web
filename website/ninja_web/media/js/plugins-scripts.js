@@ -25,11 +25,10 @@ function rate_plugin(id, rate, url) {
         it tries to register the rate at the given url.
     */
     var post_url = url+"?plugin_id=" + id + "&rate=" + rate;
-    var elem = $("#plugin_"+id.toString());
+    var elem = jQuery("#plugin_"+id.toString());
 
-    if (!elem) {
-      alert("Error founding the plugin you want to vote. :S");
-    } else {
+    if (elem) {
+    
       // the rate container
       var rate_container = elem.find(".rate-container");
 
@@ -39,12 +38,18 @@ function rate_plugin(id, rate, url) {
         success: function(data) {
           // send the rate & update the rate of this plugin
 
-          var modal = $("<div class='msg'>");
+          var modal = jQuery("<div class='msg'>");
           modal.css('display', 'block');
-          elem.prepend(modal);
 
-          var new_div = $('<div>');
-          new_div.addClass('message');
+          if (elem.is('li')) {
+            // when plugin list
+            elem.prepend(modal);
+          } else if (elem.is('body')) {
+            // when plugin detail
+            jQuery('#modal-layer').prepend(modal);
+          }
+
+          var new_div = jQuery("<div class='message'>");
 
           if (data.ok) {
             // hiding rate container
@@ -64,7 +69,6 @@ function rate_plugin(id, rate, url) {
             rate_container.fadeIn();
 
           } else {
-            alert("error");
             new_div.addClass('error');
           }
 
@@ -78,5 +82,7 @@ function rate_plugin(id, rate, url) {
             .slideUp(1000);
         }
       });
+    } else {
+      alert("Error founding the plugin you want to vote. :S");
     }
 }

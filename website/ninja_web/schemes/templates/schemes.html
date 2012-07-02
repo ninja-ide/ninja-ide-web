@@ -31,8 +31,8 @@
 
           <div class="extract">
             <p class="colors-preview">
-              {% for color in scheme.colors %}
-              <span class="color-block" style="background-color: {{ color.color }};" title="{{ color.key }}"></span>
+              {% for key, color in scheme.colors.items %}
+              <span class="color-block" style="background-color: {{ color }};" title="{{ key }}"></span>
               {% endfor %}
             </p>
           </div>

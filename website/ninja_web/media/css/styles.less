@@ -11,7 +11,6 @@
 
 @import "preface.css";
 @import "novasquare.css";
-
 @import "elements.less";
 
 
@@ -50,7 +49,7 @@
   color: #fff;
 }
 
-body{
+body {
   background: url("../img/bg-dark_grain.png") #333;
   font-family: "Nova Square";
   font-size: 14px;
@@ -81,7 +80,7 @@ h2 {
 
 h3 {
   color: @color_marked;
-  font-size: 1.08em;
+  font-size: 18px;
   font-weight: normal;
   margin: 20px 0;
 
@@ -107,6 +106,13 @@ a {
   outline: none;
   text-decoration: none;
 
+  &:hover {
+    /*
+    color: @color_marked;
+    .coloured-shadow(0, 0, 5px, @color_marked);
+    */
+  }
+
   &.link-web {
     background: url("../img/arrow-right.png") no-repeat 0 center transparent !important;
     border-bottom: none;
@@ -114,11 +120,6 @@ a {
     margin: 0 0 10px;
     padding-bottom: 3px;
     padding-left: 40px !important;
-
-    &:hover {
-      color: @color_marked !important;
-      .coloured-shadow(0, 0, 5px, @color_marked);
-    }
   }
 
   &.button {
@@ -403,7 +404,7 @@ header {
 }
 
 nav {
-  .bw-gradient(#333, 30, 70);
+  .bw-gradient(rgba(50, 50, 50, .2), 20, 90);
   height: 100%;
 
   h3 {
@@ -526,8 +527,9 @@ nav {
   .drop-shadow(0, 20px, 40px, .7);
 }
 #splash{
-  background: #fff;
-  height: 200px;
+  /*background: #fff;*/
+  background: url("../img/ninja2.0.home.png") no-repeat center -100px transparent;
+  height: 422px;
   position: relative;
   width: 100%;
 
@@ -539,7 +541,8 @@ nav {
     width: @page-width;
 
     h1 {
-      background: url("../img/ninja-big.png") no-repeat center -30px transparent;
+      /*background: url("../img/ninja-big.png") no-repeat center -30px transparent;*/
+      /*
       color: #222;
       display: block;
       height: 100%;
@@ -547,6 +550,8 @@ nav {
       text-indent: 10000px;
       overflow: hidden;
       position: relative;
+      */
+      opacity: 0;
 
       span {
         font-family: "arial black";
@@ -606,7 +611,6 @@ nav {
     }
 
     span.small {
-      color: #000;
       display: block;
       float: right;
       position: absolute;
@@ -687,7 +691,8 @@ div.content {
   }
 
   h3 {
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 45px;
     margin: 15px 0 10px;
   }
 
@@ -940,7 +945,8 @@ div.content {
       }
     }
 
-    &#plugins {
+    &#plugins,
+    &#schemes {
       .framed {
         .rounded(15px);
         margin: 20px 0px;
@@ -949,7 +955,8 @@ div.content {
     }
 
     &#plugins,
-    &#plugins-sidebar {
+    &#plugins-sidebar,
+    &#schemes {
       ol#rules-list {
         font-size: .85em;
       }
@@ -987,6 +994,7 @@ div.content {
     float: left;
     line-height: 36px;
     margin-left: 10px;
+    margin-bottom: 10px;
 
     &:hover{
       cursor: pointer;
@@ -1016,7 +1024,7 @@ div.content {
       color: black;
       display: block;
       float: none;
-      margin: 10px 0;
+      margin: 0;
       padding: 5px 10px;
       text-align: center;
       width: 266px;
@@ -1134,7 +1142,7 @@ div.content {
 }
 
 .item-detail {
-  padding: 10px 20px;
+  padding: 0px 20px;
 
   p {
     margin: 5px 0px;
@@ -1398,8 +1406,8 @@ footer{
 
 .pagination {
   clear: both;
-  margin: 20px auto;
-  width: 90%;
+  margin: 15px auto;
+  width: 100%;
 
   .pages {
     float: left;
@@ -1407,39 +1415,62 @@ footer{
 
     .button {
       background: @color_marked2;
+      border: 1px solid transparent;
       color: #000;
+      display: block;
       float: left;
       margin-bottom: 2px;
       margin-right: 10px;
       padding: 5px 8px;
-      .coloured-shadow(0px, 0px, 3px, rgba(0,0,0,.3));
+      .coloured-box-shadow(0px, 2px, 0px, rgba(0,0,0,1));
+      .rounded(5px);
 
+      &:hover {
+        color: #000;
+        margin-bottom: 0px;
+        margin-top: 2px;
+        .box-shadow(none);
+        .coloured-shadow(0,0,0,1);
+      }
+
+      &.right {
+        margin-right: 0;
+      }
 
       &.current {
         background: none;
-        color: inherit;
+        border-color: @color_marked2;
+        color: @color_marked2;
         margin-bottom: inherit;
         margin-top: inherit;
 
         &:hover {
           background: none;
+          color: @color_marked2;
           margin-bottom: inherit;
           margin-top: inherit;
         }
       }
-
-      &:hover {
-        margin-bottom: 0px;
-        margin-top: 2px;
-        .box-shadow(none);
-      }
     }
+
     a.button {
-      border-top: 1px solid #fff;
-      .box-shadow(0px 2px 0px rgba(0,0,0,.8);
+      border-top: 1px solid rgba(255,255,255,.4);
+      &:hover{
+        .coloured-shadow(0,0,0,transparent);
+      }
     }
   }
 }
 
+.colors-preview {
+  float: right;
+}
+.color-block {
+  float: left;
+  display: block;
+  height: 30px;
+  margin-right: 3px;
+  width: 15px;
+}
 
 @import "sufix.css";

@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     // use the first element that is "scrollable"
     function scrollableElement(els) {
-      for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+      for (var i=0, argLength=arguments.length; i<argLength; i++) {
         var el = arguments[i],
             $scrollElement = $(el);
         if ($scrollElement.scrollTop()> 0) {

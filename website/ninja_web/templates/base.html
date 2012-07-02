@@ -52,7 +52,8 @@
 
 </head>
 
-<body class="{% block bodyclass %}{% endblock %}">
+<body class="{% block bodyclass %}{% endblock %}"
+      id="{% block bodyid %}{% endblock %}">
   <div id="container">
     <header>
       <nav>
@@ -125,9 +126,11 @@
 
     <div id="main" role="main">
       <div class="modal" id="modal-layer">
+        <!-- 
         <div class="message {{ m.tags }}">
           <p><b>Ninja-IDE 2</b> starts kicking asses on <b>July 2nd</b></p>
         </div>
+         -->
         {% for m in messages %}
         <div class="message {{ m.tags }}">
           <p>{{ m|safe }}</p>
@@ -216,7 +219,7 @@
 
   <!-- scripts concatenated and minified via ant build script-->
   <script src="/media/js/plugins.js"></script>
-  <script src="/media/js/scripts.js"></script>
+  <!--script src="/media/js/scripts.js"></script-->
   <!-- end scripts-->
 
 

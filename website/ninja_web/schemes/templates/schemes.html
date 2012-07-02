@@ -30,7 +30,11 @@
           </div><!-- /item-header -->
 
           <div class="extract">
-            <p>{{ scheme.short_description }}</p>
+            <p class="colors-preview">
+              {% for color in scheme.colors %}
+              <span class="color-block" style="background-color: {{ color.color }};" title="{{ color.key }}"></span>
+              {% endfor %}
+            </p>
           </div>
 
           {% include "global/tags.html" with object=scheme %}

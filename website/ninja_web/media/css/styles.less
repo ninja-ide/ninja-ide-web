@@ -541,16 +541,6 @@ nav {
     width: @page-width;
 
     h1 {
-      /*background: url("../img/ninja-big.png") no-repeat center -30px transparent;*/
-      /*
-      color: #222;
-      display: block;
-      height: 100%;
-      text-align: center;
-      text-indent: 10000px;
-      overflow: hidden;
-      position: relative;
-      */
       opacity: 0;
 
       span {
@@ -791,7 +781,6 @@ div.content {
         }
 
         a{
-          /*border-bottom: 1px dotted;*/
           white-space: nowrap;
         }
       }
@@ -871,12 +860,12 @@ div.content {
       }
     }/* /downloads */
 
-    &#aboutus{
-      ul#ninja_members{
+    &#aboutus {
+      ul#ninja_members {
         list-style: none;
         margin: 0px;
 
-        li{
+        li {
           border-bottom: 1px solid #000;
           border-top: 1px solid #2a2a2a;
           float: left;
@@ -1277,6 +1266,7 @@ footer{
 
         a {
           &.big-red-button {
+            margin: 30px auto;
             width: 200px;
           }
         }
@@ -1303,11 +1293,18 @@ footer{
 /* twitter plugin */
 .twtr-widget,
 .twtr-widget[id^=twtr-widget-] {
+  a:hover {
+    .coloured-shadow(0,0,0,0);
+  }
 
   .twtr-doc {
     .twtr-hd {
       margin-bottom: 10px;
       padding: 0;
+    }
+
+    a:hover {
+      text-decoration: none !important;
     }
 
     .twtr-bd {
@@ -1331,7 +1328,7 @@ footer{
       margin-bottom: 15px;
 
       .twtr-tweet-wrap {
-        padding: 0 0 15px;
+        padding: 0 0 20px;
 
         .twtr-tweet-text {
           em {
@@ -1352,13 +1349,13 @@ footer{
               &.twtr-rt,
               &.twtr-fav {
                 color: @color_marked !important;
-                margin-left: 10px;
                 float: right;
+                margin-left: 10px;
                 .opacity(0);
                 .transition(.5s, ease-out);
 
                 &:hover {
-                  .coloured-shadow(0, 0, 2px, @color_marked2);
+                  /*.coloured-shadow(0, 0, 2px, @color_marked2);*/
                   text-decoration: none !important;
                 }
               }

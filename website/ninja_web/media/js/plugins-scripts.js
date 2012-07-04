@@ -83,6 +83,6 @@ function rate_plugin(id, rate, url) {
         }
       });
     } else {
-      alert("Error founding the plugin you want to vote. :S");
+      alert("Error finding the plugin you want to vote. :S");
     }
 }

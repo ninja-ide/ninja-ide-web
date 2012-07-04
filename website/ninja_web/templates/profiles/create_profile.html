@@ -1,16 +1,33 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% block title %}{% trans "Account setup" %}{% endblock %}
 
 {% block scripts %}
 {{ block.super }}
-<script src="{{ STATIC_URL }}js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+<!-- <script src="{{ STATIC_URL }}js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script> -->
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#create_profile_form').submit(function(event) {
-      event.preventDefault();
+    var attempts = 0; // submit attempts
+    var msg = "";     // empty message so far
+
+    $('#create_profile_form').submit(function() {
+
       if ($('#id_cc').val().trim() != "") {
-        alert("Are you sure you aren't a robot?");
+        attempts++;
+        switch(attempts) {
+          case 1:
+          case 2: msg = "Are you sure you aren't a robot?";
+                  break;
+          case 3: var msg = "Ok, stop it. Keep Credit Card field empty before submitting dude!";
+                  break;
+          case 4:
+          default: var msg = "I think you shouldn't be here. Go for another IDE, go! Finch!";
+        }
+        if (msg != "") {
+          alert(msg);
+        }
         return false;
       }
       return true;

@@ -30,19 +30,14 @@
           </div><!-- /item-header -->
 
           <div class="extract">
-            <p>{{ scheme.short_description }}</p>
+            <p class="colors-preview">
+              {% for key, color in scheme.colors.items %}
+              <span class="color-block" style="background-color: {{ color }};" title="{{ key }}"></span>
+              {% endfor %}
+            </p>
           </div>
 
-          <div class="item-tags">
-          {% for tag in scheme.get_tags %}
-            {% if not forloop.first %}
-            , 
-            {% endif %}
-            <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-          {% empty %}
-            <a href="#">It has no tags, can believe it?</a>
-          {% endfor %}
-          </div>
+          {% include "global/tags.html" with object=scheme %}
 
         </li>
 

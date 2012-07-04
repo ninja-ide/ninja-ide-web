@@ -10,17 +10,25 @@
     <div class="section left big-width" id="schemes">
 
       {% if scheme %}
-      <h1>{{ scheme.name }}</h1>
+      <h1>{{ scheme.name }}
+        <a class="right small" href="{% url schemes %}">Back to Schemes</a>
+      </h1>
 
       <div class="framed">
         <h3 class="author">by <u><a href="{% url user_detail scheme.user.username %}">{{ scheme.user }}</a></u></h3>
 
-        <div class="item-tags">
-        {% for tag in scheme.get_tags %}
-          <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-        {% endfor %}
-        </div>
+       {% include "global/tags.html" with object=scheme %}
       </div>
+
+      <h3>Scheme Colors</h3>
+      {% for key,color in scheme.colors.items %}
+      <p style="color: {{color}}">
+        {{key}}
+      </p>
+      {% empty %}
+      <p>The scheme file is dead, or has something bad.</p>
+      <p>You may <a href="mailto:admin@ninja-ide.org">report this</a> or not.</p>
+      {% endfor %}
 
       {% else %}
       <h1>This scheme was either removed or ...</h1>

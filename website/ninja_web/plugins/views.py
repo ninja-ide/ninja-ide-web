@@ -167,6 +167,8 @@ def plugin_edit(request, plugin_id):
 
     if request.method == 'POST':
         if form.is_valid():
+            plugin = form.save()
+            #plugin.save()
             messages.info(request, u'Plugin updated correctly little dragon!')
 
             redirect_url = reverse('user_detail', args=(request.user.username,))

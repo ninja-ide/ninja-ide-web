@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     url(r'^features/', common_views.features),
     url(r'^using/', common_views.using),
     url(r'^downloads/', common_views.downloads),
-    url(r'^contrib/', common_views.contrib),
+    url(r'^contribute/', common_views.contrib),
     url(r'^about/', common_views.about),
     url(r'^updates/', common_views.updates),
 

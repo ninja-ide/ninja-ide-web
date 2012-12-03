@@ -36,7 +36,7 @@
       </h1>
 
       <div class="framed">
-        <h2>{{ plugin.name }} <span class="small">- version {{ plugin.version }}</span></h2>
+        <h2>{{ plugin.name }} <small>- version {{ plugin.version }}</small></h2>
         <h3 class="author">by <u><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></u></h3>
 
         {% include "global/tags.html" with object=plugin %}

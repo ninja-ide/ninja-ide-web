@@ -19,10 +19,11 @@
 
 /* fonts used */
 @font-family1: "Nova Square", arial, sans-serif;
-@font-family2: "Gafata", sans-serif;
+@font-family2: "Anaheim", sans-serif;
 
 @titlesFont: @font-family1;
 @textsFont: @font-family2;
+@globalFontSize: 15px;
 
 /* design|theme colors */
 @color_base: #CCCCCC;     /* light grey   */
@@ -54,13 +55,13 @@
 
 body {
   background: url("../img/bg-dark_grain.png") #333;
-  font-family: "Nova Square";
-  font-size: 14px;
+  font-size: @globalFontSize;
   font-size: 100%;
+  font-family: @font-family2;
   line-height: 1.125em;
 }
+
 .content() {
-  /*background-color: #333;*/
   color: @color_base;
   width: @page-width - (2 * @page-side-padding);
   padding: @page-side-padding;
@@ -73,21 +74,22 @@ h1, h2, h3, h4, {
   font-weight: normal;
 }
 
-p, span, ul, ol, table {
+p, ul, ol, table {
   font-family: @font-family2;
+  line-height: 1.5em;
 }
 
 h1 {}
 
 h2 {
-  font-size: 1.3em;
+  font-size: 1.6em;
   margin: 20px 0 10px;
-  line-height: 32px;
+  line-height: 2em;
 }
 
 h3 {
   color: @color_marked;
-  font-size: 18px;
+  font-size: 1.2em;
   font-weight: normal;
   margin: 20px 0;
 
@@ -99,12 +101,12 @@ h3 {
 
 h4 {
   color: #aaa;
-  font-size: .84em;
+  font-size: .85em;
   font-weight: normal;
 }
 
 pre, code, kbd, samp {
-  font-size: 12px !important;
+  font-size: .85em !important;
 }
 
 a {
@@ -151,7 +153,7 @@ a {
     border-bottom: none;
     color: #FFF;
     display: block;
-    font-size: 24px;
+    font-size: 1.6em;
     margin: 5px auto;
     padding: 20px 20px;
     text-align: center;
@@ -170,9 +172,6 @@ a {
 
 
 p, ul, ol {
-  font-size: 15px;
-  line-height: 1.4em;
-
   a {
     border-bottom: 1px dotted;
 
@@ -251,16 +250,18 @@ table {
       border: inherit;
       margin: 20px 0 10px;
 
-      th,td {
+      th, td {
         padding: 10px;
         vertical-align: middle;
       }
+
       th {
         color: @color_marked;
         font-weight: normal;
         text-align: right;
       }
     }
+
     input[type="text"],
     input[type="password"],
     input[type="submit"],
@@ -275,6 +276,7 @@ table {
         .coloured-box-shadow(0px, 0px, 8px, @color_marked);
       }
     }
+
     input[type="submit"] {
       background-color: @color_marked2;
       cursor: pointer;
@@ -303,7 +305,7 @@ table {
   .modal-closer {
     color: red;
     display: block;
-    font-size: 18px;
+    font-size: 1.2em;
     font-weight: bold;
     position: absolute;
     right: 50px;
@@ -337,10 +339,10 @@ table {
 
     b {
       color: red;
-      font-size: 130%;
       .coloured-shadow(0, 0, 2px, rgba(255,0,0,.5));
     }
   }
+
   a {
     color: @color_marked3;
   }
@@ -372,7 +374,7 @@ table {
 .errorlist {
   background: url(../img/bullet-error.png) no-repeat 0 center transparent;
   .error-theme();
-  font-size: 12px;
+  font-size: .8em;
   margin-left: 0px;
   padding-left: 30px;
 }
@@ -380,9 +382,9 @@ table {
 header {
   background: #333;
   border-bottom: 1px solid #111;
-  font-size: .9em;
+  font-size: 1em;
   height: 65px;
-  line-height: .9em;
+  line-height: 1em;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -396,13 +398,13 @@ nav {
 
   h3 {
     clear: both;
-    font-size: 16px;
-    margin: 0 0 5px;
+    font-size: 1.1em;
+    margin: 3px 0 6px;
     width: 100%;
   }
 
   h4 {
-    font-size: 12px;
+    font-size: 0.9em;
     line-height: 1.1em;
   }
 
@@ -422,6 +424,7 @@ nav {
       &:hover > a {
         background-color: @color_nav-hover;
       }
+
       a {
         .coloured-shadow(0px, 1px, 2px, rgba(0, 0, 0, .5));
         border-bottom: none;
@@ -460,7 +463,7 @@ nav {
         padding: 7px 3px 7px 7px;
 
         &:hover {
-          text-shadow: rgba(255, 255, 255, .9) 1px 1px 1px;
+          .box-shadow(inset -2px 0 20px @color_nav-hover);
         }
 
         h3 {
@@ -500,7 +503,7 @@ nav {
   body.about & #nav-about a,
   body.using & #nav-using a,
   body.contrib & #nav-contrib a{
-    background: @color_nav-hover;
+    background-color: rgba(0,0,0,.4);
     text-shadow: rgba(0, 0, 0, .9) 0px 1px 2px;
 
     h4 {
@@ -530,12 +533,10 @@ nav {
     width: @page-width;
 
     h1 {
-      opacity: 0;
+      .opacity(0);
 
       span {
-        font-family: "arial black";
-        font-size: 50px;
-        font-weight: bold;
+        font-size: 3.2em;
         color: #888;
       }
     }
@@ -563,7 +564,7 @@ nav {
 
     h2 {
       font-size: 1.1em;
-      line-height: 38px;
+      line-height: 2.2em;
       margin: 0 0 3px;
       text-shadow: 0px 1px 0px #fff;
     }
@@ -572,7 +573,6 @@ nav {
       border-left: 1px solid #fff;
       color: inherit;
       float: right;
-      font-size: 14px;
       line-height: 18px;
       padding-left: 10px;
       text-decoration: none;
@@ -584,7 +584,7 @@ nav {
       }
 
       &.sec-link {
-        font-size: 80%;
+        font-size: .8em;
         text-align: right;
       }
     }
@@ -628,12 +628,17 @@ nav {
   }
 }
 
+.big_image {
+  float: right;
+  margin: 20px 0;
+}
+
 .tabbed {
   margin-left: 42px !important;
 }
 
 small {
-  font-size: 80% !important;
+  font-size: .8em;
 }
 
 .win_downloads {
@@ -661,24 +666,21 @@ div.content {
     border-bottom: 1px dotted #555;
     color: #FFF;
     font-family: @font-family1;
-    font-size: 1.8em;
+    font-size: 2em;
     font-weight: normal;
-    line-height: 1.8em;
+    line-height: 2.2em;
     margin: 20px 0px;
     padding-bottom: 8px;
     text-shadow: 0 2px 5px #111;
   }
 
   h3 {
-    font-size: 20px;
-    line-height: 45px;
+    font-size: 1.4em;
+    line-height: 1.6em;
     margin: 15px 0 10px;
   }
 
   p {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.7em;
     margin: 10px 0;
   }
 
@@ -742,18 +744,20 @@ div.content {
     }
 
     &#using {
-      li {
-        height: 260px;
+      ul {
+        li {
+          height: 260px;
+          width: 209px;
 
-        a {
-          top: 0;
+          a {
+            top: 0;
+          }
         }
       }
     }
 
     &#ninja_requirements {
       table {
-        font-size: 14px;
         tr {
           border-bottom: 1px solid rgba(255, 255, 255, .1);
         }
@@ -764,22 +768,26 @@ div.content {
     }
 
     &#downloads {
-      h2 {
+      h2, h3 {
         padding-left: 42px;
-        margin-top: 40px;
+        margin-top: 1.5em;
+      }
+
+      p {
+        margin-left: 42px;
       }
 
       table {
-        .rounded(8px);
-        .drop-shadow(0, 5px, 15px, .5);
         background: rgba(255, 255, 255, .08);
         border-collapse: separate;
+        border-spacing: 0;
         border-color: #555 #333 #202020;
         display: block;
-        font-size: 14px;
         margin-bottom: 10px;
         margin-left: 42px;
-        table-layout: auto;
+        width: 582px;
+        .drop-shadow(0, 5px, 15px, .5);
+        .rounded(8px);
 
         tr {
           border: 0;
@@ -801,11 +809,11 @@ div.content {
           }
 
           th, td{
-            border-bottom: 2px solid #191919;
-            border-top: 1px solid #444;
+            border-bottom: 1px solid #191919;
+            border-top: 1px solid #555;
             padding: 10px 20px;
             vertical-align: middle;
-            width: 36%;
+            width: 195px;
 
             &:first-child {
               //min-width: 140px;
@@ -838,6 +846,7 @@ div.content {
           width: 100%;
 
           img{
+            margin-bottom: 20px;
             margin-right: 30px;
             float: left;
             display: block;
@@ -853,34 +862,29 @@ div.content {
             }
           }
 
-          h2, p {
-          }
-
           h2 {
+            line-height: 1.2em;
             margin-top: 0;
-          }
-
-          p {
-            /*font-size: 13px;*/
           }
 
           .irc-nick {
             color: @color_marked;
-            font-size: 80%;
+            font-size: .8em;
           }
+
           .contact-info {
             float: right;
-            font-size: 12px;
+            font-size: .8em;
 
             a {
               float: right;
             }
           }
 
-          &:first-child{
+          &:first-child {
             border-top: none;
           }
-          &:last-child{
+          &:last-child {
             border-bottom: none;
           }
         }
@@ -963,15 +967,10 @@ div.content {
       float: left;
     }
 
-    .plugin-rate,
-    .plugin-rate-times {
-      /*color: @color_marked;*/
-    }
-
     .plugin-rate {
       color: @color_marked3;
       .coloured-shadow(0, 0, 3px, @color_marked3);
-      font-size: 26px;
+      font-size: 1.8em;
     }
   }
 
@@ -1016,7 +1015,7 @@ div.content {
 }
 .extract {
   p {
-    font-size: 13px;
+    font-size: .9em;
     margin: 2px 0;
   }
 }
@@ -1029,6 +1028,10 @@ div.content {
 .left {
   clear: left !important;
   float: left;
+}
+.clearfix {
+  clear: both !important;
+  float: none !important;
 }
 
 .item-list {
@@ -1051,12 +1054,11 @@ div.content {
     .msg {
       background: @color_marked2;
       color: #000;
+      margin-bottom: 5px;
       padding: 5px 10px;
       .rounded(5px);
-      margin-bottom: 5px;
 
       p {
-        line-height: inherit;
         margin: 0;
       }
     }
@@ -1084,7 +1086,7 @@ div.content {
 .item-tags {
   background: url('../img/tag_green.png') no-repeat 0 0 transparent;
   color: @color_marked;
-  font-size: 12px;
+  font-size: .8em;
   margin: 5px 0;
   overflow: hidden;
   padding-left: 30px;
@@ -1129,9 +1131,10 @@ div.content {
     h3, p {
       padding-left: 70px;
     }
+
     h3 {
       background: url('../img/user-ninja.png') 20px 5px no-repeat transparent;
-      line-height: 32px;
+      line-height: 2em;
       margin: 5px 0;
     }
     p {
@@ -1143,10 +1146,9 @@ div.content {
 footer{
   color: #fff;
   min-height: 370px;
-  width: 100%;
-  position: relative;
   padding: 30px 0 70px;
-  border-top: 1px #000 dotted;
+  position: relative;
+  width: 100%;
 
   .footer-wrap {
     background: rgba(255, 255, 255, .045);
@@ -1158,8 +1160,8 @@ footer{
     .disclaimer {
       bottom: 1px;
       color: @color_marked2;
-      font-size: 13px;
-      line-height: 20px;
+      font-size: .9em;
+      line-height: 1.3em;
       margin: 0;
       padding: 10px;
       position: absolute;
@@ -1186,8 +1188,8 @@ footer{
 
       &#last-submissions {
         h2 {
-          padding-left: 40px;
           background: url("../img/brick_add.png") 0 0 no-repeat transparent;
+          padding-left: 40px;
         }
 
         .submission-log {
@@ -1216,20 +1218,18 @@ footer{
         margin-right: 0;
 
         h2 {
-          padding-left: 40px;
           background: url("../img/coins_add.png") 0 0 no-repeat transparent;
+          padding-left: 40px;
         }
 
         p {
           text-align: justify;
         }
 
-        a {
-          &.big-red-button {
-            font-family: @titlesFont;
-            margin: 30px auto;
-            width: 200px;
-          }
+        a.big-red-button {
+          font-family: @titlesFont;
+          margin: 30px auto;
+          width: 200px;
         }
       }
     }
@@ -1244,10 +1244,6 @@ footer{
 .options {
   display: block;
   margin: 5px 0;
-}
-
-.right {
-  float: right;
 }
 
 
@@ -1278,8 +1274,7 @@ footer{
       }
 
       p {
-        font-size: 12px;
-        line-height: 1.4em !important;
+        font-size: .8em;
       }
     }
 
@@ -1427,12 +1422,23 @@ footer{
 .colors-preview {
   float: right;
 }
+
 .color-block {
-  float: left;
   display: block;
+  float: left;
   height: 30px;
   margin-right: 3px;
   width: 15px;
+}
+
+h2 {
+  a {
+    .transition(.5s);
+
+    &:hover {
+      .coloured-shadow(0, 0, 5px, lighten(@color_marked, 20%));
+    }
+  }
 }
 
 @import "sufix.css";

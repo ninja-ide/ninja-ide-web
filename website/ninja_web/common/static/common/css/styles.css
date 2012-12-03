@@ -48,9 +48,9 @@
 }
 body {
   background: url("../img/bg-dark_grain.png") #333333;
-  font-family: "Nova Square";
-  font-size: 14px;
+  font-size: 15px;
   font-size: 100%;
+  font-family: "Anaheim", sans-serif;
   line-height: 1.125em;
 }
 h1,
@@ -61,20 +61,20 @@ h4 {
   font-weight: normal;
 }
 p,
-span,
 ul,
 ol,
 table {
-  font-family: "Gafata", sans-serif;
+  font-family: "Anaheim", sans-serif;
+  line-height: 1.5em;
 }
 h2 {
-  font-size: 1.3em;
+  font-size: 1.6em;
   margin: 20px 0 10px;
-  line-height: 32px;
+  line-height: 2em;
 }
 h3 {
   color: #ffa500;
-  font-size: 18px;
+  font-size: 1.2em;
   font-weight: normal;
   margin: 20px 0;
 }
@@ -84,14 +84,14 @@ h3.author {
 }
 h4 {
   color: #aaa;
-  font-size: .84em;
+  font-size: .85em;
   font-weight: normal;
 }
 pre,
 code,
 kbd,
 samp {
-  font-size: 12px !important;
+  font-size: .85em !important;
 }
 a {
   color: #ffa500;
@@ -135,7 +135,7 @@ a.big-red-button {
   border-bottom: none;
   color: #FFF;
   display: block;
-  font-size: 24px;
+  font-size: 1.6em;
   margin: 5px auto;
   padding: 20px 20px;
   text-align: center;
@@ -161,12 +161,6 @@ a.big-red-button:hover {
   -o-text-shadow: 0 0 5px #ffffff;
   -moz-text-shadow: 0 0 5px #ffffff;
   text-shadow: 0 0 5px #ffffff;
-}
-p,
-ul,
-ol {
-  font-size: 15px;
-  line-height: 1.4em;
 }
 p a,
 ul a,
@@ -299,7 +293,7 @@ table.styled-table input[type="submit"]:hover {
 .modal .modal-closer {
   color: red;
   display: block;
-  font-size: 18px;
+  font-size: 1.2em;
   font-weight: bold;
   position: absolute;
   right: 50px;
@@ -343,7 +337,6 @@ table.styled-table input[type="submit"]:hover {
 }
 .modal p b {
   color: red;
-  font-size: 130%;
   -webkit-text-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
   -o-text-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
   -moz-text-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
@@ -379,16 +372,16 @@ table.styled-table input[type="submit"]:hover {
   -o-text-shadow: 0px 0px 8px #cc0000;
   -moz-text-shadow: 0px 0px 8px #cc0000;
   text-shadow: 0px 0px 8px #cc0000;
-  font-size: 12px;
+  font-size: .8em;
   margin-left: 0px;
   padding-left: 30px;
 }
 header {
   background: #333;
   border-bottom: 1px solid #111;
-  font-size: .9em;
+  font-size: 1em;
   height: 65px;
-  line-height: .9em;
+  line-height: 1em;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -419,12 +412,12 @@ nav {
 }
 nav h3 {
   clear: both;
-  font-size: 16px;
-  margin: 0 0 5px;
+  font-size: 1.1em;
+  margin: 3px 0 6px;
   width: 100%;
 }
 nav h4 {
-  font-size: 12px;
+  font-size: 0.9em;
   line-height: 1.1em;
 }
 nav ul {
@@ -488,7 +481,10 @@ nav ul li#nav-login {
   padding: 7px 3px 7px 7px;
 }
 nav ul li#nav-login:hover {
-  text-shadow: rgba(255, 255, 255, 0.9) 1px 1px 1px;
+  -webkit-box-shadow: inset -2px 0 20px #111111;
+  -moz-box-shadow: inset -2px 0 20px #111111;
+  -o-box-shadow: inset -2px 0 20px #111111;
+  box-shadow: inset -2px 0 20px #111111;
 }
 nav ul li#nav-login h3 {
   color: #000;
@@ -521,7 +517,7 @@ body.plugins nav #nav-plugins a,
 body.about nav #nav-about a,
 body.using nav #nav-using a,
 body.contrib nav #nav-contrib a {
-  background: #111111;
+  background-color: rgba(0, 0, 0, 0.4);
   text-shadow: rgba(0, 0, 0, 0.9) 0px 1px 2px;
 }
 body.features nav #nav-features a h4,
@@ -554,12 +550,13 @@ body.contrib nav #nav-contrib a h4 {
   width: 1000px;
 }
 #splash #splash-wrap h1 {
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  -webkit-opacity: 0;
   opacity: 0;
 }
 #splash #splash-wrap h1 span {
-  font-family: "arial black";
-  font-size: 50px;
-  font-weight: bold;
+  font-size: 3.2em;
   color: #888;
 }
 #splash #download-latest-box {
@@ -591,7 +588,7 @@ body.contrib nav #nav-contrib a h4 {
 }
 #splash #download-latest-box h2 {
   font-size: 1.1em;
-  line-height: 38px;
+  line-height: 2.2em;
   margin: 0 0 3px;
   text-shadow: 0px 1px 0px #fff;
 }
@@ -599,7 +596,6 @@ body.contrib nav #nav-contrib a h4 {
   border-left: 1px solid #fff;
   color: inherit;
   float: right;
-  font-size: 14px;
   line-height: 18px;
   padding-left: 10px;
   text-decoration: none;
@@ -610,7 +606,7 @@ body.contrib nav #nav-contrib a h4 {
   padding-bottom: 10px;
 }
 #splash #download-latest-box a.sec-link {
-  font-size: 80%;
+  font-size: .8em;
   text-align: right;
 }
 #splash #download-latest-box small {
@@ -652,11 +648,15 @@ body.contrib nav #nav-contrib a h4 {
   -moz-text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.9);
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.9);
 }
+.big_image {
+  float: right;
+  margin: 20px 0;
+}
 .tabbed {
   margin-left: 42px !important;
 }
 small {
-  font-size: 80% !important;
+  font-size: .8em;
 }
 .win_downloads {
   background: url("../img/download_for_win.png") 0 0 no-repeat transparent;
@@ -674,8 +674,6 @@ small {
   background: url("../img/siren.png") 0 0 no-repeat transparent;
 }
 div.content {
-  /*background-color: #333;*/
-
   color: #cccccc;
   width: 960px;
   padding: 20px;
@@ -687,22 +685,19 @@ div.content h1 {
   border-bottom: 1px dotted #555;
   color: #FFF;
   font-family: "Nova Square", arial, sans-serif;
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: normal;
-  line-height: 1.8em;
+  line-height: 2.2em;
   margin: 20px 0px;
   padding-bottom: 8px;
   text-shadow: 0 2px 5px #111;
 }
 div.content h3 {
-  font-size: 20px;
-  line-height: 45px;
+  font-size: 1.4em;
+  line-height: 1.6em;
   margin: 15px 0 10px;
 }
 div.content p {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.7em;
   margin: 10px 0;
 }
 div.content .section {
@@ -758,14 +753,12 @@ div.content .section#using ul li a {
   top: -10px;
   white-space: nowrap;
 }
-div.content .section#using li {
+div.content .section#using ul li {
   height: 260px;
+  width: 209px;
 }
-div.content .section#using li a {
+div.content .section#using ul li a {
   top: 0;
-}
-div.content .section#ninja_requirements table {
-  font-size: 14px;
 }
 div.content .section#ninja_requirements table tr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -773,26 +766,30 @@ div.content .section#ninja_requirements table tr {
 div.content .section#ninja_requirements table td:first-child {
   max-width: 190px;
 }
-div.content .section#downloads h2 {
+div.content .section#downloads h2,
+div.content .section#downloads h3 {
   padding-left: 42px;
-  margin-top: 40px;
+  margin-top: 1.5em;
+}
+div.content .section#downloads p {
+  margin-left: 42px;
 }
 div.content .section#downloads table {
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-color: #555 #333 #202020;
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 42px;
+  width: 582px;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.08);
-  border-collapse: separate;
-  border-color: #555 #333 #202020;
-  display: block;
-  font-size: 14px;
-  margin-bottom: 10px;
-  margin-left: 42px;
-  table-layout: auto;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 div.content .section#downloads table tr {
   border: 0;
@@ -810,11 +807,11 @@ div.content .section#downloads table tr:hover {
 }
 div.content .section#downloads table tr th,
 div.content .section#downloads table tr td {
-  border-bottom: 2px solid #191919;
-  border-top: 1px solid #444;
+  border-bottom: 1px solid #191919;
+  border-top: 1px solid #555;
   padding: 10px 20px;
   vertical-align: middle;
-  width: 36%;
+  width: 195px;
 }
 div.content .section#downloads table tr th a:hover,
 div.content .section#downloads table tr td a:hover {
@@ -833,6 +830,7 @@ div.content .section#aboutus ul#ninja_members li {
   width: 100%;
 }
 div.content .section#aboutus ul#ninja_members li img {
+  margin-bottom: 20px;
   margin-right: 30px;
   float: left;
   display: block;
@@ -851,19 +849,16 @@ div.content .section#aboutus ul#ninja_members li:hover img {
   box-shadow: 0 0 20px #ffa500;
 }
 div.content .section#aboutus ul#ninja_members li h2 {
+  line-height: 1.2em;
   margin-top: 0;
-}
-div.content .section#aboutus ul#ninja_members li p {
-  /*font-size: 13px;*/
-
 }
 div.content .section#aboutus ul#ninja_members li .irc-nick {
   color: #ffa500;
-  font-size: 80%;
+  font-size: .8em;
 }
 div.content .section#aboutus ul#ninja_members li .contact-info {
   float: right;
-  font-size: 12px;
+  font-size: .8em;
 }
 div.content .section#aboutus ul#ninja_members li .contact-info a {
   float: right;
@@ -937,20 +932,13 @@ div.content .section#plugin-form table {
   float: left;
 }
 .options .rate-container .plugin-rate,
-.options .download-container .plugin-rate,
-.options .rate-container .plugin-rate-times,
-.options .download-container .plugin-rate-times {
-  /*color: @color_marked;*/
-
-}
-.options .rate-container .plugin-rate,
 .options .download-container .plugin-rate {
   color: #ff0000;
   -webkit-text-shadow: 0 0 3px #ff0000;
   -o-text-shadow: 0 0 3px #ff0000;
   -moz-text-shadow: 0 0 3px #ff0000;
   text-shadow: 0 0 3px #ff0000;
-  font-size: 26px;
+  font-size: 1.8em;
 }
 .options .download-container a.button {
   background: #add8e6;
@@ -1000,7 +988,7 @@ div.content .section#plugin-form table {
   margin-top: -7px;
 }
 .extract p {
-  font-size: 13px;
+  font-size: .9em;
   margin: 2px 0;
 }
 .right {
@@ -1010,6 +998,10 @@ div.content .section#plugin-form table {
 .left {
   clear: left !important;
   float: left;
+}
+.clearfix {
+  clear: both !important;
+  float: none !important;
 }
 .item-list {
   font-size: .85em;
@@ -1035,14 +1027,13 @@ div.content .section#plugin-form table {
 .item-list .item .msg {
   background: #add8e6;
   color: #000;
+  margin-bottom: 5px;
   padding: 5px 10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  margin-bottom: 5px;
 }
 .item-list .item .msg p {
-  line-height: inherit;
   margin: 0;
 }
 .item-list .item .item-header {
@@ -1061,7 +1052,7 @@ div.content .section#plugin-form table {
 .item-tags {
   background: url('../img/tag_green.png') no-repeat 0 0 transparent;
   color: #ffa500;
-  font-size: 12px;
+  font-size: .8em;
   margin: 5px 0;
   overflow: hidden;
   padding-left: 30px;
@@ -1100,7 +1091,7 @@ div.content .section#plugin-form table {
 }
 .ninja-people li h3 {
   background: url('../img/user-ninja.png') 20px 5px no-repeat transparent;
-  line-height: 32px;
+  line-height: 2em;
   margin: 5px 0;
 }
 .ninja-people li p {
@@ -1109,15 +1100,12 @@ div.content .section#plugin-form table {
 footer {
   color: #fff;
   min-height: 370px;
-  width: 100%;
-  position: relative;
   padding: 30px 0 70px;
-  border-top: 1px #000 dotted;
+  position: relative;
+  width: 100%;
 }
 footer .footer-wrap {
   background: rgba(255, 255, 255, 0.045);
-  /*background-color: #333;*/
-
   color: #cccccc;
   width: 960px;
   padding: 20px;
@@ -1135,8 +1123,8 @@ footer .footer-wrap {
 footer .footer-wrap .disclaimer {
   bottom: 1px;
   color: #add8e6;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: .9em;
+  line-height: 1.3em;
   margin: 0;
   padding: 10px;
   position: absolute;
@@ -1159,8 +1147,8 @@ footer .footer-wrap .section p {
   margin-bottom: 10px;
 }
 footer .footer-wrap .section#last-submissions h2 {
-  padding-left: 40px;
   background: url("../img/brick_add.png") 0 0 no-repeat transparent;
+  padding-left: 40px;
 }
 footer .footer-wrap .section#last-submissions .submission-log {
   border-bottom: 1px dotted #555;
@@ -1181,8 +1169,8 @@ footer .footer-wrap .section#donate {
   margin-right: 0;
 }
 footer .footer-wrap .section#donate h2 {
-  padding-left: 40px;
   background: url("../img/coins_add.png") 0 0 no-repeat transparent;
+  padding-left: 40px;
 }
 footer .footer-wrap .section#donate p {
   text-align: justify;
@@ -1199,9 +1187,6 @@ footer .footer-wrap .section#donate a.big-red-button {
 .options {
   display: block;
   margin: 5px 0;
-}
-.right {
-  float: right;
 }
 /* twitter plugin */
 .twtr-widget a:hover,
@@ -1232,8 +1217,7 @@ footer .footer-wrap .section#donate a.big-red-button {
 }
 .twtr-widget .twtr-doc .twtr-bd p,
 .twtr-widget[id^=twtr-widget-] .twtr-doc .twtr-bd p {
-  font-size: 12px;
-  line-height: 1.4em !important;
+  font-size: .8em;
 }
 .twtr-widget .twtr-doc .twtr-tweet,
 .twtr-widget[id^=twtr-widget-] .twtr-doc .twtr-tweet {
@@ -1400,9 +1384,21 @@ footer .footer-wrap .section#donate a.big-red-button {
   float: right;
 }
 .color-block {
-  float: left;
   display: block;
+  float: left;
   height: 30px;
   margin-right: 3px;
   width: 15px;
+}
+h2 a {
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+h2 a:hover {
+  -webkit-text-shadow: 0 0 5px #ffc966;
+  -o-text-shadow: 0 0 5px #ffc966;
+  -moz-text-shadow: 0 0 5px #ffc966;
+  text-shadow: 0 0 5px #ffc966;
 }

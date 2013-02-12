@@ -52,6 +52,17 @@
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script type="text/javascript" src="{% static 'common/js/libs/modernizr-1.7.min.js' %}"></script>
 
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    (function() {
+      var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+      t.parentNode.insertBefore(s, t);
+    })();
+    /* ]]> */
+  </script>
 </head>
 
 <body class="{% block bodyclass %}{% endblock %}"
@@ -198,9 +209,36 @@
         <div class="section" id="donate">
           <h2>We aren't rich ninjas</h2>
           <p>You are enjoying <a href="/">Ninja-IDE</a> because we trained a lot, punching & kicking wooden dummies, and then we CODE THE THING !!!</p>
+
           <p>That said, if you consider yourself an honoured warrior <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">consider to make a donation</a> so we can buy new weapons.</p>
-          <p>This button below will be reduced on each donation received. So when donations are sufficient it will be no longer visible.</p>
-          <p><a class="big-red-button action_donate" id="huge_donation_button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">DONATE</a></p>
+
+          <p>We are currently receiving donations through PayPal and Flattr. So feel free to using any of them and support us with any amount you think Ninja-IDE deserves.</p>
+
+          <div class="donate-method">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="diego.sarmentero@gmail.com">
+            <input type="hidden" name="lc" value="US">
+            <input type="hidden" name="item_name" value="Ninja-IDE">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>
+          </div><!-- /.donate-method -->
+
+          <div class="donate-method">
+            <a class="FlattrButton" style="display:none;"
+               href="http://ninja-ide.org"></a>
+            <noscript>
+              <a href="http://flattr.com/thing/1111457/NINJA-IDE" target="_blank">
+                <img src="http://api.flattr.com/button/flattr-badge-large.png"
+                     alt="Flattr this" title="Flattr this" border="0"
+              />
+              </a>
+            </noscript>
+          </div><!-- /.donate-method -->
         </div>
 
         <div class="disclaimer">

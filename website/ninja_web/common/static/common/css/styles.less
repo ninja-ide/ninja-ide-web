@@ -94,7 +94,7 @@ h3 {
   margin: 20px 0;
 
   &.author {
-    background: url(/media/img/user.png) no-repeat 0 center transparent;
+    background: url(/static/img/user.png) no-repeat 0 center transparent;
     padding-left: 40px !important;
   }
 }
@@ -398,8 +398,9 @@ nav {
 
   h3 {
     clear: both;
-    font-size: 1.1em;
+    font-size: .9em;
     margin: 3px 0 6px;
+    text-transform: uppercase;
     width: 100%;
   }
 
@@ -434,7 +435,7 @@ nav {
         font-size: inherit;
         font-family: inherit;
         height: 52px;
-        padding: 7px 3px 7px 7px;
+        padding: 7px 3px 7px 10px;
         text-decoration: none;
         width: 100%;
         .transition(0.8s);
@@ -642,16 +643,16 @@ small {
 }
 
 .win_downloads {
-  background: url("../img/download_for_win.png") 0 0 no-repeat transparent;
+  background: url("../img/download_for_win.png") 0 center no-repeat transparent;
 }
 .linux_downloads {
-  background: url("../img/download_for_linux.png") 0 0 no-repeat transparent;
+  background: url("../img/download_for_linux.png") 0 center no-repeat transparent;
 }
 .mac_downloads {
-  background: url("../img/download_for_mac.png") 0 0 no-repeat transparent;
+  background: url("../img/download_for_mac.png") 0 center no-repeat transparent;
 }
 .source_downloads {
-  background: url("../img/box_down.png") 0 0 no-repeat transparent;
+  background: url("../img/box_down.png") 0 center no-repeat transparent;
 }
 
 .warning {
@@ -1250,6 +1251,7 @@ footer{
 /* twitter plugin */
 .twtr-widget,
 .twtr-widget[id^=twtr-widget-] {
+  font-size: 16px !important;
   a:hover {
     .coloured-shadow(0,0,0,0);
   }
@@ -1439,6 +1441,13 @@ h2 {
       .coloured-shadow(0, 0, 5px, lighten(@color_marked, 20%));
     }
   }
+}
+
+.donate-method {
+  float: left;
+  margin: 20px 0 0;
+  text-align: center;
+  width: 150px;
 }
 
 @import "sufix.css";

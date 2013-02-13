@@ -11,3 +11,13 @@ class DownloadUrl(models.Model):
 
     def __unicode__(self):
         return u'Download URL for %s' % (self.os, )
+
+
+class PeopleUsing(models.Model):
+    name = models.CharField(max_length=300)
+    website = models.URLField(verbose_name=(u'Download URL'), blank=True)
+    logo = models.ImageField(upload_to="using/")
+    brief = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return u'%s' % self.name

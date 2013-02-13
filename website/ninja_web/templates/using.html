@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n static thumbnail %}
 
 {% block bodyclass %}using{% endblock %}
 
@@ -12,54 +12,57 @@
 
           <h2>Take a look at how many cool people are kicking asses at ninja-style.</h2>
 
-          <p>You think you must be on this list? <br />Well, <a href="mailto:dojo@ninja-ide.org">tell us</a> and we'll maybe consider it. Or maybe not. Although we'll probably do it. Or not. Do you feel any <a href="mailto:dojo@ninja-ide.org">lucky</a>?</p>
+          <p>If you think you must be on this rocking coding-stars list, then <a href="mailto:dojo@ninja-ide.org">tell us</a> and we'll maybe consider it. Or maybe not. Although we'll probably do it, maybe we won't. Are you feeeling lucky? <a href="mailto:dojo@ninja-ide.org">Try us.</a></p>
 
           <ul id="using_ninjas">
+            {% for ninja in people_using %}
+            <li {% if forloop.counter|divisibleby:3 %}class="last-of-row"{% endif %}>
+              {% thumbnail ninja.logo "211x95" crop="center" as thumb %}
+              <img src="{{ thumb.url }}" alt="machinalis_logo" />
+              {% endthumbnail %}
+              <h2>{{ ninja.name }}</h2>
+              <p>{{ ninja.brief }}</p>
+              <a class="link-web" href="{{ ninja.website }}">{{ ninja.name }}</a>
+            </li>
+            {% endfor %}
 
             <li>
-              <img src="../media/img/using/machinalis.png" alt="machinalis_logo" />
+              <img src="{% static 'common/img/using/machinalis.png' %}" alt="machinalis_logo" />
               <h2>Machinalis</h2>
               <p>Awesome ninjas.</p>
               <a class="link-web" href="http://www.machinalis.com">machinalis</a>
             </li>
 
             <li>
-              <img src="../media/img/using/famaf.png" alt="famaf_logo" />
+              <img src="{% static 'common/img/using/famaf.png' %}" alt="famaf_logo" />
               <h2>FaMAF</h2>
               <p>Awesome school of ninjas.</p>
               <a class="link-web" href="http://www.famaf.unc.edu.ar">FaMAF</a>
             </li>
 
             <li>
-              <img src="../media/img/using/iespiramide.png" alt="iespiramide_logo" />
+              <img src="{% static 'common/img/using/iespiramide.png' %}" alt="iespiramide_logo" />
               <h2>IES Pirámide</h2>
               <p>Awesome spanish school of ninjas.</p>
               <a class="link-web" href="http://www.iespiramide.org/web/indice.asp">IES Pirámide</a>
             </li>
 
-            <!-- 
             <li class="last-of-row">
-              <img src="../media/img/using/dot3.png" alt="dot3_logo" />
-              <h2>Dot3</h2>
-              <p>Awesome dotted ninjas.</p>
-              <a class="link-web" href="http://www.dot3.com.ar">Dot3</a>
-            </li>
-            -->
-
-            <li class="last-of-row">
-              <img src="../media/img/using/airtrack.png" alt="airtrack_logo" />
+              <img src="{% static 'common/img/using/airtrack.png' %}" alt="airtrack_logo" />
               <h2>Airtrack</h2>
               <p>Awesome satellite ninjas.</p>
               <a class="link-web" href="http://www.airtrack.com.ar">Airtrack</a>
             </li>
 
             <li>
-              <img src="../media/img/using/ninja-ide.png" alt="ninja-ide_logo" />
+              <img src="{% static 'common/img/using/ninja-ide.png' %}" alt="ninja-ide_logo" />
               <h2>Ninja IDE</h2>
               <p>This is so obvious that it hurts. For real.</p>
               <a class="link-web" href="http://www.ninja-ide.org">Ninja IDE</a>
             </li>
-            
+
+            <li class="clearfix"></li>
+
           </ul>
 
         </div><!-- /#aboutus -->

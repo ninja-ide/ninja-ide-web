@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load static %}
+{% load url from future %}
 
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -22,22 +24,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-  <link rel="icon" href="/media/img/favicon.ico" />
-  <link rel="shortcut icon" href="/media/img/favicon.ico" />
-  <link rel="apple-touch-icon" href="/media/img/apple-touch-icon.png" />
+  <link rel="icon" href="{% static 'common/img/favicon.ico' %}" />
+  <link rel="shortcut icon" href="{% static 'common/img/favicon.ico' %}" />
+  <link rel="apple-touch-icon" href="{% static 'common/img/apple-touch-icon.png' %}" />
 
   <!-- Fonts from google -->
-  <!--link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'-->
-
+  <link href='http://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css' />
 
   <!-- CSS: implied media="all" -->
 
   {% if use_lessjs %}
-  <link type="text/less" rel="stylesheet" href="/media/css/styles.less" charset="utf-8" />
+  <script type="text/javascript" src="{% static 'common/js/less-1.2.1.min.js' %}"></script>
+  <link type="text/less" rel="stylesheet" href="{% static 'common/css/styles.less' %}" charset="utf-8" />
 
   {% else %}
-  <link rel="stylesheet" href="/media/css/styles.css" />
+  <link rel="stylesheet" href="{% static 'common/css/styles.css' %}" />
   {% endif %}
 
   {% block styles %}
@@ -48,8 +50,19 @@
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">-->
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
-  <script type="text/javascript" src="/media/js/libs/modernizr-1.7.min.js"></script>
+  <script type="text/javascript" src="{% static 'common/js/libs/modernizr-1.7.min.js' %}"></script>
 
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    (function() {
+      var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+      t.parentNode.insertBefore(s, t);
+    })();
+    /* ]]> */
+  </script>
 </head>
 
 <body class="{% block bodyclass %}{% endblock %}"
@@ -59,50 +72,50 @@
       <nav>
         <ul>
           <li id="nav-home">
-            <a href="/">
-              <img src="/media/img/nav-logo.png" alt="Ninja-IDE" />
+            <a href="{% url 'home' %}">
+              <img src="{% static 'common/img/nav-logo.png' %}" alt="Ninja-IDE" />
             </a>
           </li>
 
           <!--li id="nav-features">
-            <a href="/features">
+            <a href="{% url 'features' %}">
               <h3>Features</h3>
               <h4>Our ninja weapons</h4>
             </a>
           </li-->
 
           <li id="nav-downloads">
-            <a href="/downloads">
+            <a href="{% url 'downloads' %}">
               <h3>Downloads</h3>
-              <h4>Get your own ninja suit now!</h4>
+              <h4>Get your ninja suit!</h4>
             </a>
           </li>
 
           <li id="nav-plugins">
-            <a href="/plugins">
+            <a href="{% url 'plugins' %}">
               <h3>Plugins</h3>
-              <h4>Our Senseis' new stuff</h4>
+              <h4>Our Senseis' stuff</h4>
             </a>
           </li>
 
           <li id="nav-about">
-            <a href="/about">
+            <a href="{% url 'about' %}">
               <h3>About</h3>
               <h4>Meet our dojo</h4>
             </a>
           </li>
 
           <li id="nav-contrib">
-            <a href="/contrib">
-              <h3>Contrib</h3>
+            <a href="{% url 'contribute' %}">
+              <h3>Contribute</h3>
               <h4>Become a sensei</h4>
             </a>
           </li>
 
           <li id="nav-using">
-            <a href="/using">
-              <h3>Who is using?</h3>
-              <h4>Certified Ninjas using Ninja-IDE</h4>
+            <a href="{% url 'using' %}">
+              <h3>Who's using?</h3>
+              <h4>Certified Ninjas</h4>
             </a>
           </li>
 
@@ -111,11 +124,11 @@
               <h3><a href="{% url user_detail request.user.username %}">My dojo</a></h3>
               <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %}
               <br />
-              <a id="logout" href="{% url auth_logout %}">Logout</a>
+              <a id="logout" href="{% url 'auth_logout' %}">Logout</a>
               </h4>
             {% else %}
               <h3>Ninja Login</h3>
-              <h4><a href="{% url auth_login %}">Login or Sign up</a></h4>
+              <h4><a href="{% url 'auth_login' %}">Login or Sign up</a></h4>
             {% endif %}
           </li>
           <!--
@@ -184,11 +197,11 @@
           <h2>Last Submissions</h2>
           {#% last_plugins %#}
           <div class="submission-log">
-            <h3><a href="#">Plugin Project<span class="small"> (by Martin Alderete)</small></a></h3>
+            <h3><a href="#">Plugin Project <small>(by Martin Alderete)</small></a></h3>
             <p>This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!</p>
           </div>
           <div class="submission-log">
-            <h3><a href="#">Task<span class="small"> (by Martin Alderete)</small></a></h3>
+            <h3><a href="#">Task <small>(by Martin Alderete)</small></a></h3>
             <p>Organize your task(s)</p>
           </div>
         </div>
@@ -196,9 +209,36 @@
         <div class="section" id="donate">
           <h2>We aren't rich ninjas</h2>
           <p>You are enjoying <a href="/">Ninja-IDE</a> because we trained a lot, punching & kicking wooden dummies, and then we CODE THE THING !!!</p>
+
           <p>That said, if you consider yourself an honoured warrior <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">consider to make a donation</a> so we can buy new weapons.</p>
-          <p>This button below will be reduced on each donation received. So when donations are sufficient it will be no longer visible.</p>
-          <p><a class="big-red-button action_donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">DONATE</a></p>
+
+          <p>We are currently receiving donations through PayPal and Flattr. So feel free to using any of them and support us with any amount you think Ninja-IDE deserves.</p>
+
+          <div class="donate-method">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="diego.sarmentero@gmail.com">
+            <input type="hidden" name="lc" value="US">
+            <input type="hidden" name="item_name" value="Ninja-IDE">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>
+          </div><!-- /.donate-method -->
+
+          <div class="donate-method">
+            <a class="FlattrButton" style="display:none;"
+               href="http://ninja-ide.org"></a>
+            <noscript>
+              <a href="http://flattr.com/thing/1111457/NINJA-IDE" target="_blank">
+                <img src="http://api.flattr.com/button/flattr-badge-large.png"
+                     alt="Flattr this" title="Flattr this" border="0"
+              />
+              </a>
+            </noscript>
+          </div><!-- /.donate-method -->
         </div>
 
         <div class="disclaimer">
@@ -216,11 +256,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
   <script>window.jQuery || document.write("<script type='text/javascript' src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
 
-
-  <!-- scripts concatenated and minified via ant build script-->
-  <script src="/media/js/plugins.js"></script>
-  <!-- end scripts-->
-
+  <script src="{% static 'common/js/plugins.js' %}"></script>
 
   <!--[if lt IE 7 ]>
     <script src="js/libs/dd_belatedpng.js"></script>

@@ -22,39 +22,29 @@
 
 {% endblock %}
 
+
 {% block bodyclass %}plugin-detail{% endblock %}
-{% block bodyid %}plugin_{{plugin.id}}{% endblock %}
+
 
 {% block content %}
   <div class="content">
     <!-- PLUGINS -->
     <div class="section left big-width" id="plugins">
 
-      {% if plugin %}
-      <h1>{{ plugin.name }}
-        <a class="right small" href="{% url plugins %}">Back to Plugins</a>
-      </h1>
+      <h1>{{ plugin.name }}</h1>
+      <h3><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></h3>
+      <h2>{{ plugin.short_description }}</h2>
 
-      <div class="framed">
-        <h2>{{ plugin.name }} <small>- version {{ plugin.version }}</small></h2>
-        <h3 class="author">by <u><a href="{% url user_detail plugin.user.username %}">{{ plugin.user }}</a></u></h3>
-
-        {% include "global/tags.html" with object=plugin %}
+      <div class="item-tags">
+      {% for tag in plugin.get_tags %}
+        <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+      {% endfor %}
       </div>
 
-      <div class="item-detail">
-        {{ plugin.description|linebreaks}}
-      </div>
-
-      {% else %}
-      <h1>This plugin was either removed or ...</h1>
-      <h2>... you are a bot.</h2>
-      <p>Maybe donating to Ninja-IDE gives you the peace you need right now. See our footer.</p>
-      {% endif %}
+      <p>{{ plugin.description }}</p>
 
     </div>
 
-    {% if plugin %}
     <div class="section right small-width" id="rating">
 
       <h1>Download it &amp; Rate it</h1>
@@ -67,7 +57,8 @@
             <span class="plugin-rate-times">( {{ plugin.rate_times }} )</span>
           </div><!-- /rate-wrapper -->
 
-          {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with plugin.id %}
+          {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
+
         </div><!-- /rate-container -->
 
         <div class="download-container">
@@ -83,13 +74,6 @@
       <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>
       <a class="link-web" href="mailto:{{ plugin.user.email }}">Email this ninja.</a>
     </div>
-
-    {% else %}
-    <div class="section right small-width">
-      <h1>Hey you!</h1>
-      <h2>Checkout <a class="buttons" href="{% url plugins %}">Here</a> for plugins.</h2>
-    </div>
-    {% endif %}
 
   </div><!-- /content -->
 {% endblock %}

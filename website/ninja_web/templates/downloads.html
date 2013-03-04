@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n static %}
+{% load url from future %}
 
 {% block bodyclass %}downloads{% endblock %}
 
@@ -28,9 +29,10 @@
         </tr>
       </table>
 
-      <h2>For Ubuntu Users:</h2>
+      <h3>*For Ubuntu Users:</h3>
+      <p>You can add the <b>NINJA-IDE PPA</b> and install it from there, and you will get automatic updates!</p>
+
       <div class="framed">
-        <h3>You can add the <b>NINJA-IDE PPA</b> and install it from there (you will get automatic updates!)</h3>
         <code>
             sudo apt-add-repository ppa:ninja-ide-developers/daily  (Daily updates)<br><br>
             sudo apt-get update<br>
@@ -90,7 +92,7 @@
 
     <div class="section small-width right" id="ninja_requirements">
       <h1>Requirements</h1>
-      <p>In order to have a kickass Ninja-IDE instance you better assure of having all this weapons:</p>
+      <p>In order to have a kickass Ninja-IDE instance you better assure of having all these weapons:</p>
 
       <table class="styled-table">
         <tr>
@@ -106,7 +108,8 @@
 
     <div class="section right small-width" id="more_downloads">
       <h1>More Downloads</h1>
-      <h2><a href="{% url plugins %}">Plugins</a> - <a href="{% url schemes %}">Schemes</a></h2>
+      <h2><a href="{% url 'plugins' %}">Ninja Plugins</a></h2>
+      <h2><a href="{% url 'schemes' %}">Ninja Schemes</a></h2>
     </div>
 </div><!-- /content -->
 {% endblock%}

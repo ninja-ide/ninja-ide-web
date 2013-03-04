@@ -14,6 +14,7 @@ from plugins import views as plugin_views
 from registration.forms import RegistrationFormUniqueEmail
 
 admin_regex = r'^admin/'
+
 try:
     from local_urls import admin_url
     admin_regex = r'^' + admin_url
@@ -25,18 +26,19 @@ urlpatterns = patterns('',
 
     # Sections:
     url(r'^intro/', common_views.intro),
-    url(r'^features/', common_views.features),
-    url(r'^using/', common_views.using),
-    url(r'^downloads/', common_views.downloads),
-    url(r'^contrib/', common_views.contrib),
-    url(r'^about/', common_views.about),
-    url(r'^updates/', common_views.updates),
+    url(r'^home/', common_views.intro, name="home"),
+    url(r'^features/', common_views.features, name="features"),
+    url(r'^using/', common_views.using, name="using"),
+    url(r'^downloads/', common_views.downloads, name="downloads"),
+    url(r'^contribute/', common_views.contrib, name="contribute"),
+    url(r'^about/', common_views.about, name="about"),
+    url(r'^updates/', common_views.updates, name="updates"),
 
     # Plugins:
-    url(r'^plugins/', include('plugins.urls')),
+    url(r'^plugins/', include('plugins.urls'), name="plugins"),
 
     # Schemes:
-    url(r'^schemes/', include('schemes.urls')),
+    url(r'^schemes/', include('schemes.urls'), name="schemes"),
 
     url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag,
                                   name="filter_by_tag"),
@@ -53,7 +55,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('profiles.urls')),
 
     # Homepage:
-    url(r'^$', common_views.intro),
+    url(r'^$', common_views.intro, name="intro"),
 
     # Django admin:
     url(admin_regex, include(admin.site.urls)),

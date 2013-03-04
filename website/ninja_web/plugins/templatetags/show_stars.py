@@ -6,8 +6,8 @@ from django.conf import settings
 register = Library()
 
 # folder inside media that contains the images
-IMG_FOLDER = "img/star-rate/"
-FULL_FOLDER = settings.MEDIA_URL + IMG_FOLDER
+IMG_FOLDER = "common/img/star-rate/"
+FULL_FOLDER = settings.STATIC_URL + IMG_FOLDER
 DIV_TEMPLATE	= "<div class=\"star-rate\" id=\"star_strip_%s\">"
 END_DIV_TEMPLATE= "</div>"
 IMG_TEMPLATE	= "<img border=\"0\" src=\"%s\" alt=\"%s\"/>"
@@ -162,7 +162,7 @@ def do_show_stars(parser, token):
 	if not match:
 		syntax_error()
 
-	return ShowStarsNode(*match.groups())   
+	return ShowStarsNode(*match.groups())
 
 
 def do_show_stars_script(parser, token):

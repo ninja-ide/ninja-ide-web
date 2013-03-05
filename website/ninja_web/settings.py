@@ -145,4 +145,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # Import local_settings file
-from local_settings import *
+try:
+    from local_settings import *
+except ImportError:
+    print "Error importing from local_settings."

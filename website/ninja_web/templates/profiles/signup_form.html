@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load url from future %}
 
 {% block title %}{% trans "Signin" %}{% endblock %}
 
@@ -23,24 +24,24 @@
         {% endfor %}
 
         <p class="forgot-password">
-          <a href="{% url userena_password_reset %}" title="{% trans "Forgot your password?" %}">{% trans "Forgot your password?" %}</a>
+          <a href="{% url 'userena_password_reset' %}" title="{% trans "Forgot your password?" %}">{% trans "Forgot your password?" %}</a>
         </p>
         <br />
         <input type="submit" />
       </fieldset>
     </form>
   </div>
-  
+
   <div class="sidebar right social_login">
     <h2>{% trans "Or Login using..." %}</h2>
 
-    <a href="{% url socialauth_begin "facebook" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+    <a href="{% url 'socialauth_begin' "facebook" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
       <img src="{{ STATIC_URL }}img/facebook_icon.png" />
     </a>
-    <a href="{% url socialauth_begin "twitter" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+    <a href="{% url 'socialauth_begin' "twitter" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
         <img src="{{ STATIC_URL }}img/twitter_icon.png" />
     </a>
-    <a href="{% url socialauth_begin "tumblr" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+    <a href="{% url 'socialauth_begin' "tumblr" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
         <img src="{{ STATIC_URL }}img/tumblr_icon.png" />
     </a>
   </div>

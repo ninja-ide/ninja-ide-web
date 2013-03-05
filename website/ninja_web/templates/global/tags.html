@@ -1,6 +1,8 @@
+{% load url from future %}
+
 <div class="item-tags">
 {% for tag in object.get_tags %}
-  <a href="{% url filter_by_tag tag.id %}" alt="{{ tag }}" title="{{ tag }}">
+  <a href="{% url 'filter_by_tag' tag.id %}" alt="{{ tag }}" title="{{ tag }}">
     {{ tag }}</a>{% if not forloop.last %}, {% endif %}
   {% empty %}
     <a href="#">It has no tags, can believe it?</a>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n show_stars %}
+{% load url from future %}
 
 {% block bodyclass %}scheme-detail{% endblock %}
 
@@ -11,11 +12,11 @@
 
       {% if scheme %}
       <h1>{{ scheme.name }}
-        <a class="right small" href="{% url schemes %}">Back to Schemes</a>
+        <a class="right small" href="{% url 'schemes' %}">Back to Schemes</a>
       </h1>
 
       <div class="framed">
-        <h3 class="author">by <u><a href="{% url user_detail scheme.user.username %}">{{ scheme.user }}</a></u></h3>
+        <h3 class="author">by <u><a href="{% url 'user_detail' scheme.user.username %}">{{ scheme.user }}</a></u></h3>
 
        {% include "global/tags.html" with object=scheme %}
       </div>
@@ -60,7 +61,7 @@
     {% else %}
     <div class="section right small-width">
       <h1>Hey you!</h1>
-      <h2>Checkout <a class="buttons" href="{% url schemes %}">Here</a> for schemes.</h2>
+      <h2>Checkout <a class="buttons" href="{% url 'schemes' %}">Here</a> for schemes.</h2>
     </div>
     {% endif %}
 

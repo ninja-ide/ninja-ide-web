@@ -1,5 +1,7 @@
 {% extends "registration/registration_base.html" %}
 
+{% load url from future %}
+
 {% block title %}Login{% endblock %}
 
 {% block scripts %}
@@ -25,8 +27,8 @@ $(document).ready(function(){
 		{% endif %}
 	</div>
 	{% endif %}
-	
-	<form method="post" action="{% url django.contrib.auth.views.login %}">
+
+	<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
 	{% csrf_token %}
 	<table class="styled-table">
 	<tr>
@@ -43,13 +45,13 @@ $(document).ready(function(){
 		</td>
 	</tr>
 	</table>
-	
+
 	<input type="hidden" name="next" value="{{ next }}" />
 	</form>
 
 	<ul class="options">
-		<li><a href="{% url auth_password_reset %}">Forgot</a> your password?</li>
-		<li>Need a <a href="{% url registration_register %}">brand new account</a>?</li>
+		<li><a href="{% url 'auth_password_reset' %}">Forgot</a> your password?</li>
+		<li>Need a <a href="{% url 'registration_register' %}">brand new account</a>?</li>
 	</ul>
 </div>
 {% endblock %}

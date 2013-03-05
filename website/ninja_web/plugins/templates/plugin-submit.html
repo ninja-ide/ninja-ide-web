@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load url from future %}
 
 {% block bodyclass %}plugin-form{% endblock %}
 
@@ -41,7 +42,7 @@
         <h1>Really Important (TOS)</h1>
         <p>All the content available in our website <b>IS TOTALLY FREE AND OPEN SOURCED</b> under the <a href="http://gplv3.fsf.org">GPL v3</a> license. All plugins submitted with this form will be treated as free software under GPL v3.</p>
         <a class="link-web" href="http://gplv3.fsf.org">More about GPL v3</a>
-        <a class="link-web" href="{% url plugins %}">Get back to Plugins</a>
+        <a class="link-web" href="{% url 'plugins' %}">Get back to Plugins</a>
     </div>
 
   </div><!-- /content -->

@@ -2,6 +2,7 @@
 
 {% load i18n show_stars %}
 {% load pagination_tags %}
+{% load url from future %}
 
 {% block bodyclass %}schemes{% endblock %}
 
@@ -22,11 +23,11 @@
 
         {% for scheme in schemes %}
         <li class="item" id="scheme_{{ scheme.id }}">
-          
+
           <div class="item-header">
 
             <h3><a href="{{ scheme.get_absolute_url }}">{{ scheme.name }}</a></h3>
-            <h4>by <a href="{% url user_detail scheme.user.username %}">{{ scheme.user.username }}</a></h4>
+            <h4>by <a href="{% url 'user_detail' scheme.user.username %}">{{ scheme.user.username }}</a></h4>
           </div><!-- /item-header -->
 
           <div class="extract">
@@ -43,7 +44,7 @@
 
         {% empty %}
         <li class="item">
-          <p>There're no schemes submitted yet. <a href="{% url scheme_submit %}">Be the first one!!</a></p>
+          <p>There're no schemes submitted yet. <a href="{% url 'scheme_submit' %}">Be the first one!!</a></p>
         </li>
         {% endfor %}
 
@@ -54,11 +55,11 @@
 
     <div class="section right small-width" id="submit-banner">
       <h1>Schemes submitions</h1>
-      <a class="link-web" href="{% url scheme_submit %}">Submit your scheme!</a>
+      <a class="link-web" href="{% url 'scheme_submit' %}">Submit your scheme!</a>
     </div>
 
   </div><!-- /content -->
-  <!-- 
+  <!--
   {
     "scoobygalletas1": "http://schemes.ninja-ide.googlecode.com/hg/schemes/scoobygalletas1.color",
     "darker_scheme": "http://schemes.ninja-ide.googlecode.com/hg/schemes/darker_scheme.color",

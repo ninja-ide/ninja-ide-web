@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load url from future %}
 
 {% block title %}{% trans "Change your password" %}{% endblock %}
 
@@ -12,19 +13,19 @@
   {% if user.username == account.user.username %}
     <ul id="box-nav">
       <li class="first">
-        <a href="{% url userena_detail user.username %}"><span>{% trans 'View profile' %}</span></a>
+        <a href="{% url 'userena_detail' user.username %}"><span>{% trans 'View profile' %}</span></a>
       </li>
 
       <li>
-        <a href="{% url userena_edit account.user.username %}">{% trans "Edit profile" %}</a>
+        <a href="{% url 'userena_edit' account.user.username %}">{% trans "Edit profile" %}</a>
       </li>
 
       <li>
-        <a href="{% url userena_password_change account.user.username %}">{% trans "Change password" %}</a>
+        <a href="{% url 'userena_password_change' account.user.username %}">{% trans "Change password" %}</a>
       </li>
 
       <li class="last selected">
-        <a href="{% url userena_email_change account.user.username %}">{% trans "Change email" %}</a>
+        <a href="{% url 'userena_email_change' account.user.username %}">{% trans "Change email" %}</a>
       </li>
     </ul>
   {% endif %}
@@ -33,7 +34,7 @@
 
   <fieldset>
     <legend>{% trans "Change email address" %}</legend>
-  
+
     {{ form.as_p }}
   </fieldset>
  <input type="submit" value="{% trans "Change email" %}" />

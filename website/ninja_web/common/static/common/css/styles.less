@@ -461,10 +461,10 @@ nav {
         display: block;
         height: 51px;
         max-height: 51px;
-        padding: 7px 3px 7px 7px;
+        padding: 7px;
 
         &:hover {
-          .box-shadow(inset -2px 0 20px @color_nav-hover);
+          .box-shadow(inset -2px 0 10px @color_nav-hover);
         }
 
         h3 {
@@ -474,6 +474,10 @@ nav {
           a {
             height: auto;
             padding: 0px 0px 5px;
+
+            &:hover {
+              border: 0;
+            }
           }
 
           #logout {
@@ -487,8 +491,9 @@ nav {
 
           a {
             color: @color_marked2 + #111;
-            display: inline;
-            float: none;
+            display: inline-block;
+            float: right;
+            font-size: .7em;
             padding: 0;
             width: auto !important;
           }

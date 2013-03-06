@@ -2,23 +2,26 @@
 
 {% load i18n show_stars %}
 {% load url from future %}
+{% load static %}
 
 {% block scripts %}
 {{ block.super }}
 
-<script src="/media/js/prototype.js"></script>
-<script src="/media/js/plugins-scripts.js"></script>
+<script src="{% static 'common/js/prototype.js' %}"></script>
+<script src="{% static 'common/js/plugins-scripts.js' %}"></script>
 
 {% show_stars_script %}
 
-<script>
-  function rating_plugin(id, pos) {
-    {% if not user.is_authenticated %}
-    alert("You have to be registered to vote!");
-    {% else %}
-    rate_plugin(id, pos, {% url 'rate_plugin' %});
-    {% endif %}
-  }
+<script type="text/javascript">
+  $(function () {
+    function rating_plugin(id, pos) {
+      {% if not user.is_authenticated %}
+      alert("You have to be registered to vote!");
+      {% else %}
+      rate_plugin(id, pos, {% url 'rate_plugin' %});
+      {% endif %}
+    }
+  });
 </script>
 
 {% endblock %}

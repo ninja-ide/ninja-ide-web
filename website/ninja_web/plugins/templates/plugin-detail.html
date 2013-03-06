@@ -38,7 +38,14 @@
 
       <div class="framed">
         <h2>{{ plugin.name }} <small>- version {{ plugin.version }}</small></h2>
-        <h3 class="author">by <u><a href="{% url 'user_detail' plugin.user.username %}">{{ plugin.user }}</a></u></h3>
+        <h3 class="author">
+          by
+          <u>
+            {% if plugin.user.username %}
+            <a href="{% url 'user_detail' plugin.user.username %}">{{ plugin.user }}</a>
+            {% endif %}
+          </u>
+        </h3>
 
         {% include "global/tags.html" with object=plugin %}
       </div>

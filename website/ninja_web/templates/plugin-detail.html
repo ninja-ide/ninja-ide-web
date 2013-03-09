@@ -33,7 +33,14 @@
     <div class="section left big-width" id="plugins">
 
       <h1>{{ plugin.name }}</h1>
-      <h3><a href="{% url 'user_detail' plugin.user.username %}">{{ plugin.user }}</a></h3>
+      <h3>
+        {% if plugin.user.username %}
+        <a href="{% url 'user_detail' plugin.user.username %}">
+          {{ plugin.user }}</a>
+        {% else %}
+          {{ plugin.user }}
+        {% endif %}
+      </h3>
       <h2>{{ plugin.short_description }}</h2>
 
       <div class="item-tags">

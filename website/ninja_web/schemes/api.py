@@ -19,7 +19,7 @@ def get_schemes_dict(request):
     for scheme in schemes_list:
         scheme_data = {}
         scheme_data['name'] = scheme.name
-        scheme_data['download'] = scheme.scheme_file.url
+        scheme_data['download'] = request.build_absolute_uri(scheme.scheme_file.url)
         scheme_data['preview'] = scheme.get_absolute_url()
         scheme_data['authors'] = scheme.user.get_full_name() or scheme.user.username
 

@@ -130,16 +130,19 @@ def rate_plugin(request):
 
 
 def get_plugin(request, plugin_id=None):
+    """ Returns the details/info about plugin with plugin_id given
+        Redirects to plugins if plugin does not exist.
+    """
     context = {}
 
     try:
         context['plugin'] = Plugin.objects.get(pk=plugin_id)
-    except:
-        pass
+    except Plugin.DoesNotExist:
+        messages.info(request, u'The plugin you look for no longer exists dude. If you are a bot, please, GTFOOH.')
+        return redirect('plugins')
 
     # some another extra info for this plugin:
     # context['extra'] = blabla
-
     return render_response(request, 'plugin-detail.html', context)
 
 

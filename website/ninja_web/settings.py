@@ -110,6 +110,7 @@ INSTALLED_APPS = (
 
     # Third party apps:
     'django_extensions',
+    'debug_toolbar',
     'registration',
     'pagination',
     'south',
@@ -122,6 +123,7 @@ INSTALLED_APPS = (
     'common',
     'plugins',
     'schemes',
+    'basic.blog',
 )
 
 ## django-registration

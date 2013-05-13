@@ -29,23 +29,33 @@
         </tr>
       </table>
 
-      <h3>*For Ubuntu Users:</h3>
-      <p>You can add the <b>NINJA-IDE PPA</b> and install it from there, and you will get automatic updates!</p>
+      <h3>*{% trans "For Ubuntu Users" %}:</h3>
+      <p>
+        {% blocktrans %}
+        You can add the <b>NINJA-IDE PPA</b> and install it from there, and you will get automatic updates!
+        {% endblocktrans %}
+      </p>
 
       <div class="framed">
         <code>
+<<<<<<< HEAD
             sudo apt-add-repository ppa:ninja-ide-developers/ninja-ide-stable (Stable updates)<br>
             (OR)<br>
             sudo apt-add-repository ppa:ninja-ide-developers/daily  (Daily updates)<br><br>
             sudo apt-get update<br>
             sudo apt-get install ninja-ide<br>
+=======
+          sudo apt-add-repository ppa:ninja-ide-developers/daily  (Daily updates)<br><br>
+          sudo apt-get update<br>
+          sudo apt-get install ninja-ide<br>
+>>>>>>> ff03329fc00e5e6bf916867b1133c337c59e5d5d
         </code>
       </div>
 
-      <h2>For Arch Users:</h2>
+      <h2>{% trans "For Arch Users" %}:</h2>
       <div class="framed">
         <code>
-            pacman -S ninja-ide
+          pacman -S ninja-ide
         </code>
       </div>
 

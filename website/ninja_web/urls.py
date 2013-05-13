@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     url(r'^using/', common_views.using, name="using"),
     url(r'^downloads/', common_views.downloads, name="downloads"),
     url(r'^contribute/', common_views.contrib, name="contribute"),
+    url(r'^wisdom/', include('basic.blog.urls')),
     url(r'^about/', common_views.about, name="about"),
     url(r'^updates/', common_views.updates, name="updates"),
 
@@ -41,11 +42,11 @@ urlpatterns = patterns('',
     url(r'^schemes/', include('schemes.urls'), name="schemes"),
 
     url(r'^tags/(?P<tag_id>\d+)', plugin_views.filter_by_tag,
-                                  name="filter_by_tag"),
+        name="filter_by_tag"),
     url(r'^rate-plugin/', plugin_views.rate_plugin,
-                          name="rate_plugin"),
+        name="rate_plugin"),
     url(r'^people/(?P<user_name>\w+)/', common_views.user_detail,
-                                        name="user_detail"),
+        name="user_detail"),
 
     # Profiles:
     ('^profiles/create', 'profiles.views.create_profile',
@@ -62,8 +63,8 @@ urlpatterns = patterns('',
 
     # User registration:
     (r'^accounts/register/', 'registration.views.register',
-             {'form_class': RegistrationFormUniqueEmail,
-              'backend': 'registration.backends.default.DefaultBackend'}),
+        {'form_class': RegistrationFormUniqueEmail,
+         'backend': 'registration.backends.default.DefaultBackend'}),
     (r'^accounts/', include('registration.backends.default.urls')),
 )
 
@@ -72,7 +73,7 @@ if settings.DEBUG:
 
     static_pattern = patterns('django.views.static',
         url(r'^media/(?P<path>.*)$', 'serve',
-                            {'document_root': STATIC_DOC_ROOT}),
-        )
+            {'document_root': STATIC_DOC_ROOT}),
+    )
 
     urlpatterns += static_pattern

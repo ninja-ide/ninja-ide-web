@@ -19,8 +19,8 @@ class Plugin(models.Model):
     user = models.ForeignKey(User, blank=True, null=True)
 
     name = models.CharField(max_length="100", verbose_name=(u'Plugin name'))
-    short_description = models.CharField(
-                            max_length=100, verbose_name=u'Short Description')
+    short_description = models.CharField(max_length=100,
+                                         verbose_name=u'Short Description')
     description = models.TextField(verbose_name=u'Description')
     version = models.CharField(max_length="32",
                                verbose_name=(u'Plugin version'))
@@ -33,7 +33,7 @@ class Plugin(models.Model):
 
     def __unicode__(self):
         return u'Plugin name: %s | Uploaded by: %s' % \
-                                            (self.name, self.user.username)
+            (self.name, self.user.username)
 
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
@@ -77,4 +77,4 @@ class Vote(models.Model):
 
     def __unicode__(self):
         return u'Vote for plugin: %s | Voter: %s | Rate: %d.' % \
-                                (self.plugin, self.user.username, self.rate)
+            (self.plugin, self.user.username, self.rate)

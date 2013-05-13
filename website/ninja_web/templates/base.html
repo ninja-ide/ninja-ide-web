@@ -1,5 +1,6 @@
 {% load i18n static %}
 {% load url from future %}
+{% load plugins_utils %}
 
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -83,10 +84,19 @@
             </a>
           </li-->
 
+          {% comment %}
+          <li id="nav-blog">
+            <a href="{% url 'blog_index' %}">
+              <h3>{% trans "Blog" %}</h3>
+              <h4>{% trans "Get some news!" %}</h4>
+            </a>
+          </li>
+          {% endcomment %}
+
           <li id="nav-downloads">
             <a href="{% url 'downloads' %}">
-              <h3>Downloads</h3>
-              <h4>Get your ninja suit!</h4>
+              <h3>{% trans "Downloads" %}</h3>
+              <h4>{% trans "Get your ninja suit!" %}</h4>
             </a>
           </li>
 
@@ -94,13 +104,6 @@
             <a href="{% url 'plugins' %}">
               <h3>Plugins</h3>
               <h4>Our Senseis' stuff</h4>
-            </a>
-          </li>
-
-          <li id="nav-about">
-            <a href="{% url 'about' %}">
-              <h3>About</h3>
-              <h4>Meet our dojo</h4>
             </a>
           </li>
 
@@ -118,6 +121,13 @@
             </a>
           </li>
 
+          <li id="nav-about">
+            <a href="{% url 'about' %}">
+              <h3>About</h3>
+              <h4>Meet our dojo</h4>
+            </a>
+          </li>
+
           <li id="nav-login">
             {% if user.is_authenticated and user.username %}
               <h3><a href="{% url 'user_detail' user.username %}">My dojo</a></h3>
@@ -125,8 +135,8 @@
               <a id="logout" href="{% url 'auth_logout' %}">Logout</a>
               </h4>
             {% else %}
-              <h3>Ninja Login</h3>
-              <h4><a href="{% url 'auth_login' %}">Login or Sign up</a></h4>
+              <h3><a href="{% url 'auth_login' %}">{% trans "Ninja Login" %}</a></h3>
+              <h4><a href="{% url 'auth_login' %}">{% trans "Login or Sign up" %}</a></h4>
             {% endif %}
           </li>
           <!--
@@ -137,11 +147,6 @@
 
     <div id="main" role="main">
       <div class="modal" id="modal-layer">
-        <!--
-        <div class="message {{ m.tags }}">
-          <p><b>Ninja-IDE 2</b> starts kicking asses on <b>July 2nd</b></p>
-        </div>
-         -->
         {% for m in messages %}
         <div class="message {{ m.tags }}">
           <p>{{ m|safe }}</p>
@@ -192,16 +197,26 @@
         </div><!-- /.twits -->
 
         <div class="section" id="last-submissions">
-          <h2>Last Submissions</h2>
-          {#% last_plugins %#}
+          <h2>{% trans "Last Submissions" %}</h2>
+
+          {% last_plugins 3 as last_pluginsop %}
+
+          {% for plugin in last_pluginsop %}
           <div class="submission-log">
-            <h3><a href="#">Plugin Project <small>(by Martin Alderete)</small></a></h3>
-            <p>This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!</p>
+            <p>
+              <a href="{{ plugin.get_absolute_url }}">
+                {{ plugin.name }}
+              </a>
+              {% trans 'by' %}
+              <span class="color_marked">{{ plugin.user }}</span>
+              {% trans 'on' %}
+              {{ plugin.upload_date }}</small>
+            </p>
+
+            <p>{{ plugin.short_description|truncatewords:30 }}</p>
           </div>
-          <div class="submission-log">
-            <h3><a href="#">Task <small>(by Martin Alderete)</small></a></h3>
-            <p>Organize your task(s)</p>
-          </div>
+          {% endfor %}
+
         </div>
 
         <div class="section" id="donate">
@@ -277,9 +292,11 @@
 
   <script type="text/javascript">
     $(function() {
-      messages = $("p", ".message");
-      if (messages.length > 0)
-        messages.slideUp(800);
+      messages = $(".message p");
+      if (messages) {
+        console.debug(messages.length);
+        messages.each(slideUp(800));
+      }
     });
   </script>
   {% endblock %}

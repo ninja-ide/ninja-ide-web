@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
-{% load i18n show_stars %}
+{% load i18n show_stars static %}
 {% load url from future %}
 
 {% block scripts %}
-{{ block.super }}
+  {{ block.super }}
 
-<script src="/media/js/prototype.js"></script>
-<script src="/media/js/plugins-scripts.js"></script>
+  <script src="{% static "common/js/prototype.js" %}"></script>
+  <script src="{% static "common/js/plugins-scripts.js" %}"></script>
 
-{% show_stars_script %}
+  {% show_stars_script %}
 
-<script>
-  function rating_plugin(id, pos) {
-    {% if not user.is_authenticated %}
-    alert("You have to be registered to vote!");
-    {% else %}
-    rate_plugin(id, pos, {% url 'rate_plugin' %});
-    {% endif %}
-  }
-</script>
+  <script type="text/javascript">
+    function rating_plugin(id, pos) {
+      {% if not user.is_authenticated %}
+      alert("{% trans "You have to be registered to vote!" %}");
+      {% else %}
+      rate_plugin(id, pos, {% url 'rate_plugin' %});
+      {% endif %}
+    }
+  </script>
 
 {% endblock %}
 
@@ -32,15 +32,18 @@
     <!-- PLUGINS -->
     <div class="section left big-width" id="plugins">
 
-      <h1>{{ plugin.name }}</h1>
-      <h3>
-        {% if plugin.user.username %}
-        <a href="{% url 'user_detail' plugin.user.username %}">
-          {{ plugin.user }}</a>
-        {% else %}
-          {{ plugin.user }}
-        {% endif %}
-      </h3>
+      <h1>
+        {{ plugin.name }}
+        <small>
+          {% if plugin.user.username %}
+          <a href="{% url 'user_detail' plugin.user.username %}">
+            {{ plugin.user }}</a>
+          {% else %}
+            {{ plugin.user }}
+          {% endif %}
+        </small>
+      </h1>
+
       <h2>{{ plugin.short_description }}</h2>
 
       <div class="item-tags">
@@ -55,32 +58,34 @@
 
     <div class="section right small-width" id="rating">
 
-      <h1>Download it &amp; Rate it</h1>
+      <h1>{% trans "Download it &amp; Rate it" %}</h1>
 
       <div class="options">
-        <div class="rate-container">
 
+        <div class="download-container">
+          <a class="button" href="{{ plugin.zip_file.url }}">
+            {% trans "Download it!" %}</a>
+        </div><!-- /rate-container -->
+
+        <div class="rate-container">
           <div class="rate-wrapper">
             <span class="plugin-rate">{{ plugin.rate }}</span>
             <span class="plugin-rate-times">( {{ plugin.rate_times }} )</span>
           </div><!-- /rate-wrapper -->
 
           {% show_stars plugin.rate of 5 round to quarter on change call rating_plugin with p.id %}
-
-        </div><!-- /rate-container -->
-
-        <div class="download-container">
-          <a class="button" href="{{ plugin.zip_file.url }}">Download it!</a>
         </div><!-- /rate-container -->
 
       </div><!-- /options -->
     </div>
 
     <div class="section right small-width" id="about-author">
-      <h1>More info</h1>
-      <p>{{ plugin.user|title }} has added this info.</p>
-      <a class="link-web" href="{{ plugin.url }}">More info about the plugin.</a>
-      <a class="link-web" href="mailto:{{ plugin.user.email }}">Email this ninja.</a>
+      <h1>{% trans "More info" %}</h1>
+      <p>{{ plugin.user|title }} {% trans "has added this info" %}.</p>
+
+      <a class="link-web" href="{{ plugin.url }}">{% trans "More info about the plugin." %}</a>
+
+      <a class="link-web" href="mailto:{{ plugin.user.email }}">{% trans "Email this ninja" %}.</a>
     </div>
 
   </div><!-- /content -->

@@ -34,8 +34,17 @@
   <div id="download-latest-box" class="redninja-box">
     <img src="{% static "common/img" %}/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
     <small>Latest Version</small>
+<<<<<<< HEAD
     <a class="main-link" href="/downloads/">Ninja IDE v2.2 for {{ user_os|title }}.</a>
     <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">More {{ user_os }} downloads</a>
+=======
+    <a class="main-link" href="{% url 'downloads' %}">Ninja IDE v2.1.1 for {{ user_os|title }}.</a>
+    <a class="sec-link" href="{% url 'downloads' %}#{{ user_os|default:'source' }}_downloads">
+      {% blocktrans %}
+      More {{ user_os }} downloads
+      {% endblocktrans %}
+    </a>
+>>>>>>> ff03329fc00e5e6bf916867b1133c337c59e5d5d
   </div><!-- /#download-latest-box -->
 
   </div><!-- /#splash -->

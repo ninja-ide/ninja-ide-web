@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'common',
     'plugins',
     'schemes',
+    'basic.blog',
 )
 
 ## django-registration

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+  {{ block.super }}
+  <div class="content">
+    <h1>{% trans "Yeah, this is a blog" %}</h1>
+    <h2>... and is pure wisdom, so that explains the awesome URL.</h2>
+  </div>
+{% endblock %}

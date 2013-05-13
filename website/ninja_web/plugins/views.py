@@ -68,8 +68,8 @@ def plugin_submit(request):
             return redirect('plugins')
         else:
             messages.error(
-                    request,
-                    u'Something went wrong in your submit. Please, check it.')
+                request,
+                u'Something went wrong in your submit. Please, check it.')
 
     context['form'] = form
     return render_response(request, 'plugin-submit.html', context)
@@ -178,8 +178,8 @@ def plugin_edit(request, plugin_id):
             return redirect(redirect_url)
         else:
             messages.error(
-                    request,
-                    u'Something went wrong in your submit. Please, check it.')
+                request,
+                u'Something went wrong in your submit. Please, check it.')
 
     context['form'] = form
     return render_response(request, 'plugin-submit.html', context)

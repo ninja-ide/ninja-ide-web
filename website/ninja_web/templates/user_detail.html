@@ -25,7 +25,7 @@
       {{user_page}}
       {{request.user}}
       {% if user_page == request.user %}
-      <h4>Welcome {{ user.name }} to your dojo. Put your shoes at the door and come in.</h4>
+      <h4>Welcome {{ user.name }} to your dojo. Leave your shoes at the door and come in.</h4>
       {% else %}
       <h4>Qualified ninja since {{ user_page.date_joined|date:"F Y" }}.</h4>
       {% endif %}

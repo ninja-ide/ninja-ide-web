@@ -30,7 +30,7 @@
       <h4>Qualified ninja since {{ user_page.date_joined|date:"F Y" }}.</h4>
       {% endif %}
 
-      <h2>Submitted {{ plugins.count }} plugins{{ plugins.count|pluralize }} until now.</h2>
+      <h2>Submitted {{ plugins.count }} plugin{{ plugins.count|pluralize }} until now.</h2>
 
       <ul class="item-list">
       {% for p in plugins %}

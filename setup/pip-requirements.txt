@@ -4,7 +4,7 @@
 
 django==1.4
 
-PIL
+PIL==1.1.7
 # http://hg.effbot.org/pil-2009-raclette/changeset/fb7ce579f5f9
 #https://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
 
@@ -22,3 +22,7 @@ South==0.7.6
 
 # blog and other stuff
 -e git+http://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps-nathanborror
+
+argparse==1.2.1
+sorl-thumbnail==11.12
+wsgiref==0.1.2

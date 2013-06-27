@@ -21,4 +21,4 @@ django-debug-toolbar==0.8.5
 South==0.7.6
 
 # blog and other stuff
--e git+git://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps-nathanborror
+-e git+http://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps-nathanborror

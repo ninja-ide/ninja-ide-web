@@ -3,6 +3,8 @@ from decimal import Decimal
 
 from tagging.models import Tag
 
+from django.views.generic import ListView
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -144,6 +146,10 @@ def get_plugin(request, plugin_id=None):
     # some another extra info for this plugin:
     # context['extra'] = blabla
     return render_response(request, 'plugin-detail.html', context)
+
+
+class PluginListView(ListView):
+    pass
 
 
 def plugins(request):

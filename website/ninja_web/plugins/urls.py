@@ -2,19 +2,24 @@
 from django.conf.urls.defaults import patterns, url
 
 from plugins.api import get_plugins_dict
-from plugins.views import plugin_submit, get_plugin, plugins, plugin_edit
+from plugins.views import plugin_submit, get_plugin, plugin_edit
+from plugins.views import PluginListView
 
 
 # VIEWS
-urlpatterns = patterns('plugins.views',
+urlpatterns = patterns(
+    'plugins.views',
+
     url(r'^edit/(?P<plugin_id>\d+)/$', plugin_edit, name="plugin_edit"),
     url(r'^submit/$', plugin_submit, name="plugin_submit"),
     url(r'^(?P<plugin_id>\d+)/$', get_plugin, name="plugin_detail"),
-    url(r'^$', plugins, name="plugins"),
+    url(r'^$', PluginListView.as_view(), name="plugins"),
 )
 
 # API
-urlpatterns += patterns('plugins.api',
+urlpatterns += patterns(
+    'plugins.api',
+
     # URLs for existing/old versions
     url(r'^official/$', get_plugins_dict, {'query': 'official'}),
     url(r'^community/$', get_plugins_dict, {'query': 'community'}),

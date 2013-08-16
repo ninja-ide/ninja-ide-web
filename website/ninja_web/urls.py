@@ -3,7 +3,6 @@ import os
 
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
-#from django.views.generic.base import TemplateView
 
 from django.contrib import admin
 admin.autodiscover()
@@ -53,7 +52,7 @@ urlpatterns = patterns('',
                          {'form_class': NinjaProfileForm}),
     ('^profiles/edit', 'profiles.views.edit_profile',
                        {'form_class': NinjaProfileForm}),
-    (r'^profiles/', include('profiles.urls')),
+    #(r'^profiles/', include('profiles.urls')),
 
     # Homepage:
     url(r'^$', common_views.intro, name="intro"),

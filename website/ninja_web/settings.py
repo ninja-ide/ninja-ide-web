@@ -14,7 +14,6 @@ TEMPLATE_DEBUG = DEBUG
 USE_LESSJS = False
 
 ADMINS = (
-    (u'Matías Herranz', 'matias@ninja-ide.org'),
     (u'Diego Sarmentero', 'dojo@ninja-ide.org'),
     (u'Pedro Mourelle', 'pedro@ninja-ide.org'),
 )
@@ -81,6 +80,8 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware',
 )
 
+SECRET_KEY = 'qwertyuiop'
+
 ROOT_URLCONF = 'ninja_web.urls'
 
 TEMPLATE_DIRS = (
@@ -114,7 +115,7 @@ INSTALLED_APPS = (
     'registration',
     'pagination',
     'south',
-    'profiles',
+    #'profiles',
     'ninja_profiles',
     'tagging',
     'sorl.thumbnail',
@@ -145,9 +146,3 @@ EMAIL_HOST_USER = USER
 EMAIL_HOST_PASSWORD = PSWD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-# Import local_settings file
-try:
-    from local_settings import *
-except ImportError:
-    print "Error importing from local_settings."

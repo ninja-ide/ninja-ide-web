@@ -1,0 +1,4 @@
+django==1.6
+PIL
+South==0.7.6
+-e git+git://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps-nathanborror

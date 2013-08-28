@@ -36,7 +36,7 @@
 
       {% if plugin %}
       <h1>{{ plugin.name }}
-        <a class="right small" href="{% url 'plugins' %}">Back to Plugins</a>
+        <a class="right small" href="{% url 'plugin_list' %}">Back to Plugins</a>
       </h1>
 
       <div class="framed">
@@ -98,7 +98,7 @@
     {% else %}
     <div class="section right small-width">
       <h1>Hey you!</h1>
-      <h2>Checkout <a class="buttons" href="{% url 'plugins' %}">Here</a> for plugins.</h2>
+      <h2>Checkout <a class="buttons" href="{% url 'plugin_list' %}">Here</a> for plugins.</h2>
     </div>
     {% endif %}
 

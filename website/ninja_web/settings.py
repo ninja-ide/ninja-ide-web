@@ -61,7 +61,6 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.eggs.Loader',
-    #'django.template.loaders.eggs.Loader',
 )
 
 STATICFILES_FINDERS = (
@@ -76,7 +75,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 
-    # django-pagination
     'pagination.middleware.PaginationMiddleware',
 )
 
@@ -119,12 +117,12 @@ INSTALLED_APPS = (
     'ninja_profiles',
     'tagging',
     'sorl.thumbnail',
+    'articles',
 
     # Our apps:
     'common',
     'plugins',
     'schemes',
-    'basic.blog',
 )
 
 ## django-registration

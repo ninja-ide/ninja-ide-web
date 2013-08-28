@@ -1,13 +1,16 @@
 # -*- coding: utf-8 *-*
-from django.conf.urls.defaults import *
+from django.conf.urls import url, patterns
 from blog.feeds import LatestPostsFeed
 
 
-urlpatterns = patterns('basic.blog.views',
+urlpatterns = patterns(
+    'basic.blog.views',
+
     url(r'feed/?$',
         LatestPostsFeed()),
 
-    url(r'(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{1,2})/(?P<slug>[-\w]+)/$',
+    url(r'(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{1,2})/'
+        '(?P<slug>[-\w]+)/$',
         'post_detail',
         {'extra_context': {'on_news': 'true'}},
         name='blog_detail'),

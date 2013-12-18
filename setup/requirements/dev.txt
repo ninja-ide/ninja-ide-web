@@ -4,6 +4,6 @@
 -r base.txt
 
 # development-only requirements
-django-debug-toolbar==0.8.5
-ipython==0.11
-ipdb==0.6.1
+django-debug-toolbar
+ipython
+ipdb

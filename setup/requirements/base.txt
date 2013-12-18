@@ -1,15 +1,10 @@
 # BASE REQUIREMENTS USED IN ALL STAGES
 
-django==1.5.2
-django-articles==2.4.1
--e git+git://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps-nathanborror
-django-extensions==1.0.1
-django-pagination==1.0.7
-django-profiles==0.2
+PIL
+psycopg2
+readline
 
-PIL==1.1.7
-psycopg2==2.5.1
-readline==6.2.1
-sorl-thumbnail==11.12
-South==0.7.6
-wsgiref==0.1.2
+django==1.6
+django-extensions
+South
+sorl-thumbnail

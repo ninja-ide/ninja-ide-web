@@ -5,6 +5,7 @@
 local_settings.py
 local_urls.py
 media/plugin_files/
+src/
 website/ninja_web/ninja_ide.db
 
 ninja_ide.db

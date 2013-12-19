@@ -1,0 +1,4 @@
+
+mezzanine==1.4.16
+django==1.6
+psycopg2

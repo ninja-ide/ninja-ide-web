@@ -24,5 +24,7 @@ If you really really REALLY want to help us, just get to our site(http://ninja-i
     pip install -r requirements/dev.txt
 
     cd mezza-ninja
+    add2virtualenv .
+    export DJANGO_SETTINGS_MODULE="settings.local"
     ./manage.py createdb
     ./manage.py runserver

@@ -1,6 +1,5 @@
-# PRODUCTION REQUIREMENTS
+# production requirements
 
-# base requirements
 -r base.txt
 
 # add here production-only requiremets

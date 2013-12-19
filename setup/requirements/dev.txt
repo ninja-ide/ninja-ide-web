@@ -1,9 +1,0 @@
-# DEVELOPMENT REQUIREMENTS
-
-# base requirements
--r base.txt
-
-# development-only requirements
-django-debug-toolbar
-ipython
-ipdb

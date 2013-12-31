@@ -1,0 +1,36 @@
+{% load static %}
+{#% load compress %#}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ninja IDE 3 is here</title>
+
+    {#% compress css %#}
+
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="#path_to_style">
+    {% endblock %}
+
+    {% block extra_styles %}
+    {% endblock %}
+
+    {#% endcompress %#}
+</head>
+
+<body class="" id="{% block body_id %}default_id{% endblock %}">
+    {% block content %}
+    <p>
+    You are looking at the beginning of the most awesome site of the universe and
+    nearby.
+    <br>
+    Also, this paragraph obey PEP8.
+    </p>
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+
+</html>

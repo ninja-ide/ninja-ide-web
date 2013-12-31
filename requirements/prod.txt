@@ -1,0 +1,5 @@
+# production requirements
+
+-r base.txt
+
+# add here production-only requiremets

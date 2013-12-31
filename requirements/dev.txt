@@ -1,0 +1,8 @@
+# development requirements
+
+-r base.txt
+
+South==0.8.4
+django-extensions==1.2.5
+readline==6.2
+ipdb==0.8

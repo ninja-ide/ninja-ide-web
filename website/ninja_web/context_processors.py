@@ -35,13 +35,13 @@ def user_info(request):
                             user_os = 'win'
                     except:
                         pass
-            
+
             user_info['user_os'] = user_os
 
             # last version available for download for this user
             #user_info['user_last_version'] = latest_version(user_os)
 
     except Exception, e:
-        print u"Exception in context_processors.user_info: %s" % e 
+        print u"Exception in context_processors.user_info: %s" % e
 
     return user_info

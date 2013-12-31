@@ -1,0 +1,7 @@
+# TESTING REQUIREMENTS
+
+# base requirements
+-r base.txt
+
+# testing-only requirements
+django-nose

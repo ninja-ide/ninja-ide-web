@@ -14,7 +14,6 @@ TEMPLATE_DEBUG = DEBUG
 USE_LESSJS = False
 
 ADMINS = (
-    (u'Matías Herranz', 'matias@ninja-ide.org'),
     (u'Diego Sarmentero', 'dojo@ninja-ide.org'),
     (u'Pedro Mourelle', 'pedro@ninja-ide.org'),
 )
@@ -62,7 +61,6 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.eggs.Loader',
-    #'django.template.loaders.eggs.Loader',
 )
 
 STATICFILES_FINDERS = (
@@ -77,9 +75,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 
-    # django-pagination
     'pagination.middleware.PaginationMiddleware',
 )
+
+SECRET_KEY = 'qwertyuiop'
 
 ROOT_URLCONF = 'ninja_web.urls'
 
@@ -114,16 +113,16 @@ INSTALLED_APPS = (
     'registration',
     'pagination',
     'south',
-    'profiles',
+    #'profiles',
     'ninja_profiles',
     'tagging',
     'sorl.thumbnail',
+    'articles',
 
     # Our apps:
     'common',
     'plugins',
     'schemes',
-    'basic.blog',
 )
 
 ## django-registration
@@ -145,9 +144,3 @@ EMAIL_HOST_USER = USER
 EMAIL_HOST_PASSWORD = PSWD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-# Import local_settings file
-try:
-    from local_settings import *
-except ImportError:
-    print "Error importing from local_settings."

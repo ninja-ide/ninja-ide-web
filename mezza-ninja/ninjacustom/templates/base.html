@@ -1,21 +1,49 @@
 {% load static %}
-{#% load compress %#}
+{% load compress %}
 
 <!DOCTYPE html>
-<html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
     <title>Ninja IDE 3 is here</title>
+    <meta name="description" content="Ninja IDE website. Not yourself a ninja? Follow us and we'll make of you a great ninja. But you are reading this, so... come in to our dojo you samurai ;).">
+    <meta name="author" content="gatox, perrito666, gaucho, pmourelle">
 
-    {#% compress css %#}
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="icon" href="{% static 'common/img/favicon.ico' %}" />
+    <link rel="shortcut icon" href="{% static 'common/img/favicon.ico' %}" />
+    <link rel="apple-touch-icon" href="{% static 'common/img/apple-touch-icon.png' %}" />
+
+    <!-- Fonts from google -->
+    <link href='http://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css' />
+
+
+    {% compress css %}
 
     {% block styles %}
-    <link rel="stylesheet" type="text/css" href="#path_to_style">
+    {% if LESS_DEBUG %}
+    <script type="text/javascript" src="{% static 'common/js/less-1.2.1.min.js' %}"></script>
+    <link type="text/less" rel="stylesheet" href="{% static 'ninjacustom/less/styles.less' %}" charset="utf-8" />
+
+    {% else %}
+    <link rel="stylesheet" href="{% static 'ninjacustom/css/styles.css' %}" />
+    {% endif %}
+
     {% endblock %}
 
     {% block extra_styles %}
     {% endblock %}
 
-    {#% endcompress %#}
+    {% endcompress %}
 </head>
 
 <body class="" id="{% block body_id %}default_id{% endblock %}">

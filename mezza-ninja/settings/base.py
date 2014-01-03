@@ -226,6 +226,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
 INSTALLED_APPS = (
     "ninjacustom",
+    "compressor",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -260,7 +261,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.core.context_processors.tz",
+
     "mezzanine.conf.context_processors.settings",
+    "ninjacustom.context_processors.globals",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -329,6 +332,13 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 #     "SECRET_KEY": SECRET_KEY,
 #     "NEVERCACHE_KEY": NEVERCACHE_KEY,
 # }
+
+
+#############################
+# GLOBAL NINJA WEB SETTINGS #
+#############################
+LESS_DEBUG = False
+
 
 ####################
 # DYNAMIC SETTINGS #

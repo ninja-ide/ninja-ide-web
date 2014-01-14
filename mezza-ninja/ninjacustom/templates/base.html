@@ -23,6 +23,7 @@
     <link rel="apple-touch-icon" href="{% static 'common/img/apple-touch-icon.png' %}" />
 
     <!-- Fonts from google -->
+    <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css' />
 
@@ -32,10 +33,11 @@
     {% block styles %}
     {% if LESS_DEBUG %}
     <script type="text/javascript" src="{% static 'common/js/less-1.2.1.min.js' %}"></script>
-    <link type="text/less" rel="stylesheet" href="{% static 'ninjacustom/less/styles.less' %}" charset="utf-8" />
+    <link type="text/less" rel="stylesheet" href="{% static 'bs/less/bootstrap.less' %}" charset="utf-8" />
+    <link type="text/less" rel="stylesheet" href="{% static 'bs/less/ninja_styles.less' %}" charset="utf-8" />
 
     {% else %}
-    <link rel="stylesheet" href="{% static 'ninjacustom/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ninja_styles.css' %}" />
     {% endif %}
 
     {% endblock %}
@@ -47,14 +49,59 @@
 </head>
 
 <body class="" id="{% block body_id %}default_id{% endblock %}">
+    <div class="container">
     {% block content %}
-    <p>
-    You are looking at the beginning of the most awesome site of the universe and
-    nearby.
-    <br>
-    Also, this paragraph obey PEP8.
-    </p>
+
+      <div class="masthead">
+        <h3 class="text-muted">Ninja-IDE</h3>
+        <ul class="nav nav-justified">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Downloads</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Ninja IDE 3 baby!</h1>
+        <p class="lead">
+            You are beholding the born of a new IDE paradigm. IDEs of the World: Brace yourselves!
+            <br>
+            Also, this paragraph obey PEP8.
+        </p>
+        <p><a class="btn btn-lg btn-danger" href="#" role="button">Ninja IDE v3 [alpha]</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h2>Safari bug warning!</h2>
+          <p class="text-danger">Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <h2>Da fuq is this</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-lg-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <!-- Site footer -->
+      <div class="footer">
+        <p>&copy; Super Dungeon Dojo of Samurai Masters of the Universe and Surroundings - {% now "Y" %} </p>
+      </div>
+
     {% endblock %}
+    </div> <!-- /container -->
 
     {% block scripts %}
     {% endblock %}

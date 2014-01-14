@@ -2,7 +2,7 @@ from django.conf import settings
 
 
 def globals(request):
-    """ Global variables of Ninja website
+    """ Global variables for Ninja website
     """
 
     globals_dict = {

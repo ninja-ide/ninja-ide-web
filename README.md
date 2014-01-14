@@ -28,3 +28,18 @@ If you really really REALLY want to help us, just get to our site(http://ninja-i
     export DJANGO_SETTINGS_MODULE="settings.local"
     ./manage.py createdb
     ./manage.py runserver
+
+
+### You want to tune up the CSS?
+
+Ninja-IDE is being developed using LESS precompiler. If you want to style and don't get crazy in the process then you better learn it once for all and be happy the rest of your life.
+
+It's simple:
+
+1) get the latest version of less
+    npm install less
+
+2) add the path where Less was installed to your PATH env.
+    export PATH="$PATH:node_modules/less/bin"
+
+3) Done. Was simple or what?

@@ -9,6 +9,7 @@
 from base import *
 
 DEBUG = True
+LESS_DEBUG = True
 
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
 

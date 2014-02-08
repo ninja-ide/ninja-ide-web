@@ -88,7 +88,10 @@ ALLOWED_HOSTS = ["127.0.0.1",]
 # In the format (('Full Name', 'email@example.com'),
 #                ('Full Name', 'anotheremail@example.com'))
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Pedro Mourelle', 'pedro@ninja-ide.org'),
+    ('Emilio Ramirez', 'gaucho@ninja-ide.org'),
+    ('Diego Sarmentero', 'gatox@ninja-ide.org'),
+    ('Horacio Durán', 'perrito@ninja-ide.org'),
 )
 MANAGERS = ADMINS
 
@@ -144,7 +147,7 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
     "compressor.finders.CompressorFinder",
 )
 

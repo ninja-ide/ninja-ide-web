@@ -91,7 +91,7 @@ ADMINS = (
     ('Pedro Mourelle', 'pedro@ninja-ide.org'),
     ('Emilio Ramirez', 'gaucho@ninja-ide.org'),
     ('Diego Sarmentero', 'gatox@ninja-ide.org'),
-    ('Horacio Durán', 'perrito@ninja-ide.org'),
+    ('Horacio Duran', 'perrito@ninja-ide.org'),
 )
 MANAGERS = ADMINS
 

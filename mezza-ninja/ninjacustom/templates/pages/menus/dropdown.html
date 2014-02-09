@@ -1,0 +1,72 @@
+{% load i18n future pages_tags %}
+{% spaceless %}
+{% if page_branch_in_menu %}
+
+{% if branch_level == 0 %}
+<ul class="nav navbar-nav">
+    {% for page in page_branch %}
+
+    {% if page.in_menu %}
+    <li class="dropdown{% if page.is_current_or_ascendant %} active{% endif %}"
+        id="dropdown-menu-{{ page.html_id }}">
+        <a href="{{ page.get_absolute_url }}" {% if page.has_children_in_menu %}data-toggle="dropdown"{% endif %}>
+            {{ page.title }}
+            {% if page.has_children_in_menu %}<span class="caret"></span>{% endif %}
+        </a>
+        {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+
+</ul>
+
+<ul class="nav navbar-nav pull-right">
+    <li class="user-dropdown">
+        <a href="#" data-toggle="dropdown" class="user_avatar">
+            {% if user.is_authenticated %}
+            <img src="holder.js/28x28/sky/" alt="...">
+            <span class="user_name">
+                Pedro Mourelle
+                <span class="caret"></span>
+            </span>
+            {% else %}
+            <img data-src="holder.js/28x28" alt="...">
+            <span class="user_name">
+                Our dojo
+                <span class="caret"></span>
+            </span>
+            {% endif %}
+        </a>
+        <ul class="dropdown-menu">
+            {% if user.is_authenticated %}
+            <li><a href="#">Settings</a></li>
+            <li><a href="{% url "profile" %}">My Stuff</a></li>
+            <li><a href="{% url "logout" %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url "login" %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </li>
+
+    <!--
+    <li class="divider-vertical"></li>
+    -->
+</ul>
+
+{% endif %}
+
+{% if branch_level == 1 %}
+<ul class="dropdown-menu">
+    {% for page in page_branch %}
+    {% if page.in_menu %}
+    <li{% if page.is_current_or_ascendant %} class="active"{% endif %}
+        id="dropdown-menu-{{ page.html_id }}">
+        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endif %}
+{% endspaceless %}

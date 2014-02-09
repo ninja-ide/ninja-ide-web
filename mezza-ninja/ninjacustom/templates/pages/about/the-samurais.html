@@ -1,0 +1,17 @@
+{% extends "pages/page.html" %}
+
+{% block main %}
+<h2>The samurais that makes Ninja-IDE so awesome</h2>
+
+<ul class="list-unstyled">
+{% for guy in page.teampage.team_members.all %}
+    <li>
+        <h2>{{ guy.name }} <span class="small">({{ guy.irc_nickname }} on #ninja-ide)</span></h2>
+        <img data-src="holder.js/128x128" alt="" class="ninja_avatar pull-left">
+        <p>{{ guy.detail }}</p>
+        <p>{{ guy.email }}</p>
+        <p><a href="http://twitter/{{ guy.twitter }}" target="_blank">{{ guy.twitter }}</a></p>
+    </li>
+{% endfor %}
+</ul>
+{% endblock main %}

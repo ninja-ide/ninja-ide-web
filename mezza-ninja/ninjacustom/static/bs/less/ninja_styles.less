@@ -1,9 +1,37 @@
 @import "variables.less";
+@import "mixins.less";
 
 body {
     background: url("/static/img/bg-dark_grain.png") #333;
 }
 
-.jumbotron {
-    color: @gray-dark;
+.navbar {
+    .box-shadow(0 5px 15px rgba(0, 0, 0, .4));
+}
+
+.navbar-brand {
+    padding: 2px 0;
+    width: 240px;
+
+    img {
+        width: 100%;
+    }
+
+    span {
+        display: none;
+    }
+}
+
+
+.footer {
+    background: #ff0000;
+    margin-top: 20px;
+    padding: 10px 0;
+    bottom: 0;
+    position: relative;
+    width: 100%;
+
+    p {
+        margin: 0;
+    }
 }

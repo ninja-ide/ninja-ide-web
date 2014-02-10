@@ -64,9 +64,10 @@
               </button>
 
               <a class="navbar-brand" href="/">
-              <span>
-              {% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% else %}Ninja-IDE{% endif %}
-              </span>
+              <img src="{% static "/static/img/ninja-ide.logo.svg" %}" alt="">
+                <span>
+                {% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% else %}Ninja-IDE{% endif %}
+                </span>
               </a>
             </div>
 
@@ -83,22 +84,8 @@
       <div class="masthead">
         <h3 class="text-muted"><a href="{% url 'home' %}">Ninja-IDE</a></h3>
         <ul class="nav nav-justified">
-          <li><a href="{% url 'blog_post_list' %}">Blog</a></li>
           <li><a href="#">Services</a></li>
-          <li><a href="{#% url 'downloads' %#}">Downloads</a></li>
-          <li><a href="{#% url 'contact' %#}">The dojo</a></li>
         </ul>
-      </div>
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Ninja IDE 3 baby!</h1>
-        <p class="lead">
-            <img src="" alt="{% static '/ninjacustom/img/ninja_logo_3.png' %}" class="pull-left" />
-            NINJA-IDE (from the recursive acronym: <b>Ninja-IDE Is Not Just Another IDE</b>), is a cross-platform Integrated Development Environment (IDE), that allows developers to <b>create</b> applications for several purposes using all the tools and utilities of NINJA-IDE, making the task of writing software <b>easier</b> and more <b>enjoyable</b>. <br>
-            Ninja IDE is free for everyone, de you know why? <a class="btn" href="#">Check it out</a>
-        </p>
-        <p><a class="btn btn-lg btn-danger" href="#" role="button">Ninja IDE v3 [alpha]</a></p>
       </div>
 
       <!-- Example row of columns -->
@@ -121,19 +108,22 @@
         </div>
       </div>
 
-      <!-- Site footer -->
-      <div class="footer">
-        <p>&copy; Super Dungeon Dojo of Samurai Masters of the Universe and Surroundings - {% now "Y" %} </p>
-      </div>
-
     {% endblock %}
     </div> <!-- /container -->
+
+    <!-- Site footer -->
+    <div class="footer">
+      <div class="container">
+        <p>1516 - {% now "Y" %} &copy; Ninja-IDE. Super Dungeon Dojo of Samurai Masters of the Universe and Surroundings</p>
+      </div>
+    </div>
 
     {% block scripts %}
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     {% compress js %}
     <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
     <script src="{% static "js/bootstrap.js" %}"></script>
+    <script src="{% static "js/holder.js" %}"></script>
 
     {% comment %}
     <script type="text/javascript" src="/static/bs/js/affix.js"></script>

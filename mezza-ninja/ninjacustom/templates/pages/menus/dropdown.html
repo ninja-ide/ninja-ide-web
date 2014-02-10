@@ -24,26 +24,45 @@
     <li class="user-dropdown">
         <a href="#" data-toggle="dropdown" class="user_avatar">
             {% if user.is_authenticated %}
-            <img src="holder.js/28x28/sky/" alt="...">
+            <img src="holder.js/28x28/sky/" />
             <span class="user_name">
-                Pedro Mourelle
+                {{ user.username }}
                 <span class="caret"></span>
             </span>
+
             {% else %}
             <img data-src="holder.js/28x28" alt="...">
-            <span class="user_name">
-                Our dojo
+            <span class="user_name"> Hey you!
                 <span class="caret"></span>
             </span>
             {% endif %}
         </a>
         <ul class="dropdown-menu">
             {% if user.is_authenticated %}
-            <li><a href="#">Settings</a></li>
-            <li><a href="{% url "profile" %}">My Stuff</a></li>
-            <li><a href="{% url "logout" %}">Logout</a></li>
+            <li>
+                <a href="#">
+                    <span class="glyphicon glyphicon-wrench"></span> Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="{#% url "profile" user.username %#}">
+                    <span class="glyphicon glyphicon-briefcase"></span> My Stuff
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url "logout" %}">
+                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                </a>
+            </li>
+
             {% else %}
-            <li><a href="{% url "login" %}">Login</a></li>
+            <li>
+                <a href="{% url "login" %}">
+                    <span class="glyphicon glyphicon-log-in"></span> Login
+                </a>
+            </li>
             {% endif %}
         </ul>
     </li>

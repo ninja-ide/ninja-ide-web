@@ -1,6 +1,3 @@
 # base requirements
 
-mezzanine==1.4.16
-PIL==1.1.7
-psycopg2==2.5.1
-sorl-thumbnail==11
+mezzanine==3.0.9

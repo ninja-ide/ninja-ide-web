@@ -1,5 +1,7 @@
 @import "variables.less";
 @import "mixins.less";
+@import "../../less/elements.less";
+
 
 body {
     background: url("/static/img/bg-dark_grain.png") #333;
@@ -33,5 +35,56 @@ body {
 
     p {
         margin: 0;
+    }
+}
+
+
+#contact_page {
+    label {
+        width: 150px;
+    }
+
+    p.help-block {
+        display: none;
+    }
+
+    input, textarea {
+        border: 0;
+        width: 500px;
+        .rounded(5px);
+
+        &[type="text"] {
+            padding: 0 5px;
+        }
+
+        &[type="submit"] {
+            margin-left: 154px;
+        }
+    }
+}
+
+#samurais {
+    .thumbnail {
+        background: rgba(0, 0, 0, .2);
+        border: 0;
+        overflow: hidden;
+        margin-bottom: 2em;
+        padding: 1.2em;
+
+        .img-thumbnail {
+            margin: .5em .5em 0 0;
+        }
+        .caption {
+            float: left;
+            font-size: 80%;
+
+            h3 {
+                margin-top: 0;
+            }
+
+            p {
+                margin-bottom: .2em;
+            }
+        }
     }
 }

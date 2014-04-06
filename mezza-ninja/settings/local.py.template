@@ -6,8 +6,6 @@
 # ignored in your version control system allowing for settings to be
 # defined per machine.
 
-# By default we assume you are a developer
-from dev import *
 
 # DATABASES = {
 #     "default": {

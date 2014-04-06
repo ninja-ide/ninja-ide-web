@@ -10,6 +10,7 @@ OS_CHOICES = (
     ('source', 'Source'),
 )
 
+
 class LinksPage(Page, RichText):
     """
     A page that would contain a lot of links
@@ -27,7 +28,8 @@ class DownloadLink(Orderable):
     link = models.URLField("URL", max_length=200)
     version = models.CharField("Version", max_length=20, blank=True)
     os = models.CharField("OS", choices=OS_CHOICES, max_length=10)
-    distribution = models.CharField("OS Distribution/Version", max_length=80, blank=True)
+    distribution = models.CharField("OS Distribution/Version",
+                                    max_length=80, blank=True)
     extra_detail = models.CharField("Detail", max_length=800, blank=True)
 
 

@@ -1,3 +1,6 @@
+class ImproperlyConfigured(Exception):
+    pass
+
 
 ######################
 # MEZZANINE SETTINGS #
@@ -78,7 +81,7 @@
 # INSTALLED_APPS setting.
 USE_SOUTH = True
 
-ALLOWED_HOSTS = ["127.0.0.1",]
+ALLOWED_HOSTS = ["127.0.0.1", ]
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -102,7 +105,7 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = "America/Argentina/Cordoba"
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
@@ -230,8 +233,8 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 ################
 
 INSTALLED_APPS = (
+    # first to override mezzanine defaults
     "ninjacustom",
-    "compressor",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -264,6 +267,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.persona',
     'allauth.socialaccount.providers.twitter',
     # -----------------------------------------
+    # 3rd party apps
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -332,6 +336,7 @@ PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 OPTIONAL_APPS = (
     "debug_toolbar",
     "django_extensions",
+    "compressor",
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
@@ -375,6 +380,7 @@ COMPRESS_PRECOMPILERS = (
 # GLOBAL NINJA WEB SETTINGS #
 #############################
 LESS_DEBUG = False
+LESS_EXECUTABLE = ""
 
 
 ####################
@@ -393,3 +399,11 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+def run_checkers(global_settings):
+    LESS_EXECUTABLE = global_settings.get("LESS_EXECUTABLE", "")
+    if LESS_EXECUTABLE == "":
+        raise ImproperlyConfigured(u"Please define explicitly LESS_EXECUTABLE")
+
+    if (not os.path.isfile(LESS_EXECUTABLE)) or  (not os.access(LESS_EXECUTABLE, os.X_OK)):
+        raise ImproperlyConfigured(u"Less binary does not exist or is not executable")

@@ -4,6 +4,7 @@
 .DS_Store
 .coverage
 local_settings.py
+settings/local.py
 /static
 /CACHE
 /node_modules

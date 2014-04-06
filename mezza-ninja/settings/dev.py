@@ -10,6 +10,7 @@ from base import *
 
 DEBUG = True
 LESS_DEBUG = True
+#COMPRESS_ENABLED = False
 
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
 
@@ -29,3 +30,10 @@ DATABASES = {
         "PORT": "",
     }
 }
+
+try:
+    from local import *
+except ImportError:
+    pass
+
+run_checkers(globals())

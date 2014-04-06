@@ -24,20 +24,18 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
     <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}" />
 
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
-<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
-
-{% ifinstalled mezzanine.blog %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% endifinstalled %}
+    {% ifinstalled mezzanine.blog %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+    {% endifinstalled %}
 
     <!-- Fonts from google -->
     <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css'>
     <!-- <link href='http://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet' type='text/css'> -->
     <link href='http://fonts.googleapis.com/css?family=Exo+2:400,200,300,600,800,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css' />
-
 
     {% compress css %}
 
@@ -64,7 +62,7 @@
               </button>
 
               <a class="navbar-brand" href="/">
-              <img src="{% static "/static/img/ninja-ide.logo.svg" %}" alt="">
+              <img src="{% static "img/ninja-ide.logo.svg" %}" alt="">
                 <span>
                 {% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% else %}Ninja-IDE{% endif %}
                 </span>
@@ -72,7 +70,6 @@
             </div>
 
             <div class="navbar-collapse collapse">
-              {#% include "search/form.html" %#}
               {% page_menu "pages/menus/dropdown.html" %}
             </div>
         </div>
@@ -96,11 +93,13 @@
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div>
+
         <div class="col-lg-4">
           <h2>Da fuq is this</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-       </div>
+        </div>
+
         <div class="col-lg-4">
           <h2>Heading</h2>
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
@@ -123,7 +122,6 @@
     {% compress js %}
     <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
     <script src="{% static "js/bootstrap.js" %}"></script>
-    <script src="{% static "js/holder.js" %}"></script>
 
     {% comment %}
     <script type="text/javascript" src="/static/bs/js/affix.js"></script>

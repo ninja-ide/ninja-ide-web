@@ -25,8 +25,8 @@ TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
 # }
 
 try:
-    from prod_private import *
-except:
+    from local import *
+except ImportError:
     print("Production settings file not found. Ensure you have a "\
           "'prod_private' file (not versioned)")
 

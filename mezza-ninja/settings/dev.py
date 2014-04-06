@@ -30,3 +30,10 @@ DATABASES = {
         "PORT": "",
     }
 }
+
+try:
+    from local import *
+except ImportError:
+    pass
+
+run_checkers(globals())

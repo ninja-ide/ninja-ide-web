@@ -27,4 +27,3 @@ from dev import *
 # }
 LESS_EXECUTABLE=""
 
-run_checkers(globals())

@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% load url from future %}
+{% load i18n %}
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="row row-login">
+            <div class="span3 sidebar_content">
+                <div class="wrapper-login">
+                    <div class="container">
+                        <div class="row">
+                            <div class="login-content span4 offset1">
+                                <div class="header-login well">
+                                    <h3>Logout</h3>
+                                </div>
+                                <form method="post" action="{% url 'account_logout' %}">
+                                  {% csrf_token %}
+                                  {% if redirect_field_value %}
+                                  <input type="hidden" name="{{redirect_field_name}}" value="{{redirect_field_value}}"/>
+                                  {% endif %}
+                                  <input type="submit" class="btn btn-info" value="Sign out">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end content settings -->
+            </div>
+        </div>
+    </div><!-- end container -->
+</div><!-- end main -->
+
+{% endblock %}

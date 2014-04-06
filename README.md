@@ -16,19 +16,26 @@ If you really really REALLY want to help us, just get to our site(http://ninja-i
 
 ### Get your own copy of the site (for development or learning):
 
+    # clone the thing
     git clone git@github.com:ninja-ide/ninja-ide-web.git
+
+    # create a virtualenv for it
     cd ninja-ide-web
     mkvirtualenv ninjaweb
     pwd >> $WORKON_HOME/ninjaweb/.project
-    git checkout ninjaweb3
+
+    # install all requirements
     pip install -r requirements/dev.txt
 
+    # prepare it
     cd mezza-ninja
     add2virtualenv .
     export DJANGO_SETTINGS_MODULE="settings.local"
-    ./manage.py createdb
+    ./manage.py syncdb --migrate
     ./manage.py runserver
 
+#### Note
+Currently there are a lot of files & code deprecated that belongs to previous version of site. After completing the refactoring those files won't exist anymore.
 
 ### You want to tune up the CSS?
 

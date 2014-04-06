@@ -25,3 +25,6 @@ from dev import *
 #         "PORT": "",
 #     }
 # }
+LESS_EXECUTABLE=""
+
+run_checkers(globals())

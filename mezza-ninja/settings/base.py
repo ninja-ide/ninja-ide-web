@@ -1,3 +1,6 @@
+class ImproperlyConfigured(Exception):
+    pass
+
 
 ######################
 # MEZZANINE SETTINGS #
@@ -348,6 +351,7 @@ COMPRESS_PRECOMPILERS = (
 # GLOBAL NINJA WEB SETTINGS #
 #############################
 LESS_DEBUG = False
+LESS_EXECUTABLE = ""
 
 
 ####################
@@ -366,3 +370,11 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+def run_checkers(global_settings):
+    LESS_EXECUTABLE = global_settings.get("LESS_EXECUTABLE", "")
+    if LESS_EXECUTABLE == "":
+        raise ImproperlyConfigured(u"Please define explicitly LESS_EXECUTABLE")
+
+    if (not os.path.isfile(LESS_EXECUTABLE)) or  (not os.access(LESS_EXECUTABLE, os.X_OK)):
+        raise ImproperlyConfigured(u"Less binary does not exist or is not executable")

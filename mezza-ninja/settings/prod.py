@@ -29,3 +29,5 @@ try:
 except:
     print("Production settings file not found. Ensure you have a "\
           "'prod_private' file (not versioned)")
+
+run_checkers(globals())

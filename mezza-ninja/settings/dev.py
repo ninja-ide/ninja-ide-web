@@ -10,6 +10,7 @@ from base import *
 
 DEBUG = True
 LESS_DEBUG = True
+#COMPRESS_ENABLED = False
 
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
 

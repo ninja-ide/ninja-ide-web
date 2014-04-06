@@ -78,7 +78,7 @@
 # INSTALLED_APPS setting.
 USE_SOUTH = True
 
-ALLOWED_HOSTS = ["127.0.0.1",]
+ALLOWED_HOSTS = ["127.0.0.1", ]
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -102,7 +102,7 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = "America/Argentina/Cordoba"
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
@@ -229,8 +229,8 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 ################
 
 INSTALLED_APPS = (
+    # first to override mezzanine defaults
     "ninjacustom",
-    "compressor",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -251,6 +251,8 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     "mezzanine.accounts",
     "mezzanine.mobile",
+
+    # 3rd party apps
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -305,6 +307,7 @@ PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 OPTIONAL_APPS = (
     "debug_toolbar",
     "django_extensions",
+    "compressor",
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )

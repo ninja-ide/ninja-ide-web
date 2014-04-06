@@ -9,13 +9,16 @@ from .models import DownloadLink, LinksPage, TeamPage, TeamMember
 class DownloadLinkInline(TabularDynamicInlineAdmin):
     model = DownloadLink
 
+
 class LinksPageAdmin(PageAdmin):
     inlines = (DownloadLinkInline,)
 
 admin.site.register(LinksPage, LinksPageAdmin)
 
+
 class TeamMemberInline(TabularDynamicInlineAdmin):
     model = TeamMember
+
 
 class TeamPageAdmin(PageAdmin):
     inlines = (TeamMemberInline,)

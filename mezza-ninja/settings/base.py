@@ -90,7 +90,7 @@ ALLOWED_HOSTS = ["127.0.0.1",]
 ADMINS = (
     ('Pedro Mourelle', 'pedro@ninja-ide.org'),
     ('Emilio Ramirez', 'gaucho@ninja-ide.org'),
-    ('Diego Sarmentero', 'gatox@ninja-ide.org'),
+    ('Diego Sarmentero', 'diego.sarmentero@ninja-ide.org'),
     ('Horacio Duran', 'perrito@ninja-ide.org'),
 )
 MANAGERS = ADMINS
@@ -138,6 +138,7 @@ INTERNAL_IPS = ("127.0.0.1",)
 TEMPLATE_LOADERS = (
     "django.template.loaders.filesystem.Loader",
     "django.template.loaders.app_directories.Loader",
+    'django.template.loaders.eggs.Loader',
 )
 
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
@@ -251,6 +252,18 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     "mezzanine.accounts",
     "mezzanine.mobile",
+
+    # -----------------------------------------
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # Include the providers you want to enable:
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.persona',
+    'allauth.socialaccount.providers.twitter',
+    # -----------------------------------------
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -265,6 +278,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.core.context_processors.tz",
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
 
     "mezzanine.conf.context_processors.settings",
     "ninjacustom.context_processors.globals",
@@ -291,6 +306,18 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.

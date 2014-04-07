@@ -10,6 +10,7 @@ from base import *
 
 DEBUG = True
 LESS_DEBUG = True
+LESS_EXECUTABLE = "node_modules/less/bin/lessc"
 COMPRESS_ENABLED = not DEBUG
 
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'

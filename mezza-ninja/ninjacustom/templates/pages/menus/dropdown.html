@@ -20,11 +20,11 @@
 
 </ul>
 
-<ul class="nav navbar-nav pull-right">
+<ul class="nav navbar-nav user-nav">
     <li class="user-dropdown">
         <a href="#" data-toggle="dropdown" class="user_avatar">
             {% if user.is_authenticated %}
-            <img src="holder.js/28x28/sky/" />
+            <img src="{{ user.avatar }}" />
             <span class="user_name">
                 {{ user.username }}
                 <span class="caret"></span>

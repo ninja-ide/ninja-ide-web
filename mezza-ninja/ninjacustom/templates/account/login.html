@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load url from future %}
+{% load socialaccount %}
+
+{% block main %}
+<div class="main">
+    <div class="container">
+        <div class="row row-login">
+            <div class="span3 sidebar_content">
+                <div class="wrapper-login">
+                    <div class="container">
+                        <div class="row">
+                            <div class="login-content span4 offset1">
+                                <div class="header-login well">
+                                    <h3>Login</h3>
+                                </div>
+                                <form class="well" method="POST" action="{% url 'account_login' %}">
+                                  {% csrf_token %}
+                                  {{ form.as_p }}
+                                  {% if redirect_field_value %}
+                                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                  {% endif %}
+                                  <a href="{% url 'account_reset_password' %}">Forgot your password?</a><br><br>
+                                  <input type="submit" class="btn btn-info" value="Sign In">
+                                  <p class="sign-up-lg">Don't have an account? <a href="{% url 'account_signup' %}">Sign Up.</a></p>
+                                      {% comment %}
+                                      <!--div class="box-wrapper box-wrapper2"></div>
+                                      Alternative Logins<br>
+                                      <a href="{% provider_login_url 'openid' openid='https://www.google.com/accounts/o8/id' next='/' %}"
+                                          class="btn btn-red-s6"><img src="{% static 'images/Google-Logo.png' %}"/>  Google Login</a>
+                                      <a href="{% provider_login_url 'twitter' method='oauth2' %}"
+                                          class="btn btn-blue-s5"><img src="{% static 'img/Twitter-Logo.png' %}"/>  Twitter Login</a-->
+                                      {% endcomment %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end content settings -->
+            </div>
+        </div>
+    </div><!-- end container -->
+</div><!-- end main -->
+
+{% endblock %}

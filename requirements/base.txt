@@ -2,3 +2,4 @@
 
 mezzanine==3.0.9
 django-compressor==1.3
+django-allauth==0.16.1

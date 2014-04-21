@@ -13,16 +13,16 @@ TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
 # all private settings to config production environment
 # should exist in a separated AND NOT VERSIONED file (prod_private).
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": "dev.db",
-#         "USER": "",
-#         "PASSWORD": "",
-#         "HOST": "",
-#         "PORT": "",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "dev.db",
+        "USER": "",
+        "PASSWORD": "",
+        "HOST": "",
+        "PORT": "",
+    }
+}
 
 try:
     from local import *

@@ -5,10 +5,10 @@
 {% block main %}
 <h2>The samurais that make Ninja-IDE so awesome</h2>
 
-<ul class="list-unstyled thum">
+<ul class="ninja-team">
 {% for guy in page.teampage.team_members.all %}
     <li class="thumbnail">
-        <img data-src="holder.js/128x128" alt="" class="ninja_avatar pull-left img-thumbnail">
+        <img src="{{ guy.avatar }}" alt="" class="ninja_avatar pull-left img-thumbnail">
         <div class="caption">
             <h3>{{ guy.name }} <span class="small">({{ guy.irc_nickname }} on #ninja-ide)</span></h3>
             <p>{{ guy.detail }}</p>

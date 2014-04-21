@@ -24,6 +24,11 @@ body {
     }
 }
 
+.user-nav {
+    @media (min-width: @screen-sm-min) {
+        float: right;
+    }
+}
 
 .footer {
     background: #ff0000;
@@ -86,5 +91,21 @@ body {
                 margin-bottom: .2em;
             }
         }
+    }
+}
+
+.ninja-team {
+    list-style: none;
+    padding: 0;
+
+    li {
+        .rounded(10px);
+        margin: 0 0 10px;
+    }
+
+    img {
+        background: @gray-light;
+        height: 140px;
+        width: 140px;
     }
 }

@@ -20,11 +20,11 @@
 
 </ul>
 
-<ul class="nav navbar-nav pull-right">
+<ul class="nav navbar-nav user-nav">
     <li class="user-dropdown">
         <a href="#" data-toggle="dropdown" class="user_avatar">
             {% if user.is_authenticated %}
-            <img src="holder.js/28x28/sky/" />
+            <img src="{{ user.avatar }}" />
             <span class="user_name">
                 {{ user.username }}
                 <span class="caret"></span>
@@ -52,14 +52,14 @@
             </li>
 
             <li>
-                <a href="{% url "logout" %}">
+                <a href="{% url 'account_logout' %}">
                     <span class="glyphicon glyphicon-log-out"></span> Logout
                 </a>
             </li>
 
             {% else %}
             <li>
-                <a href="{% url "login" %}">
+                <a href="{% url 'account_login' %}">
                     <span class="glyphicon glyphicon-log-in"></span> Login
                 </a>
             </li>

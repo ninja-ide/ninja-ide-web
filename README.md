@@ -28,7 +28,7 @@ If you really really REALLY want to help us, just get to our site(http://ninja-i
     pip install -r requirements/dev.txt
 
     # prepare it
-    cd mezza-ninja
+    cd mezzaninja
     add2virtualenv .
     export DJANGO_SETTINGS_MODULE="settings.local"
     ./manage.py syncdb --migrate

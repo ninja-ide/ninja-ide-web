@@ -30,9 +30,6 @@ except ImportError:
     print("Production settings file not found. Ensure you have a "\
           "'prod_private' file (not versioned)")
 
-run_checkers(globals())
-
-
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 

@@ -7,7 +7,7 @@ USER = ''
 SERVER = ''
 WEBFACTION_APP = 'ninjaweb3'
 REPO_DIR_NAME = 'ninja-ide-web'
-PROJECT_NAME = 'mezza-ninja'
+PROJECT_NAME = 'mezzaninja'
 REPOSITORY = 'https://github.com/ninja-ide/ninja-ide-web.git'
 
 # Enviroment config
@@ -70,10 +70,11 @@ def backup():
     """
     # with settings(warn_only=True):
     #     with cd(env.webfaction_app_dir):
-    #         # TODO: if there a mezza-ninja/settings/local.py, backup it use a timestamp in name
+    #         # TODO: if there a mezzaninja/settings/local.py,
+    #         # backup it use a timestamp in name
     #     if output.failed:
     #         abort(output)
-    print "backup: TO BE DONE" 
+    print "backup: TO BE DONE"
 
 
 def pull():
@@ -97,6 +98,7 @@ def install():
         if output.failed:
             abort(output)
 
+
 def upgrade():
     """
     On production server, install all requirements
@@ -118,7 +120,7 @@ def syncdb():
         if output.failed:
             abort(output)
 
-    
+
 def migrate():
     """
     On production server, run the migrate

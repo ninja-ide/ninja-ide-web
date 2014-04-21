@@ -44,5 +44,4 @@ for preprocessor_type, processor_call in COMPRESS_PRECOMPILERS:
     dev_compress.append((preprocessor_type, processor_call))
 COMPRESS_PRECOMPILERS = tuple(dev_compress)
 
-
 run_checkers(globals())

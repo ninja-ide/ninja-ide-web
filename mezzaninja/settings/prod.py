@@ -24,11 +24,6 @@ DATABASES = {
     }
 }
 
-try:
-    from local import *
-except ImportError:
-    print("Production settings file not found. Ensure you have a "\
-          "'prod_private' file (not versioned)")
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"

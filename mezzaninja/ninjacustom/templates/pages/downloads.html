@@ -1,0 +1,25 @@
+{% extends "pages/page.html" %}
+
+{% block main %}
+<h1>Downloads</h1>
+<p>Here you can download everything we got about ninja.</p>
+
+{% regroup page.linkspage.download_links.all by os as links_list %}
+
+{% for os in links_list %}
+<h3>{{ os.grouper }}</h3>
+
+<table class="table">
+    {% for link in os.list %}
+    <tr>
+        <td>Ninja {{ link.version }}</td>
+        <td>{{ link.os }} {{ link.distribution }}</td>
+        <td><a href="{{ link.link }}">{{ link.link }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
+
+{{ page.linkspage.content|safe }}
+
+{% endblock main %}

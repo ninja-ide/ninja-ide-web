@@ -1,0 +1,151 @@
+{% load static %}
+{% load compress pages_tags mezzanine_tags i18n future staticfiles %}
+
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+    <title>{% block title %}Ninja IDE Is Not Just Another IDE{% endblock %}</title>
+    <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Ninja IDE website. Not yourself a ninja? Follow us and we'll make of you a great ninja. But you are reading this, so... come in to our dojo you samurai ;).{% endblock %}">
+    <meta name="author" content="gatox, perrito666, gaucho, pmourelle">
+
+    <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}" />
+
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+    {% ifinstalled mezzanine.blog %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+    {% endifinstalled %}
+
+    <!-- Fonts from google -->
+    <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Exo+2:400,200,300,600,800,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css' />
+
+    {% compress css %}
+
+    {% block styles %}
+    <link type="text/less" rel="stylesheet" href="{% static 'bs/less/bootstrap.less' %}" charset="utf-8" />
+    <link type="text/less" rel="stylesheet" href="{% static 'bs/less/ninja_styles.less' %}" charset="utf-8" />
+    {% endblock styles %}
+
+    {% block extra_styles %}
+    {% endblock extra_styles %}
+
+    {% endcompress %}
+</head>
+
+<body class="" id="{% block body_id %}default_id{% endblock %}">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle Navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="/">
+              <img src="{% static "img/ninja-ide.logo.svg" %}" alt="">
+                <span>
+                {% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% else %}Ninja-IDE{% endif %}
+                </span>
+              </a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+              {% page_menu "pages/menus/dropdown.html" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+    {% block main %}
+
+      <div class="masthead">
+        <h3 class="text-muted"><a href="{% url 'home' %}">Ninja-IDE</a></h3>
+        <ul class="nav nav-justified">
+          <li><a href="#">Services</a></li>
+        </ul>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h2>Safari bug warning!</h2>
+          <p class="text-danger">Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="col-lg-4">
+          <h2>Da fuq is this</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="col-lg-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+    {% endblock %}
+    </div> <!-- /container -->
+
+    <!-- Site footer -->
+    <div class="footer">
+      <div class="container">
+        <p>1516 - {% now "Y" %} &copy; Ninja-IDE. Super Dungeon Dojo of Samurai Masters of the Universe and Surroundings</p>
+      </div>
+    </div>
+
+    {% block scripts %}
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    {% compress js %}
+    <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+
+    {% comment %}
+    <script type="text/javascript" src="/static/bs/js/affix.js"></script>
+    <script type="text/javascript" src="/static/bs/js/alert.js"></script>
+    <script type="text/javascript" src="/static/bs/js/button.js"></script>
+    <script type="text/javascript" src="/static/bs/js/carousel.js"></script>
+    <script type="text/javascript" src="/static/bs/js/collapse.js"></script>
+    <script type="text/javascript" src="/static/bs/js/dropdown.js"></script>
+    <script type="text/javascript" src="/static/bs/js/modal.js"></script>
+    <script type="text/javascript" src="/static/bs/js/scrollspy.js"></script>
+    <script type="text/javascript" src="/static/bs/js/tab.js"></script>
+    <script type="text/javascript" src="/static/bs/js/tooltip.js"></script>
+    <script type="text/javascript" src="/static/bs/js/popover.js"></script>
+    <script type="text/javascript" src="/static/bs/js/transition.js"></script>
+    {% endcomment %}
+
+    <!--[if lt IE 9]>
+    <script src="{% static "js/html5shiv.js" %}"></script>
+    <script src="{% static "js/respond.min.js" %}"></script>
+    <![endif]-->
+    {% endcompress %}
+    {% endblock %}
+
+    {% include "includes/footer_scripts.html" %}
+
+</body>
+</html>

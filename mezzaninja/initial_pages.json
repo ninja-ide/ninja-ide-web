@@ -1,0 +1,212 @@
+[
+{
+    "pk": 1, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": null, 
+        "_order": 1, 
+        "titles": "Blog", 
+        "description": "Blog", 
+        "parent": null, 
+        "title": "Blog", 
+        "short_url": null, 
+        "created": null, 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": null, 
+        "expiry_date": null, 
+        "publish_date": null, 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "blog", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 2, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-02-08T23:51:36.704Z", 
+        "_order": 0, 
+        "titles": "About", 
+        "description": "About Ninja-IDE\n", 
+        "parent": null, 
+        "title": "About", 
+        "short_url": null, 
+        "created": null, 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-02-08T23:51:36.638Z", 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "about", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 3, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-01-19T16:29:43.948Z", 
+        "_order": 4, 
+        "titles": "Contact", 
+        "description": "We want to hear from you. Fill in and kick the submit button, ninja.", 
+        "parent": null, 
+        "title": "Contact", 
+        "short_url": null, 
+        "created": null, 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-01-19T16:29:43.942Z", 
+        "content_model": "form", 
+        "in_menus": "1,2,3", 
+        "slug": "contact", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 5, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": null, 
+        "_order": 1, 
+        "titles": "About / History", 
+        "description": "History", 
+        "parent": 2, 
+        "title": "History", 
+        "short_url": null, 
+        "created": null, 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": null, 
+        "expiry_date": null, 
+        "publish_date": null, 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "about/history", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 9, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-02-09T09:45:20.268Z", 
+        "_order": 0, 
+        "titles": "About / The Samurais", 
+        "description": ".", 
+        "parent": 2, 
+        "title": "The Samurais", 
+        "short_url": null, 
+        "created": "2014-02-09T08:56:38.306Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-02-09T08:56:38.279Z", 
+        "content_model": "teampage", 
+        "in_menus": "1,2,3", 
+        "slug": "about/the-samurais", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 10, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-02-09T09:32:22.069Z", 
+        "_order": 3, 
+        "titles": "Stuff & Weapons", 
+        "description": ".", 
+        "parent": null, 
+        "title": "Stuff & Weapons", 
+        "short_url": null, 
+        "created": "2014-02-09T09:32:22.069Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-02-09T09:32:22.043Z", 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "stuff-weapons", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 11, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-02-09T09:47:50.698Z", 
+        "_order": 2, 
+        "titles": "Downloads", 
+        "description": ".", 
+        "parent": null, 
+        "title": "Downloads", 
+        "short_url": null, 
+        "created": "2014-02-09T09:34:37.152Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-02-09T09:34:37Z", 
+        "content_model": "linkspage", 
+        "in_menus": "1,2,3", 
+        "slug": "downloads", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 2, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<h1 class=\"ninja\">About Ninja-IDE</h1>\n<p><img class=\"big_image\" src=\"http://ninjaide.webfactional.com/static/common/img/logo.256.png\"></p>\n<h3>Why are we doing NINJA-IDE?</h3>\n<p><b>NINJA-IDE</b> started as a project focused at providing an IDE specially designed for Python Applications Development, with this scope in mind, we put our ninja-skills into the development of a <b>free</b> and <b>open source</b> project which grows based on the community's necessities.</p>\n<p>Basically we want to explore and find new features that would improve the performance of any Python Developer, always maintaining <b>NINJA-IDE</b> fast and lightweight for anyone to use it, and compete with the current commercial IDEs out there, and when we say \"compete\" we mean: to demonstrate that you can have a beautiful application with the most popular features, plus the ones that the ninja-team researches and implements, without the need to pay for any license or use a product where you can't play with the source code.</p>\n<h3>How it was born</h3>\n<p>Buy a beer/coffee to any (or the whole bunch of!) us and we'll be glad to tell the story :)</p>\n<p>And if you don't wanna hear it, assure yourself of we keeping the secret by donating 10 million dollars.</p>"
+    }
+},
+{
+    "pk": 5, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>History</p>"
+    }
+},
+{
+    "pk": 1, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>Blog</p>"
+    }
+},
+{
+    "pk": 10, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>.</p>"
+    }
+}
+]

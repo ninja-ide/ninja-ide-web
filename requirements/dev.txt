@@ -1,0 +1,5 @@
+# development requirements
+
+-r base.txt
+
+django-extensions==1.2.5

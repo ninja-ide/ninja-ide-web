@@ -34,6 +34,8 @@
 
   <!-- CSS: implied media="all" -->
 
+  {% block styles %}
+
   {% if use_lessjs %}
   <script type="text/javascript" src="{% static 'common/js/less-1.2.1.min.js' %}"></script>
   <link type="text/less" rel="stylesheet" href="{% static 'common/css/styles.less' %}" charset="utf-8" />
@@ -42,14 +44,10 @@
   <link rel="stylesheet" href="{% static 'common/css/styles.css' %}" />
   {% endif %}
 
-  {% block styles %}
-  {% endblock %}
+  {% endblock styles %}
 
 
-  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
-  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">-->
-
-  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detection -->
   <script type="text/javascript" src="{% static 'common/js/libs/modernizr-1.7.min.js' %}"></script>
 
   <script type="text/javascript">
@@ -77,21 +75,12 @@
             </a>
           </li>
 
-          <!--li id="nav-features">
-            <a href="{% url 'features' %}">
-              <h3>Features</h3>
-              <h4>Our ninja weapons</h4>
-            </a>
-          </li-->
-
-          {% comment %}
           <li id="nav-blog">
-            <a href="{% url 'blog_index' %}">
+            <a href="{% url 'ninja_wisdom' %}">
               <h3>{% trans "Blog" %}</h3>
               <h4>{% trans "Get some news!" %}</h4>
             </a>
           </li>
-          {% endcomment %}
 
           <li id="nav-downloads">
             <a href="{% url 'downloads' %}">
@@ -101,7 +90,7 @@
           </li>
 
           <li id="nav-plugins">
-            <a href="{% url 'plugins' %}">
+            <a href="{% url 'plugin_list' %}">
               <h3>Plugins</h3>
               <h4>Our Senseis' stuff</h4>
             </a>
@@ -130,10 +119,11 @@
 
           <li id="nav-login">
             {% if user.is_authenticated and user.username %}
-              <h3><a href="{% url 'user_detail' user.username %}">My dojo</a></h3>
-              <h4>Hi {{ user.username|slice:"10" }}{% if user.username|length > 10 %}...{% endif %}
-              <a id="logout" href="{% url 'auth_logout' %}">Logout</a>
-              </h4>
+              <a href="{% url 'user_detail' user.username %}">
+                {% firstof user.get_full_name user.username %}
+              </a>
+              <h4><a id="logout" href="{% url 'auth_logout' %}">Logout</a></h4>
+
             {% else %}
               <h3><a href="{% url 'auth_login' %}">{% trans "Ninja Login" %}</a></h3>
               <h4><a href="{% url 'auth_login' %}">{% trans "Login or Sign up" %}</a></h4>
@@ -161,8 +151,22 @@
 
     <footer>
       <div class="footer-wrap">
+        <div class="section twits" id="twits">
 
-          <div class="section twits" id="twits">
+          <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/ninja_ide" data-widget-id="372612905327276032">Tweets por @ninja_ide</a>
+          <script>
+            !function(d,s,id){
+              var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location)?'http':'https';
+              if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + "://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);
+              }
+          }(document,"script","twitter-wjs");
+          </script>
+
+          {% comment %}
           <script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
           <script>
           new TWTR.Widget({
@@ -194,6 +198,7 @@
             }
           }).render().setUser('ninja_ide').start();
           </script>
+          {% endcomment %}
         </div><!-- /.twits -->
 
         <div class="section" id="last-submissions">
@@ -225,7 +230,7 @@
 
           <p>That said, if you consider yourself an honoured warrior <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">consider to make a donation</a> so we can buy new weapons.</p>
 
-          <p>We are currently receiving donations through PayPal and Flattr. So feel free to using any of them and support us with any amount you think Ninja-IDE deserves.</p>
+          <p>We are currently accepting donations through PayPal and Flattr. So feel free to use any of them and support us with any amount you think Ninja-IDE deserves.</p>
 
           <div class="donate-method">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -255,7 +260,7 @@
         </div>
 
         <div class="disclaimer">
-          NINJA-IDE is a GPL Project. 2010-2012. All rights are protected by ninjas, so watch out, punk! Just kidding. But we totally see you.
+          NINJA-IDE is a GPL Project. 2010-2013. All rights are protected by ninjas, so watch out, punk! Just kidding. But we totally see you.
         </div>
 
       </div>
@@ -299,7 +304,7 @@
       }
     });
   </script>
-  {% endblock %}
+  {% endblock scripts %}
 
 </body>
 </html>

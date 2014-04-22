@@ -25,7 +25,7 @@ class Plugin(models.Model):
     version = models.CharField(max_length="32",
                                verbose_name=(u'Plugin version'))
     upload_date = models.DateField(default=date.today)
-    url = models.URLField(verify_exists=True, max_length=200, blank=True)
+    url = models.URLField(max_length=200, blank=True)
 
     zip_file = models.FileField(upload_to='plugin_files/')
 

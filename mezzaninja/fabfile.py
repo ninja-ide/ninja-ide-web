@@ -1,18 +1,16 @@
 from os import path
 from fabric.api import env, run, cd, settings, abort
-
+from django.conf import FAB_USER, FAB_SERVER
 
 # Config
-USER = ''
-SERVER = ''
 WEBFACTION_APP = 'ninjaweb3'
 REPO_DIR_NAME = 'ninja-ide-web'
 PROJECT_NAME = 'mezzaninja'
 REPOSITORY = 'https://github.com/ninja-ide/ninja-ide-web.git'
 
 # Enviroment config
-env.hosts = [SERVER]
-env.user = USER
+env.hosts = [FAB_SERVER]
+env.user = FAB_USER
 env.webfaction_app_dir = path.join("~", "webapps", WEBFACTION_APP)
 env.webfaction_repo_dir = path.join("~", "webapps", WEBFACTION_APP, REPO_DIR_NAME)
 env.webfaction_apache_dir = path.join("~", "webapps", WEBFACTION_APP, "apache2")
@@ -138,7 +136,7 @@ def collectstatic():
     """
     with settings(warn_only=True):
         with cd(env.webfaction_django_project):
-            output = run(PYTHON_EXECUTABLE + " manage.py collectstatic")
+            output = run(PYTHON_EXECUTABLE + " manage.py collectstatic --noinput")
         if output.failed:
             abort(output)
 
@@ -147,22 +145,26 @@ def restart():
     """
     On production server, restart the apache server
     """
+    print("\n* Restarting server.")
     with settings(warn_only=True):
         with cd(env.webfaction_apache_dir):
             output = run("./bin/restart")
         if output.failed:
             abort(output)
+    print("\n  Done.")
 
 
 def test_connection():
     """
     Just a task for test the connection
     """
+    print("\n* Testing connection.")
     with settings(warn_only=True):
         with cd(env.webfaction_repo_dir):
                 output = run("ls")
         if output.failed:
             abort(output)
+    print("\n  Done.")
 
 
 def initialize():
@@ -173,19 +175,30 @@ def initialize():
     clone()
 
 
+def prompt_backup():
+    prompt = raw_input("\n>> Backup existing data? WARNING: NOT IMPLEMENTED YET!!\n(yes/no)\n>")
+    if prompt.lower() == "yes":
+        print("\n* Starting backup.")
+        backup()
+        print("\n  Done.")
+
+
 def deploy():
     """
     Run all task to deploy the site.
 
-    NOTE: you need to run initialize() task before you can run this
+    NOTE: you should run initialize() task before you can run this
     """
-    commit()
-    push()
-    backup()
+
+    #commit()
+    #push()
+    prompt_backup()
+
     pull()
     install()
-    upgrade()
+    #upgrade()
     syncdb()
-    migrate()
+    #migrate()
     collectstatic()
+
     restart()

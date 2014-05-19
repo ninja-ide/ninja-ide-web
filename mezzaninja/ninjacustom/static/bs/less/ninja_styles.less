@@ -161,3 +161,123 @@ table {
         }
     }
 }
+
+#splash {
+  background: url("/static/img/full_logo_text.png") no-repeat center 10% transparent;
+  background-size: 100% auto;
+  height: 365px;
+  margin-bottom: 150px;
+  padding-bottom: 10px;
+  width: 100%;
+
+  #splash-wrap {
+    height: 100%;
+    margin: 0 auto;
+    padding: 0px 20px;
+    position: relative;
+    //width: @page-width;
+
+    h1 {
+      .opacity(0);
+
+      span {
+        font-size: 3.2em;
+        color: #888;
+      }
+    }
+  }
+
+  #download-latest-box {
+    bottom: 0;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 400px;
+    z-index: 10;
+    .drop-shadow(0, 1px, 8px, 0.9);
+
+    img {
+      display: block;
+      float: left;
+      padding: 3px 10px 3px 5px;
+      height: 32px;
+      position: relative;
+      top: -3px;
+      width: 32px;
+      .transition(1s);
+    }
+
+    h2 {
+      font-size: 1.1em;
+      line-height: 2.2em;
+      margin: 0 0 3px;
+      text-shadow: 0px 1px 0px #fff;
+    }
+
+    a {
+      border-left: 1px solid #fff;
+      color: inherit;
+      float: right;
+      line-height: 18px;
+      padding-left: 20px;
+      text-decoration: none;
+      width: 310px;
+
+      &.main-link {
+        color: #fff;
+        padding-bottom: 10px;
+      }
+
+      &.sec-link {
+        font-size: .8em;
+        text-align: right;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    small {
+      display: block;
+      float: right;
+      position: absolute;
+      right: 10px;
+      top: -21px;
+    }
+
+    &:hover {
+      img {
+        top: 20px;
+      }
+    }
+
+    /* general config for download button */
+    .box-download() {
+      padding: 20px;
+      .rounded(8px);
+    }
+
+    &.metal-box {
+      .box-download;
+      color: #000;
+      .color-gradient(#ccc);
+      border: 1px solid #777;
+    }
+
+    &.redninja-box {
+      .box-download;
+      color: #fff;
+      .color-gradient(#d00);
+
+      a {
+        .coloured-shadow(0px, 0px, 2px, rgba(0, 0, 0, .9));
+      }
+    }
+  }
+}
+
+hr {
+    border-color: @gray-dark;
+    .box-shadow(0 0 15px rgba(0,0,0,.3));
+}

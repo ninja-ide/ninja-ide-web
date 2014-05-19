@@ -30,7 +30,8 @@ If you really really REALLY want to help us, just get to our site(http://ninja-i
     # prepare it
     cd mezzaninja
     add2virtualenv .
-    export DJANGO_SETTINGS_MODULE="settings.local"
+    export DJANGO_SETTINGS_MODULE="mezzaninja.settings"
+    ln -s settings/dev.py settings/active.py
     ./manage.py syncdb --migrate
     ./manage.py runserver
 

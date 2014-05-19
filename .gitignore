@@ -2,6 +2,8 @@
 *.nja
 *.db
 .DS_Store
+
+# revise and remove following lines as not needed
 local_settings.py
 local_urls.py
 media/plugin_files/
@@ -11,3 +13,7 @@ website/ninja_web/ninja_ide.db
 ninja_ide.db
 ninjaweb
 website/ninja_web/media/plugin_files/
+
+
+# NinjaWeb v3
+mezzaninja/settings/active.py

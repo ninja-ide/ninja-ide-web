@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load i18n static mezzanine_tags %}
+
+{% block bodyclass %}home{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+  <!--
+  <script type="text/javascript">
+  $(document).ready(function() {
+    var so = retornarSO().toLowerCase();
+    var text = 'Download for ' + so;
+
+    img_link = $(document.createElement('img'))
+           .attr('src', '/media/img/download_for_'+so+'.png')
+           .attr('alt', text);
+
+    $('.so-version').after(img_link);
+  });
+  </script>
+  -->
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center">
+        <b>N</b>inja-<span style="font-variant: small-caps;">ide</span> <b>I</b>s <b>N</b>ot <b>J</b>ust <b>A</b>nother IDE
+    </h1>
+
+    <div id="splash" class="row">
+
+        <div id="splash-wrap">
+            <h1>Ninja<span>IDE</span></h1>
+        </div><!-- /#splash-wrap -->
+
+        <div id="download-latest-box" class="redninja-box">
+            <img src="{% static "common/img" %}/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
+
+            <a class="main-link" href="/downloads/">Download Ninja IDE v2.3 for {{ user_os|title }}.</a>
+            <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">
+            {% blocktrans %}
+            More {{ user_os }} downloads
+            {% endblocktrans %}
+            </a>
+        </div><!-- /#download-latest-box -->
+
+    </div><!-- /#splash -->
+
+    <!-- INTRO -->
+    <div class="row" id="intro">
+        {{ page.richtextpage.content|richtext_filters|safe }}
+    </div>
+{% endblock main %}

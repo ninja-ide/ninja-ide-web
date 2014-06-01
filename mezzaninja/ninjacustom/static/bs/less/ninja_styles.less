@@ -12,6 +12,7 @@ body {
 }
 
 .navbar-brand {
+    background-color: @gray-lighter;
     padding: 2px 0;
     width: 240px;
 
@@ -280,4 +281,22 @@ table {
 hr {
     border-color: @gray-dark;
     .box-shadow(0 0 15px rgba(0,0,0,.3));
+}
+
+a.btn {
+  &.share-twitter {
+    background-color: #00aced;
+    color: @white;
+  }
+
+  &.share-facebook {
+    background-color: #3b5998;
+    color: @white;
+  }
+
+  & +.btn {
+    @media (min-width: @screen-sm-min) {
+      margin-left: 1em;
+    }
+  }
 }

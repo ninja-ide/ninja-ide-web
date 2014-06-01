@@ -6,20 +6,20 @@
 
 {% block scripts %}
 {{ block.super }}
-  <!--
-  <script type="text/javascript">
-  $(document).ready(function() {
-    var so = retornarSO().toLowerCase();
-    var text = 'Download for ' + so;
+    <!--
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var so = retornarSO().toLowerCase();
+        var text = 'Download for ' + so;
 
-    img_link = $(document.createElement('img'))
-           .attr('src', '/media/img/download_for_'+so+'.png')
-           .attr('alt', text);
+        img_link = $(document.createElement('img'))
+             .attr('src', '/media/img/download_for_'+so+'.png')
+             .attr('alt', text);
 
-    $('.so-version').after(img_link);
-  });
-  </script>
-  -->
+        $('.so-version').after(img_link);
+    });
+    </script>
+    -->
 {% endblock %}
 
 {% block main %}
@@ -34,7 +34,7 @@
         </div><!-- /#splash-wrap -->
 
         <div id="download-latest-box" class="redninja-box">
-            <img src="{% static "common/img" %}/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
+            <img src="{% static "img" %}/download_for_{{ user_os|default:'all' }}.png" alt="Download last {{ user_os|safe}} version" />
 
             <a class="main-link" href="/downloads/">Download Ninja IDE v2.3 for {{ user_os|title }}.</a>
             <a class="sec-link" href="/downloads/{{ user_os|default:'source' }}">
@@ -49,5 +49,33 @@
     <!-- INTRO -->
     <div class="row" id="intro">
         {{ page.richtextpage.content|richtext_filters|safe }}
+
+        <p>If you are willing to <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TESZPNRD59H6">donate through PayPal</a> you'll be helping us to mantain NinjaIDE awesome. We are also accepting donations through Flattr. So feel free to use any of them and support us with any amount you think Ninja-IDE deserves.</p>
+
+        <div class="donate-method">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="diego.sarmentero@gmail.com">
+            <input type="hidden" name="lc" value="US">
+            <input type="hidden" name="item_name" value="Ninja-IDE">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </div><!-- /.donate-method -->
+
+        <div class="donate-method">
+            <a class="FlattrButton" href="http://ninja-ide.org"></a>
+            <noscript>
+              <a href="http://flattr.com/thing/1111457/NINJA-IDE" target="_blank">
+                <img src="http://api.flattr.com/button/flattr-badge-large.png"
+                     alt="Flattr this" title="Flattr this" border="0"
+              />
+              </a>
+            </noscript>
+        </div><!-- /.donate-method -->
     </div>
+
 {% endblock main %}
